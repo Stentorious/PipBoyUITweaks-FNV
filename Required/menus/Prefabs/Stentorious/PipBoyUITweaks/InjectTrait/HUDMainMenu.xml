@@ -1,0 +1,49 @@
+<_PUI+UIMod>
+	<copy> 0 </copy>									<!-- Vanilla -->
+	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
+	<add>
+		<copy> 3 </copy>
+		<onlyif>
+			<copy src="globals" trait="_VUI+Vegas" />	<!-- VUI+ -->
+			<or src="globals" trait="_VUI+Version" />
+		</onlyif>
+	</add>
+	<add>
+		<copy> -1 </copy>
+		<onlyif src="globals" trait="_VUI+" />			<!-- Revelations -->
+	</add>
+	<add>
+		<copy> 2 </copy>
+		<onlyif src="globals" trait="_VUIE" />			<!-- VUIE -->
+	</add>
+</_PUI+UIMod>
+
+<!-- Vanilla -->
+<_PUI+ySIWidth_0> 32 </_PUI+ySIWidth_0>
+<_PUI+ySIOffset_0> -11.3 </_PUI+ySIOffset_0>
+
+<!-- DarNUI -->	
+<_PUI+ySIWidth_1> 21 </_PUI+ySIWidth_1>
+<_PUI+ySIOffset_1> 0 </_PUI+ySIOffset_1>
+
+<!-- VUI+ -->
+<_PUI+ySIWidth_2> 32 </_PUI+ySIWidth_2>
+<_PUI+ySIOffset_2> -11.3 </_PUI+ySIOffset_2>
+
+<!-- VUI+ Revelations -->
+<_PUI+ySIWidth_3> 32 </_PUI+ySIWidth_3>
+<_PUI+ySIOffset_3> -11.3 </_PUI+ySIOffset_3>
+
+<!-- VUIE -->
+<_PUI+ySIWidth_4> 24 </_PUI+ySIWidth_4>
+<_PUI+ySIOffset_4> -5 </_PUI+ySIOffset_4>
+
+<!-- Button Offset -->
+<_PUI+ySIWidth>
+	<copy src="me()" trait="_PUI+UIMod"/>
+	<copy src="me()" trait="_PUI+ySIWidth_"/>
+</_PUI+ySIWidth>
+<_PUI+ySIOffset>
+	<copy src="me()" trait="_PUI+UIMod" />
+	<copy src="me()" trait="_PUI+ySIOffset_" />
+</_PUI+ySIOffset>

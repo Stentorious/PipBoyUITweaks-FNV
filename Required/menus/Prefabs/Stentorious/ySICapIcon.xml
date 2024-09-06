@@ -1,0 +1,24 @@
+<image name="ySIImage">
+	<visible> <copy src="parent()" trait="visible" /> </visible>
+	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
+	<x>
+		<copy src="sibling(CI_ValueText)" trait="x" />
+		<sub src="me()" trait="height" />
+		<sub> 8 </sub>
+	</x>
+	<y> 9.5 </y>
+	<width> <copy src="me()" trait="height" /> </width>
+	<height> <copy src="sibling(CI_TitleText)" trait="height" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add>
+			<copy src="io()" trait="systemcolor" />
+			<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+		</add>
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> interface\icons\Misc_BottleCap.dds </filename>
+</image>

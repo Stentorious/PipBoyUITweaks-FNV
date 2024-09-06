@@ -1,0 +1,94 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+	<moduleName>Pip-Boy UI Tweaks</moduleName>
+	<requiredInstallFiles>
+		<folder source="Required" destination="" />
+	</requiredInstallFiles>
+	<installSteps order="Explicit">
+		<installStep name="Pip-Boy UI Tweaks">
+			<optionalFileGroups order="Explicit">
+				<group name="Main Files" type="SelectExactlyOne">
+					<plugins order="Explicit">
+						<plugin name="Plugin (Recommended)">
+							<description>Select if you want Pip-Boy UI Tweaks in plugin form. (ESP)</description>
+							<files>
+								<folder source="Main Files\Plugin" destination="" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						<plugin name="Scriptrunner">
+							<description>Select if you want Pip-Boy UI Tweaks in scriptrunner form. (ESPless)</description>
+							<files>
+								<folder source="Main Files\Scriptrunner" destination="" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+					</plugins>
+				</group>
+				<group name="Texture Add-on" type="SelectAny">
+					<plugins order="Explicit">
+						<plugin name="Colorful Icons">
+							<description>Installs colorful versions of the interface icons added by Pip-Boy UI Tweaks.</description>
+							<conditionFlags>
+								<flag name="Texture Color">Active</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Recommended" />
+							</typeDescriptor>
+						</plugin>
+						<plugin name="MAPMO Style Icons">
+							<description>Replaces the ySI Nuka Cola and Sunset Sarsaparilla star bottle cap icons with MAPMO style icons.</description>
+							<conditionFlags>
+								<flag name="Texture MAPMO">Active</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Recommended" />
+							</typeDescriptor>
+						</plugin>
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>
+	</installSteps>
+	<conditionalFileInstalls>
+		<patterns>
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="Texture MAPMO" value="Active" />
+					<flagDependency flag="Texture Color" value="" />
+				</dependencies>
+				<files>
+					<folder source="Conditional\MAPMO Caps Icon" destination="" priority="0" />
+				</files>
+			</pattern>
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="Texture MAPMO" value="Active" />
+					<flagDependency flag="Texture Color" value="Active" />
+				</dependencies>
+				<files>
+					<folder source="Conditional\MAPMO Caps Icon Color" destination="" priority="0" />
+				</files>
+			</pattern>
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="Texture Color" value="" />
+				</dependencies>
+				<files>
+					<folder source="Conditional\UI Icons" destination="" priority="0" />
+				</files>
+			</pattern>
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="Texture Color" value="Active" />
+				</dependencies>
+				<files>
+					<folder source="Conditional\UI Icons Color" destination="" priority="0" />
+				</files>
+			</pattern>
+		</patterns>
+	</conditionalFileInstalls>
+</config>

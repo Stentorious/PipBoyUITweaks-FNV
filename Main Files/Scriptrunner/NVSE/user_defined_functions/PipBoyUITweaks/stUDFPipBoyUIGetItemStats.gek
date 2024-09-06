@@ -1,0 +1,72 @@
+int iSlotMask
+int iType
+float fWeapWg
+float fWeapVal
+float fWeapStr
+float fBodyWg
+float fBodyVal
+float fEyesWg
+float fEyesVal
+float fHeadWg
+float fHeadVal
+ref rItem
+array_var aEquippedItems
+array_var aForE
+
+begin Function {}
+
+	; Cache equipped item stats
+	aEquippedItems = Player.GetEquippedItemRefs
+	if aEquippedItems
+		foreach aForE <- aEquippedItems
+			rItem = *aForE
+			if eval IsFormValid rItem
+				iSlotMask = rItem.GetESM
+				iType = rItem.GetEquipType
+
+				; Weapon
+				if rItem.GetType == 40
+					fWeapWg = rItem.GetWeight
+					fWeapVal = rItem.GetCalculatedItemValue
+					fWeapStr = rItem.GetWeaponRequiredStrength
+
+				; Armor (Body)
+				elseif GetBit iSlotMask 2 == 1
+					fBodyWg = rItem.GetWeight
+					fBodyVal = rItem.GetCalculatedItemValue
+
+				; Armor (Eyes)
+				elseif iSlotMask == 18432
+					fEyesWg = rItem.GetWeight
+					fEyesVal = rItem.GetCalculatedItemValue
+
+				; Armor (Head)
+				elseif iType == 8 && GetBit iSlotMask 11 != 1
+					fHeadWg = rItem.GetWeight
+					fHeadVal = rItem.GetCalculatedItemValue
+
+				; Armor (Eyes + Head)
+				elseif iType == 8
+					fEyesWg = rItem.GetWeight
+					fEyesVal = rItem.GetCalculatedItemValue
+					fHeadWg = rItem.GetWeight
+					fHeadVal = rItem.GetCalculatedItemValue
+
+				endif
+			endif
+		loop
+	endif
+
+	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapStr 0
+	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapWg 1
+	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapVal 2
+	Goo1.AuxVarSetFlt "*PUI_Stat" fBodyWg 3
+	Goo1.AuxVarSetFlt "*PUI_Stat" fBodyVal 4
+	Goo1.AuxVarSetFlt "*PUI_Stat" fEyesWg 5
+	Goo1.AuxVarSetFlt "*PUI_Stat" fEyesVal 6
+	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadWg 7
+	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadVal 8
+
+	aEquippedItems = aForE = ar_null
+
+end

@@ -1,0 +1,65 @@
+<image name="ySIImage">
+	<visible> <copy src="sibling(button_text)" trait="visible" /> </visible>
+	<alpha> <copy src="sibling(button_text)" trait="alpha" /> </alpha>
+	<x>
+		<copy src="sibling(button_text)" trait="x" />
+		<sub src="sibling(button_text)" trait="width" />
+		<sub src="me()" trait="height" />
+		<sub> 8 </sub>
+	</x>
+	<y>
+		<copy src="sibling(button_text)" trait="y" />
+		<add src="io()" trait="_PUI+ySIOffset" />
+	</y>
+	<width> <copy src="io()" trait="_PUI+ySIWidth" /> </width>
+	<height> <copy src="me()" trait="width" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add>
+			<copy src="io()" trait="systemcolor" />
+			<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+		</add>
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> <copy src="me()" trait="_Icon" /> </filename>
+	<_Icon>
+		<copy src="MM_Tabline" trait="_CurrentTab" />
+		<add>
+			<copy> 1 </copy>
+			<onlyif>
+				<copy src="MM_Tabline" trait="_CurrentTab" />
+				<eq> 0 </eq>
+			</onlyif>
+		</add>
+		<add>
+			<copy> 1 </copy>
+			<onlyif>
+				<copy src="MM_Tabline" trait="_CurrentTab" />
+				<eq> 3 </eq>
+				<and src="Parent()" trait="_ShowingAllNotes" />
+				<and>
+					<not src="MM_Headline_ChallengeType" trait="visible" />
+				</and>
+			</onlyif>
+		</add>
+		<add>
+			<copy> 2 </copy>
+			<onlyif>
+				<copy src="MM_Headline_ChallengeType" trait="visible" />
+				<and>
+					<copy src="MM_Tabline" trait="_CurrentTab" />
+					<eq> 3 </eq>
+				</and>
+			</onlyif>
+		</add>
+		<copy src="me()" trait="_Icon_" />
+	</_Icon>
+	<_Icon_1> interface/icons/Apparel_Other_PipBoy.dds </_Icon_1>
+	<_Icon_2> interface/icons/Apparel_Other_PipBoy.dds </_Icon_2>
+	<_Icon_3> interface/icons/Misc_Note.dds </_Icon_3>
+	<_Icon_4> interface/icons/Misc_QuestItem.dds </_Icon_4>
+	<_Icon_5> interface/icons/Misc_Special.dds </_Icon_5>
+</image>

@@ -1,0 +1,58 @@
+int iMenuID
+int iModSlot
+int iModType
+float fModStat
+ref rWeap
+string_var sModDesc
+
+begin Function {iMenuID}
+
+	; Fix game crash if ItemModMenu is closed before fully loaded
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_CancelButton\visible" 0
+	CallAfter 0.3 ({} => SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_CancelButton\visible" 1) 1
+
+	rWeap = GetMenuTargetRef 1061
+
+	; Reset comparison UI and cache default weapon stats
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\_title" (GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\_title")
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\_value" "%g" (rWeap.GetWeaponRequiredStrength)
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\filename" (GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename")
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 0
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 0
+	Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetModStats.gek")
+
+	; Rebuild weapon mod descriptions to accurately reflate their affect on the weapon
+	iModSlot = 0
+	while 4 > (iModSlot += 1)
+		if eval IsFormValid (rWeap.GetWeaponItemMod iModSlot)
+			sModDesc = GetFormDescription (rWeap.GetWeaponItemMod iModSlot)
+			iModType = rWeap.GetWeaponItemModEffect iModSlot
+			fModStat = rWeap.GetWeaponItemModValue1 iModSlot
+			if Goo1.AuxVarGetFlt "*PUI_INI" 2 == 1
+				if iModType == 1
+					sModDesc = Sv_Construct "Increases damage (+%.0f)." fModStat
+				elseif iModType == 2
+					sModDesc = Sv_Construct "Increases ammunition capacity (+%.0f)." fModStat
+				elseif iModType == 3
+					sModDesc = Sv_Construct "Decreases spread (-%.0f%%)." (GetMinOf ((fModStat / (GetMaxOf 0.01 (rWeap.GetMinSpread))) * 100) 100)
+				elseif iModType == 4
+					sModDesc = Sv_Construct "Decreases weight (-%.1f)." fModStat
+				elseif iModType == 7
+					sModDesc = Sv_Construct "Decreases equip time (-%.0f%%)." (fModStat * 100)
+				elseif iModType == 8
+					sModDesc = Sv_Construct "Increases rate of fire (+%.0f%%)." (fModStat * 100)
+				elseif iModType == 10
+					sModDesc = Sv_Construct "Increases condition (+%.0f%%)." ((fModStat / (rWeap.GetHealth)) *  100)
+				endif
+			endif
+			Goo1.AuxVarSetStr "*PUI_WMDesc" (sModDesc) (iModSlot - 1)
+		endif
+	loop
+
+	sv_Destruct sModDesc
+
+end

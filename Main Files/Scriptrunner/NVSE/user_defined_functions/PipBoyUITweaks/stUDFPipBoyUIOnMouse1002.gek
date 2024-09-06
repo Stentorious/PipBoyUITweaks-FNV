@@ -1,0 +1,225 @@
+int	iMenuID
+int iType
+int iComp
+int iModSlot
+int iModMask
+int iSlotMask
+float fStatWg
+float fStatVal
+float fStatStr
+float fStatItem
+float fWeapCrit
+float fWeapRoF
+float iColor
+ref rItem
+string_var sUIPath
+
+begin Function {iMenuID}
+
+	; Check if selected inventory weapon/armor should have stat colors and/or extended stat comparisons
+	rItem = GetSelectedItemRef
+	if eval IsFormValid rItem && GetActiveUIComponentID == 29
+		iType = rItem.GetType
+		if iType == 40 || iType == 24
+
+			Goo1.AuxVarSetFlt "*PUI_FLAG" 1
+			iColor = Goo1.AuxVarGetFlt "*PUI_INI" 3
+
+			; Extended stat comparison
+			if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
+
+				; Get weapon stats
+				if iType == 40
+					fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 1
+					if fStatWg > 0
+						iComp = 1
+						fStatStr = Goo1.AuxVarGetFlt "*PUI_Stat" 0
+						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 2
+						fStatItem = rItem.GetWeaponRequiredStrength
+
+						; Update STR color
+						if fStatItem > fStatStr
+							if fStatItem != 0
+								SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value") + "+")
+							endif
+							if iColor == 1
+								SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 3
+							endif
+						elseif fStatItem < fStatStr
+							if fStatItem != 0
+								SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value") + "-")
+							endif
+							if iColor == 1
+								SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 2
+							endif
+						elseif iColor == 1
+							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 4
+						endif
+
+					endif
+
+				; Get armor stats
+				else
+					iSlotMask = rItem.GetESM
+					If eval GetBit iSlotMask 2
+						iComp = 1
+						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 3
+						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 4
+					ElseIf iSlotMask == 18432
+						iComp = 1
+						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 5
+						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 6
+					ElseIf rItem.GetEquipType == 8
+						iComp = 1
+						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 7
+						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 8
+					endif
+				endif
+
+				; Update WG/VAl on valid stat comparison
+				If iComp == 1
+
+					; Update WG color
+					fStatItem = rItem.GetWeight
+					if fStatWg > fStatItem
+						if fStatItem != 0
+							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value") + "+")
+						endif
+						if iColor == 1
+							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 3
+						endif
+					elseif fStatWg < fStatItem
+						if fStatItem != 0
+							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value") + "-")
+						endif
+						if iColor == 1
+							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 2
+						endif
+					elseif iColor == 1
+						SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 4
+					endif
+
+					; Update VAL color
+					fStatItem = rItem.GetCalculatedItemValue
+					if fStatItem > fStatVal
+						if fStatItem != 0
+							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value") + "+")
+						endif
+						if iColor == 1
+							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 3
+						endif
+					elseif fStatItem < fStatVal
+						if fStatItem != 0
+							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value") + "-")
+						endif
+						if iColor == 1
+							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 2
+						endif
+					elseif iColor == 1
+						SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 4
+					endif
+
+				; Reset color if selecting weapon/armor item without valid stat comparison
+				else
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 4
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 4
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 4
+				endif
+			endif
+
+			; Update DAM/DPS/DR/DT color
+			if iColor == 1
+				if iType == 40
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\string"
+					iColor = 4
+					if Sv_Find "+" sUIPath != -1
+						iColor = 3
+					elseif Sv_Find "-" sUIPath != -1
+						iColor = 2
+					endif
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\systemcolor" iColor
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\string"
+					iColor = 4
+					if Sv_Find "+" sUIPath != -1
+						iColor = 3
+					elseif Sv_Find "-" sUIPath != -1
+						iColor = 2
+					endif
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\systemcolor" iColor
+				else
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\string"
+					iColor = 4
+					if Sv_Find "+" sUIPath != -1
+						iColor = 3
+					elseif Sv_Find "-" sUIPath != -1
+						iColor = 2
+					endif
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" iColor
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\string"
+					iColor = 4
+					if Sv_Find "+" sUIPath != -1
+						iColor = 3
+					elseif Sv_Find "-" sUIPath != -1
+						iColor = 2
+					endif
+					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" iColor
+				endif
+			endif
+
+			; Update weapon critical chance
+			if eval iType == 40 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+				iModMask = rItem.GetWeaponRefModFlags
+				fWeapRoF = rItem.GetFireRate
+				iModSlot = 0
+				while 4 > (iModSlot += 1)
+					if GetBit iModMask (iModSlot - 1) == 1
+						if rItem.GetWeaponItemModEffect iModSlot == 8
+							fWeapRoF *= (1 + (rItem.GetWeaponItemModValue1 iModSlot))
+						endif
+					endif
+				loop
+				fWeapCrit = Floor (Player.GetAV CritChance)
+				if eval rItem.GetIsAutomatic
+					fWeapCrit /= fWeapRoF
+				endif
+				fWeapCrit *= rItem.GetCritPerc
+				SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\_value" "%.2f%%" (Player.GetPerkModifier 1 fWeapCrit rItem Player)
+			endif
+
+			; Set AmmoInfo icon
+			sUIPath = rItem.ySIGetTrait "filename"
+
+			; Set armor class icon if armor
+			iType = GetArmorClass (rItem.gbo)
+			if iType == 1
+				sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
+			elseif iType == 2
+				sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"
+			elseif iType == 3
+				sUIPath = "interface\icons\Apparel_ArmorC_Heavy.dds"
+
+			; Set ammo icon if weapon uses ammo
+			else
+				rItem = rItem.GetWeaponAmmo
+				if eval IsFormValid rItem
+					if GetType rItem == 85
+						rItem = ListGetNthForm rItem 0
+					endif
+					sUIPath = ySIGetTrait "filename" rItem
+				endif
+			endif
+
+			SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (sUIPath)
+
+		; Reset color if selecting non weapon/armor item
+		elseif Goo1.AuxVarGetFlt "*PUI_FLAG" == 1
+			Goo1.AuxVarSetFlt "*PUI_FLAG" 0
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 4
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 4
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 4
+		endif
+	endif
+
+	sv_Destruct sUIPath
+
+end

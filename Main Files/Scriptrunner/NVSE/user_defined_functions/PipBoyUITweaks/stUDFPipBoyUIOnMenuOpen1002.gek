@@ -1,0 +1,24 @@
+int	iMenuID
+
+begin Function {iMenuID}
+
+	; Cache equipped item stats and update color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
+		Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetItemStats.gek")
+	endif
+
+	; Update weight color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
+		SetUIFloatAlt "InventoryMenu\_PUI+WG" (Player.GetEncumbranceRate)
+	endif
+
+	; Update hit points color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 7 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
+	endif
+
+	; Reset alpha pulse
+	SetUIFloatGradual "InventoryMenu\_PUI+AP" 0.8 0 1.5 2
+	SetUIFloatGradual "StatsMenu\_PUI+AP" 0
+
+end

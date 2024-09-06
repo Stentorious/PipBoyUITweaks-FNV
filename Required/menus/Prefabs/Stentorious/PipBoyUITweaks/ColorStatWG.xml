@@ -1,0 +1,20 @@
+<text name="CI_ValueText_Clone">
+	<visible> <not src="sibling(CI_ValueText)" trait="visible" /> </visible>
+	<alpha> <copy src="sibling(CI_ValueText)" trait="alpha" /> </alpha>
+	<x> <copy src="sibling(CI_ValueText)" trait="x" /> </x>
+	<y> <copy src="sibling(CI_ValueText)" trait="y" /> </y>
+	<zoom> <copy src="sibling(CI_ValueText)" trait="zoom" /> </zoom>
+	<systemcolor>
+		<copy> 2 </copy>
+		<add>
+			<copy> 2 </copy>
+			<onlyif>
+				<copy src="io()" trait="_PUI+WG" />
+				<lt> 100.34 </lt>
+			</onlyif>
+		</add>
+	</systemcolor>
+	<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
+	<font> <copy src="sibling(CI_ValueText)" trait="font" /> </font>
+	<string> <copy src="sibling(CI_ValueText)" trait="string" /> </string>
+</text>

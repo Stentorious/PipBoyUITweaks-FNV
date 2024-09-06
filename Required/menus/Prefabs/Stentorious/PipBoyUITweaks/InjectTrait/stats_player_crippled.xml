@@ -1,0 +1,11 @@
+<alpha>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub> <copy src="io()" trait="_PUI+AP" /> </sub>
+	</mul>
+</alpha>
+<systemcolor> 2 </systemcolor>
+<red> 255 </red>
+<green> 255 </green>
+<blue> 255 </blue>

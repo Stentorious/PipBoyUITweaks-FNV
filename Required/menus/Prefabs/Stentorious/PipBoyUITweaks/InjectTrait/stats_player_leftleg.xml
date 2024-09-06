@@ -1,0 +1,7 @@
+<systemcolor>
+	<copy> 4 </copy>
+	<sub>
+		<copy> 2 </copy>
+		<onlyif src="stats_player_leftleg_crippled" trait="visible" />
+	</sub>
+</systemcolor>

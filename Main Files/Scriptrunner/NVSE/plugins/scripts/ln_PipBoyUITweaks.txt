@@ -1,0 +1,379 @@
+; Pip-Boy UI Tweaks 2.7 - Stentorious
+
+; On game restart
+if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
+	Goo1.AuxVarSetFlt "*PUI_Init" 1 0
+
+	; Check for requirements
+	if GetNVSEVersion > 5 && GetNVSERevision > 2 && GetNVSEBeta > 2
+	else
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall xNVSE 6.3.3+."
+		return
+	endif
+	if GetPluginVersion "JohnnyGuitarNVSE" < 508
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest JohnnyGuitar NVSE plugin."
+		return
+	endif
+	if GetPluginVersion "ShowOffNVSE Plugin" < 145
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest ShowOff NVSE plugin."
+		return
+	endif
+	if GetPluginVersion "UI Organizer Plugin" < 230
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest User Interface Organizer plugin."
+		return
+	endif
+	if GetPluginVersion "lStewieAl's Tweaks" < 906
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest lStewieAl's Tweaks."
+		return
+	endif
+	if FileExists "menus\ySI\ySI.xml" == 0 && (GetINIFloat "ySI:bCapsIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bButtonIcons" "PipBoyUITweaks.ini" == 1)
+		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest ySI - Sorting Ycons."
+		return
+	endif
+	Goo1.AuxVarSetFlt "*PUI_Init" 1 1
+
+	; Load INI config
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Inventory:bExtendStatComparisons" "PipBoyUITweaks.ini") 0
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "WeaponModMenu:bWeaponStatUI" "PipBoyUITweaks.ini") 1
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "WeaponModMenu:bAccurateDescriptions" "PipBoyUITweaks.ini") 2
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bItem" "PipBoyUITweaks.ini") 3
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bEncumbrance" "PipBoyUITweaks.ini") 4
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bSkills" "PipBoyUITweaks.ini") 5
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bSpecial" "PipBoyUITweaks.ini") 6
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bHitPoints" "PipBoyUITweaks.ini") 7
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bCrippledLimbs" "PipBoyUITweaks.ini") 8
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bRADMeter" "PipBoyUITweaks.ini") 9
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bH2OMeter" "PipBoyUITweaks.ini") 10
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bFODMeter" "PipBoyUITweaks.ini") 11
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bSLPMeter" "PipBoyUITweaks.ini") 12
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Inventory:bCritInfo" "PipBoyUITweaks.ini") 13
+
+	; Stat comparison weapon\armor flag
+	Goo1.AuxVarSetFlt "*PUI_FLAG" 1
+
+	; Match ItemModMenu font with InventoryMenu
+	SetUIFloatAlt "ItemModMenu\font" (GetUIFloatAlt "InventoryMenu\font")
+
+	; Enable lStewieAl's Tweaks search buttons
+	if GetINIFloat "Inventory:bSearchIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\SearchButtonIM.xml"
+		InjectUIXML "MapMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\SearchButtonMM.xml"
+		InjectUIXML "StatsMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\SearchButtonSM.xml"
+		ModUIFloat "InventoryMenu\IM_SearchBar\x" 35
+		ModUIFloat "InventoryMenu\IM_SearchBar\y" -1
+		if eval IsModLoaded "DarNifiedUINV.esp"
+			ModUIFloat "InventoryMenu\IM_SearchBar\x" -5
+			SetUIFloatAlt "InventoryMenu\IM_SearchButton\width" 24
+			SetUIFloatAlt "MapMenu\MM_SearchButton\width" 24
+			SetUIFloatAlt "StatsMenu\SM_SearchButton\width" 24
+		endif
+		SetUIFloatAlt "StatsMenu\SM_SearchBar\x" (GetUIFloatAlt "InventoryMenu\IM_SearchBar\x")
+		SetUIFloatAlt "StatsMenu\SM_SearchBar\y" (GetUIFloatAlt "InventoryMenu\IM_SearchBar\y")
+		SetUIFloatAlt "MapMenu\MM_SearchBar\x" (GetUIFloatAlt "InventoryMenu\IM_SearchBar\x")
+		SetUIFloatAlt "MapMenu\MM_SearchBar\y" (GetUIFloatAlt "InventoryMenu\IM_SearchBar\y")
+	endif
+
+	; Enable ySI icons (Buttons)
+	if GetINIFloat "ySI:bButtonIcons" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_stimpak_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_drbag_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radx_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radaway_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_healing_mode" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonX" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIDataXButtonIcon.xml"
+		InjectUIXML "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonA" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIDataAButtonIcon.xml"
+		InjectUIXML "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonY" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIDataYButtonIcon.xml"
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_DropButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_CancelButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_HotkeyButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_RepairButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_ItemModButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_CancelButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_ButtonRect\RM_RepairButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_ButtonRect\RM_CancelButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		if eval IsModLoaded "Vanilla UI Plus.esp"
+			InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\VUI+ModButtonVisibility\IM_ModButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		else
+			InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_ModButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		endif
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_stimpak_button\ySIImage\filename" "interface\icons\Aid_Stimpak.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_drbag_button\ySIImage\filename" "interface\icons\Aid_DoctorBag.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radx_button\ySIImage\filename" "interface\icons\Aid_Drug.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radaway_button\ySIImage\filename" "interface\icons\Aid_RadAway.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_healing_mode\ySIImage\filename" "interface\icons\Apparel_Cloth_LabCoat.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\ySIImage\filename" "interface\icons\Apparel_Other_PipBoy.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_DropButton\ySIImage\filename" "interface\icons\Misc_Junk.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_CancelButton\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_HotkeyButton\ySIImage\filename" "interface\icons\Misc_Key.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_RepairButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_ModButton\ySIImage\filename" "interface\icons\Misc_WeaponMod.dds"
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\VUI+ModButtonVisibility\IM_ModButton\ySIImage\filename" "interface\icons\Misc_WeaponMod.dds"
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_ItemModButton\ySIImage\filename" "interface\icons\Misc_WeaponMod.dds"
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ButtonRect\IMM_CancelButton\ySIImage\filename" "interface\icons\UI_Accept.dds"
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_ButtonRect\RM_RepairButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_ButtonRect\RM_CancelButton\ySIImage\filename" "interface\icons\UI_Accept.dds"
+	endif
+
+	; Enable ySI icons (Player weight)
+	if GetINIFloat "ySI:bWGIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\CI_TitleText\visible" 0
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
+		if eval IsModLoaded "DarNifiedUINV.esp"
+			ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\ySIImage\y" 4
+		endif
+	endif
+
+	; Enable ySI icons (Player caps)
+	if GetINIFloat "ySI:bCapsIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo\CI_TitleText\visible" 0
+		if eval IsModLoaded "DarNifiedUINV.esp"
+			ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo\ySIImage\y" 4
+		endif
+	endif
+
+	; Enable ySI icons (WeightInfo)
+	if GetINIFloat "ySI:bWeightInfoIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_TitleText\visible" 0
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\x" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_TitleText\x")
+		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
+		if eval IsModLoaded "Vanilla UI Plus.esp"
+			ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\y" -4
+		endif
+	endif
+
+	; Enable ySI icons (ValueInfo)
+	if GetINIFloat "ySI:bValueInfoIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_TitleText\visible" 0
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\ySIImage\x" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_TitleText\x")
+		if eval IsModLoaded "Vanilla UI Plus.esp"
+			ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\ySIImage\y" -4
+		endif
+	endif
+
+	; Enable ySI icons (AmmoInfo)
+	if GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
+		ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\width") + 8)
+		if eval IsModLoaded "Vanilla UI Plus.esp"
+			ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\y" -4
+		endif
+	endif
+
+	; Enable ySI icons (Resistance)
+	if GetINIFloat "ySI:bResistanceIcons" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+EnergyResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIMiscIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+FireResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIMiscIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+PoisonResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIMiscIcon.xml"
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\stats_rad_resist\stats_rad_resist_label" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIMiscIcon.xml"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+EnergyResistLabel\ySIImage\filename" "interface\icons\Ammo_Energy.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+FireResistLabel\ySIImage\filename" "interface\icons\Ammo_Flamer.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+PoisonResistLabel\ySIImage\filename" "interface\icons\Ammo_PoisonShot.dds"
+		SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\stats_rad_resist\stats_rad_resist_label\ySIImage\filename" "interface\icons\Aid_RadAway.dds"
+		ModUIFloat "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\stats_rad_resist\stats_rad_resist_label\x" ((GetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\stats_rad_resist\stats_rad_resist_label\ySIImage\width") + 8)
+		if eval IsModLoaded "DarNifiedUINV.esp" != 1
+			ModUIFloat "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\stats_rad_resist\stats_rad_resist_label\ySIImage\y" 4
+		endif
+	endif
+
+	; Enable weapon mod comparison
+	if Goo1.AuxVarGetFlt "*PUI_INI" 1 == 1
+
+		; Inject weapon mod compare item card
+		InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\WeapModCompare.xml"
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModDesc\visible" 0
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\CI_TopLine\visible" 0
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\CI_ValueText\systemcolor" 3
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\height" 380
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\width" 380
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\x" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\x")
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\y" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\y")
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\width" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\width")
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\height" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\height")
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\y" (GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\y")
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\y" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\y") + ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\y") - (GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\y")))
+		if eval IsModLoaded "DarNifiedUINV.esp"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\x" 119.5
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\y" 12.5
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\height" 15
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\x" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\width") / 2)
+		elseif eval IsModLoaded "Vanilla UI Plus.esp"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\x" 480.55
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\y" 15
+		else
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\x" 119.5
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\y" 15
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\height" 20
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\x" 0
+		endif
+		if eval IsModLoaded "Vanilla UI Plus.esp" != 1
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_CompareRect\visible" 0
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\alpha" 255
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\alpha" 255
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\x" 450
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\y" 10
+		endif
+
+		; Enable ySI icons (WeightInfo)
+		if GetINIFloat "ySI:bWeightInfoIcon" "PipBoyUITweaks.ini" == 1
+			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_TitleText\visible" 0
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\ySIImage\x" (GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_TitleText\x")
+			if eval IsModLoaded "Vanilla UI Plus.esp"
+				ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\ySIImage\y" -4
+			endif
+		endif
+
+		; Enable ySI icons (ValueInfo)
+		if GetINIFloat "ySI:bValueInfoIcon" "PipBoyUITweaks.ini" == 1
+			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_TitleText\visible" 0
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\ySIImage\x" (GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_TitleText\x")
+			if eval IsModLoaded "Vanilla UI Plus.esp"
+				ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\ySIImage\y" -4
+			endif
+		endif
+
+		; Enable ySI icons (AmmoInfo)
+		if GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini" == 1
+			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
+			ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\width") + 8)
+			if eval IsModLoaded "Vanilla UI Plus.esp"
+				ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\y" -4
+			endif
+		endif
+
+		; Update weapon mod comparison on ItemModMenu open
+		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1061.gek") 1 1061
+
+		; Update weapon mod comparison on weapon mod attachment
+		SetOnMenuClickEventHandler (begin function {int iMenuID, int iTileID, string_var sTileName}
+			CallAfterFrames 0 (begin function {int iModMask}
+				if eval iModMask != (GetMenuTargetRef 1061).GetWeaponRefModFlags
+					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetModStats.gek")
+					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 1061
+				endif
+			end) 1 (GetMenuTargetRef 1061).GetWeaponRefModFlags
+		end) 1 "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemModList\IMM_ItemModListTemplateRect"
+
+	endif
+
+	; Enable colorful stats info (Crippled limbs)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 8 != 1
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_head_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_leftarm_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_rightarm_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_leftleg_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_rightleg_crippled\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_face\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_leftarm\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_rightarm\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_leftleg\systemcolor" 4
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_rightleg\systemcolor" 4
+	else
+		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1023.gek") 1 1023
+	endif
+
+	; Enable colorful stats info (RADS)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 9 == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_RAD_button\stb_text_box" "data\menus\prefabs\Stentorious\PipBoyUITweaks\stats_RAD_button.xml"
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_RAD_button\stb_text_box\button_text\visible" 0
+		SetUIFloatAlt "StatsMenu\_PUI+RADC" 0
+		SetUIFloatAlt "StatsMenu\_PUI+RAD1" (GetHardcoreStageThreshold Rad1)
+		SetUIFloatAlt "StatsMenu\_PUI+RAD2" (GetHardcoreStageThreshold Rad2)
+		SetUIFloatAlt "StatsMenu\_PUI+RAD3" (GetHardcoreStageThreshold Rad3)
+		SetUIFloatAlt "StatsMenu\_PUI+RAD4" (GetHardcoreStageThreshold Rad4)
+	endif
+
+	; Enable colorful stats info (H2O)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 10 == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_H20_button\stb_text_box" "data\menus\prefabs\Stentorious\PipBoyUITweaks\stats_H20_button.xml"
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_H20_button\stb_text_box\button_text\visible" 0
+		SetUIFloatAlt "StatsMenu\_PUI+H2OC" 0
+		SetUIFloatAlt "StatsMenu\_PUI+H2O1" (GetHardcoreStageThreshold water1)
+		SetUIFloatAlt "StatsMenu\_PUI+H2O2" (GetHardcoreStageThreshold water2)
+		SetUIFloatAlt "StatsMenu\_PUI+H2O3" (GetHardcoreStageThreshold water3)
+		SetUIFloatAlt "StatsMenu\_PUI+H2O4" (GetHardcoreStageThreshold water4)
+	endif
+
+	; Enable colorful stats info (FOD)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 11 == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_FOD_button\stb_text_box" "data\menus\prefabs\Stentorious\PipBoyUITweaks\stats_FOD_button.xml"
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_FOD_button\stb_text_box\button_text\visible" 0
+		SetUIFloatAlt "StatsMenu\_PUI+FODC" 0
+		SetUIFloatAlt "StatsMenu\_PUI+FOD1" (GetHardcoreStageThreshold hunger1)
+		SetUIFloatAlt "StatsMenu\_PUI+FOD2" (GetHardcoreStageThreshold hunger2)
+		SetUIFloatAlt "StatsMenu\_PUI+FOD3" (GetHardcoreStageThreshold hunger3)
+		SetUIFloatAlt "StatsMenu\_PUI+FOD4" (GetHardcoreStageThreshold hunger4)
+	endif
+
+	; Enable colorful stats info (SLP)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 12 == 1
+		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_SLP_button\stb_text_box" "data\menus\prefabs\Stentorious\PipBoyUITweaks\stats_SLP_button.xml"
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_SLP_button\stb_text_box\button_text\visible" 0
+		SetUIFloatAlt "StatsMenu\_PUI+SLPC" 0
+		SetUIFloatAlt "StatsMenu\_PUI+SLP1" (GetHardcoreStageThreshold sleep1)
+		SetUIFloatAlt "StatsMenu\_PUI+SLP2" (GetHardcoreStageThreshold sleep2)
+		SetUIFloatAlt "StatsMenu\_PUI+SLP3" (GetHardcoreStageThreshold sleep3)
+		SetUIFloatAlt "StatsMenu\_PUI+SLP4" (GetHardcoreStageThreshold sleep4)
+	endif
+
+	; Enable weapon skill ItemInfo component
+	if GetINIFloat "Inventory:bSkillInfo" "PipBoyUITweaks.ini" == 1
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemIconBadge\x" -1000
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_StrReq\x" -1000
+	else
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\SkillInfo\visible" 0
+	endif
+
+	; Enable critical chance ItemInfo component
+	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\CI_ValueText\wrapwidth" 150
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\wrapwidth" 150
+	else
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\visible" 0
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\visible" 0
+	endif
+
+	; Enable colorful stats info (Encumbrance)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\CI_ValueText\visible" 0
+	endif
+
+	; Enable colorful stats info (Hit points)
+	if Goo1.AuxVarGetFlt "*PUI_INI" 7 == 1
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerHPInfo\CI_ValueText\visible" 0
+		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_hp_info\CI_ValueText\visible" 0
+		SetOnUseAidItemEventHandler ({ref rAidItem} => SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)) 1 Stimpak
+	endif
+
+	; Menu update event handlers
+	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1002.gek") 1 1002
+	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1003.gek") 1 1003
+	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 1 1002
+	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 1 1061
+	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 0 1002
+	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 0 1061
+	SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuClick1002.gek") 1 "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_InventoryList\IM_InventoryListTemplateRect"
+
+endif
+
+; On game load
+if Goo1.AuxVarGetFlt "*PUI_Init" 1 == 1
+	SetEventHandlerAlt "OnDrop" (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnDrop.gek") 1::Player
+endif

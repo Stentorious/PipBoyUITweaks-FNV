@@ -1,0 +1,348 @@
+<_PUI+H2O1> 0 </_PUI+H2O1>
+<_PUI+H2O2> 0 </_PUI+H2O2>
+<_PUI+H2O3> 0 </_PUI+H2O3>
+<_PUI+H2O4> 0 </_PUI+H2O4>
+<_PUI+FOD1> 0 </_PUI+FOD1>
+<_PUI+FOD2> 0 </_PUI+FOD2>
+<_PUI+FOD3> 0 </_PUI+FOD3>
+<_PUI+FOD4> 0 </_PUI+FOD4>
+<_PUI+SLP1> 0 </_PUI+SLP1>
+<_PUI+SLP2> 0 </_PUI+SLP2>
+<_PUI+SLP3> 0 </_PUI+SLP3>
+<_PUI+SLP4> 0 </_PUI+SLP4>
+<_PUI+RAD1> 0 </_PUI+RAD1>
+<_PUI+RAD2> 0 </_PUI+RAD2>
+<_PUI+RAD3> 0 </_PUI+RAD3>
+<_PUI+RAD4> 0 </_PUI+RAD4>
+<_PUI+H2O> -1 </_PUI+H2O>
+<_PUI+FOD> -1 </_PUI+FOD>
+<_PUI+SLP> -1 </_PUI+SLP>
+<_PUI+RAD> -1 </_PUI+RAD>
+<_PUI+AP> 0 </_PUI+AP>
+<_PUI+HP> 0 </_PUI+HP>
+<_PUI+H2OC> &pipboy; </_PUI+H2OC>
+<_PUI+FODC> &pipboy; </_PUI+FODC>
+<_PUI+SLPC> &pipboy; </_PUI+SLPC>
+<_PUI+RADC> &pipboy; </_PUI+RADC>
+<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth"/> </_PUI+ySIWidth>
+<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset"/> </_PUI+ySIOffset>
+<_PUI+H2OR>
+	<copy> 0 </copy>
+	<add>
+		<copy src="io()" trait="_PUI+H2O" />
+		<div src="io()" trait="_PUI+H2O1" />
+		<mul> 255 </mul>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+H2O" />
+		<lt> <copy src="io()" trait="_PUI+H2O1" /> </lt>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+H2O" />
+			<gte> <copy src="io()" trait="_PUI+H2O1" /> </gte>
+		</onlyif>
+	</add>
+</_PUI+H2OR>
+<_PUI+H2OG>
+	<copy> 0 </copy>
+	<add>
+		<copy>
+			<copy> 255 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+H2O" />
+				<sub src="io()" trait="_PUI+H2O1" />
+				<div>
+					<copy src="io()" trait="_PUI+H2O2" />
+					<sub src="io()" trait="_PUI+H2O1" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+H2O" />
+			<lt> <copy src="io()" trait="_PUI+H2O2" /> </lt>
+		</onlyif>
+		<copy>
+			<copy> 128 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+H2O" />
+				<sub src="io()" trait="_PUI+H2O2" />
+				<div>
+					<copy src="io()" trait="_PUI+H2O3" />
+					<sub src="io()" trait="_PUI+H2O2" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+H2O" />
+			<lt> <copy src="io()" trait="_PUI+H2O3" /> </lt>
+		</onlyif>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+H2O" />
+		<gte> <copy src="io()" trait="_PUI+H2O1" /> </gte>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+H2O" />
+			<lt> <copy src="io()" trait="_PUI+H2O1" /> </lt>
+		</onlyif>
+	</add>
+</_PUI+H2OG>
+<_PUI+H2OA>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub>
+			<copy src="io()" trait="_PUI+AP" />
+			<onlyif>
+				<copy src="io()" trait="_PUI+H2O" />
+				<gte> <copy src="io()" trait="_PUI+H2O4" /> </gte>
+			</onlyif>
+		</sub>
+	</mul>
+</_PUI+H2OA>
+<_PUI+FODR>
+	<copy> 0 </copy>
+	<add>
+		<copy src="io()" trait="_PUI+FOD" />
+		<div src="io()" trait="_PUI+FOD1" />
+		<mul> 255 </mul>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+FOD" />
+		<lt> <copy src="io()" trait="_PUI+FOD1" /> </lt>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+FOD" />
+			<gte> <copy src="io()" trait="_PUI+FOD1" /> </gte>
+		</onlyif>
+	</add>
+</_PUI+FODR>
+<_PUI+FODG>
+	<copy> 0 </copy>
+	<add>
+		<copy>
+			<copy> 255 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+FOD" />
+				<sub src="io()" trait="_PUI+FOD1" />
+				<div>
+					<copy src="io()" trait="_PUI+FOD2" />
+					<sub src="io()" trait="_PUI+FOD1" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+FOD" />
+			<lt> <copy src="io()" trait="_PUI+FOD2" /> </lt>
+		</onlyif>
+		<copy>
+			<copy> 128 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+FOD" />
+				<sub src="io()" trait="_PUI+FOD2" />
+				<div>
+					<copy src="io()" trait="_PUI+FOD3" />
+					<sub src="io()" trait="_PUI+FOD2" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+FOD" />
+			<lt> <copy src="io()" trait="_PUI+FOD3" /> </lt>
+		</onlyif>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+FOD" />
+		<gte> <copy src="io()" trait="_PUI+FOD1" /> </gte>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+FOD" />
+			<lt> <copy src="io()" trait="_PUI+FOD1" /> </lt>
+		</onlyif>
+	</add>
+</_PUI+FODG>
+<_PUI+FODA>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub>
+			<copy src="io()" trait="_PUI+AP" />
+			<onlyif>
+				<copy src="io()" trait="_PUI+FOD" />
+				<gte> <copy src="io()" trait="_PUI+FOD4" /> </gte>
+			</onlyif>
+		</sub>
+	</mul>
+</_PUI+FODA>
+<_PUI+SLPR>
+	<copy> 0 </copy>
+	<add>
+		<copy src="io()" trait="_PUI+SLP" />
+		<div src="io()" trait="_PUI+SLP1" />
+		<mul> 255 </mul>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+SLP" />
+		<lt> <copy src="io()" trait="_PUI+SLP1" /> </lt>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+SLP" />
+			<gte> <copy src="io()" trait="_PUI+SLP1" /> </gte>
+		</onlyif>
+	</add>
+</_PUI+SLPR>
+<_PUI+SLPG>
+	<copy> 0 </copy>
+	<add>
+		<copy>
+			<copy> 255 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+SLP" />
+				<sub src="io()" trait="_PUI+SLP1" />
+				<div>
+					<copy src="io()" trait="_PUI+SLP2" />
+					<sub src="io()" trait="_PUI+SLP1" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+SLP" />
+			<lt> <copy src="io()" trait="_PUI+SLP2" /> </lt>
+		</onlyif>
+		<copy>
+			<copy> 128 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+SLP" />
+				<sub src="io()" trait="_PUI+SLP2" />
+				<div>
+					<copy src="io()" trait="_PUI+SLP3" />
+					<sub src="io()" trait="_PUI+SLP2" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+SLP" />
+			<lt> <copy src="io()" trait="_PUI+SLP3" /> </lt>
+		</onlyif>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+SLP" />
+		<gte> <copy src="io()" trait="_PUI+SLP1" /> </gte>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+SLP" />
+			<lt> <copy src="io()" trait="_PUI+SLP1" /> </lt>
+		</onlyif>
+	</add>
+</_PUI+SLPG>
+<_PUI+SLPA>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub>
+			<copy src="io()" trait="_PUI+AP" />
+			<onlyif>
+				<copy src="io()" trait="_PUI+SLP" />
+				<gte> <copy src="io()" trait="_PUI+SLP4" /> </gte>
+			</onlyif>
+		</sub>
+	</mul>
+</_PUI+SLPA>
+<_PUI+RADR>
+	<copy> 0 </copy>
+	<add>
+		<copy src="io()" trait="_PUI+RAD" />
+		<div src="io()" trait="_PUI+RAD1" />
+		<mul> 255 </mul>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+RAD" />
+		<lt> <copy src="io()" trait="_PUI+RAD1" /> </lt>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+RAD" />
+			<gte> <copy src="io()" trait="_PUI+RAD1" /> </gte>
+		</onlyif>
+	</add>
+</_PUI+RADR>
+<_PUI+RADG>
+	<copy> 0 </copy>
+	<add>
+		<copy>
+			<copy> 255 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+RAD" />
+				<sub src="io()" trait="_PUI+RAD1" />
+				<div>
+					<copy src="io()" trait="_PUI+RAD2" />
+					<sub src="io()" trait="_PUI+RAD1" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+RAD" />
+			<lt> <copy src="io()" trait="_PUI+RAD2" /> </lt>
+		</onlyif>
+		<copy>
+			<copy> 128 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+RAD" />
+				<sub src="io()" trait="_PUI+RAD2" />
+				<div>
+					<copy src="io()" trait="_PUI+RAD3" />
+					<sub src="io()" trait="_PUI+RAD2" />
+				</div>
+				<mul> 128 </mul>
+			</sub>
+		</copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+RAD" />
+			<lt> <copy src="io()" trait="_PUI+RAD3" /> </lt>
+		</onlyif>
+	</add>
+	<onlyif>
+		<copy src="io()" trait="_PUI+RAD" />
+		<gte> <copy src="io()" trait="_PUI+RAD1" /> </gte>
+	</onlyif>
+	<add>
+		<copy> 255 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PUI+RAD" />
+			<lt> <copy src="io()" trait="_PUI+RAD1" /> </lt>
+		</onlyif>
+	</add>
+</_PUI+RADG>
+<_PUI+RADA>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub>
+			<copy src="io()" trait="_PUI+AP" />
+			<onlyif>
+				<copy src="io()" trait="_PUI+RAD" />
+				<gte> <copy src="io()" trait="_PUI+RAD4" /> </gte>
+			</onlyif>
+		</sub>
+	</mul>
+</_PUI+RADA>

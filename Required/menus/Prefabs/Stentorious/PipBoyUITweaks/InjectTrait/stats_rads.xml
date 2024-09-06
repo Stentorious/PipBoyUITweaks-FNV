@@ -1,0 +1,5 @@
+<alpha> <copy src="io()" trait="_PUI+RADA" /> </alpha>
+<systemcolor> <copy src="io()" trait="_PUI+RADC" /> </systemcolor>
+<red> <copy src="io()" trait="_PUI+RADR" /> </red>
+<green> <copy src="io()" trait="_PUI+RADG" /> </green>
+<blue> 0 </blue>

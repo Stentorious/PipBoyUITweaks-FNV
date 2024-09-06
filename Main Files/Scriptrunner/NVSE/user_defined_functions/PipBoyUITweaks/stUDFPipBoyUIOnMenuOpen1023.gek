@@ -1,0 +1,9 @@
+int	iMenuID
+
+begin Function {iMenuID}
+
+	; Reset alpha pulse
+	SetUIFloatGradual "InventoryMenu\_PUI+AP" 0
+	SetUIFloatGradual "StatsMenu\_PUI+AP" 0
+
+end

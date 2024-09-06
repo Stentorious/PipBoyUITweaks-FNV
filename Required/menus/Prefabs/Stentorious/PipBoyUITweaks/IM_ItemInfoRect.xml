@@ -1,0 +1,56 @@
+<rect name="CritInfo">
+	<include src="card_info.xml" />
+	<visible>
+		<copy src="sibling(StrengthReqInfo)" trait="visible" />
+		<and> <not src="IM_HotKeyWheel" trait="visible" /> </and>
+	</visible>
+	<x>
+		<copy> 0 </copy>
+		<add>
+			<copy src="sibling(StrengthReqInfo)" trait="x" />
+			<onlyifnot src="sibling(SkillInfo)" trait="visible" />
+		</add>
+		<add>
+			<copy src="sibling(DAMInfo)" trait="x" />
+			<onlyif src="sibling(SkillInfo)" trait="visible" />
+		</add>
+	</x>
+	<y>
+		<copy src="sibling(DPSInfo)" trait="y" />
+		<sub src="sibling(DPSInfo)" trait="height" />
+	</y>
+	<width> <copy src="parent()" trait="user0" /> </width>
+	<height> <copy src="parent()" trait="user1" /> </height>
+	<font> <copy src="parent()" trait="font" /> </font>
+	<_title> CHC </_title>
+</rect>
+
+<rect name="SkillInfo">
+
+	<include src="card_info.xml" />
+	<visible> <copy src="IM_ItemIconBadge" trait="visible" /> </visible>
+	<x> <copy src="sibling(StrengthReqInfo)" trait="x" /> </x>
+	<y>
+		<copy src="sibling(StrengthReqInfo)" trait="y" />
+		<sub src="sibling(StrengthReqInfo)" trait="height" />
+	</y>
+	<width> <copy src="parent()" trait="user0" /> </width>
+	<height> <copy src="parent()" trait="user1" /> </height>
+	<brightness> <copy src="IM_StrReq" trait="brightness" /> </brightness>
+	<font> <copy src="parent()" trait="font" /> </font>
+	<_title></_title>
+	<_value> <copy src="IM_StrReq" trait="string" /> </_value>
+
+	<image name="Icon">
+		<visible> 1 </visible>
+		<alpha> <copy src="sibling(CI_ValueText)" trait="alpha" /> </alpha>
+		<x> 5 </x>
+		<y> -4 </y>
+		<width> <copy src="parent()" trait="height" /> </width>
+		<height> <copy src="parent()" trait="height" /> </height>
+		<zoom> &scale; </zoom>
+		<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
+		<filename> <copy src="IM_ItemIconBadge" trait="filename" /> </filename>
+	</image>
+
+</rect>

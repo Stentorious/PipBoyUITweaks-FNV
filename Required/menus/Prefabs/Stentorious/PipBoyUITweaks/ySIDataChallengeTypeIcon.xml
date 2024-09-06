@@ -1,0 +1,39 @@
+<image name="ySIImage">
+	<visible> <copy src="sibling(button_text)" trait="visible" /> </visible>
+	<alpha> <copy src="sibling(button_text)" trait="alpha" /> </alpha>
+	<x>
+		<copy src="sibling(button_text)" trait="x" />
+		<sub src="sibling(button_text)" trait="width" />
+		<sub src="me()" trait="height" />
+		<sub> 8 </sub>
+	</x>
+	<y>
+		<copy src="sibling(button_text)" trait="y" />
+		<add src="io()" trait="_PUI+ySIOffset" />
+	</y>
+	<width> <copy src="io()" trait="_PUI+ySIWidth" /> </width>
+	<height> <copy src="me()" trait="width" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add>
+			<copy src="io()" trait="systemcolor" />
+			<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+		</add>
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> <copy src="me()" trait="_Icon" /> </filename>
+	<_Icon>
+		<copy> 0 </copy>
+		<add>
+			<copy> 1 </copy>
+			<onlyif src="MM_Headline_ChallengeType" trait="visible" />
+		</add>
+		<copy src="me()" trait="_Icon_" />
+	</_Icon>
+	<_Icon_0> interface/icons/Misc_Skull.dds </_Icon_0>
+	<_Icon_1> interface/icons/WeapA_Pistol.dds </_Icon_1>
+	<_Icon_2> interface/icons/Misc_Unknown.dds </_Icon_2>
+</image>

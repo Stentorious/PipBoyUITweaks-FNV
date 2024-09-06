@@ -1,0 +1,137 @@
+int	iMenuID
+int iModSlot
+int iModType
+int iModMask
+float fModStat
+float fModVal
+float fWeapVal
+float fWeapCalc
+float fWeapCndC
+float fWeapCndB
+float fWeapWg
+float fWeapPrj
+float fWeapCrit
+float fWeapDmg
+float fGSCndValB
+float fGSCndValE
+ref rMod
+ref rWeap
+string_var sUIPath
+
+begin Function {iMenuID}
+
+	; Get weapon stats
+	fWeapVal = Goo1.AuxVarGetFlt "*PUI_WMStats" 0
+	fWeapCndC = Goo1.AuxVarGetFlt "*PUI_WMStats" 1
+	fWeapCndB = Goo1.AuxVarGetFlt "*PUI_WMStats" 2
+	fWeapWg = Goo1.AuxVarGetFlt "*PUI_WMStats" 3
+	fWeapPrj = Goo1.AuxVarGetFlt "*PUI_WMStats" 4
+	fWeapCrit = Goo1.AuxVarGetFlt "*PUI_WMStats" 8
+	fWeapDmg = Goo1.AuxVarGetFlt "*PUI_WMStats" 7
+	iModMask = Goo1.AuxVarGetFlt "*PUI_WMStats" 6
+	fGSCndValB = GetGS fItemConditionValueBase
+	fGSCndValE = GetGS fItemConditionValueExp
+
+	; Reset comparison UI
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 4
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 0
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 0
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f" fWeapVal
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" (fWeapCndC / fWeapCndB)
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
+	if fWeapPrj > 1
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g" fWeapDmg fWeapPrj
+	else
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f" fWeapDmg
+	endif
+
+	; Get selected weapon mod, mod slot, weapon being modded
+	rMod = GetSelectedItemRef
+	if eval IsFormValid rMod
+		rMod = rMod.gbo
+		sUIPath = GetActiveUIComponentFullName
+		if eval GetUIString (sUIPath + "\string") == (LNGetName rMod)
+			rWeap = GetMenuTargetRef 1061
+			iModSlot = 1
+			if rWeap.GetWeaponItemMod 2 == rMod
+				iModSlot = 2
+			elseif rWeap.GetWeaponItemMod 3 == rMod
+				iModSlot = 3
+			endif
+
+			; Set weapon mod description
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\_value" "%z" (Goo1.AuxVarGetStr "*PUI_WMDesc" (iModSlot - 1))
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 1
+
+			; Update comparison UI if weapon mod unequipped
+			if GetUIFloatAlt (sUIPath + "\*:0\visible") == 0
+
+				SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" 3
+				SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f+" (fWeapVal + (GetValue rMod))
+				iModType = rWeap.GetWeaponItemModEffect iModSlot
+				fModStat = rWeap.GetWeaponItemModValue1 iModSlot
+
+				; Increase Weapon Damage
+				if iModType == 1
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+					fWeapCalc = fWeapDmg + 0.05 + ((0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75))) * (fModStat / fWeapPrj) * (Goo1.AuxVarGetFlt "*PUI_WMStats" 5))
+					if fWeapPrj > 1
+						SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" fWeapCalc fWeapPrj
+					else
+						SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f+" fWeapCalc
+					endif
+
+				; Increase Clip Capacity
+				elseif iModType == 2
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 1
+					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\_value" "%g+" fModStat
+
+				; Decrease Weight
+				elseif iModType == 4
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" 3
+					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f+" (fWeapWg - fModStat)
+
+				; Increase Rate of Fire
+				elseif iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1 && rWeap.GetIsAutomatic	== 1
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 2
+					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%-" (fWeapCrit / (1 + fModStat))
+
+				; Increase Max. Condition
+				elseif iModType == 10
+					fWeapCalc = GetMinOf ((fWeapCndC + fModStat) / (fWeapCndB + fModStat)) 1
+					fModVal = GetValue rMod
+					iModSlot = 0
+					while 4 > (iModSlot += 1)
+						if eval GetBit iModMask (iModSlot - 1)
+							fModVal += GetValue (rWeap.GetWeaponItemMod iModSlot)
+						endif
+					loop
+					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f+" (((rWeap.GetValue) * (fGSCndValB + (GetGS fItemConditionValueMult) * (10 ^ fGSCndValE) * (1 - fGSCndValB) * (fWeapCalc ^ fGSCndValE))) + fModVal)
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" fWeapCalc
+					if (fWeapCndC / fWeapCndB) < 0.75
+						SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+						fWeapCalc = (fWeapDmg / (0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75)))) * (0.5 + (GetMinOf 0.5 ((0.5 * fWeapCalc) / 0.75)))
+						if fWeapPrj > 1
+							SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" fWeapCalc fWeapPrj
+						else
+							SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f+" fWeapCalc
+						endif
+					endif
+
+				; Split Beam
+				elseif iModType == 12
+					fWeapCalc = fWeapPrj + fModStat
+					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" ((fWeapDmg / fWeapCalc) * 1.3) fWeapCalc
+				endif
+			endif
+		endif
+	endif
+
+	sv_Destruct sUIPath
+
+end

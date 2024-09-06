@@ -1,0 +1,87 @@
+int iModSlot
+int iModType
+int iModMask
+float fWeapVal
+float fWeapCndC
+float fWeapCndB
+float fWeapWg
+float fWeapPrj
+float fWeapCrit
+float fWeapDmg
+float fWeapBeam
+float fWeapRoF
+ref rWeap
+
+begin Function {}
+
+	rWeap = GetMenuTargetRef 1061
+
+	; Calculate value
+	fWeapVal = rWeap.GetCalculatedItemValue
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f" fWeapVal
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapVal 0
+
+	; Calculate condition
+	fWeapCndC = rWeap.GetItemRefCurrentHealth 0
+	fWeapCndB = rWeap.GetItemRefCurrentHealth 2
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" (fWeapCndC / fWeapCndB)
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCndC 1
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCndB 2
+
+	; Calculate projectile count
+	if eval rWeap.IsEquipped
+		fWeapPrj = GetAmmoTraitNumeric (Player.GetCurrentAmmo) 1
+		if fWeapPrj == 0
+			fWeapPrj = rWeap.GetWeaponNumProjectiles
+		endif
+	else
+		fWeapPrj = rWeap.GetWeaponNumProjectiles
+	endif
+
+	; Calculate stats affected by equipped weapon mods
+	iModSlot = 0
+	iModMask = rWeap.GetWeaponRefModFlags
+	fWeapBeam = 1
+	fWeapWg = rWeap.GetWeight
+	fWeapRoF = rWeap.GetFireRate
+	while 4 > (iModSlot += 1)
+		if eval GetBit iModMask (iModSlot - 1)
+			iModType = rWeap.GetWeaponItemModEffect iModSlot
+			if iModType == 4
+				fWeapWg -= rWeap.GetWeaponItemModValue1 iModSlot
+			elseif iModType == 8
+				fWeapRoF *= (1 + (rWeap.GetWeaponItemModValue1 iModSlot))
+			elseif iModType == 12
+				fWeapPrj += rWeap.GetWeaponItemModValue1 iModSlot
+				fWeapBeam = 1.3
+			endif
+		endif
+	loop
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapWg 3
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapPrj 4
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapBeam 5
+	Goo1.AuxVarSetFlt "*PUI_WMStats" iModMask 6
+
+	; Calculate damage
+	fWeapDmg = (rWeap.GetCalculatedWeaponDamage) / fWeapPrj
+	if fWeapPrj > 1
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g" fWeapDmg fWeapPrj
+	else
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f" fWeapDmg
+	endif
+	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapDmg 7
+
+	; Calculate critical chance
+	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+		fWeapCrit = Floor (Player.GetAV CritChance)
+		if eval rWeap.GetIsAutomatic
+			fWeapCrit /= fWeapRoF
+		endif
+		fWeapCrit *= rWeap.GetCritPerc
+		fWeapCrit = Player.GetPerkModifier 1 fWeapCrit rWeap Player
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
+		Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCrit 8
+	endif
+
+end

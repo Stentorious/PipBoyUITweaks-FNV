@@ -1,0 +1,26 @@
+<systemcolor>
+	<copy> 1 </copy>
+	<add>
+		<copy> 3 </copy>
+		<onlyif>
+			<copy src="io()" trait="class" />
+			<eq> &InventoryMenu; </eq>
+			<or>
+				<copy src="io()" trait="class" />
+				<eq> &StatsMenu; </eq>
+			</or>
+			<or>
+				<copy src="io()" trait="class" />
+				<eq> &MapMenu; </eq>
+			</or>
+			<or>
+				<copy src="io()" trait="class" />
+				<eq> &RepairMenu; </eq>
+			</or>
+			<or>
+				<copy src="io()" trait="class" />
+				<eq> &ItemModMenu; </eq>
+			</or>
+		</onlyif>
+	</add>
+</systemcolor>

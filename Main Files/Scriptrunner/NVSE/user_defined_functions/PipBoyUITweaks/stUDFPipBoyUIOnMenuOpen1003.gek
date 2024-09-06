@@ -1,0 +1,61 @@
+int	iMenuID
+int iColor
+int iTile
+string_var sUIPath
+
+begin Function {iMenuID}
+
+	; Update Skill bonus color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 5 == 1
+		iTile = -1
+		while 13 > (iTile += 1)
+			sUIPath = GetUIString ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\user2")
+			if eval (Sv_Find "+" sUIPath != -1 || Player.GetAV (45 - iTile) > 100)
+				iColor = 3
+			else
+				iColor = 2
+			endif
+			SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\stats_list_template_extra\systemcolor") iColor
+		loop
+	endif
+
+	; Update SPECIAL bonus color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 6 == 1
+		iTile = -1
+		while 7 > (iTile += 1)
+			sUIPath = GetUIString ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\user2")
+			if eval (Sv_Find "+" sUIPath != -1 || Player.GetAV (11 - iTile) > 10)
+				iColor = 3
+			else
+				iColor = 2
+			endif
+			SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\stats_list_template_extra\systemcolor") iColor
+		loop
+	endif
+
+	; Update hit points color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 7 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
+	endif
+
+	; Update hardcore needs color
+	if Goo1.AuxVarGetFlt "*PUI_INI" 9 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+RAD" (Player.GetAV RadiationRads)
+	endif
+	if Goo1.AuxVarGetFlt "*PUI_INI" 10 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+H2O" (Player.GetAV Dehydration)
+	endif
+	if Goo1.AuxVarGetFlt "*PUI_INI" 11 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+FOD" (Player.GetAV Hunger)
+	endif
+	if Goo1.AuxVarGetFlt "*PUI_INI" 12 == 1
+		SetUIFloatAlt "StatsMenu\_PUI+SLP" (Player.GetAV SleepDeprevation)
+	endif
+
+	; Reset alpha pulse
+	SetUIFloatGradual "InventoryMenu\_PUI+AP" 0
+	SetUIFloatGradual "StatsMenu\_PUI+AP" 0.8 0 1.5 2
+
+	sv_destruct sUIPath
+
+end

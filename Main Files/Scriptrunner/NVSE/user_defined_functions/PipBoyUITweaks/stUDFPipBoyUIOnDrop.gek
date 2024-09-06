@@ -1,0 +1,41 @@
+int iType
+ref	rDropper
+ref	rDropped
+
+begin Function {rDropper, rDropped}
+
+	; Update inventory tweaks on item drop
+	if GetActiveMenuMode == 1002 || GetActiveMenuMode == 1016
+
+		if GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_Tabline\_CurrentTab" < 2
+
+			; Cache equipped item stats and update color
+			iType = rDropped.GetType
+			if iType == 24 || iType == 40
+				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\systemcolor" 4
+				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\systemcolor" 4
+				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" 4
+				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" 4
+				if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
+					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetItemStats.gek")
+				endif
+				if eval GetController
+					CallAfterFrames 0 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 1 1002
+				endif
+			endif
+
+			; Update hit points color
+			if Goo1.AuxVarGetFlt "*PUI_INI" 7 == 1
+				SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
+			endif
+
+		endif
+
+		; Update weight color
+		if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
+			SetUIFloatAlt "InventoryMenu\_PUI+WG" (Player.GetEncumbranceRate)
+		endif
+
+	endif
+
+end

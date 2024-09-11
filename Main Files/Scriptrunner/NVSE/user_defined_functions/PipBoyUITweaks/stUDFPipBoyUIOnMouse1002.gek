@@ -187,29 +187,31 @@ begin Function {iMenuID}
 			endif
 
 			; Set AmmoInfo icon
-			sUIPath = rItem.ySIGetTrait "filename"
+			if Goo1.AuxVarGetFlt "*PUI_INI" 14 == 1
+				sUIPath = rItem.ySIGetTrait "filename"
 
-			; Set armor class icon if armor
-			iType = GetArmorClass (rItem.gbo)
-			if iType == 1
-				sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
-			elseif iType == 2
-				sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"
-			elseif iType == 3
-				sUIPath = "interface\icons\Apparel_ArmorC_Heavy.dds"
+				; Set armor class icon if armor
+				iType = GetArmorClass (rItem.gbo)
+				if iType == 1
+					sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
+				elseif iType == 2
+					sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"
+				elseif iType == 3
+					sUIPath = "interface\icons\Apparel_ArmorC_Heavy.dds"
 
-			; Set ammo icon if weapon uses ammo
-			else
-				rItem = rItem.GetWeaponAmmo
-				if eval IsFormValid rItem
-					if GetType rItem == 85
-						rItem = ListGetNthForm rItem 0
+				; Set ammo icon if weapon uses ammo
+				else
+					rItem = rItem.GetWeaponAmmo
+					if eval IsFormValid rItem
+						if GetType rItem == 85
+							rItem = ListGetNthForm rItem 0
+						endif
+						sUIPath = ySIGetTrait "filename" rItem
 					endif
-					sUIPath = ySIGetTrait "filename" rItem
 				endif
-			endif
 
-			SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (sUIPath)
+				SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (sUIPath)
+			endif
 
 		; Reset color if selecting non weapon/armor item
 		elseif Goo1.AuxVarGetFlt "*PUI_FLAG" == 1

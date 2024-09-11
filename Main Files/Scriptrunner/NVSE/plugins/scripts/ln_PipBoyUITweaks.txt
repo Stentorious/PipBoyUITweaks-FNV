@@ -26,10 +26,11 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest lStewieAl's Tweaks."
 		return
 	endif
-	if FileExists "menus\ySI\ySI.xml" == 0 && (GetINIFloat "ySI:bCapsIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bButtonIcons" "PipBoyUITweaks.ini" == 1)
+	if FileExists "menus\ySI\ySI.xml" == 0 && (GetINIFloat "ySI:bButtonIcons" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bWGIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bCapsIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bWeightInfoIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bValueInfoIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini" == 1 || GetINIFloat "ySI:bResistanceIcons" "PipBoyUITweaks.ini" == 1)
 		MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest ySI - Sorting Ycons."
 		return
 	endif
+
 	Goo1.AuxVarSetFlt "*PUI_Init" 1 1
 
 	; Load INI config
@@ -47,6 +48,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bFODMeter" "PipBoyUITweaks.ini") 11
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bSLPMeter" "PipBoyUITweaks.ini") 12
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Inventory:bCritInfo" "PipBoyUITweaks.ini") 13
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini") 14
 
 	; Stat comparison weapon\armor flag
 	Goo1.AuxVarSetFlt "*PUI_FLAG" 1
@@ -156,7 +158,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	endif
 
 	; Enable ySI icons (AmmoInfo)
-	if GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini" == 1
+	if Goo1.AuxVarGetFlt "*PUI_INI" 14 == 1
 		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
 		ModUIFloat "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\width") + 8)
 		if eval IsModLoaded "Vanilla UI Plus.esp"
@@ -247,7 +249,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 
 		; Enable ySI icons (AmmoInfo)
-		if GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini" == 1
+		if Goo1.AuxVarGetFlt "*PUI_INI" 14 == 1
 			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
 			ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\width") + 8)
 			if eval IsModLoaded "Vanilla UI Plus.esp"

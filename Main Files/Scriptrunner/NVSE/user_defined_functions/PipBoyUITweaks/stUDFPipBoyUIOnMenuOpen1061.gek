@@ -15,7 +15,7 @@ begin Function {iMenuID}
 
 	; Reset comparison UI and cache default weapon stats
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\_title" (GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\_title")
-	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\_value" "%g" (rWeap.GetWeaponRequiredStrength)
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\_value" "%g" (GetMaxOf 0 ((rWeap.GetReqStr) - Player.GetPerkModifier 53 0 rWeap))
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\filename" (GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename")
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 4
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" 4

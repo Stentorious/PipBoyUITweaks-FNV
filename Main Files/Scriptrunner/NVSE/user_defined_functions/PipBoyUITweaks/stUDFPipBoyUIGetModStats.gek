@@ -57,7 +57,25 @@ begin Function {}
 			endif
 		endif
 	loop
-	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
+
+	; "Adjust Heavy Weapon Weight" perk modifier
+	if eval fWeapWg >= 10
+		fWeapWg = Player.GetPerkModifier 73 fWeapWg
+	endif
+	; "Modify Light Items" perk modifier
+	if eval fWeapWg <= 2 && Player.GetPerkModifier 55 0 == 1
+		fWeapWg /= 2
+	endif
+	; "bWeightlessItems" lStewieAl Tweak
+	if eval Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 0 == 1
+		fWeapWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 5
+	endif
+	if fWeapWg > 0
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
+	else
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "--"
+	endif
+
 	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapWg 3
 	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapPrj 4
 	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapBeam 5
@@ -75,11 +93,11 @@ begin Function {}
 	; Calculate critical chance
 	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
 		fWeapCrit = Floor (Player.GetAV CritChance)
-		if eval rWeap.GetIsAutomatic
+		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*Tweaks:bCritChanceIgnoresFireRate" == 0
 			fWeapCrit /= fWeapRoF
 		endif
 		fWeapCrit *= rWeap.GetCritPerc
-		fWeapCrit = Player.GetPerkModifier 1 fWeapCrit rWeap Player
+		fWeapCrit = GetMinOf (Player.GetPerkModifier 1 fWeapCrit rWeap Player) 100
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
 		Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCrit 8
 	endif

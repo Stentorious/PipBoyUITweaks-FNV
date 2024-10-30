@@ -25,13 +25,13 @@ begin Function {}
 				iType = rItem.GetEquipType
 
 				; Weapon
-				if rItem.GetType == 40
-					fWeapWg = rItem.GetWeight
+				if eval rItem.GetType == 40
+					fWeapWg = Player.GetCalculatedEquippedWeight 0 32
 					fWeapVal = rItem.GetCalculatedItemValue
-					fWeapStr = rItem.GetWeaponRequiredStrength
+					fWeapStr = GetMaxOf 0 ((rItem.GetReqStr) - Player.GetPerkModifier 53 0 rItem)
 
 				; Armor (Body)
-				elseif GetBit iSlotMask 2 == 1
+				elseif eval GetBit iSlotMask 2
 					fBodyWg = rItem.GetWeight
 					fBodyVal = rItem.GetCalculatedItemValue
 
@@ -47,14 +47,35 @@ begin Function {}
 
 				; Armor (Eyes + Head)
 				elseif iType == 8
-					fEyesWg = rItem.GetWeight
-					fEyesVal = rItem.GetCalculatedItemValue
-					fHeadWg = rItem.GetWeight
-					fHeadVal = rItem.GetCalculatedItemValue
-
+					fHeadWg = fEyesWg = rItem.GetWeight
+					fHeadWg = fEyesVal = rItem.GetCalculatedItemValue
 				endif
 			endif
 		loop
+	endif
+
+	; "Modify Light Items" perk modifier
+	if eval rItem.GetType == 24
+		if eval fBodyWg <= 2 && Player.GetPerkModifier 55 0 == 1
+			fBodyWg /= 2
+		endif
+		if eval fEyesWg <= 2 && Player.GetPerkModifier 55 0 == 1
+			fEyesWg /= 2
+		endif
+		if eval fHeadWg <= 2 && Player.GetPerkModifier 55 0 == 1
+			fHeadWg /= 2
+		endif
+	endif
+
+	; "bWeightlessItems" lStewieAl Tweak
+	if eval Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 0 == 1
+		if eval iType == 40 ; Weapon
+			fWeapWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 5
+		elseif eval iType == 24 ; Armor
+			fBodyWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 3
+			fEyesWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 3
+			fHeadWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 3
+		endif
 	endif
 
 	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapStr 0

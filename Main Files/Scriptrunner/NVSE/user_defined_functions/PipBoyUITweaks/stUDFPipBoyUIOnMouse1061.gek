@@ -40,9 +40,11 @@ begin Function {iMenuID}
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 0
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 0
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f" fWeapVal
-	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" (fWeapCndC / fWeapCndB)
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
+	if fWeapWg > 0
+		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
+	endif
 	if fWeapPrj > 1
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g" fWeapDmg fWeapPrj
 	else
@@ -91,12 +93,28 @@ begin Function {iMenuID}
 					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\_value" "%g+" fModStat
 
 				; Decrease Weight
-				elseif iModType == 4
+				elseif iModType == 4 && fWeapWg > 0
+					fWeapWg = (rWeap.GetWeight) - fModStat
+
+					; "Adjust Heavy Weapon Weight" perk modifier
+					if eval fWeapWg >= 10
+						fWeapWg = Player.GetPerkModifier 73 fWeapWg
+					endif
+
+					; "Modify Light Items" perk modifier
+					if eval fWeapWg <= 2 && Player.GetPerkModifier 55 0 == 1
+						fWeapWg /= 2
+					endif
+
 					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" 3
-					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f+" (fWeapWg - fModStat)
+					if fWeapWg > 0
+						SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f+" fWeapWg
+					else
+						SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "--"
+					endif
 
 				; Increase Rate of Fire
-				elseif iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1 && rWeap.GetIsAutomatic	== 1
+				elseif iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1 && rWeap.GetIsAutomatic == 1 && Goo1.AuxVarGetFlt "*Tweaks:bCritChanceIgnoresFireRate" == 0
 					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 2
 					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%-" (fWeapCrit / (1 + fModStat))
 

@@ -1,0 +1,51 @@
+; ## Description
+; Returns the value of a numeric lStewieAl's Tweaks setting.
+; This accounts for any loaded lStewieAl's Tweaks override .INIs
+; Caches nvse_stewie_tweaks.ini and all lStewieAl's Tweaks override .INIs if not previously cached:
+; - Caching eats memory, but allows faster access to the data.
+; - Once the cache is no longer needed, ClearStewieCacheShowOff should be called to free the memory.
+; - Utilizes ShowOff xNVSE's cached file data system.
+
+; ## Syntax
+; (stewieSetting:float) GetNumericStewieSetting_Cached keyString:string
+
+; ## Example
+; float fSetting = Call (CompileScript "GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate"
+
+; ## Notes
+; - This function is performance intensive and should be used sparingly.
+; - lStewieAl's Tweaks INIs changes made during the current session are not applied until next game launch.
+
+string_var sKeyString
+
+array_var aOverrideINIs
+array_var aForE
+string_var sValue
+string_var sTemp
+
+begin Function {sKeyString}
+
+	; Get default setting value
+	sValue = GetINIString_Cached (sKeyString) "..\NVSE\plugins\nvse_stewie_tweaks.ini"
+
+	; Get override INIs setting value
+	aOverrideINIs = GetFilesInFolder "NVSE\plugins\Tweaks\INIs" "*.ini"
+	if aOverrideINIs
+		foreach aForE <- aOverrideINIs
+			sTemp = GetINIString_Cached (sKeyString) ("..\NVSE\plugins\Tweaks\INIs\" + (*aForE))
+			if eval sTemp != ""
+				sValue = sTemp
+			endif
+		loop
+	endif
+
+	if eval TestExpr ToNumber sValue 0 1
+		SetFunctionValue #sValue
+	else
+		SetFunctionValue -1
+	endif
+
+	aOverrideINIs = aForE = Ar_Null
+	Sv_Destruct sKeyString sValue sTemp
+
+end

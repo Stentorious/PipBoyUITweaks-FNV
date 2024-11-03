@@ -1,6 +1,6 @@
 # Pip-Boy UI Tweaks
 <p align="center">
-    <img height="500px" src="https://i.imgur.com/zH66eWD.gif">
+    <img height="500px" src="https://staticdelivery.nexusmods.com/mods/130/images/85343/85343-1711146413-1189014449.png">
 </p>
 
 ## Overview
@@ -48,6 +48,7 @@ Tweaks can be toggled via the included PipBoyUITweaks.ini
 - [ySI - Assorted Fixes](https://www.nexusmods.com/newvegas/mods/86715)
 
 ## Requirements
+- [xNVSE](https://www.nexusmods.com/newvegas/mods/67883) (6.3.3+)
 - [JIP LN NVSE](https://www.nexusmods.com/newvegas/mods/58277)
 - [JohnnyGuitar NVSE](https://www.nexusmods.com/newvegas/mods/66927) 5.06+
 - [ShowOff xNVSE](https://www.nexusmods.com/newvegas/mods/72541)

@@ -114,7 +114,7 @@ begin Function {iMenuID}
 					endif
 
 				; Increase Rate of Fire
-				elseif iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1 && rWeap.GetIsAutomatic == 1 && Goo1.AuxVarGetFlt "*Tweaks:bCritChanceIgnoresFireRate" == 0
+				elseif iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1 && rWeap.GetIsAutomatic == 1 && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 					SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 2
 					SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%-" (fWeapCrit / (1 + fModStat))
 

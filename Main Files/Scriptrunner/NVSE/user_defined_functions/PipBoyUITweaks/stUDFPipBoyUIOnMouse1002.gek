@@ -99,7 +99,7 @@ begin Function {iMenuID}
 					; Update weapon critical chance
 					if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
 						fWeapCrit = Floor (Player.GetAV CritChance)
-						if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*Tweaks:bCritChanceIgnoresFireRate" == 0
+						if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 							fWeapCrit /= fWeapRoF
 						endif
 						fWeapCrit *= rItem.GetCritPerc
@@ -117,11 +117,11 @@ begin Function {iMenuID}
 					endif
 
 					; "bWeightlessItems" lStewieAl Tweak
-					if eval Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 0 == 1
+					if eval Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 0 == 1
 						if eval iType == 40 ; Weapon
-							fStatItem *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 5
+							fStatItem *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
 						elseif eval iType == 24 ; Armor
-							fStatItem *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 3
+							fStatItem *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
 						endif
 					endif
 

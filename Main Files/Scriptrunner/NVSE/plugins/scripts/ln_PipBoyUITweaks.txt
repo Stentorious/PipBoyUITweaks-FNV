@@ -54,30 +54,30 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	if eval FileExists "nvse\plugins\scripts\gr_StentoriousFunctionLibrary.txt" == 0 && FileExists "nvse\plugins\scripts\ln_ItemCards.txt" == 0
 
 		; "bCritChanceIgnoresFireRate"
-		Goo1.AuxVarSetFlt "*Tweaks:bCritChanceIgnoresFireRate" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate")
+		Goo1.AuxVarSetFlt "*_Tweaks:bCritChanceIgnoresFireRate" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate")
 
 		; "bScaleCriticalDamage"
-		Goo1.AuxVarSetFlt "*Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bScaleCriticalDamage") 0
-		if Goo1.AuxVarSetFlt "*Tweaks:bScaleCriticalDamage" 0 == 1
-			Goo1.AuxVarSetFlt "*Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Critical Hits:fCriticalDamageMult") 1
+		Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bScaleCriticalDamage") 0
+		if Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 0 == 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Critical Hits:fCriticalDamageMult") 1
 		else
-			Goo1.AuxVarSetFlt "*Tweaks:bScaleCriticalDamage" 1 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 1 1
 		endif
 
 		; "bHardcoreTweaks"
 		if eval (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bHardcoreTweaks") == 1
-			Goo1.AuxVarSetFlt "*Tweaks:bHardcoreTweaks" 1 0
-			Goo1.AuxVarSetFlt "*Tweaks:bHardcoreTweaks" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Hardcore Tweaks:bAmmoWeight") 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" 1 0
+			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Hardcore Tweaks:bAmmoWeight") 1
 		endif
 
 		; "bWeightlessItems"
 		if eval (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bWeightlessItems") == 1
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" 1 0
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAid")) 1
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAmmo")) 2
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bArmor")) 3
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bMisc")) 4
-			Goo1.AuxVarSetFlt "*Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bWeapons")) 5
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" 1 0
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAid")) 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAmmo")) 2
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bArmor")) 3
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bMisc")) 4
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bWeapons")) 5
 		endif
 
 		; Clear nvse_stewie_tweaks.ini cached data

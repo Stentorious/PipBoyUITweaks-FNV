@@ -67,8 +67,8 @@ begin Function {}
 		fWeapWg /= 2
 	endif
 	; "bWeightlessItems" lStewieAl Tweak
-	if eval Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 0 == 1
-		fWeapWg *= Goo1.AuxVarGetFlt "*Tweaks:bWeightlessItems" 5
+	if eval Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 0 == 1
+		fWeapWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
 	endif
 	if fWeapWg > 0
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f" fWeapWg
@@ -93,7 +93,7 @@ begin Function {}
 	; Calculate critical chance
 	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
 		fWeapCrit = Floor (Player.GetAV CritChance)
-		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*Tweaks:bCritChanceIgnoresFireRate" == 0
+		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 			fWeapCrit /= fWeapRoF
 		endif
 		fWeapCrit *= rWeap.GetCritPerc

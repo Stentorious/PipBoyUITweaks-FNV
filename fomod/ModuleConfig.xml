@@ -8,7 +8,7 @@
 			<optionalFileGroups order="Explicit">
 				<group name="Main Files" type="SelectExactlyOne">
 					<plugins order="Explicit">
-						<plugin name="Plugin (Recommended)">
+						<plugin name="Plugin">
 							<description>Select if you want Pip-Boy UI Tweaks in plugin form. (ESP)</description>
 							<files>
 								<folder source="Main Files\Plugin" destination="" priority="0" />

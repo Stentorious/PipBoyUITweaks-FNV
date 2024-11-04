@@ -20,13 +20,13 @@ string_var sKeyString
 
 array_var aOverrideINIs
 array_var aForE
-string_var sValue
+string_var sStewie
 string_var sTemp
 
 begin Function {sKeyString}
 
 	; Get default setting value
-	sValue = GetINIString_Cached (sKeyString) "..\NVSE\plugins\nvse_stewie_tweaks.ini"
+	sStewie = GetINIString_Cached (sKeyString) "..\NVSE\plugins\nvse_stewie_tweaks.ini"
 
 	; Get override INIs setting value
 	aOverrideINIs = GetFilesInFolder "NVSE\plugins\Tweaks\INIs" "*.ini"
@@ -34,18 +34,18 @@ begin Function {sKeyString}
 		foreach aForE <- aOverrideINIs
 			sTemp = GetINIString_Cached (sKeyString) ("..\NVSE\plugins\Tweaks\INIs\" + (*aForE))
 			if eval sTemp != ""
-				sValue = sTemp
+				sStewie = sTemp
 			endif
 		loop
 	endif
 
-	if eval TestExpr ToNumber sValue 0 1
-		SetFunctionValue #sValue
+	if eval TestExpr ToNumber sStewie 0 1
+		SetFunctionValue #sStewie
 	else
 		SetFunctionValue -1
 	endif
 
 	aOverrideINIs = aForE = Ar_Null
-	Sv_Destruct sKeyString sValue sTemp
+	Sv_Destruct sKeyString sStewie sTemp
 
 end

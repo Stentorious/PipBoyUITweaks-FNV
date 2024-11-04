@@ -1,5 +1,6 @@
-<_PUI+AP> 0 <_PUI+AP>
-<_PUI+WG> 0 <_PUI+WG>
+<_PUI+AP> 0 </_PUI+AP>
+<_PUI+WG> 0 </_PUI+WG>
+<_PUI+EI> 0 </_PUI+EI>
 <_PUI+HP> <copy src="sibling(StatsMenu)" trait="_PUI+HP"/> </_PUI+HP>
 <_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
 <_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>

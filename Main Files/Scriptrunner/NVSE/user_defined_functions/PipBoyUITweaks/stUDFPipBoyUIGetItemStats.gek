@@ -69,13 +69,10 @@ begin Function {}
 
 	; "bWeightlessItems" lStewieAl Tweak
 	if eval Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 0 == 1
-		if eval iType == 40 ; Weapon
-			fWeapWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
-		elseif eval iType == 24 ; Armor
-			fBodyWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
-			fEyesWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
-			fHeadWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
-		endif
+		fWeapWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
+		fBodyWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
+		fEyesWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
+		fHeadWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
 	endif
 
 	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapStr 0

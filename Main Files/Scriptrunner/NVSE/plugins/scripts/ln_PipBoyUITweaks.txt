@@ -49,6 +49,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Color:bSLPMeter" "PipBoyUITweaks.ini") 12
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "Inventory:bCritInfo" "PipBoyUITweaks.ini") 13
 	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat "ySI:bAmmoInfoIcon" "PipBoyUITweaks.ini") 14
+	SetUIFloatAlt "InventoryMenu\_PUI+EI" (GetINIFloat "Inventory:bShiftUnequippable" "PipBoyUITweaks.ini")
 
 	; lStewieAl's Tweaks Auxiliary-Variables
 	if eval FileExists "nvse\plugins\scripts\gr_StentoriousFunctionLibrary.txt" == 0 && FileExists "nvse\plugins\scripts\ln_ItemCards.txt" == 0
@@ -226,11 +227,24 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 	endif
 
+	; Enable colorful CND
+	if GetINIFloat "Color:bCND" "PipBoyUITweaks.ini" == 1
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter\MeterImage\visible" 0
+		SetUIFloatAlt "RepairMenu\_PUI+ColorCND" 0
+		SetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter\MeterImage\visible" 0
+		SetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter\MeterImage\visible" 0
+		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1035.gek") 1 1035
+	endif
+
 	; Enable weapon mod comparison
 	if Goo1.AuxVarGetFlt "*PUI_INI" 1 == 1
 
 		; Inject weapon mod compare item card
 		InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\WeapModCompare.xml"
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemModList\lb_highlight_box\width" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_InventoryList\lb_highlight_box\width")
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModDesc\visible" 0
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\visible" 1
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\visible" 1
@@ -299,6 +313,12 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 			if eval IsModLoaded "Vanilla UI Plus.esp"
 				ModUIFloat "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\AmmoInfo\ySIImage\y" -4
 			endif
+		endif
+
+		; Enable colorful CND
+		if GetINIFloat "Color:bCND" "PipBoyUITweaks.ini" == 1
+			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\MeterImage\visible" 0
 		endif
 
 		; Update weapon mod comparison on ItemModMenu open

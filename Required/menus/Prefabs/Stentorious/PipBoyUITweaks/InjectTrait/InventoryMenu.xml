@@ -1,6 +1,34 @@
-<_PUI+AP> 0 </_PUI+AP>
 <_PUI+WG> 0 </_PUI+WG>
 <_PUI+EI> 0 </_PUI+EI>
 <_PUI+HP> <copy src="sibling(StatsMenu)" trait="_PUI+HP"/> </_PUI+HP>
+<_PUI+Pulse> 0 </_PUI+Pulse>
+
+<!-- ySI Button Icons -->
 <_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
 <_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>
+
+<!-- Colorful Condition Meters -->
+<_PUI+ColorCND> <copy src="sibling(HUDMainMenu)" trait="_PUI+ColorCND"/> </_PUI+ColorCND>
+<_PUI+TypeCND> <copy src="ConditionInfo" trait="user6" /> </_PUI+TypeCND>
+<_PUI+CND1>
+	<copy> 0.5 </copy>
+	<add>
+		<copy> 0.25 </copy>
+		<onlyif src="io()" trait="_PUI+TypeCND" />
+	</add>
+</_PUI+CND1>
+<_PUI+CND2>
+	<copy src="io()" trait="_PUI+CND1" />
+	<div> 3 </div>
+</_PUI+CND2>
+
+<!-- Shift Unequippable Items -->
+<_PUI+EqOffset_0> -28 </_PUI+EqOffset_0> <!-- Vanilla -->
+<_PUI+EqOffset_1> -18 </_PUI+EqOffset_1> <!-- DarNUI -->
+<_PUI+EqOffset_2> -28 </_PUI+EqOffset_2> <!-- VUI+ -->
+<_PUI+EqOffset_3> -28 </_PUI+EqOffset_3> <!-- VUI+ Revelations -->
+<_PUI+EqOffset_4> -20 </_PUI+EqOffset_4> <!-- VUIE -->
+<_PUI+EqOffset>
+	<copy src="sibling(HUDMainmenu)" trait="_PUI+UIMod" />
+	<copy src="me()" trait="_PUI+EqOffset_" />
+</_PUI+EqOffset>

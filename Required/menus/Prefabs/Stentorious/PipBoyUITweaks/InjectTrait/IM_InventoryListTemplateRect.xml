@@ -1,7 +1,7 @@
 <x>
 	<copy src="sibling(lb_highlight_box)" trait="x"/>
-	<sub>
-		<copy> 28 </copy>
+	<add>
+		<copy src="io()" trait="_PUI+EqOffset"/>
 		<onlyif>
 			<copy src="IM_Tabline" trait="_CurrentTab"/>
 			<eq> 2 </eq>
@@ -11,5 +11,5 @@
 			</or>
 			<and src="io()" trait="_PUI+EI"/>
 		</onlyif>
-	</sub>
+	</add>
 </x>

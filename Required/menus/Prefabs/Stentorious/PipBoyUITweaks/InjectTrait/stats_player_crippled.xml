@@ -2,7 +2,7 @@
 	<copy> 255 </copy>
 	<mul>
 		<copy> 1 </copy>
-		<sub> <copy src="io()" trait="_PUI+AP" /> </sub>
+		<sub src="io()" trait="_PUI+Pulse" />
 	</mul>
 </alpha>
 <systemcolor> 2 </systemcolor>

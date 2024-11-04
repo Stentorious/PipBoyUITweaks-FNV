@@ -1,9 +1,11 @@
 <visible>
 	<copy src="io()" trait="_EquippableItem"/>
 	<and>
-		<copy src="IM_Tabline" trait="_CurrentTab"/> <lt> 2 </lt>
+		<copy src="IM_Tabline" trait="_CurrentTab"/>
+		<lt> 2 </lt>
 		<or>
-			<copy src="IM_Tabline" trait="_CurrentTab"/> <gt> 3 </gt>
+			<copy src="IM_Tabline" trait="_CurrentTab"/>
+			<gt> 3 </gt>
 		</or>
 	</and>
 </visible>

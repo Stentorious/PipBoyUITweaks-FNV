@@ -5,7 +5,7 @@
 		<mul>
 			<copy> 1 </copy>
 			<sub>
-				<copy src="io()" trait="_PUI+AP" />
+				<copy src="io()" trait="_PUI+Pulse" />
 				<onlyif>
 					<copy src="io()" trait="_PUI+HP" />
 					<lt> 0.25 </lt>

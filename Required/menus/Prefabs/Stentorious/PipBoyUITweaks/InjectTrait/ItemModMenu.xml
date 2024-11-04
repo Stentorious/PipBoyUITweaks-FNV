@@ -1,0 +1,3 @@
+<_PUI+AP> <copy src="sibling(InventoryMenu)" trait="_PUI+AP"/> </_PUI+AP>
+<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
+<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>

@@ -1,0 +1,51 @@
+<systemcolor> <copy src="io()" trait="_PUI+ColorCND" /> </systemcolor>
+<red>
+	<copy> 1 </copy>
+	<sub src="me()" trait="_value" />
+	<div>
+		<copy> 1 </copy>
+		<sub src="me()" trait="_CND1" />
+	</div>
+	<mul> 255 </mul>
+	<min> 255 </min>
+</red>
+<green>
+	<copy src="me()" trait="_value" />
+	<sub src="me()" trait="_CND2" />
+	<div>
+		<copy src="me()" trait="_CND1" />
+		<sub src="me()" trait="_CND2" />
+	</div>
+	<mul> 255 </mul>
+	<max> 0 </max>
+	<min> 255 </min>
+</green>
+<blue> 0 </blue>
+<alpha>
+	<copy> 255 </copy>
+	<mul>
+		<copy> 1 </copy>
+		<sub>
+			<copy src="io()" trait="_PUI+AP" />
+			<onlyif>
+				<copy src="me()" trait="_value" />
+				<lte> <copy src="me()" trait="_CND2" /> </lte>
+			</onlyif>
+		</sub>
+	</mul>
+</alpha>
+<_value>
+	<copy src="me()" trait="width" />
+	<div src="sibling(RM_Template_MeterBackground)" trait="width" />
+</_value>
+<_CND1>
+	<copy> 0.5 </copy>
+	<add>
+		<copy> 0.25 </copy>
+		<onlyif src="io()" trait="_PUI+Type" />
+	</add>
+</_CND1>
+<_CND2>
+	<copy src="me()" trait="_CND1" />
+	<div> 3 </div>
+</_CND2>

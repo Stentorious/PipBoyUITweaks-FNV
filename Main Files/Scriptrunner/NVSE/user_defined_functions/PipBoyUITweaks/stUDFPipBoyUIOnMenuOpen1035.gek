@@ -1,0 +1,12 @@
+int	iMenuID
+
+ref rItem
+
+begin Function {iMenuID}
+
+	; Reset alpha pulse
+	if eval IsFormValid (rItem = GetMenuTargetRef 1035)
+		SetUIFloatAlt "RepairMenu\_PUI+Type" (eval rItem.GetType == 40)
+	endif
+
+end

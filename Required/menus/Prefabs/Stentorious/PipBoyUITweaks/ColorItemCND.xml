@@ -1,0 +1,65 @@
+<image name="MeterImage_Clone">
+	<visible> <not src="sibling(MeterImage)" trait="visible" /> </visible>
+	<alpha> <copy src="sibling(MeterImage)" trait="alpha" /> </alpha>
+
+	<x> <copy src="sibling(MeterImage)" trait="x" /> </x>
+	<y> <copy src="sibling(MeterImage)" trait="y" /> </y>
+	<width> <copy src="sibling(MeterImage)" trait="width" /> </width>
+	<height> <copy src="sibling(MeterImage)" trait="height" /> </height>
+	<filename> <copy src="sibling(MeterImage)" trait="filename" /> </filename>
+	<target> <copy src="sibling(MeterImage)" trait="target" /> </target>
+
+	<depth> 2 </depth>
+	<clips> 1 </clips>
+	<cropx> -1 </cropx>
+
+	<systemcolor> 0 </systemcolor>
+	<red>
+		<copy> 1 </copy>
+		<sub src="parent()" trait="_Value" />
+		<div>
+			<copy> 1 </copy>
+			<sub src="me()" trait="_CND1" />
+		</div>
+		<mul> 255 </mul>
+		<min> 255 </min>
+	</red>
+	<green>
+		<copy src="parent()" trait="_Value" />
+		<sub src="me()" trait="_CND2" />
+		<div>
+			<copy src="me()" trait="_CND1" />
+			<sub src="me()" trait="_CND2" />
+		</div>
+		<mul> 255 </mul>
+		<max> 0 </max>
+		<min> 255 </min>
+	</green>
+	<blue> 0 </blue>
+	<alpha>
+		<copy> 255 </copy>
+		<mul>
+			<copy> 1 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+AP" />
+				<onlyif>
+					<copy src="parent()" trait="_Value" />
+					<lte> <copy src="me()" trait="_CND2" /> </lte>
+				</onlyif>
+			</sub>
+		</mul>
+	</alpha>
+
+	<_CND1>
+		<copy> 0.5 </copy>
+		<add>
+			<copy> 0.25 </copy>
+			<onlyif src="grandparent()" trait="user6" />
+		</add>
+	</_CND1>
+	<_CND2>
+		<copy src="me()" trait="_CND1" />
+		<div> 3 </div>
+	</_CND2>
+
+</image>

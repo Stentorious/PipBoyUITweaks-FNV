@@ -55,30 +55,30 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	if eval FileExists "nvse\plugins\scripts\gr_StentoriousFunctionLibrary.txt" == 0 && FileExists "nvse\plugins\scripts\ln_ItemCards.txt" == 0
 
 		; "bCritChanceIgnoresFireRate"
-		Goo1.AuxVarSetFlt "*_Tweaks:bCritChanceIgnoresFireRate" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate")
+		Goo1.AuxVarSetFlt "*_Tweaks:bCritChanceIgnoresFireRate" (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Tweaks:bCritChanceIgnoresFireRate")
 
 		; "bScaleCriticalDamage"
-		Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bScaleCriticalDamage") 0
+		Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Tweaks:bScaleCriticalDamage") 0
 		if Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 0 == 1
-			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Critical Hits:fCriticalDamageMult") 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Critical Hits:fCriticalDamageMult") 1
 		else
 			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 1 1
 		endif
 
 		; "bHardcoreTweaks"
-		if eval (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bHardcoreTweaks") == 1
+		if eval (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Tweaks:bHardcoreTweaks") == 1
 			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" 1 0
-			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Hardcore Tweaks:bAmmoWeight") 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Hardcore Tweaks:bAmmoWeight") 1
 		endif
 
 		; "bWeightlessItems"
-		if eval (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Tweaks:bWeightlessItems") == 1
+		if eval (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Tweaks:bWeightlessItems") == 1
 			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" 1 0
-			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAid")) 1
-			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bAmmo")) 2
-			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bArmor")) 3
-			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bMisc")) 4
-			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\GetNumericStewieSetting_Cached.gek") "Weightless Items:bWeapons")) 5
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Weightless Items:bAid")) 1
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Weightless Items:bAmmo")) 2
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Weightless Items:bArmor")) 3
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Weightless Items:bMisc")) 4
+			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetStewie.gek") "Weightless Items:bWeapons")) 5
 		endif
 
 		; Clear nvse_stewie_tweaks.ini cached data
@@ -97,6 +97,9 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 
 	; Stat comparison weapon\armor flag
 	Goo1.AuxVarSetFlt "*PUI_FLAG" 1
+
+	; Init alpha pulse
+	SetUIFloatGradual "HUDMainMenu\_PUI+Pulse" 0.8 0 1.5 2
 
 	; Match ItemModMenu font with InventoryMenu
 	SetUIFloatAlt "ItemModMenu\font" (GetUIFloatAlt "InventoryMenu\font")
@@ -228,15 +231,14 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	endif
 
 	; Enable colorful CND
-	if GetINIFloat "Color:bCND" "PipBoyUITweaks.ini" == 1
-		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
-		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
-		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+	if GetINIFloat "Color:iCNDMeter" "PipBoyUITweaks.ini" > 0
+		SetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" (GetINIFloat "Color:iCNDMeter" "PipBoyUITweaks.ini")
+		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeter.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeter.xml"
+		InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeter.xml"
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter\MeterImage\visible" 0
-		SetUIFloatAlt "RepairMenu\_PUI+ColorCND" 0
 		SetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter\MeterImage\visible" 0
 		SetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter\MeterImage\visible" 0
-		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1035.gek") 1 1035
 	endif
 
 	; Enable weapon mod comparison
@@ -267,7 +269,6 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\x" 119.5
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\y" 12.5
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\height" 15
-			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\x" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\width") / 2)
 		elseif eval IsModLoaded "Vanilla UI Plus.esp"
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\x" 480.55
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\y" 15
@@ -275,7 +276,6 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\x" 119.5
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\y" 15
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\CNDArrows\height" 20
-			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\x" 0
 		endif
 		if eval IsModLoaded "Vanilla UI Plus.esp" != 1
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_CompareRect\visible" 0
@@ -283,6 +283,8 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\StrengthReqInfo\alpha" 255
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\x" 450
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemIcon\y" 10
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\justify" 2
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_HeadlineRect\IMM_ItemName\*:3\x" ((GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\width") / 3.5)
 		endif
 
 		; Enable ySI icons (WeightInfo)
@@ -316,8 +318,8 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 
 		; Enable colorful CND
-		if GetINIFloat "Color:bCND" "PipBoyUITweaks.ini" == 1
-			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorItemCND.xml"
+		if GetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" > 0
+			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeter.xml"
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\MeterImage\visible" 0
 		endif
 

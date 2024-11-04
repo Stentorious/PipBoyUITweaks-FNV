@@ -53,8 +53,8 @@ begin Function {iMenuID}
 	endif
 
 	; Reset alpha pulse
-	SetUIFloatGradual "InventoryMenu\_PUI+AP" 0
-	SetUIFloatGradual "StatsMenu\_PUI+AP" 0.8 0 1.5 2
+	SetUIFloatGradual "InventoryMenu\_PUI+Pulse" 0
+	SetUIFloatGradual "StatsMenu\_PUI+Pulse" 0.8 0 1.5 2
 
 	sv_destruct sUIPath
 

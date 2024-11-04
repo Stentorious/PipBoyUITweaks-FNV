@@ -23,6 +23,7 @@
 	<height> <copy src="parent()" trait="user1" /> </height>
 	<font> <copy src="parent()" trait="font" /> </font>
 	<_title> CHC </_title>
+	<_value> 0.00% </_value>
 </rect>
 
 <rect name="SkillInfo">

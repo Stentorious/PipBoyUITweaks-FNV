@@ -8,8 +8,9 @@
 ### Inventory Menu
 - Critical Chance Info - Shows calculated weapon critical chance on the Item Info card
 - Skill Info - Shows required weapon skill on the Item Info card, replacing the default icon
-- Extended Item Stats Comparison - Extend lStewieAl's Tweaks Stat Comparisons to WG, VAL, and STR
-- Search Icon - Adds a dynamic icon to lStewieAl's Tweaks Menu Search
+- Extended Item Stats Comparison - Extend [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347) Stat Comparisons to WG, VAL, and STR
+- Search Icon - Adds a dynamic icon to [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347) Menu Search
+- Shift Unequippable - Removes the empty space in front of unequippable Pip-Boy items
 
 ### Weapon Mod Menu
 - Weapon Stats UI - Adds new UI element to show weapon mod's affect on weapon stats
@@ -23,6 +24,7 @@
 - SPECIAL - Positive/Negative SPECIAL effects will be shaded green/red
 - Crippled Limbs - Vault Boy Paper Doll limb's will be shaded red when crippled
 - Hardcore Needs - Hardcore Needs meters will be shaded based on current needs levels
+- Condition Meters - Weapon/Armor condition will be shaded based on item health
 
 ### ySI - Sorting Icons Addon
 - Button Prompt Icons - Adds dynamic icons to all button prompt
@@ -43,7 +45,6 @@ Tweaks can be toggled via the included PipBoyUITweaks.ini
 
 ## Recommended
 - [Local Map Overhaul](https://www.nexusmods.com/newvegas/mods/88533)
-- [Colorful Inventory Ycons](https://www.nexusmods.com/newvegas/mods/78674)
 - [ySI - Colorful Icons Support](https://www.nexusmods.com/newvegas/mods/85075)
 - [ySI - Assorted Fixes](https://www.nexusmods.com/newvegas/mods/86715)
 

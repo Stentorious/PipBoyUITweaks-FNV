@@ -1,4 +1,4 @@
-; Pip-Boy UI Tweaks 2.8 - Stentorious
+; Pip-Boy UI Tweaks - Stentorious
 
 ; On game restart
 if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1

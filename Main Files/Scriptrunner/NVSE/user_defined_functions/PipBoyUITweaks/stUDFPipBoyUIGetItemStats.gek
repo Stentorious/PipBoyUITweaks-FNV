@@ -55,14 +55,14 @@ begin Function {}
 	endif
 
 	; "Modify Light Items" perk modifier
-	if eval rItem.GetType == 24
-		if eval fBodyWg <= 2 && Player.GetPerkModifier 55 0 == 1
+	if eval Player.GetPerkModifier 55 0 == 1
+		if eval fBodyWg <= 2
 			fBodyWg /= 2
 		endif
-		if eval fEyesWg <= 2 && Player.GetPerkModifier 55 0 == 1
+		if eval fEyesWg <= 2
 			fEyesWg /= 2
 		endif
-		if eval fHeadWg <= 2 && Player.GetPerkModifier 55 0 == 1
+		if eval fHeadWg <= 2
 			fHeadWg /= 2
 		endif
 	endif

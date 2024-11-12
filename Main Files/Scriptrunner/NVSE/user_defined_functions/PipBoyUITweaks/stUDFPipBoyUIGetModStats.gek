@@ -97,7 +97,7 @@ begin Function {}
 			fWeapCrit /= fWeapRoF
 		endif
 		fWeapCrit *= rWeap.GetCritPerc
-		fWeapCrit = GetMinOf (Player.GetPerkModifier 1 fWeapCrit rWeap Player) 100
+		fWeapCrit = GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fWeapCrit rWeap Goo1))
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
 		Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCrit 8
 	endif

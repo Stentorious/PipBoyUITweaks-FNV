@@ -103,7 +103,7 @@ begin Function {iMenuID}
 							fWeapCrit /= fWeapRoF
 						endif
 						fWeapCrit *= rItem.GetCritPerc
-						SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\_value" "%.2f%%" (GetMinOf (Player.GetPerkModifier 1 fWeapCrit rItem Player) 100)
+						SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\_value" "%.2f%%" (GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fWeapCrit rItem Goo1)))
 					endif
 
 				endif

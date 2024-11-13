@@ -5,12 +5,14 @@ int iModSlot
 int iModMask
 int iModType
 int iSlotMask
-float fStatWg
-float fStatVal
-float fStatStr
-float fStatItem
-float fWeapCrit
-float fWeapRoF
+float fEquipWg
+float fEquipVal
+float fEquipStr
+float fItemWg
+float fItemVal
+float fItemStr
+float fItemRoF
+float fItemCrit
 float iColor
 ref rItem
 string_var sUIPath
@@ -26,6 +28,43 @@ begin Function {iMenuID}
 			Goo1.AuxVarSetFlt "*PUI_FLAG" 1
 			iColor = Goo1.AuxVarGetFlt "*PUI_INI" 3
 
+			; Calculate item weight
+			fItemWg = rItem.GetWeight
+
+			if eval iType == 40
+
+				; Calculate item mod effects
+				iModMask = rItem.GetWeaponRefModFlags
+				fItemRoF = rItem.GetFireRate
+				iModSlot = 0
+				while 4 > (iModSlot += 1)
+					if GetBit iModMask (iModSlot - 1) == 1
+						iModType = rItem.GetWeaponItemModEffect iModSlot
+						if eval iModType == 4
+							fItemWg -= rItem.GetWeaponItemModValue1 iModSlot
+						elseif eval iModType == 8
+							fItemRoF *= (1 + (rItem.GetWeaponItemModValue1 iModSlot))
+						endif
+					endif
+				loop
+
+				; "Adjust Heavy Weapon Weight" perk modifier
+				if eval fItemWg >= 10
+					fItemWg = Player.GetPerkModifier 73 fItemWg
+				endif
+
+				; Update weapon critical chance
+				if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+					fItemCrit = Floor (Player.GetAV CritChance)
+					if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
+						fItemCrit /= fItemRoF
+					endif
+					fItemCrit *= rItem.GetCritPerc
+					SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\_value" "%.2f%%" (GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fItemCrit rItem Goo1)))
+				endif
+
+			endif
+
 			; Extended stat comparison
 			if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
 
@@ -33,18 +72,18 @@ begin Function {iMenuID}
 				if iType == 40
 					if eval Player.GetEquippedWeaponRef
 						iComp = 1
-						fStatStr = Goo1.AuxVarGetFlt "*PUI_Stat" 0
-						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 1
-						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 2
-						fStatItem = GetMaxOf 0 ((rItem.GetReqStr) - Player.GetPerkModifier 53 0 rItem)
+						fEquipStr = Goo1.AuxVarGetFlt "*PUI_Stat" 0
+						fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 1
+						fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 2
+						fItemStr = GetMaxOf 0 ((rItem.GetReqStr) - Player.GetPerkModifier 53 0 rItem)
 
 						; Update STR color
-						if fStatItem > fStatStr
+						if fItemStr > fEquipStr
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value") + "+")
 							if iColor == 1
 								SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 3
 							endif
-						elseif fStatItem < fStatStr
+						elseif fItemStr < fEquipStr
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\_value") + "-")
 							if iColor == 1
 								SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\StrengthReqInfo\CI_ValueText\systemcolor" 2
@@ -60,80 +99,45 @@ begin Function {iMenuID}
 					iSlotMask = rItem.GetESM
 					If eval GetBit iSlotMask 2
 						iComp = 1
-						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 3
-						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 4
+						fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 3
+						fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 4
 					elseif iSlotMask == 18432
 						iComp = 1
-						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 5
-						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 6
+						fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 5
+						fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 6
 					elseif rItem.GetEquipType == 8
 						iComp = 1
-						fStatWg = Goo1.AuxVarGetFlt "*PUI_Stat" 7
-						fStatVal = Goo1.AuxVarGetFlt "*PUI_Stat" 8
+						fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 7
+						fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 8
 					endif
-				endif
-
-				; Calculate item weight
-				fStatItem = rItem.GetWeight
-
-				if eval iType == 40
-					iModMask = rItem.GetWeaponRefModFlags
-					fWeapRoF = rItem.GetFireRate
-					iModSlot = 0
-					while 4 > (iModSlot += 1)
-						if GetBit iModMask (iModSlot - 1) == 1
-							iModType = rItem.GetWeaponItemModEffect iModSlot
-							if eval iModType == 4
-								fStatItem -= rItem.GetWeaponItemModValue1 iModSlot
-							elseif eval iModType == 8
-								fWeapRoF *= (1 + (rItem.GetWeaponItemModValue1 iModSlot))
-							endif
-						endif
-					loop
-
-					; "Adjust Heavy Weapon Weight" perk modifier
-					if eval fStatItem >= 10
-						fStatItem = Player.GetPerkModifier 73 fStatItem
-					endif
-
-					; Update weapon critical chance
-					if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
-						fWeapCrit = Floor (Player.GetAV CritChance)
-						if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
-							fWeapCrit /= fWeapRoF
-						endif
-						fWeapCrit *= rItem.GetCritPerc
-						SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\CritInfo\_value" "%.2f%%" (GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fWeapCrit rItem Goo1)))
-					endif
-
 				endif
 
 				; Update WG/VAl on valid stat comparison
 				if iComp == 1
 
 					; "Modify Light Items" perk modifier
-					if eval fStatItem <= 2 && Player.GetPerkModifier 55 0 == 1
-						fStatItem /= 2
+					if eval fItemWg <= 2 && Player.GetPerkModifier 55 0 == 1
+						fItemWg /= 2
 					endif
 
 					; "bWeightlessItems" lStewieAl Tweak
 					if eval Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 0 == 1
 						if eval iType == 40 ; Weapon
-							fStatItem *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
+							fItemWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 5
 						elseif eval iType == 24 ; Armor
-							fStatItem *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
+							fItemWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
 						endif
 					endif
 
-					if fStatWg > fStatItem
-						if fStatItem != 0
+					if fEquipWg > fItemWg
+						if fItemWg != 0
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value") + "+")
 						endif
 						if iColor == 1
 							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_ValueText\systemcolor" 3
 						endif
-					elseif fStatWg < fStatItem
-						if fStatItem != 0
+					elseif fEquipWg < fItemWg
+						if fItemWg != 0
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\_value") + "-")
 						endif
 						if iColor == 1
@@ -144,16 +148,16 @@ begin Function {iMenuID}
 					endif
 
 					; Update VAL color
-					fStatItem = rItem.GetCalculatedItemValue
-					if fStatItem > fStatVal
-						if fStatItem != 0
+					fItemVal = rItem.GetCalculatedItemValue
+					if fItemVal > fEquipVal
+						if fItemVal != 0
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value") + "+")
 						endif
 						if iColor == 1
 							SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_ValueText\systemcolor" 3
 						endif
-					elseif fStatItem < fStatVal
-						if fStatItem != 0
+					elseif fItemVal < fEquipVal
+						if fItemVal != 0
 							SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value" ((GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\_value") + "-")
 						endif
 						if iColor == 1

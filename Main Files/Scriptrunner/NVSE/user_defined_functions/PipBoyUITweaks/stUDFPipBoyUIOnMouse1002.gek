@@ -220,7 +220,10 @@ begin Function {iMenuID}
 
 				; Set armor class icon if armor
 				iType = GetArmorClass (rItem.gbo)
-				if iType == 1
+				if eval rItem.IsPA
+					sUIPath = "interface\icons\Apparel_ArmorD_Power.dds"
+					SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\_title" (GetStringSetting "sKBPower")
+				elseif iType == 1
 					sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
 				elseif iType == 2
 					sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"

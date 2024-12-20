@@ -178,7 +178,7 @@ begin Function {iMenuID}
 			; Update DAM/DPS/DR/DT color
 			if iColor == 1
 				if iType == 40
-					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\string"
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\_Value"
 					iColor = 4
 					if eval sUIPath[-1] == "+"
 						iColor = 3
@@ -186,7 +186,7 @@ begin Function {iMenuID}
 						iColor = 2
 					endif
 					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\systemcolor" iColor
-					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\string"
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\_Value"
 					iColor = 4
 					if eval sUIPath[-1] == "+"
 						iColor = 3
@@ -195,7 +195,7 @@ begin Function {iMenuID}
 					endif
 					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\systemcolor" iColor
 				else
-					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\string"
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\_Value"
 					iColor = 4
 					if eval sUIPath[-1] == "+"
 						iColor = 3
@@ -203,7 +203,7 @@ begin Function {iMenuID}
 						iColor = 2
 					endif
 					SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" iColor
-					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\string"
+					sUIPath = GetUIString "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\_Value"
 					iColor = 4
 					if eval sUIPath[-1] == "+"
 						iColor = 3

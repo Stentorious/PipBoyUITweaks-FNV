@@ -24,7 +24,6 @@ begin Function {}
 		while (iSize -= 1) > -1
 			CloseFileSO ("..\NVSE\plugins\Tweaks\INIs\" + (aOverrideINIs[iSize])) 0
 		loop
-		aOverrideINIs = Ar_Null
 	endif
 
 	aOverrideINIs = Ar_Null

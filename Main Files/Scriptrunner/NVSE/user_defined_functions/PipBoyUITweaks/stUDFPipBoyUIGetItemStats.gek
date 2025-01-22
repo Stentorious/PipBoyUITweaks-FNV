@@ -1,3 +1,4 @@
+int iSize
 int iSlotMask
 int iType
 float fWeapWg
@@ -11,16 +12,14 @@ float fHeadWg
 float fHeadVal
 ref rItem
 array_var aEquippedItems
-array_var aForE
 
 begin Function {}
 
 	; Cache equipped item stats
 	aEquippedItems = Player.GetEquippedItemRefs
-	if aEquippedItems
-		foreach aForE <- aEquippedItems
-			rItem = *aForE
-			if eval IsFormValid rItem
+	if eval (iSize = Ar_Size aEquippedItems) > 0
+		while (iSize -= 1) > -1
+			if eval IsFormValid (rItem = aEquippedItems[iSize])
 				iSlotMask = rItem.GetESM
 				iType = rItem.GetEquipType
 
@@ -48,7 +47,7 @@ begin Function {}
 				; Armor (Eyes + Head)
 				elseif iType == 8
 					fHeadWg = fEyesWg = rItem.GetWeight
-					fHeadWg = fEyesVal = rItem.GetCalculatedItemValue
+					fHeadVal = fEyesVal = rItem.GetCalculatedItemValue
 				endif
 			endif
 		loop
@@ -85,6 +84,6 @@ begin Function {}
 	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadWg 7
 	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadVal 8
 
-	aEquippedItems = aForE = ar_null
+	aEquippedItems = ar_Null
 
 end

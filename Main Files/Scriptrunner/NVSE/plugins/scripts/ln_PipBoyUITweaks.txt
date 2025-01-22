@@ -56,18 +56,18 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		Goo1.AuxVarSetFlt "*_Tweaks:bCritChanceIgnoresFireRate" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate") 0
 
 		; "bScaleCriticalDamage"
-		Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bScaleCriticalDamage") 0
-		if eval Goo1.AuxVarGetFlt "*_Tweaks:bScaleCriticalDamage" 0
-			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Critical Hits:fCriticalDamageMult") 1
-		else
-			Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 1 1
-		endif
+		;Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bScaleCriticalDamage") 0
+		;if eval Goo1.AuxVarGetFlt "*_Tweaks:bScaleCriticalDamage" 0
+		;	Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Critical Hits:fCriticalDamageMult") 1
+		;else
+		;	Goo1.AuxVarSetFlt "*_Tweaks:bScaleCriticalDamage" 1 1
+		;endif
 
 		; "bHardcoreTweaks"
-		if eval (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bHardcoreTweaks") == 1
-			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" 1 0
-			Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Hardcore Tweaks:bAmmoWeight") 1
-		endif
+		;if eval (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bHardcoreTweaks") == 1
+		;	Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" 1 0
+		;	Goo1.AuxVarSetFlt "*_Tweaks:bHardcoreTweaks" (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Hardcore Tweaks:bAmmoWeight") 1
+		;endif
 
 		; "bWeightlessItems"
 		if eval (Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bWeightlessItems") == 1

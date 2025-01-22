@@ -216,32 +216,32 @@ begin Function {iMenuID}
 
 			; Set AmmoInfo icon
 			if Goo1.AuxVarGetFlt "*PUI_INI" 14 == 1
-				sUIPath = rItem.ySIGetTrait "filename"
 
 				; Set armor class icon if armor
-				iType = GetArmorClass (rItem.gbo)
-				if eval rItem.IsPA
-					sUIPath = "interface\icons\Apparel_ArmorD_Power.dds"
-					SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\_title" (GetStringSetting "sKBPower")
-				elseif iType == 1
-					sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
-				elseif iType == 2
-					sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"
-				elseif iType == 3
-					sUIPath = "interface\icons\Apparel_ArmorC_Heavy.dds"
+				if eval (iType = GetArmorClass (rItem.gbo))
+					if eval rItem.IsPA
+						sUIPath = "interface\icons\Apparel_ArmorD_Power.dds"
+						SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\_title" (GetStringSetting "sKBPower")
+					elseif iType == 1
+						sUIPath = "interface\icons\Apparel_ArmorA_Light.dds"
+					elseif iType == 2
+						sUIPath = "interface\icons\Apparel_ArmorB_Medium.dds"
+					else
+						sUIPath = "interface\icons\Apparel_ArmorC_Heavy.dds"
+					endif
+					SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (sUIPath)
 
 				; Set ammo icon if weapon uses ammo
-				else
-					rItem = rItem.GetWeaponAmmo
-					if eval IsFormValid rItem
-						if GetType rItem == 85
-							rItem = ListGetNthForm rItem 0
-						endif
-						sUIPath = ySIGetTrait "filename" rItem
+				elseif eval IsFormValid (rItem = rItem.GetWeaponAmmo)
+					if GetType rItem == 85
+						rItem = ListGetNthForm rItem 0
 					endif
-				endif
+					RunScriptSnippet 0 "SetUIStringAlt %qInventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename%q (ySIGetTrait %qicon%q %q%i%q)" rItem
 
-				SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (sUIPath)
+				; Set item icon as fallback
+				else
+					SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\AmmoInfo\ySIImage\filename" (GetUIString (GetActiveUIComponentFullName + "/ySIImage/filename"))
+				endif
 			endif
 
 		; Reset color if selecting non weapon/armor item

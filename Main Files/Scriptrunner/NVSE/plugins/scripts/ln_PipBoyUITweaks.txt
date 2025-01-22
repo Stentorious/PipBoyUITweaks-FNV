@@ -27,7 +27,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		return
 	endif
 	if eval GetPluginVersion "yUI" >= 140 && FileExists "menus\ySI\ySI.xml"
-		Goo1.AuxVarSetFlt "*ySI-SortingIcons" 1
+		Goo1.AuxVarSetFlt "*_ySI-SortingIcons" 1
 	endif
 	Goo1.AuxVarSetFlt "*PUI_Init" 1 1
 
@@ -124,7 +124,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	endif
 
 	; ySI - Sorting Icons support
-	if eval Goo1.AuxVarGetFlt "*ySI-SortingIcons"
+	if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 
 		Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "ySI:bAmmoInfoIcon" "Stentorious\PipBoyUITweaks.ini") 14
 
@@ -290,7 +290,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 
 		; ySI - Sorting Icons support
-		if eval Goo1.AuxVarGetFlt "*ySI-SortingIcons"
+		if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 
 			; Enable ySI icons (WeightInfo)
 			if eval GetINIFloat_Cached "ySI:bWeightInfoIcon" "Stentorious\PipBoyUITweaks.ini"

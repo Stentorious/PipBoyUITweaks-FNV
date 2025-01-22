@@ -1,6 +1,6 @@
 # Pip-Boy UI Tweaks
-<p align="center">
-    <img height="500px" src="https://staticdelivery.nexusmods.com/mods/130/images/85343/85343-1711146413-1189014449.png">
+<p align="left">
+    <img height="400px" src="https://staticdelivery.nexusmods.com/mods/130/images/85343/85343-1711146413-1189014449.png">
 </p>
 
 ## Overview

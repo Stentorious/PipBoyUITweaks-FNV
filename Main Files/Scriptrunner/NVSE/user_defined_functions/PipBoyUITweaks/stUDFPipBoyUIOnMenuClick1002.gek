@@ -21,7 +21,7 @@ begin Function {iMenuID, iTileID, sTileName}
 
 		; Update weight color
 		if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
-			CallAfterFrames 0 ({} => SetUIFloatAlt "InventoryMenu\_PUI+WG" (Player.GetEncumbranceRate)) 1
+			CallAfterFrames 0 ({} => SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)) 1
 		endif
 
 		; Update hit points color

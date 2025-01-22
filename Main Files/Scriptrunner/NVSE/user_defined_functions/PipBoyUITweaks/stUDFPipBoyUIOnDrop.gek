@@ -33,7 +33,7 @@ begin Function {rDropper, rDropped}
 
 		; Update weight color
 		if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
-			SetUIFloatAlt "InventoryMenu\_PUI+WG" (Player.GetEncumbranceRate)
+			SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)
 		endif
 
 	endif

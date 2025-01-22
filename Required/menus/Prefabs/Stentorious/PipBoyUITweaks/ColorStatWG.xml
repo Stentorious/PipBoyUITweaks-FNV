@@ -8,10 +8,7 @@
 		<copy> 2 </copy>
 		<add>
 			<copy> 2 </copy>
-			<onlyif>
-				<copy src="io()" trait="_PUI+WG" />
-				<lt> 100.34 </lt>
-			</onlyif>
+			<onlyif src="io()" trait="_PUI+WG" />
 		</add>
 	</systemcolor>
 	<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>

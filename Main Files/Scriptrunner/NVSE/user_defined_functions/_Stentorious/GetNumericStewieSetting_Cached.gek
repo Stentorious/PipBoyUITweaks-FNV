@@ -10,7 +10,7 @@
 ; (stewieSetting:float) GetNumericStewieSetting_Cached keyString:string
 
 ; ## Example
-; float fSetting = Call (CompileScript "GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate"
+; float fSetting = Call (CompileScript "_Stentorious\GetNumericStewieSetting_Cached.gek") "Tweaks:bCritChanceIgnoresFireRate"
 
 ; ## Notes
 ; - This function is performance intensive and should be used sparingly.
@@ -18,8 +18,8 @@
 
 string_var sKeyString
 
+int iSize
 array_var aOverrideINIs
-array_var aForE
 string_var sStewie
 string_var sTemp
 
@@ -30,11 +30,11 @@ begin Function {sKeyString}
 
 	; Get override INIs setting value
 	aOverrideINIs = GetFilesInFolder "NVSE\plugins\Tweaks\INIs" "*.ini"
-	if aOverrideINIs
-		foreach aForE <- aOverrideINIs
-			sTemp = GetINIString_Cached (sKeyString) ("..\NVSE\plugins\Tweaks\INIs\" + (*aForE))
-			if eval sTemp != ""
+	if eval (iSize = Ar_Size aOverrideINIs) > 0
+		while (iSize -= 1) > -1
+			if eval (sTemp = GetINIString_Cached (sKeyString) ("..\NVSE\plugins\Tweaks\INIs\" + (aOverrideINIs[iSize]))) != ""
 				sStewie = sTemp
+				break
 			endif
 		loop
 	endif
@@ -45,7 +45,7 @@ begin Function {sKeyString}
 		SetFunctionValue -1
 	endif
 
-	aOverrideINIs = aForE = Ar_Null
+	aOverrideINIs = Ar_Null
 	Sv_Destruct sKeyString sStewie sTemp
 
 end

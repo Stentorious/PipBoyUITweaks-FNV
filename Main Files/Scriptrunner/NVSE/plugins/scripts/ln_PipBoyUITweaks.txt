@@ -325,14 +325,14 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 
 		; Update weapon mod comparison on ItemModMenu open
-		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1061.gek") 1 1061
+		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OnMenuOpen1061.gek") 1 1061
 
 		; Update weapon mod comparison on weapon mod attachment
 		SetOnMenuClickEventHandler (begin function {int iMenuID, int iTileID, string_var sTileName}
 			CallAfterFrames 0 (begin function {int iModMask}
 				if eval iModMask != (GetMenuTargetRef 1061).GetWeaponRefModFlags
-					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetModStats.gek")
-					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 1061
+					Call (CompileScript "PipBoyUITweaks\GetModStats.gek")
+					Call (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 1061
 				endif
 			end) 1 (GetMenuTargetRef 1061).GetWeaponRefModFlags
 		end) 1 "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemModList\IMM_ItemModListTemplateRect"
@@ -355,7 +355,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_leftleg\systemcolor" 4
 		SetUIFloatAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_player_head\stats_player_torso\stats_player_rightleg\systemcolor" 4
 	else
-		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1023.gek") 1 1023
+		SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OnMenuOpen1023.gek") 1 1023
 	endif
 
 	; Enable colorful stats info (RADS)
@@ -435,17 +435,17 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	CloseFileSO "Stentorious\PipBoyUITweaks.ini" 0
 
 	; Menu update event handlers
-	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1002.gek") 1 1002
-	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuOpen1003.gek") 1 1003
-	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 1 1002
-	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 1 1061
-	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 0 1002
-	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1061.gek") 0 1061
-	SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMenuClick1002.gek") 1 "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_InventoryList\IM_InventoryListTemplateRect"
+	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OnMenuOpen1002.gek") 1 1002
+	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OnMenuOpen1003.gek") 1 1003
+	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\OnMouse1002.gek") 1 1002
+	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 1 1061
+	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\OnMouse1002.gek") 0 1002
+	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 0 1061
+	SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\OnMenuClick1002.gek") 1 "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_InventoryList\IM_InventoryListTemplateRect"
 
 endif
 
 ; On game load
 if eval Goo1.AuxVarGetFlt "*PUI_Init" 1
-	SetEventHandlerAlt "OnDrop" (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnDrop.gek") 1::Player
+	SetEventHandlerAlt "OnDrop" (CompileScript "PipBoyUITweaks\OnDrop.gek") 1::Player
 endif

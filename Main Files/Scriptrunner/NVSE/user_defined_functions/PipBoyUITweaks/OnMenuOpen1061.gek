@@ -23,7 +23,7 @@ begin Function {iMenuID}
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 4
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 0
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 0
-	Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetModStats.gek")
+	Call (CompileScript "PipBoyUITweaks\GetModStats.gek")
 
 	; Rebuild weapon mod descriptions to accurately reflate their affect on the weapon
 	iModSlot = 0

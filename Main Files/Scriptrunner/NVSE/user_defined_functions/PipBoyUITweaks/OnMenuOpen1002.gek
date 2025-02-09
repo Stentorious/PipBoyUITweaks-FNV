@@ -4,7 +4,7 @@ begin Function {iMenuID}
 
 	; Cache equipped item stats and update color
 	if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
-		Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetItemStats.gek")
+		Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
 	endif
 
 	; Update weight color

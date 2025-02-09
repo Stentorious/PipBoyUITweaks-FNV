@@ -14,9 +14,9 @@ begin Function {iMenuID, iTileID, sTileName}
 		iType = rItem.GetType
 		if iType == 24 || iType == 40
 			if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
-				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetItemStats.gek") 1
+				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\GetItemStats.gek") 1
 			endif
-			CallAfterFrames 0 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 1 1002
+			CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OnMouse1002.gek") 1 1002
 		endif
 
 		; Update weight color

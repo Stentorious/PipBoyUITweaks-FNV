@@ -17,10 +17,10 @@ begin Function {rDropper, rDropped}
 				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" 4
 				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" 4
 				if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
-					Call (CompileScript "PipBoyUITweaks\stUDFPipBoyUIGetItemStats.gek")
+					Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
 				endif
 				if eval GetController
-					CallAfterFrames 0 (CompileScript "PipBoyUITweaks\stUDFPipBoyUIOnMouse1002.gek") 1 1002
+					CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OnMouse1002.gek") 1 1002
 				endif
 			endif
 

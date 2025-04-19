@@ -1,0 +1,32 @@
+int iMenuMode
+int iLength
+string_var sTemp
+
+begin Function {}
+
+	iMenuMode = GetActiveMenuMode
+
+	if eval iMenuMode == 1008
+		iLength = Sv_Length (GetStringSetting "sInventoryWeight") + 3
+		sTemp = GetUIString "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel\string"
+		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel_Text\string" (sTemp[iLength:-1])
+		sTemp = GetUIString "ContainerMenu\NOGLOW_BRANCH\CM_ContainerRect\_VUI+ContainerWeight\string"
+		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ContainerRect\CM_Container_CapsLabel_Text\string" (sTemp[iLength:-1])
+		if eval IsPCOverencumbered
+			SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel_Text\systemcolor" 2
+		else
+			SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel_Text\systemcolor" 1
+		endif
+	elseif eval iMenuMode == 1053
+		iLength = Sv_Length (GetStringSetting "sInventoryCaps") + 3
+		sTemp = GetUIString "BarterMenu\NOGLOW_BRANCH\BM_ItemsRect\BM_Items_CapsLabel\string"
+		SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemsRect\BM_Items_CapsLabel_Text\string" (sTemp[iLength:-1])
+		sTemp = GetUIString "BarterMenu\NOGLOW_BRANCH\BM_ContainerRect\BM_Container_CapsLabel\string"
+		SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ContainerRect\BM_Container_CapsLabel_Text\string" (sTemp[iLength:-1])
+	elseif eval iMenuMode == 1058
+		iLength = Sv_Length (GetStringSetting "sInventoryCaps") + 3
+		sTemp = GetUIString "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_CapsLabel\string"
+		SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_CapsLabel_Text\string" (sTemp[iLength:-1])
+	endif
+
+end

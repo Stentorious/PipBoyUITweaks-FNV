@@ -1,0 +1,14 @@
+<rect name="CritDAMInfo">
+	<include src="card_info.xml" />
+	<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
+	<x> <copy src="sibling(DAMInfo)" trait="x" /> </x>
+	<y>
+		<copy src="sibling(DPSInfo)" trait="y" />
+		<sub src="sibling(DPSInfo)" trait="height" />
+	</y>
+	<width> <copy src="parent()" trait="user0" /> </width>
+	<height> <copy src="parent()" trait="user1" /> </height>
+	<font> <copy src="parent()" trait="font" /> </font>
+	<_title> CHD </_title>
+	<_value></_value>
+</rect>

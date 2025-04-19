@@ -1,0 +1,36 @@
+int iMenuID
+int iTileID
+int iType
+ref rItem
+string_var sTileName
+
+begin Function {iMenuID, iTileID, sTileName}
+
+	; Update tweaks on item select
+	rItem = GetSelectedItemRef
+	if IsFormValid rItem
+
+		; Cache equipped item stats and update color
+		iType = rItem.GetType
+		if eval iType == 24 || iType == 40
+			if eval Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
+				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\GetItemStats.gek") 1
+			endif
+			CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 iMenuID
+		endif
+
+		; Update Inventory weight/hp color
+		if eval iMenuID == 1002
+			if Goo1.AuxVarGetFlt "*PUI_INI" 4 == 1
+				CallAfterFrames 0 ({} => SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)) 1
+			endif
+			if Goo1.AuxVarGetFlt "*PUI_INI" 7 == 1
+				CallAfterFrames 0 ({} => SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)) 1
+			endif
+		endif
+
+	endif
+
+	sv_Destruct sTileName
+
+end

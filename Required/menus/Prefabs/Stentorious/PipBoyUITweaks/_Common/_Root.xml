@@ -1,0 +1,12 @@
+<_PUI+Init> 0 </_PUI+Init>
+<_PUI+Pulse> 0 </_PUI+Pulse>
+
+<!-- Colorful Condition Meters -->
+<_PUI+ColorCND> <copy src="sibling(HUDMainMenu)" trait="_PUI+ColorCND"/> </_PUI+ColorCND>
+<_PUI+CND1> <copy src="sibling(InventoryMenu)" trait="_PUI+CND1" /> </_PUI+CND1>
+<_PUI+CND2> <copy src="sibling(InventoryMenu)" trait="_PUI+CND2" /> </_PUI+CND2>
+
+<!-- ySI Button Icons -->
+<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
+<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>
+<_PUI+ySIFont> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIFont" /> </_PUI+ySIFont>

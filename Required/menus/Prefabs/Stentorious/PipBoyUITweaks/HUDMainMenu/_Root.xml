@@ -43,3 +43,4 @@
 	<copy src="me()" trait="_PUI+UIMod" />
 	<copy src="me()" trait="_PUI+ySIOffset_" />
 </_PUI+ySIOffset>
+<_PUI+ySIFont> 2 </_PUI+ySIFont>

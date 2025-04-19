@@ -6,9 +6,21 @@
 		<sub src="me()" trait="height" />
 		<sub> 8 </sub>
 	</x>
-	<y> 9.5 </y>
+	<y>
+		<copy src="sibling(CI_TitleText)" trait="y"/>
+		<add src="io()" trait="_PUI+ySIOffset" />
+	</y>
 	<width> <copy src="me()" trait="height" /> </width>
-	<height> <copy src="sibling(CI_TitleText)" trait="height" /> </height>
+	<height>
+		<copy src="sibling(CI_TitleText)" trait="height" />
+		<mul>
+			<copy> 1 </copy>
+			<sub>
+				<copy> 0.1 </copy>
+				<onlyif src="globals" trait="_VUIE"/>
+			</sub>
+		</mul>
+	</height>
 	<zoom> &scale; </zoom>
 	<systemcolor>
 		<copy> 0 </copy>

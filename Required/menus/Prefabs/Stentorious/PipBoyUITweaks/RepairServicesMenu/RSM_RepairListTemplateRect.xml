@@ -1,0 +1,110 @@
+<_ItemHealth>
+	<copy src="child(RSM_Template_Meter)" trait="width" />
+	<div src="child(RSM_Template_MeterBackground)" trait="width" />
+</_ItemHealth>
+
+<rect name="RSM_Template_Meter_Clone">
+
+	<visible> <not src="sibling(RSM_Template_Meter)" trait="visible" /> </visible>
+	<filename> <copy src="sibling(RSM_Template_Meter)" trait="filename" /> </filename>
+	<locus> 1 </locus>
+	<texatlas> <copy src="sibling(RSM_Template_Meter)" trait="texatlas" /> </texatlas>
+	<brightness> <copy src="sibling(RSM_Template_Meter)" trait="brightness" /> </brightness>
+	<x> <copy src="sibling(RSM_Template_Meter)" trait="x" /> </x>
+	<y> <copy src="sibling(RSM_Template_Meter)" trait="y" /> </y>
+	<height> <copy src="sibling(RSM_Template_Meter)" trait="height" /> </height>
+	<width> <copy src="sibling(RSM_Template_Meter)" trait="width" /> </width>
+	<depth> 2 </depth>
+	<_alpha>
+		<copy src="sibling(RSM_Template_Meter)" trait="alpha" />
+		<mul>
+			<copy> 1 </copy>
+			<sub>
+				<copy src="io()" trait="_PUI+Pulse" />
+				<onlyif>
+					<copy src="parent()" trait="_ItemHealth" />
+					<lte src="io()" trait="_PUI+CND2" />
+					<and>
+						<copy src="io()" trait="_PUI+ColorCND" />
+						<eq> 2 </eq>
+					</and>
+					<or>
+						<copy src="parent()" trait="_ItemHealth" />
+						<lte> 0.2501 </lte>
+						<and>
+							<copy src="io()" trait="_PUI+ColorCND" />
+							<eq> 1 </eq>
+						</and>
+					</or>
+				</onlyif>
+			</sub>
+		</mul>
+	</_alpha>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add>
+			<copy> 2 </copy>
+			<sub>
+				<copy> 1 </copy>
+				<onlyif>
+					<copy src="parent()" trait="_ItemHealth" />
+					<gt> 0.2501 </gt>
+					<and>
+						<copy src="io()" trait="_PUI+ColorCND" />
+						<eq> 1 </eq>
+					</and>
+					<or>
+						<copy src="io()" trait="_PUI+ColorCND" />
+						<eq> 0 </eq>
+					</or>
+				</onlyif>
+			</sub>
+			<onlyif>
+				<copy src="io()" trait="_PUI+ColorCND" />
+				<lt> 2 </lt>
+			</onlyif>
+		</add>
+	</systemcolor>
+	<red>
+		<copy> 1 </copy>
+		<sub src="parent()" trait="_ItemHealth" />
+		<div>
+			<copy> 1 </copy>
+			<sub src="io()" trait="_PUI+CND1" />
+		</div>
+		<mul> 255 </mul>
+		<min> 255 </min>
+	</red>
+	<green>
+		<copy src="parent()" trait="_ItemHealth" />
+		<sub src="io()" trait="_PUI+CND2" />
+		<div>
+			<copy src="io()" trait="_PUI+CND1" />
+			<sub src="io()" trait="_PUI+CND2" />
+		</div>
+		<mul> 255 </mul>
+		<max> 0 </max>
+		<min> 255 </min>
+	</green>
+	<blue> 0 </blue>
+
+	<image name="Meter">
+
+		<clips> 1 </clips>
+		<filename> <copy src="parent()" trait="filename" /> </filename>
+		<texatlas> <copy src="parent()" trait="texatlas" /> </texatlas>
+		<brightness> <copy src="parent()" trait="brightness" /> </brightness>
+		<x> 0 </x>
+		<y> 0 </y>
+		<height> <copy src="parent()" trait="height" /> </height>
+		<width> <copy src="parent()" trait="width" /> </width>
+		<depth> 2 </depth>
+		<alpha> <copy src="parent()" trait="_alpha" /> </alpha>
+		<systemcolor> <copy src="parent()" trait="systemcolor" /></systemcolor>
+		<red> <copy src="parent()" trait="red" /></red>
+		<green> <copy src="parent()" trait="green" /></green>
+		<blue> 0 </blue>
+
+	</image>
+
+</rect>

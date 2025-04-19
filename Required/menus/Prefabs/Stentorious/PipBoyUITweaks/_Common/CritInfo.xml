@@ -1,0 +1,23 @@
+<rect name="CritInfo">
+	<include src="card_info.xml" />
+	<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
+	<x> <copy src="sibling(WeightInfo)" trait="x" /> </x>
+	<y>
+		<copy src="sibling(CritDAMInfo)" trait="y" />
+		<sub>
+			<copy src="sibling(CritDAMInfo)" trait="height" />
+			<onlyif>
+				<copy src="sibling(ValWGInfo)" trait="visible" />
+				<and>
+					<copy src="sibling(CritDAMInfo)" trait="y" />
+					<eq src="sibling(ValWGInfo)" trait="y" />
+				</and>
+			</onlyif>
+		</sub>
+	</y>
+	<width> <copy src="parent()" trait="user0" /> </width>
+	<height> <copy src="parent()" trait="user1" /> </height>
+	<font> <copy src="parent()" trait="font" /> </font>
+	<_title> CHC </_title>
+	<_value> 0.00% </_value>
+</rect>

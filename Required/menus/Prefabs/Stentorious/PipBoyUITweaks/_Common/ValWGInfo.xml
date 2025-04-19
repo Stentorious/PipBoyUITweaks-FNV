@@ -1,0 +1,10 @@
+<rect name="ValWGInfo">
+	<include src="card_info.xml"/>
+	<visible> <copy src="sibling(ValueInfo)" trait="visible"/> </visible>
+	<x> <copy src="sibling(WeightInfo)" trait="x"/> </x>
+	<y> <copy src="sibling(StrengthReqInfo)" trait="y" /> </y>
+	<width> <copy src="sibling(WeightInfo)" trait="width"/> </width>
+	<height> <copy src="sibling(WeightInfo)" trait="height"/> </height>
+	<font> <copy src="parent()" trait="font" /> </font>
+	<_Title> V/W </_Title>
+</rect>

@@ -1,0 +1,36 @@
+<text name="CM_Items_CapsLabel_Text">
+	<visible> 1 </visible>
+	<alpha> <copy src="sibling(CM_Items_CapsLabel)" trait="alpha" /> </alpha>
+	<x> <copy src="sibling(CM_Items_CapsLabel)" trait="x"/> </x>
+	<y> <copy src="sibling(CM_Items_CapsLabel)" trait="y"/> </y>
+	<systemcolor> 1 </systemcolor>
+	<font> <copy src="io()" trait="_PUI+ySIFont" /> </font>
+	<justify> &right; </justify>
+</text>
+
+<image name="CM_Items_CapsLabel_Icon">
+	<visible> 1 </visible>
+	<alpha> 255 </alpha>
+	<x>
+		<copy src="sibling(CM_Items_CapsLabel_Text)" trait="x" />
+		<sub src="sibling(CM_Items_CapsLabel_Text)" trait="width" />
+		<sub src="me()" trait="width" />
+		<sub> 10 </sub>
+	</x>
+	<y>
+		<copy src="sibling(CM_Items_CapsLabel_Text)" trait="y"/>
+		<add src="io()" trait="_PUI+ySIOffset" />
+	</y>
+	<width> <copy src="me()" trait="height" /> </width>
+	<height> <copy src="io()" trait="_PUI+ySIWidth" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add src="io()" trait="systemcolor" />
+		<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> interface\icons\Apparel_Other_Backpack.dds </filename>
+</image>

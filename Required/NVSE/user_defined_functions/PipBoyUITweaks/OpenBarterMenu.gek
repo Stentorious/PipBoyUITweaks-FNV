@@ -1,0 +1,99 @@
+int	iMenuID
+float fTemp
+
+begin Function {iMenuID}
+
+	if eval GetUIFloatAlt "BarterMenu\_PUI+Init"
+		Return
+	endif
+	SetUIFloatAlt "BarterMenu\_PUI+Init" 1
+
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 15 == 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritInfo\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritDAMInfo\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\SkillInfo\visible" 0
+		return
+	endif
+
+	; Cache equipped item stats and update color
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
+		Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
+	endif
+
+	; Enable critical chance ItemInfo component
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritInfo\CI_ValueText\wrapwidth" 150
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\StrengthReqInfo\_VUI+LabelRight" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\StrengthReqInfo\VUI+WeaponSkillBadge\y" -9999
+		fTemp = GetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritInfo\height"
+		ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_ItemData\y" fTemp
+		ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\y" fTemp
+		ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\CleanBackground\height" fTemp
+		ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\CleanBackground\y" (-fTemp)
+		if eval Goo1.AuxVarGetFlt "*_DarNifiedUINV.esp"
+			ModUIFloat "BarterMenu\y" -15
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_ItemData\y" -5
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\y" -10
+		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
+			ModUIFloat "BarterMenu\y" -10
+		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\y" 20
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\CleanBackground\height" 20
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\CleanBackground\y" -20
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_ItemData\x" (-((GetUIFloatAlt "HUDMainMenu\_PUI+ySIWidth") + 8))
+		endif
+	else
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritInfo\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\CritDAMInfo\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\SkillInfo\visible" 0
+	endif
+
+	; Enable colorful CND
+	if GetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" > 0
+		SetUIFloatGradual "BarterMenu\_PUI+Pulse" 0.8 0 1.5 2
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeterHUD.xml"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ConditionInfo\ConditionMeter\MeterImage\visible" 0
+	endif
+
+	; Enable ySI icons (Barter caps)
+	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo\ySIImage\visible" != -999
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ItemsRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\BarterMenu\BM_Items_CapsLabel_Clone.xml"
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ContainerRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\BarterMenu\BM_Container_CapsLabel_Clone.xml"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemsRect\BM_Items_CapsLabel\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ContainerRect\BM_Container_CapsLabel\visible" 0
+	endif
+
+	; Enable ySI icons (WeightInfo)
+	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\visible" != -999
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ItemData\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\WeightInfo\CI_TitleText\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\WeightInfo\ySIImage\x" (GetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\WeightInfo\CI_TitleText\x")
+		SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\WeightInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
+	endif
+
+	; Enable ySI icons (ValueInfo)
+	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\ySIImage\visible" != -999
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ValueInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ValueInfo\CI_TitleText\visible" 0
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ValueInfo\ySIImage\x" (GetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\ValueInfo\CI_TitleText\x")
+	endif
+
+	; Enable ySI icons (AmmoInfo)
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 14
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ItemData\AmmoInfo" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
+		ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_ItemData\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ItemData\AmmoInfo\ySIImage\width") + 8)
+	endif
+
+	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\ySIImage\visible" != -999
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonX" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		InjectUIXML "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonB" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonX\_ySIButton" 1
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonB\_ySIButton" 1
+		fTemp = GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\_horbuf"
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonX\_horbuf" fTemp
+		SetUIFloatAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonB\_horbuf" fTemp
+		SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonX\ySIImage\filename" "interface\icons\Misc_BottleCap.dds"
+		SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonB\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+	endif
+
+end

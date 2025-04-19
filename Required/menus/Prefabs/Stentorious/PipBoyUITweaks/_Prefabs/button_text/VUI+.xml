@@ -1,0 +1,40 @@
+<x>
+	<copy src="sibling(box)" trait="x"/>
+	<add>
+		<copy src="parent" trait="_horbuf"/>
+		<div> 2 </div>
+		<onlyif>
+			<copy src="parent" trait="justify"/>
+			<eq> &left; </eq>
+		</onlyif>
+	</add>
+	<add>
+		<copy src="parent" trait="width"/>
+		<div> 2 </div>
+		<onlyif>
+			<copy src="parent" trait="justify"/>
+			<eq> &center; </eq>
+		</onlyif>
+	</add>
+	<add>
+		<copy src="parent" trait="width"/>
+		<sub>
+			<copy src="parent" trait="_horbuf"/>
+			<div> 2 </div>
+		</sub>
+		<onlyif>
+			<copy src="parent" trait="justify"/>
+			<eq> &right; </eq>
+		</onlyif>
+	</add>
+	<add>
+		<copy src="me" trait="font" />
+		<copy src="globals" trait="_VUI+FontX_"/>
+	</add>
+	<add>
+		<copy src="io()" trait="_PUI+ySIWidth"/>
+		<add> 8 </add>
+		<div> 2 </div>
+		<onlyif src="parent()" trait="_ySIButton"/>
+	</add>
+</x>

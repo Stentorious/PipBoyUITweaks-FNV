@@ -92,7 +92,7 @@ begin Function {}
 
 	; Calculate critical chance
 	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
-		fWeapCrit = Floor (Player.GetAV CritChance)
+		fWeapCrit = Flr (Player.GetAV CritChance)
 		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 			fWeapCrit /= fWeapRoF
 		endif

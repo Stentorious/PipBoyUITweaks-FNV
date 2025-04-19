@@ -99,7 +99,7 @@ begin Function {iMenuID}
 
 				; Update weapon critical chance
 				if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
-					fItemCrit = Floor (Player.GetAV CritChance)
+					fItemCrit = Flr (Player.GetAV CritChance)
 					if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 						fItemCrit /= fItemRoF
 					endif

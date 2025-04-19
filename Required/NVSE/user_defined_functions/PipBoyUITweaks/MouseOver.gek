@@ -72,7 +72,7 @@ begin Function {iMenuID}
 				fItemRoF = rItem.GetFireRate
 				iModSlot = 0
 				while 4 > (iModSlot += 1)
-					if GetBit iModMask (iModSlot - 1) == 1
+					if eval GetBit iModMask (iModSlot - 1)
 						iModType = rItem.GetWeaponItemModEffect iModSlot
 						if eval iModType == 8
 							fItemRoF *= (1 + (rItem.GetWeaponItemModValue1 iModSlot))
@@ -98,7 +98,7 @@ begin Function {iMenuID}
 				SetUIStringAlt (sTilePath + "CritDAMInfo\_value") (sTemp)
 
 				; Update weapon critical chance
-				if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+				if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
 					fItemCrit = Flr (Player.GetAV CritChance)
 					if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 						fItemCrit /= fItemRoF
@@ -110,7 +110,7 @@ begin Function {iMenuID}
 			endif
 
 			; Extended stat comparison
-			if Goo1.AuxVarGetFlt "*PUI_INI" 0 == 1
+			if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
 
 				; Get weapon stats
 				if iType == 40
@@ -161,7 +161,7 @@ begin Function {iMenuID}
 				endif
 
 				; Update WG/VAl on valid stat comparison
-				if iComp == 1
+				if eval iComp
 
 					; Update WG
 					if eval fEquipWg == fItemWg
@@ -256,7 +256,7 @@ begin Function {iMenuID}
 			endif
 
 			; Set AmmoInfo icon
-			if Goo1.AuxVarGetFlt "*PUI_INI" 14 == 1
+			if eval Goo1.AuxVarGetFlt "*PUI_INI" 14
 
 				; Set armor class icon if armor
 				if eval (iType = GetArmorClass (rItem.GBO))
@@ -287,7 +287,7 @@ begin Function {iMenuID}
 			endif
 
 		; Reset color if selecting non weapon/armor item
-		elseif Goo1.AuxVarGetFlt "*PUI_FLAG" == 1
+		elseif eval Goo1.AuxVarGetFlt "*PUI_FLAG"
 			Goo1.AuxVarSetFlt "*PUI_FLAG" 0
 			SetUIFloatAlt (sTilePath + "WeightInfo\CI_ValueText\systemcolor") iSystemColor
 			SetUIFloatAlt (sTilePath + "ValueInfo\CI_ValueText\systemcolor") iSystemColor

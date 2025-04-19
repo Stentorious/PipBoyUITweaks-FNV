@@ -32,7 +32,7 @@ begin Function {iMenuID}
 			sModDesc = GetFormDescription (rWeap.GetWeaponItemMod iModSlot)
 			iModType = rWeap.GetWeaponItemModEffect iModSlot
 			fModStat = rWeap.GetWeaponItemModValue1 iModSlot
-			if Goo1.AuxVarGetFlt "*PUI_INI" 2 == 1
+			if eval Goo1.AuxVarGetFlt "*PUI_INI" 2
 				if iModType == 1
 					sModDesc = Sv_Construct "Increases damage (+%.0f)." fModStat
 				elseif iModType == 2

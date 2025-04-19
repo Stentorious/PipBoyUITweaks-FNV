@@ -63,7 +63,7 @@ begin Function {}
 		fWeapWg = Player.GetPerkModifier 73 fWeapWg
 	endif
 	; "Modify Light Items" perk modifier
-	if eval fWeapWg <= 2 && Player.GetPerkModifier 55 0 == 1
+	if eval fWeapWg <= 2 && Player.GetPerkModifier 55 0
 		fWeapWg /= 2
 	endif
 	; "bWeightlessItems" lStewieAl Tweak
@@ -91,7 +91,7 @@ begin Function {}
 	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapDmg 7
 
 	; Calculate critical chance
-	if Goo1.AuxVarGetFlt "*PUI_INI" 13 == 1
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
 		fWeapCrit = Flr (Player.GetAV CritChance)
 		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 			fWeapCrit /= fWeapRoF

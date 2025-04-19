@@ -1,5 +1,24 @@
 ; Pip-Boy UI Tweaks - Stentorious
 
+; Aux Var
+; "*PUI_INI"
+; 0 = Extended stat comparisons
+; 1 = Weapon mod menu enhanced
+; 2 = Weapon mod menu accurate descriptions
+; 3 = Colorful stat comparisons
+; 4 = Colorful encumbrance
+; 5 = Colorful skill effects
+; 6 = Colorful Special effects
+; 7 = Colorful hit points effects
+; 8 = Colorful paper doll
+; 9 = Colorful RAD
+; 10 = Colorful H2O
+; 11 = Colorful FOD
+; 12 = Colorful SLP
+; 13 = Crit Info item card
+; 14 = ySI ammo icon
+; 15 = Expanded menu support
+
 ; On game restart
 if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 	Goo1.AuxVarSetFlt "*PUI_Init" 1 0
@@ -65,7 +84,7 @@ if Goo1.AuxVarGetFlt "*PUI_Init" 0 != 1
 		endif
 
 		; "bWeightlessItems"
-		if eval (StewVal "bWeightlessItems:Tweaks") == 1
+		if eval StewVal "bWeightlessItems:Tweaks"
 			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" 1 0
 			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (StewVal "bAid:Weightless Items")) 1
 			Goo1.AuxVarSetFlt "*_Tweaks:bWeightlessItems" (1 - (StewVal "bAmmo:Weightless Items")) 2

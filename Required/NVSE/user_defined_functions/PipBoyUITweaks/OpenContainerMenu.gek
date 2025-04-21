@@ -36,6 +36,7 @@ begin Function {iMenuID}
 			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" -10
 		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
 			ModUIFloat "ContainerMenu\y" -10
+			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_Background\height" fTemp
 		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
 			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" 20
 			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\height" 20

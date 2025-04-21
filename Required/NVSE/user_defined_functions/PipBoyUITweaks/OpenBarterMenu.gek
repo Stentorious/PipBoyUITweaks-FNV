@@ -36,6 +36,7 @@ begin Function {iMenuID}
 			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\y" -10
 		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
 			ModUIFloat "BarterMenu\y" -10
+			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_Background\height" fTemp
 		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
 			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\y" 20
 			ModUIFloat "BarterMenu\NOGLOW_BRANCH\BM_BottomBracket\CleanBackground\height" 20

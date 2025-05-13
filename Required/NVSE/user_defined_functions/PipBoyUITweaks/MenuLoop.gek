@@ -4,9 +4,7 @@ string_var sTemp
 
 begin Function {}
 
-	iMenuMode = GetActiveMenuMode
-
-	if eval iMenuMode == 1008
+	if eval (iMenuMode = GetActiveMenuMode) == 1008
 		iLength = Sv_Length (GetStringSetting "sInventoryWeight") + 3
 		sTemp = GetUIString "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel\string"
 		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel_Text\string" (sTemp[iLength:-1])

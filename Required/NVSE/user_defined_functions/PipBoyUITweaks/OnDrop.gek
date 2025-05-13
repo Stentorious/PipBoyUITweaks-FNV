@@ -5,37 +5,37 @@ ref	rDropped
 begin Function {rDropper, rDropped}
 
 	; Update inventory tweaks on item drop
-	if eval GetActiveMenuMode == 1002 || GetActiveMenuMode == 1016
+	if eval GetActiveMenuMode != 1002 && GetActiveMenuMode != 1016
+		return
+	endif
 
-		if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_Tabline\_CurrentTab" < 2
+	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_Tabline\_CurrentTab" < 2
 
-			; Cache equipped item stats and update color
-			iType = rDropped.GetType
-			if eval iType == 24 || iType == 40
-				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\systemcolor" 4
-				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\systemcolor" 4
-				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" 4
-				SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" 4
-				if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
-					Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
-				endif
-				if eval GetController
-					CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1002
-				endif
+		; Cache equipped item stats and update color
+		iType = rDropped.GetType
+		if eval iType == 24 || iType == 40
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DAMInfo\CI_ValueText\systemcolor" 4
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DPSInfo\CI_ValueText\systemcolor" 4
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageResistInfo\CI_ValueText\systemcolor" 4
+			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" 4
+			if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
+				Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
 			endif
-
-			; Update hit points color
-			if eval  Goo1.AuxVarGetFlt "*PUI_INI" 7
-				SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
+			if eval GetController
+				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1002
 			endif
-
 		endif
 
-		; Update weight color
-		if eval Goo1.AuxVarGetFlt "*PUI_INI" 4
-			SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)
+		; Update hit points color
+		if eval  Goo1.AuxVarGetFlt "*PUI_INI" 7
+			SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
 		endif
 
+	endif
+
+	; Update weight color
+	if eval Goo1.AuxVarGetFlt "*PUI_INI" 4
+		SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)
 	endif
 
 end

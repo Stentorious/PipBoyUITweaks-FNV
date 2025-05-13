@@ -31,12 +31,9 @@
 <_PUI+SLPC> &pipboy; </_PUI+SLPC>
 <_PUI+RADC> &pipboy; </_PUI+RADC>
 <_PUI+H2OR>
-	<copy> 0 </copy>
-	<add>
-		<copy src="io()" trait="_PUI+H2O" />
-		<div src="io()" trait="_PUI+H2O1" />
-		<mul> 255 </mul>
-	</add>
+	<copy src="io()" trait="_PUI+H2O" />
+	<div src="io()" trait="_PUI+H2O1" />
+	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
 </_PUI+H2OR>
@@ -79,12 +76,9 @@
 	</mul>
 </_PUI+H2OA>
 <_PUI+FODR>
-	<copy> 0 </copy>
-	<add>
-		<copy src="io()" trait="_PUI+FOD" />
-		<div src="io()" trait="_PUI+FOD1" />
-		<mul> 255 </mul>
-	</add>
+	<copy src="io()" trait="_PUI+FOD" />
+	<div src="io()" trait="_PUI+FOD1" />
+	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
 </_PUI+FODR>
@@ -127,12 +121,9 @@
 	</mul>
 </_PUI+FODA>
 <_PUI+SLPR>
-	<copy> 0 </copy>
-	<add>
-		<copy src="io()" trait="_PUI+SLP" />
-		<div src="io()" trait="_PUI+SLP1" />
-		<mul> 255 </mul>
-	</add>
+	<copy src="io()" trait="_PUI+SLP" />
+	<div src="io()" trait="_PUI+SLP1" />
+	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
 </_PUI+SLPR>
@@ -175,12 +166,9 @@
 	</mul>
 </_PUI+SLPA>
 <_PUI+RADR>
-	<copy> 0 </copy>
-	<add>
-		<copy src="io()" trait="_PUI+RAD" />
-		<div src="io()" trait="_PUI+RAD1" />
-		<mul> 255 </mul>
-	</add>
+	<copy src="io()" trait="_PUI+RAD" />
+	<div src="io()" trait="_PUI+RAD1" />
+	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
 </_PUI+RADR>

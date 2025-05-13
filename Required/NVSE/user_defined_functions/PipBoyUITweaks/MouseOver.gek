@@ -30,13 +30,13 @@ begin Function {iMenuID}
 	iType = GetActiveUIComponentID
 	if eval iMenuID == 1002 && iType == 29
 		sTilePath = "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\"
-		iSystemColor = 4
+		iSystemColorTemp = iSystemColor = 4
 	elseif eval iMenuID == 1008 && iType == 20
 		sTilePath = "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\"
-		iSystemColor = 1
+		iSystemColorTemp = iSystemColor = 1
 	elseif eval iMenuID == 1053 && iType == 23
 		sTilePath = "BarterMenu\NOGLOW_BRANCH\BM_ItemData\"
-		iSystemColor = 1
+		iSystemColorTemp = iSystemColor = 1
 	else
 		return
 	endif

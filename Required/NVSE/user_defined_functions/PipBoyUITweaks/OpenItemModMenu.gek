@@ -26,6 +26,9 @@ begin Function {iMenuID}
 	Call (CompileScript "PipBoyUITweaks\GetModStats.gek")
 
 	; Rebuild weapon mod descriptions to accurately reflate their affect on the weapon
+	Goo1.AuxVarSetStr "*PUI_WMDesc" (sModDesc) 0
+	Goo1.AuxVarSetStr "*PUI_WMDesc" (sModDesc) 1
+	Goo1.AuxVarSetStr "*PUI_WMDesc" (sModDesc) 2
 	iModSlot = 0
 	while 4 > (iModSlot += 1)
 		if eval IsFormValid (rWeap.GetWeaponItemMod iModSlot)

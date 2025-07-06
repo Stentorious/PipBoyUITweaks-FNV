@@ -26,9 +26,8 @@ endif
 Goo1.AuxVarSetFlt "*PUI_Init" 1
 
 ; Check for requirements
-if GetNVSEVersion > 5 && GetNVSERevision > 2 && GetNVSEBeta > 9
-else
-	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall xNVSE 6.3.10+."
+if eval GetNVSEVersion < 6 || (GetNVSEVersion == 6 && GetNVSERevision < 4)
+	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall xNVSE 6.4.0+."
 	return
 endif
 if GetPluginVersion "JohnnyGuitarNVSE" < 508

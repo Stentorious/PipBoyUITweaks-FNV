@@ -8,6 +8,8 @@ begin Function {iMenuID}
 	endif
 	SetUIFloatAlt "ContainerMenu\_PUI+Init" 1
 
+	Goo1.AuxVarErase "*PUI_InvRef"
+
 	if eval Goo1.AuxVarGetFlt "*PUI_INI" 15 == 0
 		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\visible" 0
 		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritDAMInfo\visible" 0
@@ -87,6 +89,7 @@ begin Function {iMenuID}
 		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\AmmoInfo\ySIImage\width") + 8)
 	endif
 
+	; Enable ySI icons (Buttons)
 	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\ySIImage\visible" != -999
 		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
 		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"

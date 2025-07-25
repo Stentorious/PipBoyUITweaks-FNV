@@ -9,7 +9,7 @@ begin Function {iMenuID, iTileID, sTileName}
 	sv_Destruct sTileName
 
 	; Update tweaks on item select
-	if IsFormValid (rItem = GetSelectedItemRef) == 0
+	if IsReference (rItem = GetSelectedItemRef) == 0
 		return
 	endif
 

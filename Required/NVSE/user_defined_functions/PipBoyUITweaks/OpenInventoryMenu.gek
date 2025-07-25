@@ -2,6 +2,8 @@ int	iMenuID
 
 begin Function {iMenuID}
 
+	Goo1.AuxVarErase "*PUI_InvRef"
+
 	; Cache equipped item stats and update color
 	if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
 		Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")

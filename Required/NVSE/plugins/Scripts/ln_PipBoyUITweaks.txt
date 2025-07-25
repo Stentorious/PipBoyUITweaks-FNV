@@ -51,23 +51,24 @@ if eval GetPluginVersion "yUI" >= 140 && FileExists "menus\ySI\ySI.xml"
 endif
 
 ; Load INI config
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Inventory:bExtendStatComparisons" "Stentorious\PipBoyUITweaks.ini") 0
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "WeaponModMenu:bWeaponStatUI" "Stentorious\PipBoyUITweaks.ini") 1
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "WeaponModMenu:bAccurateDescriptions" "Stentorious\PipBoyUITweaks.ini") 2
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bItem" "Stentorious\PipBoyUITweaks.ini") 3
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bEncumbrance" "Stentorious\PipBoyUITweaks.ini") 4
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bSkills" "Stentorious\PipBoyUITweaks.ini") 5
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bSpecial" "Stentorious\PipBoyUITweaks.ini") 6
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bHitPoints" "Stentorious\PipBoyUITweaks.ini") 7
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bCrippledLimbs" "Stentorious\PipBoyUITweaks.ini") 8
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bRADMeter" "Stentorious\PipBoyUITweaks.ini") 9
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bH2OMeter" "Stentorious\PipBoyUITweaks.ini") 10
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bFODMeter" "Stentorious\PipBoyUITweaks.ini") 11
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Color:bSLPMeter" "Stentorious\PipBoyUITweaks.ini") 12
-Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "Inventory:bCritInfo" "Stentorious\PipBoyUITweaks.ini") 13
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Inventory:bExtendStatComparisons" "Stentorious\PipBoyUITweaks.ini" 1) 0
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "WeaponModMenu:bWeaponStatUI" "Stentorious\PipBoyUITweaks.ini" 1) 1
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "WeaponModMenu:bAccurateDescriptions" "Stentorious\PipBoyUITweaks.ini" 1) 2
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bItem" "Stentorious\PipBoyUITweaks.ini" 1) 3
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bEncumbrance" "Stentorious\PipBoyUITweaks.ini" 1) 4
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bSkills" "Stentorious\PipBoyUITweaks.ini" 1) 5
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bSpecial" "Stentorious\PipBoyUITweaks.ini" 1) 6
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bHitPoints" "Stentorious\PipBoyUITweaks.ini" 1) 7
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bCrippledLimbs" "Stentorious\PipBoyUITweaks.ini" 1) 8
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bRADMeter" "Stentorious\PipBoyUITweaks.ini" 1) 9
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bH2OMeter" "Stentorious\PipBoyUITweaks.ini" 1) 10
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bFODMeter" "Stentorious\PipBoyUITweaks.ini" 1) 11
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Color:bSLPMeter" "Stentorious\PipBoyUITweaks.ini" 1) 12
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Inventory:bCritInfo" "Stentorious\PipBoyUITweaks.ini" 1) 13
 Goo1.AuxVarSetFlt "*PUI_INI" 0 14
 Goo1.AuxVarSetFlt "*PUI_INI" 0 15
-SetUIFloatAlt "InventoryMenu\_PUI+EI" (GetINIFloat_Cached "Inventory:bShiftUnequippable" "Stentorious\PipBoyUITweaks.ini")
+Goo1.AuxVarSetFlt "*PUI_INI" (eval GetINIFloat_Cached "Inventory:bAddictionInfo" "Stentorious\PipBoyUITweaks.ini" 1) 16
+SetUIFloatAlt "InventoryMenu\_PUI+EI" (eval GetINIFloat_Cached "Inventory:bShiftUnequippable" "Stentorious\PipBoyUITweaks.ini" 1)
 
 ; lStewieAl's Tweaks Auxiliary-Variables
 if eval FileExists "nvse\plugins\scripts\ln_ItemCards.txt" == 0
@@ -110,7 +111,7 @@ SetUIFloatGradual "HUDMainMenu\_PUI+Pulse" 0.8 0 1.5 2
 SetUIFloatAlt "ItemModMenu\font" (GetUIFloatAlt "InventoryMenu\font")
 
 ; Enable lStewieAl's Tweaks search buttons
-if eval GetINIFloat_Cached "Inventory:bSearchIcon" "Stentorious\PipBoyUITweaks.ini"
+if eval GetINIFloat_Cached "Inventory:bSearchIcon" "Stentorious\PipBoyUITweaks.ini" 1
 	InjectUIXML "InventoryMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\InventoryMenu\SearchButton.xml"
 	InjectUIXML "MapMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\MapMenu\SearchButton.xml"
 	InjectUIXML "StatsMenu" "data\menus\prefabs\Stentorious\PipBoyUITweaks\StatsMenu\SearchButton.xml"
@@ -129,8 +130,8 @@ if eval GetINIFloat_Cached "Inventory:bSearchIcon" "Stentorious\PipBoyUITweaks.i
 endif
 
 ; Enable colorful CND
-if eval (GetINIFloat_Cached "Color:iCNDMeter" "Stentorious\PipBoyUITweaks.ini") > 0
-	SetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" (GetINIFloat_Cached "Color:iCNDMeter" "Stentorious\PipBoyUITweaks.ini")
+if eval (GetINIFloat_Cached "Color:iCNDMeter" "Stentorious\PipBoyUITweaks.ini" 1) > 0
+	SetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" (GetINIFloat_Cached "Color:iCNDMeter" "Stentorious\PipBoyUITweaks.ini" 1)
 	InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml"
 	InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml"
 	InjectUIXML "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml"
@@ -142,12 +143,12 @@ endif
 ; ySI - Sorting Icons support
 if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 
-	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "ySI:bAmmoInfoIcon" "Stentorious\PipBoyUITweaks.ini") 14
+	Goo1.AuxVarSetFlt "*PUI_INI" (GetINIFloat_Cached "ySI:bAmmoInfoIcon" "Stentorious\PipBoyUITweaks.ini" 1) 14
 
 	SetUIFloatAlt "HUDMainMenu\_PUI+ySIFont" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\button_text\font")
 
 	; Enable ySI icons (Buttons)
-	if eval GetINIFloat_Cached "ySI:bButtonIcons" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bButtonIcons" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_stimpak_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_drbag_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radx_button" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
@@ -228,7 +229,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	endif
 
 	; Enable ySI icons (Player weight)
-	if eval GetINIFloat_Cached "ySI:bWGIcon" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bWGIcon" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\CI_TitleText\visible" 0
 		SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
@@ -238,7 +239,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	endif
 
 	; Enable ySI icons (Player caps)
-	if eval GetINIFloat_Cached "ySI:bCapsIcon" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bCapsIcon" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo\CI_TitleText\visible" 0
 		if eval Goo1.AuxVarGetFlt "*_DarNifiedUINV.esp"
@@ -247,7 +248,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	endif
 
 	; Enable ySI icons (WeightInfo)
-	if eval GetINIFloat_Cached "ySI:bWeightInfoIcon" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bWeightInfoIcon" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_TitleText\visible" 0
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\x" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\CI_TitleText\x")
@@ -255,7 +256,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	endif
 
 	; Enable ySI icons (ValueInfo)
-	if eval GetINIFloat_Cached "ySI:bValueInfoIcon" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bValueInfoIcon" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_TitleText\visible" 0
 		SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\ySIImage\x" (GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\CI_TitleText\x")
@@ -268,7 +269,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	endif
 
 	; Enable ySI icons (Resistance)
-	if eval GetINIFloat_Cached "ySI:bResistanceIcons" "Stentorious\PipBoyUITweaks.ini"
+	if eval GetINIFloat_Cached "ySI:bResistanceIcons" "Stentorious\PipBoyUITweaks.ini" 1
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+EnergyResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml"
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+FireResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml"
 		InjectUIXML "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+PoisonResistLabel" "data\menus\prefabs\Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml"
@@ -341,7 +342,7 @@ if eval Goo1.AuxVarGetFlt "*PUI_INI" 1
 	if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 
 		; Enable ySI icons (WeightInfo)
-		if eval GetINIFloat_Cached "ySI:bWeightInfoIcon" "Stentorious\PipBoyUITweaks.ini"
+		if eval GetINIFloat_Cached "ySI:bWeightInfoIcon" "Stentorious\PipBoyUITweaks.ini" 1
 			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_TitleText\visible" 0
 			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
@@ -349,7 +350,7 @@ if eval Goo1.AuxVarGetFlt "*PUI_INI" 1
 		endif
 
 		; Enable ySI icons (ValueInfo)
-		if eval GetINIFloat_Cached "ySI:bValueInfoIcon" "Stentorious\PipBoyUITweaks.ini"
+		if eval GetINIFloat_Cached "ySI:bValueInfoIcon" "Stentorious\PipBoyUITweaks.ini" 1
 			InjectUIXML "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_TitleText\visible" 0
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\ySIImage\x" (GetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_TitleText\x")
@@ -442,7 +443,7 @@ if eval Goo1.AuxVarGetFlt "*PUI_INI" 12
 endif
 
 ; Enable weapon skill ItemInfo component
-if eval GetINIFloat_Cached "Inventory:bSkillInfo" "Stentorious\PipBoyUITweaks.ini"
+if eval GetINIFloat_Cached "Inventory:bSkillInfo" "Stentorious\PipBoyUITweaks.ini" 1
 	SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemIconBadge\x" -1000
 	SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_StrReq\x" -1000
 else
@@ -473,7 +474,7 @@ endif
 ; Expanded menu support
 SetOnMenuOpenEventHandler ({int iMenuID} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OpenContainerMenu.gek") 1 iMenuID) 1 1008
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenBarterMenu.gek") 1 1053
-if eval GetINIFloat_Cached "General:bExpandedMenuSupport" "Stentorious\PipBoyUITweaks.ini"
+if eval GetINIFloat_Cached "General:bExpandedMenuSupport" "Stentorious\PipBoyUITweaks.ini" 1
 	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenRepairServicesMenu.gek") 1 1058
 	SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1008
 	SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1008

@@ -21,8 +21,10 @@ Stentorious\PipBoyUITweaks\InventoryMenu\CritInfo.xml::InventoryMenu::IM_ItemInf
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\SkillInfo.xml::InventoryMenu::IM_ItemInfoRect
 true
+Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::InventoryMenu::IM_ItemInfoRect
+true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::InventoryMenu::IM_ItemInfoRect
-darnui
+#VUI+\hudcenteredtext.xml || darnui
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\IM_InventoryListTemplateRect.xml::InventoryMenu::IM_InventoryListTemplateRect
 true
@@ -99,6 +101,8 @@ Stentorious\PipBoyUITweaks\_Prefabs\ValueText.xml::@Prefabs\card_info.xml::CI_Va
 true
 Stentorious\PipBoyUITweaks\_Prefabs\StrengthReqInfo.xml::@Prefabs\item_stats_display.xml::StrengthReqInfo
 true
+Stentorious\PipBoyUITweaks\_Prefabs\VUI+VW.xml::@Prefabs\VUI+\settings.xml
+true
 
 ; RepairMenu
 Stentorious\PipBoyUITweaks\RepairMenu\_Root.xml::RepairMenu
@@ -134,8 +138,9 @@ Stentorious\PipBoyUITweaks\_Common\CritInfo.xml::ContainerMenu::CM_ItemData
 true
 Stentorious\PipBoyUITweaks\_Common\SkillInfo.xml::ContainerMenu::CM_ItemData
 true
+Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::ContainerMenu::CM_ItemData
+true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::ContainerMenu::CM_ItemData
-!#VUI+\hudcenteredtext.xml
 true
 
 ; BarterMenu
@@ -147,6 +152,7 @@ Stentorious\PipBoyUITweaks\_Common\CritInfo.xml::BarterMenu::BM_ItemData
 true
 Stentorious\PipBoyUITweaks\_Common\SkillInfo.xml::BarterMenu::BM_ItemData
 true
+Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::BarterMenu::BM_ItemData
+true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::BarterMenu::BM_ItemData
-!#VUI+\hudcenteredtext.xml
 true

@@ -1,5 +1,4 @@
 <rect name="SkillInfo">
-
 	<include src="card_info.xml" />
 	<visible> <copy src="IM_ItemIconBadge" trait="visible" /> </visible>
 	<x> <copy src="sibling(StrengthReqInfo)" trait="x" /> </x>
@@ -9,11 +8,9 @@
 	</y>
 	<width> <copy src="parent()" trait="user0" /> </width>
 	<height> <copy src="parent()" trait="user1" /> </height>
-	<brightness> <copy src="IM_StrReq" trait="brightness" /> </brightness>
 	<font> <copy src="parent()" trait="font" /> </font>
 	<_title></_title>
-	<_value> <copy src="IM_StrReq" trait="string" /> </_value>
-
+	<_value></_value>
 	<image name="Icon">
 		<visible> 1 </visible>
 		<alpha> <copy src="sibling(CI_ValueText)" trait="alpha" /> </alpha>
@@ -23,7 +20,6 @@
 		<height> <copy src="parent()" trait="height" /> </height>
 		<zoom> &scale; </zoom>
 		<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
-		<filename> <copy src="IM_ItemIconBadge" trait="filename" /> </filename>
+		<filename></filename>
 	</image>
-
 </rect>

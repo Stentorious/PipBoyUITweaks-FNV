@@ -8,7 +8,6 @@
 	</y>
 	<width> <copy src="parent()" trait="user0" /> </width>
 	<height> <copy src="parent()" trait="user1" /> </height>
-	<brightness> <copy src="IM_StrReq" trait="brightness" /> </brightness>
 	<font> <copy src="parent()" trait="font" /> </font>
 	<_title></_title>
 	<_value></_value>

@@ -1,3 +1,4 @@
+<!-- Scripting -->
 <_PUI+WG> 0 </_PUI+WG>
 <_PUI+EI> 0 </_PUI+EI>
 <_PUI+HP> <copy src="sibling(StatsMenu)" trait="_PUI+HP"/> </_PUI+HP>

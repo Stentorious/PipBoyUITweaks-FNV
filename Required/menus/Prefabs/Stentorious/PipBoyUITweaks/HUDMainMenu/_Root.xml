@@ -1,7 +1,8 @@
+<!-- Scripting -->
 <_PUI+Pulse> 0 </_PUI+Pulse>
 
-<!-- Colorful Condition Meters -->
-<_PUI+ColorCND> 0 </_PUI+ColorCND>
+<!-- Settings -->
+<_PUI+ColorCND> 0 </_PUI+ColorCND>	<!-- Colorful Condition Meters -->
 
 <!-- Installed UI Mod -->
 <_PUI+UIMod>

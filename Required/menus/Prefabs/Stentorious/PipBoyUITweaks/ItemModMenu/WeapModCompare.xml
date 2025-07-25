@@ -1,11 +1,9 @@
 <rect name="IMM_ModCompare">
-
 	<include src="item_stats_display.xml" />
 	<visible> 1 </visible>
 	<x> 0 </x>
 	<y> 0 </y>
 	<width> 0 </width>
-
 	<rect name="CritInfo">
 		<include src="card_info.xml" />
 		<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
@@ -16,5 +14,4 @@
 		<font> <copy src="parent()" trait="font" /> </font>
 		<_title> CHC </_title>
 	</rect>
-
 </rect>

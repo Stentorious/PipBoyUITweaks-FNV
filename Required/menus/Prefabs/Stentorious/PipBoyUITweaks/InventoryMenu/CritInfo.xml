@@ -1,8 +1,8 @@
 <rect name="CritInfo">
 	<include src="card_info.xml" />
 	<visible>
-		<copy src="sibling(StrengthReqInfo)" trait="visible" />
-		<and> <not src="IM_HotKeyWheel" trait="visible" /> </and>
+		<not src="IM_HotKeyWheel" trait="visible" />
+		<and src="sibling(StrengthReqInfo)" trait="visible" />
 	</visible>
 	<x>
 		<copy> 0 </copy>

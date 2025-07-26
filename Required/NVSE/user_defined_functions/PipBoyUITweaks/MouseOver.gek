@@ -1,4 +1,5 @@
 int	iMenuID
+
 int iType
 int iComp
 int iModSlot
@@ -302,7 +303,7 @@ begin Function {iMenuID}
 
 				sTemp = "--"
 				rItem = rItem.GBO
-				if Player.IsSpellTarget (GetAddictionEffect rItem) == 0
+				if eval IsFormValid (GetAddictionEffect rItem) && Player.IsSpellTarget (GetAddictionEffect rItem) == 0
 
 					iType = 0
 					iComp = GetNumEffects rItem

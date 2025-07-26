@@ -6,6 +6,7 @@ int iModMask
 int iModType
 int iSlotMask
 int iSystemColor
+int iSystemColorTemp
 float fEquipWg
 float fEquipVal
 float fEquipStr
@@ -21,8 +22,6 @@ ref rItem
 array_var aTemp
 string_var sTilePath
 string_var sUIPath
-
-int iSystemColorTemp
 string_var sTemp
 
 begin Function {iMenuID}
@@ -300,12 +299,34 @@ begin Function {iMenuID}
 
 			; Addiction chance
 			if eval Goo1.AuxVarGetFlt "*PUI_INI" 16
+
 				sTemp = "--"
-				if eval (fItemStat = GetAddictionChance (rItem.GBO)) > 0
-					sTemp = sv_Construct "%g%%" (Flr ((fItemStat * 100) + 0.5))
-					SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
+				rItem = rItem.GBO
+				if Player.IsSpellTarget (GetAddictionEffect rItem) == 0
+
+					iType = 0
+					iComp = GetNumEffects rItem
+					while (iComp -= 1) > -1
+						if eval GetNthEffectBase rItem iComp == UMON
+							iType = 1
+							break
+						endif
+					loop
+
+					if eval iType
+						fItemStat = (GetNthEffectTraitNumeric rItem iComp 0) * ((GetGS "fMagicMedicineSkillBase") + ((GetGS "fMagicMedicineSkillMult") * ((Player.GetAV Medicine) / 100)))
+						sTemp = sv_Construct "%g%%" (GetMinOf 100 (Flr (((Player.GetPerkModifier 23 (GetMaxOf 0 ((((Player.GetSpellUsageNum rItem) + fItemStat) - (GetGS "fAddictionUsageMonitorThreshold")) / 100.0))) * 100) + 0.5)))
+					else
+						if eval (fItemStat = (Player.GetPerkModifier 23 (GetAddictionChance rItem))) > 0
+							sTemp = sv_Construct "%g%%" (GetMinOf 100 (Flr ((fItemStat * 100) + 0.5)))
+						endif
+					endif
+
 				endif
+
 				SetUIStringAlt (sTilePath + "AddictionInfo\_value") "%z" sTemp
+				SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
+
 			endif
 
 		endif

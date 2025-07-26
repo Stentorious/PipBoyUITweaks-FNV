@@ -17,6 +17,9 @@ Stentorious\PipBoyUITweaks\InventoryMenu\ColorStatWG.xml::InventoryMenu::IM_Head
 true
 Stentorious\PipBoyUITweaks\_Common\ColorStatHP.xml::InventoryMenu::IM_Headline_PlayerHPInfo
 true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_ItemInfoRectVUI+.xml::InventoryMenu::IM_ItemInfoRect
+#VUI+\hudcenteredtext.xml
+true
 Stentorious\PipBoyUITweaks\InventoryMenu\CritInfo.xml::InventoryMenu::IM_ItemInfoRect
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\SkillInfo.xml::InventoryMenu::IM_ItemInfoRect

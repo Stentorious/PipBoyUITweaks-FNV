@@ -1,0 +1,4 @@
+<y>
+	<copy src="sibling(VUI+UnHardcodedItemIcon)" trait="y" />
+	<add> 370 </add>
+</y>

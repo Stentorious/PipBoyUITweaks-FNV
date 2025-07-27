@@ -5,7 +5,7 @@ string_var sTemp
 
 begin Function {}
 
-	if eval (iMenuMode = GetActiveMenuMode) == 1002 || iMenuMode == 1008 || iMenuMode == 1053
+	if eval (iMenuMode = GetActiveMenuMode) == 1002 || iMenuMode == 1008 || iMenuMode == 1053 || iMenuMode == 1058
 	else
 		Return
 	endif

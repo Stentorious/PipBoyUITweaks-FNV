@@ -20,6 +20,11 @@ string_var sUIPath
 
 begin Function {iMenuID}
 
+	; Get weapon being modded
+	if eval IsFormValid (rWeap = GetMenuTargetRef 1061) == 0
+		return
+	endif
+
 	; Get weapon stats
 	fWeapVal = Goo1.AuxVarGetFlt "*PUI_WMStats" 0
 	fWeapCndC = Goo1.AuxVarGetFlt "*PUI_WMStats" 1
@@ -63,7 +68,7 @@ begin Function {iMenuID}
 		return
 	endif
 
-	rWeap = GetMenuTargetRef 1061
+
 	iModSlot = 1
 	if rWeap.GetWeaponItemMod 2 == rMod
 		iModSlot = 2

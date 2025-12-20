@@ -293,7 +293,7 @@ begin Function {iMenuID}
 		endif
 
 		; Set AmmoInfo icon
-		if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+AmmoInfo" == 1
+		if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ySI_AmmoInfo" == 1
 
 			; Set armor class icon if armor
 			if eval (iType = GetArmorClass (rItem.GBO))

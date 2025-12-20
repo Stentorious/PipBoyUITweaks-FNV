@@ -1,0 +1,91 @@
+<_ColorMeter> 1 </_ColorMeter>
+
+<image name="MeterImage_Clone">
+	<visible> <not src="sibling(MeterImage)" trait="visible" /> </visible>
+	<alpha>
+		<copy src="io()" trait="_PipTweaks+Pulse" />
+		<onlyif>
+			<copy src="parent()" trait="_Value" />
+			<lte src="me()" trait="_CND2" />
+			<and>
+				<copy src="io()" trait="_PipTweaks+Color_CND" />
+				<eq> 2 </eq>
+			</and>
+			<or>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
+			</or>
+		</onlyif>
+		<add src="sibling(MeterImage)" trait="alpha" />
+		<max> 0 </max>
+	</alpha>
+	<depth> 2 </depth>
+	<x> <copy src="sibling(MeterImage)" trait="x" /> </x>
+	<y> <copy src="sibling(MeterImage)" trait="y" /> </y>
+	<width> <copy src="sibling(MeterImage)" trait="width" /> </width>
+	<height> <copy src="sibling(MeterImage)" trait="height" /> </height>
+	<clips> 1 </clips>
+	<cropx> -1 </cropx>
+	<systemcolor>
+		<copy> 1 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PipTweaks+Color_CND" />
+			<neq> 2 </neq>
+		</onlyif>
+		<add>
+			<copy> 1 </copy>
+			<onlyif>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
+			</onlyif>
+		</add>
+	</systemcolor>
+	<red>
+		<copy> 1 </copy>
+		<sub src="parent()" trait="_Value" />
+		<div>
+			<copy> 1 </copy>
+			<sub src="me()" trait="_CND1" />
+		</div>
+		<mul> 255 </mul>
+		<min> 255 </min>
+	</red>
+	<green>
+		<copy src="parent()" trait="_Value" />
+		<sub src="me()" trait="_CND2" />
+		<div>
+			<copy src="me()" trait="_CND1" />
+			<sub src="me()" trait="_CND2" />
+		</div>
+		<mul> 255 </mul>
+		<max> 0 </max>
+		<min> 255 </min>
+	</green>
+	<blue> 0 </blue>
+	<target> <copy src="sibling(MeterImage)" trait="target" /> </target>
+	<filename> <copy src="sibling(MeterImage)" trait="filename" /> </filename>
+
+	<_CND1>
+		<copy> 0.5 </copy>
+		<add>
+			<copy> 0.25 </copy>
+			<onlyif>
+				<copy src="io()" trait="_IC+M" />
+				<eq> 40 </eq>
+			</onlyif>
+		</add>
+	</_CND1>
+	<_CND2>
+		<copy src="me()" trait="_CND1" />
+		<div> 3 </div>
+	</_CND2>
+
+</image>

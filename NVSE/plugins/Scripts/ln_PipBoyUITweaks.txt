@@ -64,6 +64,20 @@ if eval GetPluginVersion "yUI" >= 140 && FileExists "menus\ySI\ySI.xml"
 	Goo1.AuxVarSetFlt "*_ySI-SortingIcons" 1
 endif
 
+; Check for mod updates
+if eval FileExists "NVSE\Plugins\Scripts\ln_ItemCards.txt" && FileExists "Menus\Prefabs\Stentorious\ItemCards\Main.xml" == 0
+	MessageBoxEx "Pip-Boy UI Tweaks detected outdated mod!%r%rInstall latest Item Cards."
+endif
+if eval FileExists "NVSE\Plugins\Scripts\ln_PipBoyModVendor.txt" && FileExists "Menus\Prefabs\Stentorious\PipBoyModVendor\CapsInfo.xml" == 0
+	MessageBoxEx "Pip-Boy UI Tweaks detected outdated mod!%r%rInstall latest Pip-Boy Weapon Mod Vendor."
+endif
+if eval FileExists "NVSE\Plugins\Scripts\ln_VendorRadio.txt" && FileExists "Menus\Prefabs\Stentorious\VendorRadio\Dummy.xml" == 0
+	MessageBoxEx "Pip-Boy UI Tweaks detected outdated mod!%r%rInstall latest Vendor Radio."
+endif
+if eval FileExists "NVSE\Plugins\Scripts\ln_PipBoyCasino.txt" && FileExists "Menus\Prefabs\Stentorious\PipBoyCasino\Dummy.xml" == 0
+	MessageBoxEx "Pip-Boy UI Tweaks detected outdated mod!%r%rInstall latest Pip-Boy Casino."
+endif
+
 ; Update player stats
 SetUIFloatAlt "HUDMainMenu/_PlrStat+RAD1" (GetHardcoreStageThreshold Rad1)
 SetUIFloatAlt "HUDMainMenu/_PlrStat+RAD2" (GetHardcoreStageThreshold Rad2)

@@ -6,11 +6,8 @@
 		<and src="io()" trait="_PipTweaks+CritInfo" />
 	</visible>
 	<x>
-		<copy> 0 </copy>
-		<add>
-			<copy src="sibling(StrengthReqInfo)" trait="x" />
-			<onlyifnot src="sibling(SkillInfo)" trait="visible" />
-		</add>
+		<copy src="sibling(StrengthReqInfo)" trait="x" />
+		<onlyifnot src="sibling(SkillInfo)" trait="visible" />
 		<add>
 			<copy src="sibling(DAMInfo)" trait="x" />
 			<onlyif src="sibling(SkillInfo)" trait="visible" />

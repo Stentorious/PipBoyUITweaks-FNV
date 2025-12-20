@@ -19,15 +19,13 @@
 	<visible> 1 </visible>
 	<depth> 6 </depth>
 	<x>
-		<copy src="me()" trait="_OffsetX" />
-		<add>
-			<copy> 35 </copy>
-			<sub>
-				<copy> 5 </copy>
-				<onlyif src="globals()" trait="_duiHUDOffset" />
-			</sub>
-			<onlyif src="io()" trait="_PipTweaks+SearchIcon" />
-		</add>
+		<copy> 35 </copy>
+		<sub>
+			<copy> 5 </copy>
+			<onlyif src="globals()" trait="_duiHUDOffset" />
+		</sub>
+		<onlyif src="io()" trait="_PipTweaks+SearchIcon" />
+		<add src="me()" trait="_OffsetX" />
 	</x>
 	<y> <copy src="me()" trait="_OffsetY" /> </y>
 	<systemcolor> &pipboy; </systemcolor>
@@ -43,21 +41,17 @@
 	<depth> 6 </depth>
 	<x>
 		<copy src="sibling(IM_SearchBar)" trait="x" />
-		<sub>
-			<copy src="me()" trait="height" />
-			<add> 6 </add>
-		</sub>
+		<sub src="me()" trait="height" />
+		<sub> 6 </sub>
 	</x>
 	<y>
 		<copy src="sibling(IM_SearchBar)" trait="y" />
 		<sub> 6 </sub>
 	</y>
 	<width>
-		<copy> 32 </copy>
-		<sub>
-			<copy> 8 </copy>
-			<onlyif src="globals()" trait="_duiHUDOffset" />
-		</sub>
+		<copy> -8 </copy>
+		<onlyif src="globals()" trait="_duiHUDOffset" />
+		<add> 32 </add>
 	</width>
 	<height> <copy src="me()" trait="width" /> </height>
 	<zoom> &scale; </zoom>
@@ -67,14 +61,8 @@
 		<copy src="me()" trait="_Tile_" />
 	</filename>
 	<_Status>
-		<copy> 0 </copy>
-		<add>
-			<copy> 1 </copy>
-			<onlyif>
-				<copy src="sibling(IM_SearchBar)" trait="width" />
-				<gt> 10 </gt>
-			</onlyif>
-		</add>
+		<copy src="sibling(IM_SearchBar)" trait="width" />
+		<gt> 10 </gt>
 	</_Status>
 	<_Tile_0> lStewieAl\search.dds </_Tile_0>
 	<_Tile_1> lStewieAl\searchStop.dds </_Tile_1>

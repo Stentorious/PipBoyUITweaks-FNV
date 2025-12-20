@@ -1,10 +1,8 @@
 <systemcolor>
-	<copy> 4 </copy>
-	<sub>
-		<copy> 2 </copy>
-		<onlyif>
-			<copy src="stats_player_torso_crippled" trait="visible" />
-			<and src="io()" trait="_PipTweaks+Color_Limb" />
-		</onlyif>
-	</sub>
+	<copy> -2 </copy>
+	<onlyif>
+		<copy src="stats_player_torso_crippled" trait="visible" />
+		<and src="io()" trait="_PipTweaks+Color_Limb" />
+	</onlyif>
+	<add> 4 </add>
 </systemcolor>

@@ -1,22 +1,16 @@
 <systemcolor>
-	<copy> &pipboy; </copy>
-	<sub>
-		<copy> 2 </copy>
-		<sub>
-			<copy> 1 </copy>
-			<onlyif src="me()" trait="_Modifier" />
-		</sub>
-		<onlyif src="io()" trait="_PipTweaks+Color_StatMod" />
-	</sub>
+	<copy> -1 </copy>
+	<onlyifnot src="me()" trait="_Modifier" />
+	<sub> 1 </sub>
+	<onlyif src="io()" trait="_PipTweaks+Color_StatMod" />
+	<add> 4 </add>
 </systemcolor>
 <red> 255 </red>
 <green> 255 </green>
 <blue> 255 </blue>
 <brightness>
-	<copy> 255 </copy>
-	<sub>
-		<copy> 100 </copy>
-		<onlyifnot src="io()" trait="_PipTweaks+Color_StatMod" />
-	</sub>
+	<copy> -100 </copy>
+	<onlyifnot src="io()" trait="_PipTweaks+Color_StatMod" />
+	<add> 255 </add>
 </brightness>
 <_Modifier> 0 </_Modifier>

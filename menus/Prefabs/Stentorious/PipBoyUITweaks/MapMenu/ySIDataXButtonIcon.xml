@@ -1,11 +1,9 @@
 <width>
-	<copy src="child(button_text)" trait="width"/>
+	<copy src="io()" trait="_PipTweaks+ySI_Width"/>
+	<add> 8 </add>
+	<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
+	<add src="child(button_text)" trait="width"/>
 	<add src="me()" trait="_horbuf"/>
-	<add>
-		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
-		<add> 8 </add>
-		<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
-	</add>
 	<onlyifnot src="me()" trait="_fixedwidth"/>
 	<add src="me()" trait="_fixedwidth"/>
 </width>
@@ -52,20 +50,16 @@
 			<onlyif>
 				<copy src="MM_Tabline" trait="_CurrentTab" />
 				<eq> 3 </eq>
-				<and src="Parent()" trait="_ShowingAllNotes" />
-				<and>
-					<not src="MM_Headline_ChallengeType" trait="visible" />
-				</and>
+				<and src="parent()" trait="_ShowingAllNotes" />
+				<and> <not src="MM_Headline_ChallengeType" trait="visible" /> </and>
 			</onlyif>
 		</add>
 		<add>
 			<copy> 2 </copy>
 			<onlyif>
-				<copy src="MM_Headline_ChallengeType" trait="visible" />
-				<and>
-					<copy src="MM_Tabline" trait="_CurrentTab" />
-					<eq> 3 </eq>
-				</and>
+				<copy src="MM_Tabline" trait="_CurrentTab" />
+				<eq> 3 </eq>
+				<and src="MM_Headline_ChallengeType" trait="visible" />
 			</onlyif>
 		</add>
 		<copy src="me()" trait="_Icon_" />

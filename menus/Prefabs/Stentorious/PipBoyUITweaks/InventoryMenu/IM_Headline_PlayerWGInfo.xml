@@ -11,14 +11,12 @@
 	<y> <copy src="sibling(CI_ValueText)" trait="y" /> </y>
 	<zoom> <copy src="sibling(CI_ValueText)" trait="zoom" /> </zoom>
 	<systemcolor>
-		<copy> 4 </copy>
-		<sub>
-			<copy> 2 </copy>
-			<onlyif>
-				<copy src="io()" trait="_PlrStat+Encumbrance" />
-				<and src="io()" trait="_PipTweaks+Color_WG" />
-			</onlyif>
-		</sub>
+		<copy> -2 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PlrStat+Encumbrance" />
+			<and src="io()" trait="_PipTweaks+Color_WG" />
+		</onlyif>
+		<add> 4 </add>
 	</systemcolor>
 	<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
 	<font> <copy src="sibling(CI_ValueText)" trait="font" /> </font>

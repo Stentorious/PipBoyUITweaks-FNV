@@ -1,12 +1,10 @@
 <_ySIButton> 1 </_ySIButton>
 <width>
-	<copy src="child(button_text)" trait="width"/>
+	<copy src="io()" trait="_PipTweaks+ySI_Width"/>
+	<add> 8 </add>
+	<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
+	<add src="child(button_text)" trait="width"/>
 	<add src="me()" trait="_horbuf"/>
-	<add>
-		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
-		<add> 8 </add>
-		<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
-	</add>
 	<onlyifnot src="me()" trait="_fixedwidth"/>
 	<add src="me()" trait="_fixedwidth"/>
 </width>

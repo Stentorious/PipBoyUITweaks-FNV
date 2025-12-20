@@ -13,15 +13,12 @@
 	<y> <copy src="sibling(CI_ValueText)" trait="y" /> </y>
 	<zoom> <copy src="sibling(CI_ValueText)" trait="zoom" /> </zoom>
 	<systemcolor>
-		<copy> 4 </copy>
-		<sub>
-			<copy> 1 </copy>
-			<onlyif>
-				<copy src="io()" trait="_PlrStat+ActionPointPer" />
-				<gt> 1.0001 </gt>
-				<and src="io()" trait="_PipTweaks+Color_AP" />
-			</onlyif>
-		</sub>
+		<copy> -1 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PlrStat+ActionPointPer" />
+			<gt> 1.0001 </gt>
+			<and src="io()" trait="_PipTweaks+Color_AP" />
+		</onlyif>
 		<sub>
 			<copy> 2 </copy>
 			<onlyif>
@@ -30,6 +27,7 @@
 				<and src="io()" trait="_PipTweaks+Color_AP" />
 			</onlyif>
 		</sub>
+		<add> 4 </add>
 	</systemcolor>
 	<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
 	<font> <copy src="sibling(CI_ValueText)" trait="font" /> </font>

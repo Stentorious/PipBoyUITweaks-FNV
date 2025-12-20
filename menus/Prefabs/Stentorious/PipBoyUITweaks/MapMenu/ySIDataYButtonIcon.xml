@@ -1,11 +1,9 @@
 <width>
-	<copy src="child(button_text)" trait="width"/>
+	<copy src="io()" trait="_PipTweaks+ySI_Width"/>
+	<add> 8 </add>
+	<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
+	<add src="child(button_text)" trait="width"/>
 	<add src="me()" trait="_horbuf"/>
-	<add>
-		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
-		<add> 8 </add>
-		<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
-	</add>
 	<onlyifnot src="me()" trait="_fixedwidth"/>
 	<add src="me()" trait="_fixedwidth"/>
 </width>
@@ -39,11 +37,7 @@
 	<blue> 255 </blue>
 	<filename> <copy src="me()" trait="_Icon" /> </filename>
 	<_Icon>
-		<copy> 0 </copy>
-		<add>
-			<copy> 1 </copy>
-			<onlyif src="MM_Headline_ChallengeType" trait="visible" />
-		</add>
+		<copy src="MM_Headline_ChallengeType" trait="visible" />
 		<copy src="me()" trait="_Icon_" />
 	</_Icon>
 	<_Icon_0> interface/icons/Misc_Special.dds </_Icon_0>

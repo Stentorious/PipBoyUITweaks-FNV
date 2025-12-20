@@ -1,3 +1,6 @@
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
 <!-- Config Settings -->
 <_PipTweaks+ShiftItems> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ShiftItems"/> </_PipTweaks+ShiftItems>
 <_PipTweaks+SkillInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SkillInfo"/> </_PipTweaks+SkillInfo>
@@ -26,9 +29,6 @@
 <_PlrStat+SLP> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP"/> </_PlrStat+SLP>
 <_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD"/> </_PlrStat+RAD>
 
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
-
 <!-- Settings -->
 <_Settings+Hardcore> <copy src="sibling(HUDMainMenu)" trait="_Settings+Hardcore"/> </_Settings+Hardcore>
 
@@ -42,11 +42,9 @@
 <!-- Colorful Condition Meters -->
 <_PipTweaks+TypeCND> <copy src="ConditionInfo" trait="user6" /> </_PipTweaks+TypeCND>
 <_PipTweaks+CND_1>
-	<copy> 0.5 </copy>
-	<add>
-		<copy> 0.25 </copy>
-		<onlyif src="io()" trait="_PipTweaks+TypeCND" />
-	</add>
+	<copy> -0.25 </copy>
+	<onlyif src="io()" trait="_PipTweaks+TypeCND" />
+	<add> 0.5 </add>
 </_PipTweaks+CND_1>
 <_PipTweaks+CND_2>
 	<copy src="io()" trait="_PipTweaks+CND_1" />

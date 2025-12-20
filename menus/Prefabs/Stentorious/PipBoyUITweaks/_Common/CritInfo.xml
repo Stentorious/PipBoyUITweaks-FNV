@@ -10,11 +10,9 @@
 		<sub>
 			<copy src="sibling(CritDAMInfo)" trait="height" />
 			<onlyif>
-				<copy src="sibling(ValWGInfo)" trait="visible" />
-				<and>
-					<copy src="sibling(CritDAMInfo)" trait="y" />
-					<eq src="sibling(ValWGInfo)" trait="y" />
-				</and>
+				<copy src="sibling(CritDAMInfo)" trait="y" />
+				<eq src="sibling(ValWGInfo)" trait="y" />
+				<and src="sibling(ValWGInfo)" trait="visible" />
 			</onlyif>
 		</sub>
 	</y>

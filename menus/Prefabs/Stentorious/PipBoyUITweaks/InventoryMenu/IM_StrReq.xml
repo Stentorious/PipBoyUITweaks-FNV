@@ -1,4 +1,4 @@
-<alpha>
-	<copy> 255 </copy>
-	<onlyifnot src="io()" trait="_PipTweaks+SkillInfo" />
-</alpha>
+<zoom>
+	<copy> 0.1 </copy>
+	<onlyif src="io()" trait="_PipTweaks+SkillInfo" />
+</zoom>

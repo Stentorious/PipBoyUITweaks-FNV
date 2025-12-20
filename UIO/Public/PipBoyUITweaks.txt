@@ -5,21 +5,40 @@ true
 ; MapMenu
 Stentorious\PipBoyUITweaks\MapMenu\_Root.xml::MapMenu
 true
+Stentorious\PipBoyUITweaks\MapMenu\ySIDataXButtonIcon.xml::MapMenu::MM_ButtonX
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\MapMenu\ySIDataAButtonIcon.xml::MapMenu::MM_ButtonA
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\MapMenu\ySIDataYButtonIcon.xml::MapMenu::MM_ButtonY
+#..\ySI\ySI.xml
 
 ; ItemModMenu
 Stentorious\PipBoyUITweaks\ItemModMenu\_Root.xml::ItemModMenu
 true
+Stentorious\PipBoyUITweaks\ItemModMenu\WeapModCompare.xml::ItemModMenu::IMM_MainRect
+true
+Stentorious\PipBoyUITweaks\ItemModMenu\IMM_ModDesc.xml::ItemModMenu::IMM_ModDesc
+true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::ItemModMenu::IMM_ItemModButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::ItemModMenu::IMM_CancelButton
+#..\ySI\ySI.xml
 
 ; InventoryMenu
 Stentorious\PipBoyUITweaks\InventoryMenu\_Root.xml::InventoryMenu
 true
-Stentorious\PipBoyUITweaks\InventoryMenu\ColorStatWG.xml::InventoryMenu::IM_Headline_PlayerWGInfo
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_PlayerWGInfo.xml::InventoryMenu::IM_Headline_PlayerWGInfo
 true
-Stentorious\PipBoyUITweaks\_Common\ColorStatHP.xml::InventoryMenu::IM_Headline_PlayerHPInfo
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_PlayerDRInfo.xml::InventoryMenu::IM_Headline_PlayerDRInfo
+true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_PlayerDTInfo.xml::InventoryMenu::IM_Headline_PlayerDTInfo
+true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_PlayerCapsInfo.xml::InventoryMenu::IM_Headline_PlayerCapsInfo
+true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_PlayerHPInfo.xml::InventoryMenu::IM_Headline_PlayerHPInfo
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\IM_ItemInfoRectVUI+.xml::InventoryMenu::IM_ItemInfoRect
-#VUI+\hudcenteredtext.xml
-true
+vui+
 Stentorious\PipBoyUITweaks\InventoryMenu\CritInfo.xml::InventoryMenu::IM_ItemInfoRect
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\SkillInfo.xml::InventoryMenu::IM_ItemInfoRect
@@ -27,20 +46,44 @@ true
 Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::InventoryMenu::IM_ItemInfoRect
 true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::InventoryMenu::IM_ItemInfoRect
-#VUI+\hudcenteredtext.xml || darnui
-true
+vui+ || darn
 Stentorious\PipBoyUITweaks\InventoryMenu\IM_InventoryListTemplateRect.xml::InventoryMenu::IM_InventoryListTemplateRect
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\IM_EquipItemMarker.xml::InventoryMenu::IM_EquipItemMarker
 true
 Stentorious\PipBoyUITweaks\InventoryMenu\IM_EquipItemMarkerVUI+.xml::InventoryMenu::IM_EquipItemMarker
-#VUI+\hudcenteredtext.xml
+vui+
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_HeadlineRect.xml::InventoryMenu::IM_HeadlineRect
 true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_StrReq.xml::InventoryMenu::IM_StrReq
+true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_ItemIconBadge.xml::InventoryMenu::IM_ItemIconBadge
+true
+Stentorious\PipBoyUITweaks\InventoryMenu\IM_Headline_h2.xml::InventoryMenu::IM_Headline_h2
+true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_EquipButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_DropButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_CancelButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_HotkeyButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_RepairButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::InventoryMenu::IM_ModButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\WGInfo.xml::InventoryMenu::IM_Headline_PlayerWGInfo
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\CapsInfo.xml::InventoryMenu::IM_Headline_PlayerCapsInfo
+#..\ySI\ySI.xml
 
 ; StatsMenu
 Stentorious\PipBoyUITweaks\StatsMenu\_Root.xml::StatsMenu
 true
 Stentorious\PipBoyUITweaks\_Common\ColorStatHP.xml::StatsMenu::stats_hp_info
+true
+Stentorious\PipBoyUITweaks\_Common\ColorStatAP.xml::StatsMenu::stats_ap_info
 true
 Stentorious\PipBoyUITweaks\StatsMenu\stats_rads.xml::StatsMenu::stats_player_rads
 true
@@ -86,51 +129,36 @@ Stentorious\PipBoyUITweaks\StatsMenu\stats_player_crippled.xml::StatsMenu::stats
 true
 Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_list_template_extra
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_head_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_head_pct
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_torso_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_torso_pct
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_leftarm_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_leftarm_pct
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_rightarm_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_rightarm_pct
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_leftleg_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_leftleg_pct
 true
-Stentorious\PipBoyUITweaks\StatsMenu\stats_list_template_extra.xml::StatsMenu::stats_player_rightleg_pct
+Stentorious\PipBoyUITweaks\StatsMenu\stats_player_limb_pct.xml::StatsMenu::stats_player_rightleg_pct
 true
-
-; Prefabs
-Stentorious\PipBoyUITweaks\_Prefabs\ValueText.xml::@Prefabs\card_info.xml::CI_ValueText
-true
-Stentorious\PipBoyUITweaks\_Prefabs\StrengthReqInfo.xml::@Prefabs\item_stats_display.xml::StrengthReqInfo
-true
-Stentorious\PipBoyUITweaks\_Prefabs\VUI+VW.xml::@Prefabs\VUI+\settings.xml
-true
-
-; RepairMenu
-Stentorious\PipBoyUITweaks\RepairMenu\_Root.xml::RepairMenu
-true
-Stentorious\PipBoyUITweaks\RepairMenu\RM_Template_Meter.xml::RepairMenu::RM_Template_Meter
-true
-
-; RepairServicesMenu
-Stentorious\PipBoyUITweaks\_Common\_Root.xml::RepairServicesMenu
-true
-Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_RepairListTemplateRect.xml::RepairServicesMenu::RSM_RepairListTemplateRect
-true
-Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_Template_Meter.xml::RepairServicesMenu::RSM_Template_Meter
-true
-
-; ySI - Button Icons
-Stentorious\PipBoyUITweaks\_Prefabs\button_text\Vanilla.xml::@Prefabs\text_box.xml::button_text
-!#VUI+\hudcenteredtext.xml && !darnui
-true
-Stentorious\PipBoyUITweaks\_Prefabs\button_text\VUI+.xml::@Prefabs\text_box.xml::button_text
-#VUI+\hudcenteredtext.xml
-true
-Stentorious\PipBoyUITweaks\_Prefabs\button_text\Darn.xml::@Prefabs\darn\text_box.xml::button_text
-darnui
-true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::StatsMenu::stats_stimpak_button
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::StatsMenu::stats_drbag_button
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::StatsMenu::stats_radx_button
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::StatsMenu::stats_radaway_button
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::StatsMenu::stats_healing_mode
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\StatsMenu\stats_rad_resist_label.xml::StatsMenu::stats_rad_resist_label
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml::StatsMenu::VUI+EnergyResistLabel
+vui+ && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml::StatsMenu::VUI+FireResistLabel
+vui+ && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\StatsMenu\ySIMiscIcon.xml::StatsMenu::VUI+PoisonResistLabel
+vui+ && #..\ySI\ySI.xml
 
 ; ContainerMenu
 Stentorious\PipBoyUITweaks\_Common\_Root.xml::ContainerMenu
@@ -145,6 +173,18 @@ Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::ContainerMenu::CM_ItemData
 true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::ContainerMenu::CM_ItemData
 true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::ContainerMenu::CM_TakeAllButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::ContainerMenu::CM_ExitButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ContainerMenu\CM_Items_CapsLabel_Clone.xml::ContainerMenu::CM_ItemsRect
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ContainerMenu\CM_Container_CapsLabel_Clone.xml::ContainerMenu::CM_ContainerRect
+vui+ && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::ContainerMenu::CM_Items_CapsLabel
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::ContainerMenu::_VUI+ContainerWeight
+#..\ySI\ySI.xml
 
 ; BarterMenu
 Stentorious\PipBoyUITweaks\_Common\_Root.xml::BarterMenu
@@ -159,3 +199,115 @@ Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::BarterMenu::BM_ItemData
 true
 Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::BarterMenu::BM_ItemData
 true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::BarterMenu::BM_ButtonX
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::BarterMenu::BM_ButtonB
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\BarterMenu\BM_Items_CapsLabel_Clone.xml::BarterMenu::BM_ItemsRect
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\BarterMenu\BM_Container_CapsLabel_Clone.xml::BarterMenu::BM_ContainerRect
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::BarterMenu::BM_Items_CapsLabel
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::BarterMenu::BM_Container_CapsLabel
+#..\ySI\ySI.xml
+
+; RepairMenu
+Stentorious\PipBoyUITweaks\RepairMenu\_Root.xml::RepairMenu
+true
+Stentorious\PipBoyUITweaks\RepairMenu\RM_Template_Meter.xml::RepairMenu::RM_Template_Meter
+true
+Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairMenu::RM_FixedItemHealthMeter
+true
+Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairMenu::RM_BrokenItemHealthMeter
+true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::RepairMenu::RM_RepairButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::RepairMenu::RM_CancelButton
+#..\ySI\ySI.xml
+
+; RepairServicesMenu
+Stentorious\PipBoyUITweaks\_Common\_Root.xml::RepairServicesMenu
+true
+Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_RepairListTemplateRect.xml::RepairServicesMenu::RSM_RepairListTemplateRect
+true
+Stentorious\PipBoyUITweaks\_Prefabs\MeterImage.xml::RepairServicesMenu::RSM_Template_Meter
+true
+Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairServicesMenu::RSM_FixedItemHealthMeter
+true
+Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairServicesMenu::RSM_BrokenItemHealthMeter
+true
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::RepairServicesMenu::RSM_RepairButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::RepairServicesMenu::RSM_RepairAllButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::RepairServicesMenu::RSM_DoneButton
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_CapsLabel_Clone.xml::RepairServicesMenu::RSM_MainRect
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::RepairServicesMenu::RSM_CapsLabel
+#..\ySI\ySI.xml
+
+; Prefabs
+Stentorious\PipBoyUITweaks\_Prefabs\ValueText.xml::@Prefabs\card_info.xml::CI_ValueText
+true
+Stentorious\PipBoyUITweaks\_Prefabs\MeterImage.xml::@Prefabs\meter.xml::MeterImage
+true
+Stentorious\PipBoyUITweaks\_Prefabs\StrengthReqInfo.xml::@Prefabs\item_stats_display.xml::StrengthReqInfo
+true
+Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::@Prefabs\item_stats_display.xml::ConditionMeter
+true
+Stentorious\PipBoyUITweaks\_Prefabs\VUI+VW.xml::@Prefabs\VUI+\settings.xml
+vui+
+
+; text_box.xml
+Stentorious\PipBoyUITweaks\_Prefabs\button_text\Vanilla.xml::@Prefabs\text_box.xml::button_text
+!vui+ && !darn && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_Prefabs\button_text\VUI+.xml::@Prefabs\text_box.xml::button_text
+vui+ && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_Prefabs\button_text\Darn.xml::@Prefabs\darn\text_box.xml::button_text
+darn && #..\ySI\ySI.xml
+
+; item_stats_display.xml
+Stentorious\PipBoyUITweaks\_ySI\WeightInfo.xml::@Prefabs\item_stats_display.xml::WeightInfo
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ValueInfo.xml::@Prefabs\item_stats_display.xml::ValueInfo
+#..\ySI\ySI.xml
+Stentorious\ySIAmmoIcon.xml::@Prefabs\item_stats_display.xml::AmmoInfo
+#..\ySI\ySI.xml
+
+; card_info.xml
+Stentorious\PipBoyUITweaks\_Prefabs\CI_TitleText\Vanilla.xml::@Prefabs\card_info.xml::CI_TitleText
+!vui+ && !darn && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_Prefabs\CI_TitleText\VUI+.xml::@Prefabs\card_info.xml::CI_TitleText
+vui+ && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_Prefabs\CI_TitleText\Darn.xml::@Prefabs\card_info.xml::CI_TitleText
+darn && #..\ySI\ySI.xml
+
+; ## Mod Support ##
+
+; Vendor Radio
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::@Prefabs\Stentorious\VendorRadio\Button.xml::MM_ButtonVend
+#Stentorious\VendorRadio\Button.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::@Prefabs\Stentorious\VendorRadio\ButtonDarn.xml::MM_ButtonVend
+#Stentorious\VendorRadio\ButtonDarn.xml && #..\ySI\ySI.xml
+
+; Pip-Boy Casino
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::@Prefabs\Stentorious\PipBoyCasino\Button.xml::MM_ButtonCasino
+#Stentorious\PipBoyCasino\Button.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ySIButtonIcon.xml::@Prefabs\Stentorious\PipBoyCasino\ButtonDarn.xml::MM_ButtonCasino
+#Stentorious\PipBoyCasino\ButtonDarn.xml && #..\ySI\ySI.xml
+
+; Pip-Boy Weapon Mod Vendor
+Stentorious\PipBoyUITweaks\_ySI\CapsInfo.xml::@Prefabs\Stentorious\PipBoyModVendor\CapsInfo.xml::IMM_PlayerCapsInfo
+#Stentorious\PipBoyModVendor\CapsInfo.xml && #..\ySI\ySI.xml
+
+; Item Cards
+Stentorious\PipBoyUITweaks\_ySI\WeightInfo.xml::@Prefabs\Stentorious\ItemCards.xml::WG
+#Stentorious\ItemCards.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ValueInfo.xml::@Prefabs\Stentorious\ItemCards.xml::VAL
+#Stentorious\ItemCards.xml && #..\ySI\ySI.xml
+Stentorious\ySIAmmoIcon.xml::@Prefabs\Stentorious\ItemCards.xml::AMMO
+#Stentorious\ItemCards.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\ColorCNDMeterIC.xml::@Prefabs\Stentorious\ItemCards.xml::ConditionMeter
+#Stentorious\ItemCards.xml && #..\ySI\ySI.xml

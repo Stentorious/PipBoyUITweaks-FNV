@@ -1,212 +1,229 @@
-<_PUI+Pulse> 0 </_PUI+Pulse>
-<_PUI+HP> 0 </_PUI+HP>
+<!-- Config Settings -->
+<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+<_PipTweaks+ySI_Resist> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Resist"/> </_PipTweaks+ySI_Resist>
+
+<!-- Config Settings -->
+<_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP"/> </_PipTweaks+Color_HP>
+<_PipTweaks+Color_AP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_AP"/> </_PipTweaks+Color_AP>
+<_PipTweaks+Color_RAD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_RAD"/> </_PipTweaks+Color_RAD>
+<_PipTweaks+Color_H2O> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_H2O"/> </_PipTweaks+Color_H2O>
+<_PipTweaks+Color_FOD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_FOD"/> </_PipTweaks+Color_FOD>
+<_PipTweaks+Color_SLP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_SLP"/> </_PipTweaks+Color_SLP>
+<_PipTweaks+Color_StatMod> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_StatMod"/> </_PipTweaks+Color_StatMod>
+<_PipTweaks+Color_Limb> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_Limb"/> </_PipTweaks+Color_Limb>
+
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
+<!-- Player Stats -->
+<_PlrStat+HealthPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+HealthPer"/> </_PlrStat+HealthPer>
+<_PlrStat+ActionPointPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+ActionPointPer"/> </_PlrStat+ActionPointPer>
+<_PlrStat+FOD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD"/> </_PlrStat+FOD>
+<_PlrStat+H2O> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O"/> </_PlrStat+H2O>
+<_PlrStat+SLP> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP"/> </_PlrStat+SLP>
+<_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD"/> </_PlrStat+RAD>
+<_PlrStat+H2O1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O1"/> </_PlrStat+H2O1>
+<_PlrStat+H2O2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O2"/> </_PlrStat+H2O2>
+<_PlrStat+H2O3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O3"/> </_PlrStat+H2O3>
+<_PlrStat+H2O4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O4"/> </_PlrStat+H2O4>
+<_PlrStat+H2O5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O5"/> </_PlrStat+H2O5>
+<_PlrStat+FOD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD1"/> </_PlrStat+FOD1>
+<_PlrStat+FOD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD2"/> </_PlrStat+FOD2>
+<_PlrStat+FOD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD3"/> </_PlrStat+FOD3>
+<_PlrStat+FOD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD4"/> </_PlrStat+FOD4>
+<_PlrStat+FOD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD5"/> </_PlrStat+FOD5>
+<_PlrStat+SLP1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP1"/> </_PlrStat+SLP1>
+<_PlrStat+SLP2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP2"/> </_PlrStat+SLP2>
+<_PlrStat+SLP3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP3"/> </_PlrStat+SLP3>
+<_PlrStat+SLP4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP4"/> </_PlrStat+SLP4>
+<_PlrStat+SLP5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP5"/> </_PlrStat+SLP5>
+<_PlrStat+RAD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD1"/> </_PlrStat+RAD1>
+<_PlrStat+RAD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD2"/> </_PlrStat+RAD2>
+<_PlrStat+RAD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD3"/> </_PlrStat+RAD3>
+<_PlrStat+RAD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD4"/> </_PlrStat+RAD4>
+<_PlrStat+RAD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD5"/> </_PlrStat+RAD5>
+
+<_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
 
 <!-- ySI Button Icons -->
-<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth"/> </_PUI+ySIWidth>
-<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset"/> </_PUI+ySIOffset>
+<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width"/> </_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset"/> </_PipTweaks+ySI_Offset>
+
+<!-- Colorful Crippled Limbs Meters -->
+<_PipTweaks+Limb_Alpha>
+	<copy src="io()" trait="_PipTweaks+Pulse" />
+	<onlyif src="io()" trait="_PipTweaks+Color_Limb" />
+	<add> 255 </add>
+</_PipTweaks+Limb_Alpha>
+<_PipTweaks+Limb_Systemcolor>
+	<copy> -2 </copy>
+	<onlyif src="io()" trait="_PipTweaks+Color_Limb" />
+	<add> 4 </add>
+</_PipTweaks+Limb_Systemcolor>
 
 <!-- Colorful Hardcore Meters -->
-<_PUI+H2O1> 0 </_PUI+H2O1>
-<_PUI+H2O2> 0 </_PUI+H2O2>
-<_PUI+H2O3> 0 </_PUI+H2O3>
-<_PUI+H2O4> 0 </_PUI+H2O4>
-<_PUI+FOD1> 0 </_PUI+FOD1>
-<_PUI+FOD2> 0 </_PUI+FOD2>
-<_PUI+FOD3> 0 </_PUI+FOD3>
-<_PUI+FOD4> 0 </_PUI+FOD4>
-<_PUI+SLP1> 0 </_PUI+SLP1>
-<_PUI+SLP2> 0 </_PUI+SLP2>
-<_PUI+SLP3> 0 </_PUI+SLP3>
-<_PUI+SLP4> 0 </_PUI+SLP4>
-<_PUI+RAD1> 0 </_PUI+RAD1>
-<_PUI+RAD2> 0 </_PUI+RAD2>
-<_PUI+RAD3> 0 </_PUI+RAD3>
-<_PUI+RAD4> 0 </_PUI+RAD4>
-<_PUI+H2O> -1 </_PUI+H2O>
-<_PUI+FOD> -1 </_PUI+FOD>
-<_PUI+SLP> -1 </_PUI+SLP>
-<_PUI+RAD> -1 </_PUI+RAD>
-<_PUI+H2OC> &pipboy; </_PUI+H2OC>
-<_PUI+FODC> &pipboy; </_PUI+FODC>
-<_PUI+SLPC> &pipboy; </_PUI+SLPC>
-<_PUI+RADC> &pipboy; </_PUI+RADC>
-<_PUI+H2OR>
-	<copy src="io()" trait="_PUI+H2O" />
-	<div src="io()" trait="_PUI+H2O1" />
+<_PipTweaks+H2O_Red>
+	<copy src="io()" trait="_PlrStat+H2O" />
+	<div src="io()" trait="_PlrStat+H2O1" />
 	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
-</_PUI+H2OR>
-<_PUI+H2OG>
+</_PipTweaks+H2O_Red>
+<_PipTweaks+H2O_Green>
 	<copy> 255 </copy>
 	<sub>
-		<copy src="io()" trait="_PUI+H2O" />
-		<sub src="io()" trait="_PUI+H2O1" />
+		<copy src="io()" trait="_PlrStat+H2O" />
+		<sub src="io()" trait="_PlrStat+H2O1" />
 		<div>
-			<copy src="io()" trait="_PUI+H2O2" />
-			<sub src="io()" trait="_PUI+H2O1" />
+			<copy src="io()" trait="_PlrStat+H2O2" />
+			<sub src="io()" trait="_PlrStat+H2O1" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
 	<sub>
-		<copy src="io()" trait="_PUI+H2O" />
-		<sub src="io()" trait="_PUI+H2O2" />
+		<copy src="io()" trait="_PlrStat+H2O" />
+		<sub src="io()" trait="_PlrStat+H2O2" />
 		<div>
-			<copy src="io()" trait="_PUI+H2O3" />
-			<sub src="io()" trait="_PUI+H2O2" />
+			<copy src="io()" trait="_PlrStat+H2O3" />
+			<sub src="io()" trait="_PlrStat+H2O2" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
-</_PUI+H2OG>
-<_PUI+H2OA>
-	<copy> 255 </copy>
-	<mul>
-		<copy> 1 </copy>
-		<sub>
-			<copy src="io()" trait="_PUI+Pulse" />
-			<onlyif>
-				<copy src="io()" trait="_PUI+H2O" />
-				<gte src="io()" trait="_PUI+H2O4" />
-			</onlyif>
-		</sub>
-	</mul>
-</_PUI+H2OA>
-<_PUI+FODR>
-	<copy src="io()" trait="_PUI+FOD" />
-	<div src="io()" trait="_PUI+FOD1" />
+</_PipTweaks+H2O_Green>
+<_PipTweaks+H2O_Alpha>
+	<copy src="io()" trait="_PipTweaks+Pulse" />
+	<onlyif>
+		<copy src="io()" trait="_PlrStat+H2O" />
+		<gte src="io()" trait="_PlrStat+H2O4" />
+		<and src="io()" trait="_PipTweaks+Color_H2O" />
+	</onlyif>
+	<add> 255 </add>
+</_PipTweaks+H2O_Alpha>
+<_PipTweaks+FOD_Red>
+	<copy src="io()" trait="_PlrStat+FOD" />
+	<div src="io()" trait="_PlrStat+FOD1" />
 	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
-</_PUI+FODR>
-<_PUI+FODG>
+</_PipTweaks+FOD_Red>
+<_PipTweaks+FOD_Green>
 	<copy> 255 </copy>
 	<sub>
-		<copy src="io()" trait="_PUI+FOD" />
-		<sub src="io()" trait="_PUI+FOD1" />
+		<copy src="io()" trait="_PlrStat+FOD" />
+		<sub src="io()" trait="_PlrStat+FOD1" />
 		<div>
-			<copy src="io()" trait="_PUI+FOD2" />
-			<sub src="io()" trait="_PUI+FOD1" />
+			<copy src="io()" trait="_PlrStat+FOD2" />
+			<sub src="io()" trait="_PlrStat+FOD1" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
 	<sub>
-		<copy src="io()" trait="_PUI+FOD" />
-		<sub src="io()" trait="_PUI+FOD2" />
+		<copy src="io()" trait="_PlrStat+FOD" />
+		<sub src="io()" trait="_PlrStat+FOD2" />
 		<div>
-			<copy src="io()" trait="_PUI+FOD3" />
-			<sub src="io()" trait="_PUI+FOD2" />
+			<copy src="io()" trait="_PlrStat+FOD3" />
+			<sub src="io()" trait="_PlrStat+FOD2" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
-</_PUI+FODG>
-<_PUI+FODA>
-	<copy> 255 </copy>
-	<mul>
-		<copy> 1 </copy>
-		<sub>
-			<copy src="io()" trait="_PUI+Pulse" />
-			<onlyif>
-				<copy src="io()" trait="_PUI+FOD" />
-				<gte src="io()" trait="_PUI+FOD4" />
-			</onlyif>
-		</sub>
-	</mul>
-</_PUI+FODA>
-<_PUI+SLPR>
-	<copy src="io()" trait="_PUI+SLP" />
-	<div src="io()" trait="_PUI+SLP1" />
+</_PipTweaks+FOD_Green>
+<_PipTweaks+FOD_Alpha>
+	<copy src="io()" trait="_PipTweaks+Pulse" />
+	<onlyif>
+		<copy src="io()" trait="_PlrStat+FOD" />
+		<gte src="io()" trait="_PlrStat+FOD4" />
+		<and src="io()" trait="_PipTweaks+Color_FOD" />
+	</onlyif>
+	<add> 255 </add>
+</_PipTweaks+FOD_Alpha>
+<_PipTweaks+SLP_Red>
+	<copy src="io()" trait="_PlrStat+SLP" />
+	<div src="io()" trait="_PlrStat+SLP1" />
 	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
-</_PUI+SLPR>
-<_PUI+SLPG>
+</_PipTweaks+SLP_Red>
+<_PipTweaks+SLP_Green>
 	<copy> 255 </copy>
 	<sub>
-		<copy src="io()" trait="_PUI+SLP" />
-		<sub src="io()" trait="_PUI+SLP1" />
+		<copy src="io()" trait="_PlrStat+SLP" />
+		<sub src="io()" trait="_PlrStat+SLP1" />
 		<div>
-			<copy src="io()" trait="_PUI+SLP2" />
-			<sub src="io()" trait="_PUI+SLP1" />
+			<copy src="io()" trait="_PlrStat+SLP2" />
+			<sub src="io()" trait="_PlrStat+SLP1" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
 	<sub>
-		<copy src="io()" trait="_PUI+SLP" />
-		<sub src="io()" trait="_PUI+SLP2" />
+		<copy src="io()" trait="_PlrStat+SLP" />
+		<sub src="io()" trait="_PlrStat+SLP2" />
 		<div>
-			<copy src="io()" trait="_PUI+SLP3" />
-			<sub src="io()" trait="_PUI+SLP2" />
+			<copy src="io()" trait="_PlrStat+SLP3" />
+			<sub src="io()" trait="_PlrStat+SLP2" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
-</_PUI+SLPG>
-<_PUI+SLPA>
-	<copy> 255 </copy>
-	<mul>
-		<copy> 1 </copy>
-		<sub>
-			<copy src="io()" trait="_PUI+Pulse" />
-			<onlyif>
-				<copy src="io()" trait="_PUI+SLP" />
-				<gte src="io()" trait="_PUI+SLP4" />
-			</onlyif>
-		</sub>
-	</mul>
-</_PUI+SLPA>
-<_PUI+RADR>
-	<copy src="io()" trait="_PUI+RAD" />
-	<div src="io()" trait="_PUI+RAD1" />
+</_PipTweaks+SLP_Green>
+<_PipTweaks+SLP_Alpha>
+	<copy src="io()" trait="_PipTweaks+Pulse" />
+	<onlyif>
+		<copy src="io()" trait="_PlrStat+SLP" />
+		<gte src="io()" trait="_PlrStat+SLP4" />
+		<and src="io()" trait="_PipTweaks+Color_SLP" />
+	</onlyif>
+	<add> 255 </add>
+</_PipTweaks+SLP_Alpha>
+<_PipTweaks+RAD_Red>
+	<copy src="io()" trait="_PlrStat+RAD" />
+	<div src="io()" trait="_PlrStat+RAD1" />
 	<mul> 255 </mul>
 	<max> 0 </max>
 	<min> 255 </min>
-</_PUI+RADR>
-<_PUI+RADG>
+</_PipTweaks+RAD_Red>
+<_PipTweaks+RAD_Green>
 	<copy> 255 </copy>
 	<sub>
-		<copy src="io()" trait="_PUI+RAD" />
-		<sub src="io()" trait="_PUI+RAD1" />
+		<copy src="io()" trait="_PlrStat+RAD" />
+		<sub src="io()" trait="_PlrStat+RAD1" />
 		<div>
-			<copy src="io()" trait="_PUI+RAD2" />
-			<sub src="io()" trait="_PUI+RAD1" />
+			<copy src="io()" trait="_PlrStat+RAD2" />
+			<sub src="io()" trait="_PlrStat+RAD1" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
 	<sub>
-		<copy src="io()" trait="_PUI+RAD" />
-		<sub src="io()" trait="_PUI+RAD2" />
+		<copy src="io()" trait="_PlrStat+RAD" />
+		<sub src="io()" trait="_PlrStat+RAD2" />
 		<div>
-			<copy src="io()" trait="_PUI+RAD3" />
-			<sub src="io()" trait="_PUI+RAD2" />
+			<copy src="io()" trait="_PlrStat+RAD3" />
+			<sub src="io()" trait="_PlrStat+RAD2" />
 		</div>
 		<mul> 127.5 </mul>
 		<max> 0 </max>
 		<min> 127.5 </min>
 	</sub>
-</_PUI+RADG>
-<_PUI+RADA>
-	<copy> 255 </copy>
-	<mul>
-		<copy> 1 </copy>
-		<sub>
-			<copy src="io()" trait="_PUI+Pulse" />
-			<onlyif>
-				<copy src="io()" trait="_PUI+RAD" />
-				<gte src="io()" trait="_PUI+RAD4" />
-			</onlyif>
-		</sub>
-	</mul>
-</_PUI+RADA>
+</_PipTweaks+RAD_Green>
+<_PipTweaks+RAD_Alpha>
+	<copy src="io()" trait="_PipTweaks+Pulse" />
+	<onlyif>
+		<copy src="io()" trait="_PlrStat+RAD" />
+		<gte src="io()" trait="_PlrStat+RAD4" />
+		<and src="io()" trait="_PipTweaks+Color_RAD" />
+	</onlyif>
+	<add> 255 </add>
+</_PipTweaks+RAD_Alpha>

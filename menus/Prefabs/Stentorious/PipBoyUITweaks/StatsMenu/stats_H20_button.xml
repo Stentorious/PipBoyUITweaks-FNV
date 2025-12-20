@@ -1,13 +1,16 @@
 <text name="button_text_PUI">
 	<visible> <not src="sibling(button_text)" trait="visible" /> </visible>
-	<alpha> <copy src="io()" trait="_PUI+H2OA" /> </alpha>
+	<alpha> <copy src="io()" trait="_PipTweaks+H2O_Alpha" /> </alpha>
 	<depth> 4 </depth>
 	<x> <copy src="sibling(button_text)" trait="x" /> </x>
 	<y> <copy src="sibling(button_text)" trait="y" /> </y>
 	<zoom> <copy src="sibling(button_text)" trait="zoom" /> </zoom>
-	<systemcolor> <copy src="io()" trait="_PUI+H2OC" /> </systemcolor>
-	<red> <copy src="io()" trait="_PUI+H2OR" /> </red>
-	<green> <copy src="io()" trait="_PUI+H2OG" /> </green>
+	<systemcolor>
+		<copy> &pipboy; </copy>
+		<onlyifnot src="io()" trait="_PipTweaks+Color_H2O" />
+	</systemcolor>
+	<red> <copy src="io()" trait="_PipTweaks+H2O_Red" /> </red>
+	<green> <copy src="io()" trait="_PipTweaks+H2O_Green" /> </green>
 	<blue> 0 </blue>
 	<font> <copy src="sibling(button_text)" trait="font" /> </font>
 	<string> <copy src="sibling(button_text)" trait="string" /> </string>

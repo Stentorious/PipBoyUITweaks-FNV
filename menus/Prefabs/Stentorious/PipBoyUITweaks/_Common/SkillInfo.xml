@@ -1,6 +1,9 @@
 <rect name="SkillInfo">
 	<include src="card_info.xml" />
-	<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
+	<visible>
+		<copy src="sibling(StrengthReqInfo)" trait="visible" />
+		<and src="io()" trait="_PipTweaks+SkillInfo" />
+	</visible>
 	<x> <copy src="sibling(StrengthReqInfo)" trait="x" /> </x>
 	<y>
 		<copy src="sibling(StrengthReqInfo)" trait="y" />
@@ -10,7 +13,7 @@
 	<height> <copy src="parent()" trait="user1" /> </height>
 	<font> <copy src="parent()" trait="font" /> </font>
 	<_title></_title>
-	<_value></_value>
+	<_value> 0 </_value>
 	<image name="Icon">
 		<visible> 1 </visible>
 		<alpha> <copy src="sibling(CI_ValueText)" trait="alpha" /> </alpha>
@@ -20,6 +23,6 @@
 		<height> <copy src="parent()" trait="height" /> </height>
 		<zoom> &scale; </zoom>
 		<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
-		<filename></filename>
+		<filename> "Interface\Icons\TypeIcons\weap_skill_icon_sm_arms.dds" </filename>
 	</image>
 </rect>

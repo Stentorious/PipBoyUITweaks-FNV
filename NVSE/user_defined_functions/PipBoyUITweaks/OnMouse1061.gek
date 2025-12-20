@@ -26,14 +26,14 @@ begin Function {iMenuID}
 	endif
 
 	; Get weapon stats
-	fWeapVal = Goo1.AuxVarGetFlt "*PUI_WMStats" 0
-	fWeapCndC = Goo1.AuxVarGetFlt "*PUI_WMStats" 1
-	fWeapCndB = Goo1.AuxVarGetFlt "*PUI_WMStats" 2
-	fWeapWg = Goo1.AuxVarGetFlt "*PUI_WMStats" 3
-	fWeapPrj = Goo1.AuxVarGetFlt "*PUI_WMStats" 4
-	fWeapCrit = Goo1.AuxVarGetFlt "*PUI_WMStats" 8
-	fWeapDmg = Goo1.AuxVarGetFlt "*PUI_WMStats" 7
-	iModMask = Goo1.AuxVarGetFlt "*PUI_WMStats" 6
+	fWeapVal = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 0
+	fWeapCndC = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 1
+	fWeapCndB = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 2
+	fWeapWg = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 3
+	fWeapPrj = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 4
+	fWeapCrit = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 8
+	fWeapDmg = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 7
+	iModMask = Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 6
 	fGSCndValB = GetGS fItemConditionValueBase
 	fGSCndValE = GetGS fItemConditionValueExp
 
@@ -77,7 +77,8 @@ begin Function {iMenuID}
 	endif
 
 	; Set weapon mod description
-	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\_value" "%z" (Goo1.AuxVarGetStr "*PUI_WMDesc" (iModSlot - 1))
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\_value" "%z" (Goo1.AuxVarGetStr "*PipTweaks_WMDesc" (iModSlot - 1))
+	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModDesc\string" "%z" (Goo1.AuxVarGetStr "*PipTweaks_WMDesc" (iModSlot - 1))
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\EffectsInfo\visible" 1
 
 	; Update comparison UI if weapon mod unequipped
@@ -94,7 +95,7 @@ begin Function {iMenuID}
 	; Increase Weapon Damage
 	if iModType == 1
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
-		fWeapCalc = fWeapDmg + 0.05 + ((0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75))) * (fModStat / fWeapPrj) * (Goo1.AuxVarGetFlt "*PUI_WMStats" 5))
+		fWeapCalc = fWeapDmg + 0.05 + ((0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75))) * (fModStat / fWeapPrj) * (Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 5))
 		if fWeapPrj > 1
 			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" fWeapCalc fWeapPrj
 		else
@@ -128,7 +129,7 @@ begin Function {iMenuID}
 		endif
 
 	; Increase Rate of Fire
-	elseif eval iModType == 8 && Goo1.AuxVarGetFlt "*PUI_INI" 13 && rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
+	elseif eval iModType == 8 && GetUIFloatAlt "HUDMainMenu\_PipTweaks+CritInfo" == 1 && rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 2
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%-" (fWeapCrit / (1 + fModStat))
 

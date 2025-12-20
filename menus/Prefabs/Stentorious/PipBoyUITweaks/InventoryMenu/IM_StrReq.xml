@@ -1,0 +1,4 @@
+<alpha>
+	<copy> 255 </copy>
+	<onlyifnot src="io()" trait="_PipTweaks+SkillInfo" />
+</alpha>

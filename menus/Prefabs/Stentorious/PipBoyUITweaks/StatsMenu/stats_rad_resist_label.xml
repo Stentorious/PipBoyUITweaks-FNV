@@ -1,0 +1,38 @@
+<x>
+	<copy src="grandparent()" trait="_left_edge" />
+	<onlyif src="globals()" trait="_duiHUDOffset" />
+	<add>
+		<copy src="child(ySIImage)" trait="width" />
+		<add> 8 </add>
+		<onlyif src="child(ySIImage)" trait="visible" />
+	</add>
+</x>
+
+<image name="ySIImage">
+	<visible>
+		<copy src="parent()" trait="visible" />
+		<and src="io()" trait="_PipTweaks+ySI_Resist"/>
+	</visible>
+	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
+	<x>
+		<copy src="parent()" trait="x" />
+		<sub src="me()" trait="height" />
+		<sub> 8 </sub>
+	</x>
+	<y>
+		<copy src="parent()" trait="y" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
+	</y>
+	<width> <copy src="io()" trait="_PipTweaks+ySI_Width" /> </width>
+	<height> <copy src="me()" trait="width" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add src="io()" trait="systemcolor" />
+		<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> interface\icons\Misc_Unknown.dds </filename>
+</image>

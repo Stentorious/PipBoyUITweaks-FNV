@@ -1,5 +1,8 @@
 <image name="ySIImage">
-	<visible> <copy src="parent()" trait="visible" /> </visible>
+	<visible>
+		<copy src="parent()" trait="visible" />
+		<and src="io()" trait="_PipTweaks+ySI_Resist"/>
+	</visible>
 	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
 	<x>
 		<copy src="parent()" trait="x" />
@@ -8,9 +11,9 @@
 	</x>
 	<y>
 		<copy src="parent()" trait="y" />
-		<add src="io()" trait="_PUI+ySIOffset" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
-	<width> <copy src="io()" trait="_PUI+ySIWidth" /> </width>
+	<width> <copy src="io()" trait="_PipTweaks+ySI_Width" /> </width>
 	<height> <copy src="me()" trait="width" /> </height>
 	<zoom> &scale; </zoom>
 	<systemcolor>

@@ -1,11 +1,5 @@
-<alpha>
-	<copy> 255 </copy>
-	<mul>
-		<copy> 1 </copy>
-		<sub src="io()" trait="_PUI+Pulse" />
-	</mul>
-</alpha>
-<systemcolor> 2 </systemcolor>
+<alpha> <copy src="io()" trait="_PipTweaks+Limb_Alpha" /> </alpha>
+<systemcolor> <copy src="io()" trait="_PipTweaks+Limb_Systemcolor" /> </systemcolor>
 <red> 255 </red>
 <green> 255 </green>
 <blue> 255 </blue>

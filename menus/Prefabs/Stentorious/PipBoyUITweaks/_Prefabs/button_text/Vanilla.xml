@@ -1,29 +1,37 @@
 <x>
-	<copy src="sibling(box)" trait="x"/>
+	<copy src="sibling(box)" trait="x" />
 	<add>
 		<copy src="parent()" trait="_horbuf"/>
 		<div> 2 </div>
 		<onlyif>
-			<copy src="parent()" trait="justify"/>
+			<copy src="parent()" trait="justify" />
 			<eq> &left; </eq>
 		</onlyif>
 	</add>
 	<add>
-		<copy src="parent()" trait="width"/>
+		<copy src="parent()" trait="width" />
 		<div> 2 </div>
 		<onlyif>
-			<copy src="parent()" trait="justify"/>
+			<copy src="parent()" trait="justify" />
 			<eq> &center; </eq>
 		</onlyif>
 	</add>
 	<add>
-		<copy src="parent()" trait="width"/>
+		<copy src="parent()" trait="width" />
 		<sub>
-			<copy src="parent()" trait="_horbuf"/>
+			<copy src="parent" trait="_horbuf"/>
+			<add>
+				<copy src="io()" trait="_PipTweaks+ySI_Width"/>
+				<add> 8 </add>
+				<onlyif>
+					<copy src="io()" trait="_PipTweaks+ySI_Button"/>
+					<and src="parent()" trait="_ySIButton"/>
+				</onlyif>
+			</add>
 			<div> 2 </div>
 		</sub>
 		<onlyif>
-			<copy src="parent()" trait="justify"/>
+			<copy src="parent()" trait="justify" />
 			<eq> &right; </eq>
 		</onlyif>
 	</add>
@@ -32,9 +40,27 @@
 		<onlyif src="parent()" trait="_glow"/>
 	</sub>
 	<add>
-		<copy src="io()" trait="_PUI+ySIWidth"/>
+		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
 		<add> 8 </add>
 		<div> 2 </div>
-		<onlyif src="parent()" trait="_ySIButton"/>
+		<onlyif>
+			<copy src="io()" trait="_PipTweaks+ySI_Button"/>
+			<and src="parent()" trait="_ySIButton"/>
+		</onlyif>
 	</add>
 </x>
+<!--
+<wrapwidth>
+	<copy src="parent()" trait="_fixedwidth"/>
+	<sub src="parent()" trait="_horbuf"/>
+	<sub>
+		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
+		<add> 8 </add>
+		<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
+	</sub>
+	<onlyif>
+		<copy src="parent()" trait="_fixedwidth"/>
+		<gt> 0 </gt>
+	</onlyif>
+</wrapwidth>
+  -->

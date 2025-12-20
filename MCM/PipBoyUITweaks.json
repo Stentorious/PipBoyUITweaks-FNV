@@ -1,0 +1,288 @@
+{
+	"modName": "PipBoyUITweaks",
+	"displayName": "$modDisplayName",
+	"description": "$modDescription",
+	"saveFile": "Stentorious/PipBoyUITweaks.ini",
+	"minMCMVersion": 1.00,
+	"minModVersion": 1.00,
+	"requirements": [
+		{ "type": "file", "file": "NVSE/plugins/scripts/ln_PipBoyUITweaks.txt" }
+	],
+	"submenus": {
+		"1": {
+			"listTitle": "$Tweaks",
+			"pageTitle": "$Tweaks",
+			"active": 1,
+			"columns": 2,
+			"enable": 1,
+			"options": {
+				"2": {
+					"title": "$InventoryMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"4": {
+					"title": "$ExtendStatComparison",
+					"mouse": "$ExtendStatComparisonMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "form": "Goo1", "auxVar": "*PipTweaks_INI", "key": 0, "configINI": "InventoryMenu:bExtendStatComparisons", "default": 1 } ]
+				},
+				"6": {
+					"title": "$CritInfo",
+					"mouse": "$CritInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+CritInfo", "configINI": "InventoryMenu:bCritInfo", "default": 1 } ]
+				},
+				"8": {
+					"title": "$AddictionInfo",
+					"mouse": "$AddictionInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "form": "Goo1", "auxVar": "*PipTweaks_INI", "key": 1, "configINI": "InventoryMenu:bAddictionInfo", "default": 1 } ]
+				},
+				"10": {
+					"title": "$SkillInfo",
+					"mouse": "$SkillInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+SkillInfo", "configINI": "InventoryMenu:bSkillInfo", "default": 1 } ]
+				},
+				"12": {
+					"title": "$HardcoreInfo",
+					"mouse": "$HardcoreInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+HardcoreInfo", "configINI": "InventoryMenu:bHardcoreInfo", "default": 1 } ]
+				},
+				"14": {
+					"title": "$SeparateDTDR",
+					"mouse": "$SeparateDTDRMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+SeparateDRDT", "configINI": "InventoryMenu:bSeparateDTDR", "default": 1 } ]
+				},
+				"16": {
+					"title": "$ShiftUnequippable",
+					"mouse": "$ShiftUnequippableMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ShiftItems", "configINI": "InventoryMenu:bShiftUnequippable", "default": 1 } ]
+				},
+				"1": {
+					"title": "$General",
+					"enable": 1,
+					"type": 0
+				},
+				"3": {
+					"title": "$ExtendMenuSupport",
+					"mouse": "$ExtendMenuSupportMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ExtMenuSupport", "configINI": "General:bExtendMenuSupport", "default": 1 } ]
+				},
+				"5": {
+					"title": "$SearchIcon",
+					"mouse": "$SearchIconMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+SearchIcon", "configINI": "General:bSearchIcon", "default": 1 } ]
+				},
+				"9": {
+					"title": "$WeaponModMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"11": {
+					"title": "$WeaponStatUI",
+					"mouse": "$WeaponStatUIMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+WeapModUI", "configINI": "WeaponModMenu:bWeaponStatUI", "default": 1 } ]
+				},
+				"13": {
+					"title": "$AccurateDescriptions",
+					"mouse": "$AccurateDescriptionsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "form": "Goo1", "auxVar": "*PipTweaks_INI", "key": 2, "configINI": "WeaponModMenu:bAccurateDescriptions", "default": 1 } ]
+				}
+			}
+		},
+		"2": {
+			"listTitle": "$Color",
+			"pageTitle": "$Color",
+			"columns": 2,
+			"enable": 1,
+			"options": {
+
+				"1": {
+					"title": "$General",
+					"enable": 1,
+					"type": 0
+				},
+				"3": {
+					"title": "$HitPoints",
+					"mouse": "$HitPointsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_HP", "configINI": "Color:bHitPoints", "default": 1 } ]
+				},
+				"7": {
+					"title": "$InventoryMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"9": {
+					"title": "$ItemStatComparisons",
+					"mouse": "$ItemStatComparisonsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "form": "Goo1", "auxVar": "*PipTweaks_INI", "key": 3, "configINI": "Color:bItemStatComparisons", "default": 1 } ]
+				},
+				"11": {
+					"title": "$Encumbrance",
+					"mouse": "$EncumbranceMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_WG", "configINI": "Color:bEncumbrance", "default": 1 } ]
+				},
+				"13": {
+					"title": "$ConditionMeter",
+					"mouse": "$ConditionMeterMouse",
+					"type": 1,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_CND", "configINI": "Color:iCNDMeter", "default": 1 } ],
+					"strings": [ "$Disabled", "$RedPulse", "$Spectrum" ]
+				},
+				"2": {
+					"title": "$StatsMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"4": {
+					"title": "$ActionPoints",
+					"mouse": "$ActionPointsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_AP", "configINI": "Color:bActionPoints", "default": 1 } ]
+				},
+				"6": {
+					"title": "$StatModifier",
+					"mouse": "$StatModifierMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_StatMod", "configINI": "Color:bStatModifier", "default": 1 } ]
+				},
+				"8": {
+					"title": "$CrippledLimbs",
+					"mouse": "$CrippledLimbsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_Limb", "configINI": "Color:bCrippledLimbs", "default": 1 } ]
+				},
+				"10": {
+					"title": "$RADMeter",
+					"mouse": "$RADMeterMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_RAD", "configINI": "Color:bRADMeter", "default": 1 } ]
+				},
+				"12": {
+					"title": "$H2OMeter",
+					"mouse": "$H2OMeterMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_H2O", "configINI": "Color:bH2OMeter", "default": 1 } ]
+				},
+				"14": {
+					"title": "$FODMeter",
+					"mouse": "$FODMeterMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_FOD", "configINI": "Color:bFODMeter", "default": 1 } ]
+				},
+				"16": {
+					"title": "$SLPMeter",
+					"mouse": "$SLPMeterMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+Color_SLP", "configINI": "Color:bSLPMeter", "default": 1 } ]
+				}
+			}
+		},
+		"3": {
+			"listTitle": "$Icons",
+			"pageTitle": "$Icons",
+			"columns": 2,
+			"state": { "form": "Goo1", "auxVar": "*_ySI-SortingIcons", "key": 0, "value": 1 },
+			"options": {
+				"1": {
+					"title": "$General",
+					"enable": 1,
+					"type": 0
+				},
+				"3": {
+					"title": "$ButtonIcons",
+					"mouse": "$ButtonIconsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_Button", "configINI": "ySI:bButtonIcons", "default": 1 } ]
+				},
+				"7": {
+					"title": "$StatsMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"9": {
+					"title": "$ResistanceIcons",
+					"mouse": "$ResistanceIconsMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_Resist", "configINI": "ySI:bResistanceIcons", "default": 1 } ]
+				},
+				"2": {
+					"title": "$InventoryMenu",
+					"enable": 1,
+					"type": 0
+				},
+				"4": {
+					"title": "$WGInfo",
+					"mouse": "$WGInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_WGInfo", "configINI": "ySI:bWGIcon", "default": 1 } ]
+				},
+				"6": {
+					"title": "$CapsInfo",
+					"mouse": "$CapsInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_CapsInfo", "configINI": "ySI:bCapsIcon", "default": 1 } ]
+				},
+				"8": {
+					"title": "$WeightInfo",
+					"mouse": "$WeightInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_WeightInfo", "configINI": "ySI:bWeightInfoIcon", "default": 1 } ]
+				},
+				"10": {
+					"title": "$ValueInfo",
+					"mouse": "$ValueInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_ValueInfo", "configINI": "ySI:bValueInfoIcon", "default": 1 } ]
+				},
+				"12": {
+					"title": "$AmmoInfo",
+					"mouse": "$AmmoInfoMouse",
+					"type": 5,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ySI_AmmoInfo", "configINI": "ySI:bAmmoInfoIcon", "default": 1 } ]
+				}
+			}
+		}
+	}
+}

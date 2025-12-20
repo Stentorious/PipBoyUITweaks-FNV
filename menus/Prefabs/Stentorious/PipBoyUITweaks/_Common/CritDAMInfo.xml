@@ -1,6 +1,9 @@
 <rect name="CritDAMInfo">
 	<include src="card_info.xml" />
-	<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
+	<visible>
+		<copy src="sibling(StrengthReqInfo)" trait="visible" />
+		<and src="io()" trait="_PipTweaks+CritInfo" />
+	</visible>
 	<x> <copy src="sibling(DAMInfo)" trait="x" /> </x>
 	<y>
 		<copy src="sibling(DPSInfo)" trait="y" />

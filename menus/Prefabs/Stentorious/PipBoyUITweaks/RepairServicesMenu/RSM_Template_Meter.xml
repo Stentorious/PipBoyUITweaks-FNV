@@ -1,4 +1,0 @@
-<visible>
-	<copy src="io()" trait="_PUI+ColorCND" />
-	<eq> 0 </eq>
-</visible>

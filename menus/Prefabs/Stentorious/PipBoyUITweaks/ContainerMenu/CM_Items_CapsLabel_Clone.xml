@@ -1,15 +1,17 @@
+<_ySIImage> <copy src="io()" trait="_PipTweaks+ySI_WGInfo" /> </_ySIImage>
+
 <text name="CM_Items_CapsLabel_Text">
-	<visible> 1 </visible>
+	<visible> <copy src="parent()" trait="_ySIImage" /> </visible>
 	<alpha> <copy src="sibling(CM_Items_CapsLabel)" trait="alpha" /> </alpha>
 	<x> <copy src="sibling(CM_Items_CapsLabel)" trait="x"/> </x>
 	<y> <copy src="sibling(CM_Items_CapsLabel)" trait="y"/> </y>
 	<systemcolor> 1 </systemcolor>
-	<font> <copy src="io()" trait="_PUI+ySIFont" /> </font>
+	<font> <copy src="io()" trait="_PipTweaks+ySI_Font" /> </font>
 	<justify> &right; </justify>
 </text>
 
 <image name="CM_Items_CapsLabel_Icon">
-	<visible> 1 </visible>
+	<visible> <copy src="parent()" trait="_ySIImage" /> </visible>
 	<alpha> 255 </alpha>
 	<x>
 		<copy src="sibling(CM_Items_CapsLabel_Text)" trait="x" />
@@ -19,10 +21,10 @@
 	</x>
 	<y>
 		<copy src="sibling(CM_Items_CapsLabel_Text)" trait="y"/>
-		<add src="io()" trait="_PUI+ySIOffset" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
 	<width> <copy src="me()" trait="height" /> </width>
-	<height> <copy src="io()" trait="_PUI+ySIWidth" /> </height>
+	<height> <copy src="io()" trait="_PipTweaks+ySI_Width" /> </height>
 	<zoom> &scale; </zoom>
 	<systemcolor>
 		<copy> 0 </copy>

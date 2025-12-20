@@ -19,14 +19,14 @@ begin Function {}
 	; Calculate value
 	fWeapVal = rWeap.GetCalculatedItemValue
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f" fWeapVal
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapVal 0
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapVal 0
 
 	; Calculate condition
 	fWeapCndC = rWeap.GetItemRefCurrentHealth 0
 	fWeapCndB = rWeap.GetItemRefCurrentHealth 2
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" (fWeapCndC / fWeapCndB)
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCndC 1
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCndB 2
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapCndC 1
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapCndB 2
 
 	; Calculate projectile count
 	if eval rWeap.IsEquipped
@@ -76,10 +76,10 @@ begin Function {}
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "--"
 	endif
 
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapWg 3
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapPrj 4
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapBeam 5
-	Goo1.AuxVarSetFlt "*PUI_WMStats" iModMask 6
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapWg 3
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapPrj 4
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapBeam 5
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" iModMask 6
 
 	; Calculate damage
 	fWeapDmg = (rWeap.GetCalculatedWeaponDamage) / fWeapPrj
@@ -88,10 +88,10 @@ begin Function {}
 	else
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f" fWeapDmg
 	endif
-	Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapDmg 7
+	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapDmg 7
 
 	; Calculate critical chance
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
+	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+CritInfo" == 1
 		fWeapCrit = Flr (Player.GetAV CritChance)
 		if eval rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 			fWeapCrit /= fWeapRoF
@@ -99,7 +99,7 @@ begin Function {}
 		fWeapCrit *= rWeap.GetCritPerc
 		fWeapCrit = GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fWeapCrit rWeap Goo1))
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%" fWeapCrit
-		Goo1.AuxVarSetFlt "*PUI_WMStats" fWeapCrit 8
+		Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapCrit 8
 	endif
 
 end

@@ -2,25 +2,19 @@ int	iMenuID
 
 begin Function {iMenuID}
 
-	Goo1.AuxVarErase "*PUI_InvRef"
+	Goo1.AuxVarErase "*PipTweaks_InvRef"
 
 	; Cache equipped item stats and update color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
-		Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
-	endif
+	Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
+
+	; Update DT/DR
+	Call (CompileScript "PipBoyUITweaks\UpdateDTDR.gek")
 
 	; Update weight color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 4
-		SetUIFloatAlt "InventoryMenu\_PUI+WG" (IsPCOverencumbered)
-	endif
-
-	; Update hit points color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 7
-		SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
-	endif
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+Encumbrance" (IsPCOverencumbered)
 
 	; Reset alpha pulse
-	SetUIFloatGradual "InventoryMenu\_PUI+Pulse" 0.8 0 1.5 2
-	SetUIFloatGradual "StatsMenu\_PUI+Pulse" 0
+	SetUIFloatGradual "InventoryMenu\_PipTweaks+Pulse" -204 0 1.5 2
+	SetUIFloatGradual "StatsMenu\_PipTweaks+Pulse" -255
 
 end

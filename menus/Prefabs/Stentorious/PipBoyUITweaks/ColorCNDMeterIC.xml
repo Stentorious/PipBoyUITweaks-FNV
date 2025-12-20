@@ -1,29 +1,27 @@
+<_ColorMeter> 1 </_ColorMeter>
+
 <image name="MeterImage_Clone">
 	<visible> <not src="sibling(MeterImage)" trait="visible" /> </visible>
 	<alpha>
-		<copy src="sibling(MeterImage)" trait="alpha" />
-		<mul>
-			<copy> 1 </copy>
-			<sub>
-				<copy src="io()" trait="_PUI+Pulse" />
-				<onlyif>
-					<copy src="parent()" trait="_Value" />
-					<lte src="me()" trait="_CND2" />
-					<and>
-						<copy src="io()" trait="_PUI+ColorCND" />
-						<eq> 2 </eq>
-					</and>
-					<or>
-						<copy src="parent()" trait="_Value" />
-						<lte> 0.25 </lte>
-						<and>
-							<copy src="io()" trait="_PUI+ColorCND" />
-							<eq> 1 </eq>
-						</and>
-					</or>
-				</onlyif>
-			</sub>
-		</mul>
+		<copy src="io()" trait="_PipTweaks+Pulse" />
+		<onlyif>
+			<copy src="parent()" trait="_Value" />
+			<lte src="me()" trait="_CND2" />
+			<and>
+				<copy src="io()" trait="_PipTweaks+Color_CND" />
+				<eq> 2 </eq>
+			</and>
+			<or>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
+			</or>
+		</onlyif>
+		<add src="sibling(MeterImage)" trait="alpha" />
+		<max> 0 </max>
 	</alpha>
 	<depth> 2 </depth>
 	<x> <copy src="sibling(MeterImage)" trait="x" /> </x>
@@ -33,19 +31,20 @@
 	<clips> 1 </clips>
 	<cropx> -1 </cropx>
 	<systemcolor>
-		<copy> 0 </copy>
+		<copy> 1 </copy>
+		<onlyif>
+			<copy src="io()" trait="_PipTweaks+Color_CND" />
+			<neq> 2 </neq>
+		</onlyif>
 		<add>
-			<copy> 2 </copy>
-			<sub>
-				<copy> 1 </copy>
-				<onlyif>
-					<copy src="parent()" trait="_Value" />
-					<gt> 0.25 </gt>
-				</onlyif>
-			</sub>
+			<copy> 1 </copy>
 			<onlyif>
-				<copy src="io()" trait="_PUI+ColorCND" />
-				<eq> 1 </eq>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
 			</onlyif>
 		</add>
 	</systemcolor>

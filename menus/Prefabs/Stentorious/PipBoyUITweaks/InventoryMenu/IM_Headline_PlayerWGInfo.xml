@@ -1,3 +1,9 @@
+<x>
+	<copy src="sibling(IM_Headline_h2)" trait="x" />
+	<add src="sibling(IM_Headline_h2)" trait="width" />
+</x>
+<width> 170 </width>
+
 <text name="CI_ValueText_Clone">
 	<visible> <not src="sibling(CI_ValueText)" trait="visible" /> </visible>
 	<alpha> <copy src="sibling(CI_ValueText)" trait="alpha" /> </alpha>
@@ -5,11 +11,14 @@
 	<y> <copy src="sibling(CI_ValueText)" trait="y" /> </y>
 	<zoom> <copy src="sibling(CI_ValueText)" trait="zoom" /> </zoom>
 	<systemcolor>
-		<copy> 2 </copy>
-		<add>
+		<copy> 4 </copy>
+		<sub>
 			<copy> 2 </copy>
-			<onlyifnot src="io()" trait="_PUI+WG" />
-		</add>
+			<onlyif>
+				<copy src="io()" trait="_PlrStat+Encumbrance" />
+				<and src="io()" trait="_PipTweaks+Color_WG" />
+			</onlyif>
+		</sub>
 	</systemcolor>
 	<brightness> <copy src="sibling(CI_ValueText)" trait="brightness" /> </brightness>
 	<font> <copy src="sibling(CI_ValueText)" trait="font" /> </font>

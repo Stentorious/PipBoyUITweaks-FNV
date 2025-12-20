@@ -1,37 +1,13 @@
 int	iMenuID
-float fHorBuf
 
 begin Function {iMenuID}
 
-	if eval GetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" > 0 && GetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_StatsDisplayRect\RSM_FixedItemHealth\RSM_FixedItemHealthMeter\MeterImage_Clone\visible" == -999
-		SetUIFloatGradual "RepairServicesMenu\_PUI+Pulse" 0.8 0 1.5 2
-		SetUIFloatAlt "RepairServicesMenu\_PUI+CND1" 0.75
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_StatsDisplayRect\RSM_FixedItemHealth\RSM_FixedItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeterHUD.xml"
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_StatsDisplayRect\RSM_BrokenItemHealth\RSM_BrokenItemHealthMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeterHUD.xml"
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_StatsDisplayRect\RSM_FixedItemHealth\RSM_FixedItemHealthMeter\MeterImage\visible" 0
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_StatsDisplayRect\RSM_BrokenItemHealth\RSM_BrokenItemHealthMeter\MeterImage\visible" 0
-	endif
+	SetUIFloatGradual "RepairServicesMenu\_PipTweaks+Pulse" -204 0 1.5 2
+	SetUIFloatAlt "RepairServicesMenu\_PipTweaks+CND_1" 0.75
 
-	; Enable ySI icons (Barter caps)
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerCapsInfo\ySIImage\visible" != -999
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_CapsLabel_Clone.xml"
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_CapsLabel\visible" 0
-	endif
-
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\ySIImage\visible" != -999 && GetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\ySIImage\visible" == -999
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
-		InjectUIXML "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairButton\_ySIButton" 1
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton\_ySIButton" 1
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\_ySIButton" 1
-		fHorBuf = GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\_horbuf"
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairButton\_horbuf" fHorBuf
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton\_horbuf" fHorBuf
-		SetUIFloatAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\_horbuf" fHorBuf
-		SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
-		SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
-		SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\ySIImage\filename" "interface\icons\UI_Accept.dds"
-	endif
+	; Enable ySI icons (Buttons)
+	SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
+	SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
+	SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\ySIImage\filename" "interface\icons\UI_Accept.dds"
 
 end

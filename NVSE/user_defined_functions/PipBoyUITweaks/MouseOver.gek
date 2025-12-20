@@ -46,18 +46,40 @@ begin Function {iMenuID}
 		return
 	endif
 
-	Goo1.AuxVarSetRef "*PUI_InvRef" (rItem.GBO)
+	Goo1.AuxVarSetRef "*PipTweaks_InvRef" (rItem.GBO)
 
 	fItemVal = rItem.GetCalculatedItemValue
 	fItemWg = #(GetUIString (sTilePath + "WeightInfo\CI_ValueText\string"))
 
+	if eval Goo1.AuxVarGetFlt "*_Tweaks:bIndividialItemStats" == 0 && (iComp = rItem.GetRefCount) > 1
+		fItemWg /= iComp
+	endif
+
+	; Value/Weight ratio
+	if eval fItemWg <= 0 || fItemVal <= 0
+		sTemp = "--"
+	else
+		fItemStat = fItemVal / fItemWg
+		if fItemStat < 1000
+			sTemp = sv_Construct "%.1f" fItemStat
+		else
+			sTemp = "1000+"
+		endif
+	endif
+	SetUIStringAlt (sTilePath + "ValWGInfo\_Value") (sTemp)
+
 	; Reset tiles
 	SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 0
 
+	; Extended menu support
+	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1 && iMenuID != 1002
+		return
+	endif
+
 	if eval (iType = rItem.GetType) == 40 || iType == 24
 
-		Goo1.AuxVarSetFlt "*PUI_FLAG" 1
-		iColor = Goo1.AuxVarGetFlt "*PUI_INI" 3
+		Goo1.AuxVarSetFlt "*PipTweaks_FLAG" 1
+		iColor = Goo1.AuxVarGetFlt "*PipTweaks_INI" 3
 
 		if eval iType == 40
 
@@ -105,7 +127,7 @@ begin Function {iMenuID}
 			SetUIStringAlt (sTilePath + "CritDAMInfo\_value") (sTemp)
 
 			; Update weapon critical chance
-			if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
+			if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+CritInfo" == 1
 				fItemCrit = Flr (Player.GetAV CritChance)
 				if eval rItem.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
 					fItemCrit /= fItemRoF
@@ -117,16 +139,16 @@ begin Function {iMenuID}
 		endif
 
 		; Extended stat comparison
-		if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
+		if eval Goo1.AuxVarGetFlt "*PipTweaks_INI" 0
 
 			; Get weapon stats
 			if iType == 40
 
 				if eval Player.GetEquippedWeaponRef
 					iComp = 1
-					fEquipStr = Goo1.AuxVarGetFlt "*PUI_Stat" 0
-					fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 1
-					fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 2
+					fEquipStr = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 0
+					fEquipWg = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 1
+					fEquipVal = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 2
 					fItemStr = #(GetUIString (sTilePath + "StrengthReqInfo\_value"))
 
 					; Update STR
@@ -147,6 +169,8 @@ begin Function {iMenuID}
 					SetUIStringAlt (sTilePath + "StrengthReqInfo\_value") "%g%z" fItemStr sTemp
 					SetUIFloatAlt (sTilePath + "StrengthReqInfo\CI_ValueText\systemcolor") iSystemColorTemp
 
+				else
+					iComp = 0
 				endif
 
 			; Get armor stats
@@ -154,16 +178,16 @@ begin Function {iMenuID}
 				iSlotMask = rItem.GetESM
 				If eval GetBit iSlotMask 2
 					iComp = 1
-					fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 3
-					fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 4
+					fEquipWg = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 3
+					fEquipVal = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 4
 				elseif iSlotMask == 18432
 					iComp = 1
-					fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 5
-					fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 6
+					fEquipWg = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 5
+					fEquipVal = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 6
 				elseif rItem.GetEquipType == 8
 					iComp = 1
-					fEquipWg = Goo1.AuxVarGetFlt "*PUI_Stat" 7
-					fEquipVal = Goo1.AuxVarGetFlt "*PUI_Stat" 8
+					fEquipWg = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 7
+					fEquipVal = Goo1.AuxVarGetFlt "*PipTweaks_Stat" 8
 				endif
 			endif
 
@@ -189,7 +213,7 @@ begin Function {iMenuID}
 						iSystemColorTemp = 2
 					endif
 				endif
-				SetUIStringAlt (sTilePath + "WeightInfo\_value") "%.2f%z" fItemWg sTemp
+				SetUIStringAlt (sTilePath + "WeightInfo\_value") "%.2f%z" (#(GetUIString (sTilePath + "WeightInfo\CI_ValueText\string"))) sTemp
 				SetUIFloatAlt (sTilePath + "WeightInfo\CI_ValueText\systemcolor") iSystemColorTemp
 
 				; Update Val
@@ -212,7 +236,7 @@ begin Function {iMenuID}
 					endif
 				endif
 
-				SetUIStringAlt (sTilePath + "ValueInfo\_value") "%g%z" fItemVal sTemp
+				SetUIStringAlt (sTilePath + "ValueInfo\_value") "%g%z" (#(GetUIString (sTilePath + "ValueInfo\CI_ValueText\string"))) sTemp
 				SetUIFloatAlt (sTilePath + "ValueInfo\CI_ValueText\systemcolor") iSystemColorTemp
 
 			; Reset color if selecting weapon/armor item without valid stat comparison
@@ -224,46 +248,52 @@ begin Function {iMenuID}
 		endif
 
 		; Update DAM/DPS/DR/DT color
-		if eval iColor
-			if iType == 40
+		if iType == 40
+			iSystemColorTemp = iSystemColor
+			if eval iColor
 				sUIPath = GetUIString (sTilePath + "DAMInfo\_Value")
-				iColor = iSystemColor
 				if eval sUIPath[-1] == "+"
-					iColor = 3
+					iSystemColorTemp = 3
 				elseif eval sUIPath[-1] == "-"
-					iColor = 2
+					iSystemColorTemp = 2
 				endif
-				SetUIFloatAlt (sTilePath + "DAMInfo\CI_ValueText\systemcolor") iColor
-				sUIPath = GetUIString (sTilePath + "DPSInfo\_Value")
-				iColor = iSystemColor
-				if eval sUIPath[-1] == "+"
-					iColor = 3
-				elseif eval sUIPath[-1] == "-"
-					iColor = 2
-				endif
-				SetUIFloatAlt (sTilePath + "DPSInfo\CI_ValueText\systemcolor") iColor
-			else
-				sUIPath = GetUIString (sTilePath + "DamageResistInfo\_Value")
-				iColor = iSystemColor
-				if eval sUIPath[-1] == "+"
-					iColor = 3
-				elseif eval sUIPath[-1] == "-"
-					iColor = 2
-				endif
-				SetUIFloatAlt (sTilePath + "DamageResistInfo\CI_ValueText\systemcolor") iColor
-				sUIPath = GetUIString (sTilePath + "DamageThresholdInfo\_Value")
-				iColor = iSystemColor
-				if eval sUIPath[-1] == "+"
-					iColor = 3
-				elseif eval sUIPath[-1] == "-"
-					iColor = 2
-				endif
-				SetUIFloatAlt (sTilePath + "DamageThresholdInfo\CI_ValueText\systemcolor") iColor
 			endif
+			SetUIFloatAlt (sTilePath + "DAMInfo\CI_ValueText\systemcolor") iSystemColorTemp
+			iSystemColorTemp = iSystemColor
+			if eval iColor
+				sUIPath = GetUIString (sTilePath + "DPSInfo\_Value")
+				if eval sUIPath[-1] == "+"
+					iSystemColorTemp = 3
+				elseif eval sUIPath[-1] == "-"
+					iSystemColorTemp = 2
+				endif
+			endif
+			SetUIFloatAlt (sTilePath + "DPSInfo\CI_ValueText\systemcolor") iSystemColorTemp
+		else
+			iSystemColorTemp = iSystemColor
+			if eval iColor
+				sUIPath = GetUIString (sTilePath + "DamageResistInfo\_Value")
+				if eval sUIPath[-1] == "+"
+					iSystemColorTemp = 3
+				elseif eval sUIPath[-1] == "-"
+					iSystemColorTemp = 2
+				endif
+			endif
+			SetUIFloatAlt (sTilePath + "DamageResistInfo\CI_ValueText\systemcolor") iSystemColorTemp
+			iSystemColorTemp = iSystemColor
+			if eval iColor
+				sUIPath = GetUIString (sTilePath + "DamageThresholdInfo\_Value")
+				if eval sUIPath[-1] == "+"
+					iSystemColorTemp = 3
+				elseif eval sUIPath[-1] == "-"
+					iSystemColorTemp = 2
+				endif
+			endif
+			SetUIFloatAlt (sTilePath + "DamageThresholdInfo\CI_ValueText\systemcolor") iSystemColorTemp
 		endif
 
 		; Set AmmoInfo icon
-		if eval Goo1.AuxVarGetFlt "*PUI_INI" 14
+		if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+AmmoInfo" == 1
 
 			; Set armor class icon if armor
 			if eval (iType = GetArmorClass (rItem.GBO))
@@ -299,7 +329,7 @@ begin Function {iMenuID}
 		if eval iType == 47
 
 			; Addiction chance
-			if eval Goo1.AuxVarGetFlt "*PUI_INI" 16
+			if eval Goo1.AuxVarGetFlt "*PipTweaks_INI" 1
 
 				sTemp = "--"
 				rItem = rItem.GBO
@@ -332,27 +362,14 @@ begin Function {iMenuID}
 
 		endif
 
-		if eval Goo1.AuxVarGetFlt "*PUI_FLAG"
-			Goo1.AuxVarSetFlt "*PUI_FLAG" 0
+		if eval Goo1.AuxVarGetFlt "*PipTweaks_FLAG"
+			Goo1.AuxVarSetFlt "*PipTweaks_FLAG" 0
 			SetUIFloatAlt (sTilePath + "WeightInfo\CI_ValueText\systemcolor") iSystemColor
 			SetUIFloatAlt (sTilePath + "ValueInfo\CI_ValueText\systemcolor") iSystemColor
 			SetUIFloatAlt (sTilePath + "StrengthReqInfo\CI_ValueText\systemcolor") iSystemColor
 		endif
 
 	endif
-
-	; Value/Weight ratio
-	if eval fItemWg <= 0 || fItemVal <= 0
-		sTemp = "--"
-	else
-		fItemVal /= fItemWg
-		if fItemVal < 1000
-			sTemp = sv_Construct "%.1f" fItemVal
-		else
-			sTemp = "1000+"
-		endif
-	endif
-	SetUIStringAlt (sTilePath + "ValWGInfo\_Value") (sTemp)
 
 	sv_Destruct sTilePath sUIPath sTemp
 

@@ -74,15 +74,15 @@ begin Function {}
 		fHeadWg *= Goo1.AuxVarGetFlt "*_Tweaks:bWeightlessItems" 3
 	endif
 
-	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapStr 0
-	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapWg 1
-	Goo1.AuxVarSetFlt "*PUI_Stat" fWeapVal 2
-	Goo1.AuxVarSetFlt "*PUI_Stat" fBodyWg 3
-	Goo1.AuxVarSetFlt "*PUI_Stat" fBodyVal 4
-	Goo1.AuxVarSetFlt "*PUI_Stat" fEyesWg 5
-	Goo1.AuxVarSetFlt "*PUI_Stat" fEyesVal 6
-	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadWg 7
-	Goo1.AuxVarSetFlt "*PUI_Stat" fHeadVal 8
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fWeapStr 0
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fWeapWg 1
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fWeapVal 2
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fBodyWg 3
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fBodyVal 4
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fEyesWg 5
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fEyesVal 6
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fHeadWg 7
+	Goo1.AuxVarSetFlt "*PipTweaks_Stat" fHeadVal 8
 
 	aEquippedItems = ar_Null
 

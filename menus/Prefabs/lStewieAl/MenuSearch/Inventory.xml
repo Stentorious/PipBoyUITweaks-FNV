@@ -1,23 +1,81 @@
 <text name="IM_SearchBar">
-	<id> 87698483 </id>
-	<visible> 1 </visible>
-	<depth> 6 </depth>
-	<x>
+	<_OffsetX>
 		<copy src="IM_HeadlineRect" trait="x" />
 		<add> 70 </add>
 		<sub>
 			<copy> 25 </copy>
 			<onlyif src="globals" trait="_VUI+" />
 		</sub>
-	</x>
-	<y>
+	</_OffsetX>
+	<_OffsetY>
 		<copy src="IM_HeadlineRect" trait="y" />
-		<add> 74 </add>
+		<add> 73 </add>
 		<sub>
 			<copy> 10 </copy>
 			<onlyif src="globals" trait="_VUI+" />
 		</sub>
-	</y>
+	</_OffsetY>
+	<id> 87698483 </id>
+	<visible> 1 </visible>
+	<depth> 6 </depth>
+	<x>
+		<copy src="me()" trait="_OffsetX" />
+		<add>
+			<copy> 35 </copy>
+			<sub>
+				<copy> 5 </copy>
+				<onlyif src="globals()" trait="_duiHUDOffset" />
+			</sub>
+			<onlyif src="io()" trait="_PipTweaks+SearchIcon" />
+		</add>
+	</x>
+	<y> <copy src="me()" trait="_OffsetY" /> </y>
 	<systemcolor> &pipboy; </systemcolor>
 	<string></string>
 </text>
+
+<image name="IM_SearchButton">
+	<visible>
+		<copy src="sibling(IM_SearchBar)" trait="visible" />
+		<and src="io()" trait="_PipTweaks+SearchIcon" />
+	</visible>
+	<alpha> 255 </alpha>
+	<depth> 6 </depth>
+	<x>
+		<copy src="sibling(IM_SearchBar)" trait="x" />
+		<sub>
+			<copy src="me()" trait="height" />
+			<add> 6 </add>
+		</sub>
+	</x>
+	<y>
+		<copy src="sibling(IM_SearchBar)" trait="y" />
+		<sub> 6 </sub>
+	</y>
+	<width>
+		<copy> 32 </copy>
+		<sub>
+			<copy> 8 </copy>
+			<onlyif src="globals()" trait="_duiHUDOffset" />
+		</sub>
+	</width>
+	<height> <copy src="me()" trait="width" /> </height>
+	<zoom> &scale; </zoom>
+	<systemcolor> &pipboy; </systemcolor>
+	<filename>
+		<copy src="me()" trait="_Status" />
+		<copy src="me()" trait="_Tile_" />
+	</filename>
+	<_Status>
+		<copy> 0 </copy>
+		<add>
+			<copy> 1 </copy>
+			<onlyif>
+				<copy src="sibling(IM_SearchBar)" trait="width" />
+				<gt> 10 </gt>
+			</onlyif>
+		</add>
+	</_Status>
+	<_Tile_0> lStewieAl\search.dds </_Tile_0>
+	<_Tile_1> lStewieAl\searchStop.dds </_Tile_1>
+</image>

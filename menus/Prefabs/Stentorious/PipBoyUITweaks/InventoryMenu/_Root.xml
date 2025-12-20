@@ -1,35 +1,78 @@
+<!-- Config Settings -->
+<_PipTweaks+ShiftItems> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ShiftItems"/> </_PipTweaks+ShiftItems>
+<_PipTweaks+SkillInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SkillInfo"/> </_PipTweaks+SkillInfo>
+<_PipTweaks+CritInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo"/> </_PipTweaks+CritInfo>
+<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
+<_PipTweaks+HardcoreInfo>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+HardcoreInfo"/>
+	<and src="io()" trait="_Settings+Hardcore"/>
+</_PipTweaks+HardcoreInfo>
+<_PipTweaks+SeparateDRDT> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SeparateDRDT"/> </_PipTweaks+SeparateDRDT>
+<_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP"/> </_PipTweaks+Color_HP>
+<_PipTweaks+Color_WG> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_WG"/> </_PipTweaks+Color_WG>
+<_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/> </_PipTweaks+Color_CND>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+<_PipTweaks+ySI_WGInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WGInfo"/> </_PipTweaks+ySI_WGInfo>
+<_PipTweaks+ySI_CapsInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_CapsInfo"/> </_PipTweaks+ySI_CapsInfo>
+<_PipTweaks+ySI_WeightInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WeightInfo"/> </_PipTweaks+ySI_WeightInfo>
+<_PipTweaks+ySI_ValueInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_ValueInfo"/> </_PipTweaks+ySI_ValueInfo>
+<_PipTweaks+ySI_AmmoInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_AmmoInfo"/> </_PipTweaks+ySI_AmmoInfo>
+
+<!-- Player Stats -->
+<_PlrStat+HealthPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+HealthPer"/> </_PlrStat+HealthPer>
+<_PlrStat+Encumbrance> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+Encumbrance"/> </_PlrStat+Encumbrance>
+<_PlrStat+FOD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD"/> </_PlrStat+FOD>
+<_PlrStat+H2O> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O"/> </_PlrStat+H2O>
+<_PlrStat+SLP> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP"/> </_PlrStat+SLP>
+<_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD"/> </_PlrStat+RAD>
+
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
+<!-- Settings -->
+<_Settings+Hardcore> <copy src="sibling(HUDMainMenu)" trait="_Settings+Hardcore"/> </_Settings+Hardcore>
+
 <!-- Scripting -->
-<_PUI+WG> 0 </_PUI+WG>
-<_PUI+EI> 0 </_PUI+EI>
-<_PUI+HP> <copy src="sibling(StatsMenu)" trait="_PUI+HP"/> </_PUI+HP>
-<_PUI+Pulse> 0 </_PUI+Pulse>
+<_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
 
 <!-- ySI Button Icons -->
-<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
-<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>
+<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width" /> </_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset" /> </_PipTweaks+ySI_Offset>
 
 <!-- Colorful Condition Meters -->
-<_PUI+ColorCND> <copy src="sibling(HUDMainMenu)" trait="_PUI+ColorCND"/> </_PUI+ColorCND>
-<_PUI+TypeCND> <copy src="ConditionInfo" trait="user6" /> </_PUI+TypeCND>
-<_PUI+CND1>
+<_PipTweaks+TypeCND> <copy src="ConditionInfo" trait="user6" /> </_PipTweaks+TypeCND>
+<_PipTweaks+CND_1>
 	<copy> 0.5 </copy>
 	<add>
 		<copy> 0.25 </copy>
-		<onlyif src="io()" trait="_PUI+TypeCND" />
+		<onlyif src="io()" trait="_PipTweaks+TypeCND" />
 	</add>
-</_PUI+CND1>
-<_PUI+CND2>
-	<copy src="io()" trait="_PUI+CND1" />
+</_PipTweaks+CND_1>
+<_PipTweaks+CND_2>
+	<copy src="io()" trait="_PipTweaks+CND_1" />
 	<div> 3 </div>
-</_PUI+CND2>
+</_PipTweaks+CND_2>
 
 <!-- Shift Unequippable Items -->
-<_PUI+EqOffset_0> -28 </_PUI+EqOffset_0> <!-- Vanilla -->
-<_PUI+EqOffset_1> -18 </_PUI+EqOffset_1> <!-- DarNUI -->
-<_PUI+EqOffset_2> -28 </_PUI+EqOffset_2> <!-- VUI+ -->
-<_PUI+EqOffset_3> -28 </_PUI+EqOffset_3> <!-- VUI+ Revelations -->
-<_PUI+EqOffset_4> -20 </_PUI+EqOffset_4> <!-- VUIE -->
-<_PUI+EqOffset>
-	<copy src="sibling(HUDMainmenu)" trait="_PUI+UIMod" />
-	<copy src="me()" trait="_PUI+EqOffset_" />
-</_PUI+EqOffset>
+<_PipTweaks+EqOffset_0> -28 </_PipTweaks+EqOffset_0> <!-- Vanilla -->
+<_PipTweaks+EqOffset_1> -18 </_PipTweaks+EqOffset_1> <!-- DarNUI -->
+<_PipTweaks+EqOffset_2> -28 </_PipTweaks+EqOffset_2> <!-- VUI+ -->
+<_PipTweaks+EqOffset_3> -28 </_PipTweaks+EqOffset_3> <!-- VUI+ Revelations -->
+<_PipTweaks+EqOffset_4> -20 </_PipTweaks+EqOffset_4> <!-- VUIE -->
+<_PipTweaks+EqOffset>
+	<copy src="sibling(HUDMainmenu)" trait="_PipTweaks+UIMod" />
+	<copy src="me()" trait="_PipTweaks+EqOffset_" />
+</_PipTweaks+EqOffset>
+
+<!-- Conditions -->
+<_PipTweaks+CND_Headline>
+	<copy src="io()" trait="_PipTweaks+SeparateDRDT"/>
+	<add> 1 </add>
+	<onlyif>
+		<not src="io()" trait="_PipTweaks+HardcoreInfo"/>
+		<or>
+			<copy src="IM_Tabline" trait="_CurrentTab"/>
+			<neq> 2 </neq>
+		</or>
+	</onlyif>
+</_PipTweaks+CND_Headline>

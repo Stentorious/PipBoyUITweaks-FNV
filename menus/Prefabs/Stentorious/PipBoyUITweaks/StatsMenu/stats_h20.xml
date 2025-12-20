@@ -1,5 +1,8 @@
-<alpha> <copy src="io()" trait="_PUI+H2OA" /> </alpha>
-<systemcolor> <copy src="io()" trait="_PUI+H2OC" /> </systemcolor>
-<red> <copy src="io()" trait="_PUI+H2OR" /> </red>
-<green> <copy src="io()" trait="_PUI+H2OG" /> </green>
+<alpha> <copy src="io()" trait="_PipTweaks+H2O_Alpha" /> </alpha>
+<systemcolor>
+	<copy> &pipboy; </copy>
+	<onlyifnot src="io()" trait="_PipTweaks+Color_H2O" />
+</systemcolor>
+<red> <copy src="io()" trait="_PipTweaks+H2O_Red" /> </red>
+<green> <copy src="io()" trait="_PipTweaks+H2O_Green" /> </green>
 <blue> 0 </blue>

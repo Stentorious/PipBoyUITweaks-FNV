@@ -1,11 +1,72 @@
-<!-- Scripting -->
-<_PUI+Pulse> 0 </_PUI+Pulse>
+<!-- Config Settings -->
+<_PipTweaks+ExtMenuSupport> 0 </_PipTweaks+ExtMenuSupport>
+<_PipTweaks+HardcoreInfo> -1 </_PipTweaks+HardcoreInfo>
+<_PipTweaks+SeparateDRDT> -1 </_PipTweaks+SeparateDRDT>
+<_PipTweaks+ShiftItems> 0 </_PipTweaks+ShiftItems>
+<_PipTweaks+SkillInfo> 0 </_PipTweaks+SkillInfo>
+<_PipTweaks+CritInfo> 0 </_PipTweaks+CritInfo>
+<_PipTweaks+WeapModUI> 0 </_PipTweaks+WeapModUI>
+<_PipTweaks+Color_HP> 0 </_PipTweaks+Color_HP>
+<_PipTweaks+Color_AP> 0 </_PipTweaks+Color_AP>
+<_PipTweaks+Color_WG> 0 </_PipTweaks+Color_WG>
+<_PipTweaks+Color_RAD> 0 </_PipTweaks+Color_RAD>
+<_PipTweaks+Color_H2O> 0 </_PipTweaks+Color_H2O>
+<_PipTweaks+Color_FOD> 0 </_PipTweaks+Color_FOD>
+<_PipTweaks+Color_SLP> 0 </_PipTweaks+Color_SLP>
+<_PipTweaks+Color_StatMod> 0 </_PipTweaks+Color_StatMod>
+<_PipTweaks+Color_Limb> 0 </_PipTweaks+Color_Limb>
+<_PipTweaks+Color_CND> 0 </_PipTweaks+Color_CND>
+<_PipTweaks+ySI_Button> 0 </_PipTweaks+ySI_Button>
+<_PipTweaks+ySI_Resist> 0 </_PipTweaks+ySI_Resist>
+<_PipTweaks+ySI_WGInfo> 0 </_PipTweaks+ySI_WGInfo>
+<_PipTweaks+ySI_CapsInfo> 0 </_PipTweaks+ySI_CapsInfo>
+<_PipTweaks+ySI_WeightInfo> 0 </_PipTweaks+ySI_WeightInfo>
+<_PipTweaks+ySI_ValueInfo> 0 </_PipTweaks+ySI_ValueInfo>
+<_PipTweaks+ySI_AmmoInfo> 0 </_PipTweaks+ySI_AmmoInfo>
+
+<!-- Player Stats -->
+<_PlrStat+HealthPer> 0 </_PlrStat+HealthPer>
+<_PlrStat+ActionPointPer> 0 </_PlrStat+ActionPointPer>
+<_PlrStat+Encumbrance> 0 </_PlrStat+Encumbrance>
+<_PlrStat+RAD> 0 </_PlrStat+RAD>
+<_PlrStat+H2O> 0 </_PlrStat+H2O>
+<_PlrStat+FOD> 0 </_PlrStat+FOD>
+<_PlrStat+SLP> 0 </_PlrStat+SLP>
+<_PlrStat+H2O1> 0 </_PlrStat+H2O1>
+<_PlrStat+H2O2> 0 </_PlrStat+H2O2>
+<_PlrStat+H2O3> 0 </_PlrStat+H2O3>
+<_PlrStat+H2O4> 0 </_PlrStat+H2O4>
+<_PlrStat+H2O5> 0 </_PlrStat+H2O5>
+<_PlrStat+FOD1> 0 </_PlrStat+FOD1>
+<_PlrStat+FOD2> 0 </_PlrStat+FOD2>
+<_PlrStat+FOD3> 0 </_PlrStat+FOD3>
+<_PlrStat+FOD4> 0 </_PlrStat+FOD4>
+<_PlrStat+FOD5> 0 </_PlrStat+FOD5>
+<_PlrStat+SLP1> 0 </_PlrStat+SLP1>
+<_PlrStat+SLP2> 0 </_PlrStat+SLP2>
+<_PlrStat+SLP3> 0 </_PlrStat+SLP3>
+<_PlrStat+SLP4> 0 </_PlrStat+SLP4>
+<_PlrStat+SLP5> 0 </_PlrStat+SLP5>
+<_PlrStat+RAD1> 0 </_PlrStat+RAD1>
+<_PlrStat+RAD2> 0 </_PlrStat+RAD2>
+<_PlrStat+RAD3> 0 </_PlrStat+RAD3>
+<_PlrStat+RAD4> 0 </_PlrStat+RAD4>
+<_PlrStat+RAD5> 0 </_PlrStat+RAD5>
+
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 1 </_Menu+Systemcolor>
 
 <!-- Settings -->
-<_PUI+ColorCND> 0 </_PUI+ColorCND>	<!-- Colorful Condition Meters -->
+<_Settings+Hardcore> 0 </_Settings+Hardcore>
+
+<!-- Scripting -->
+<_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
+
+<!-- Settings -->
+
 
 <!-- Installed UI Mod -->
-<_PUI+UIMod>
+<_PipTweaks+UIMod>
 	<copy> 0 </copy>									<!-- Vanilla -->
 	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
 	<add>
@@ -23,25 +84,25 @@
 		<copy> 2 </copy>
 		<onlyif src="globals" trait="_VUIE" />			<!-- VUIE -->
 	</add>
-</_PUI+UIMod>
+</_PipTweaks+UIMod>
 
 <!-- ySI Button Icons -->
-<_PUI+ySIWidth_0> 32 </_PUI+ySIWidth_0>
-<_PUI+ySIOffset_0> -11.3 </_PUI+ySIOffset_0>
-<_PUI+ySIWidth_1> 21 </_PUI+ySIWidth_1>			<!-- DarNUI -->
-<_PUI+ySIOffset_1> 0 </_PUI+ySIOffset_1>
-<_PUI+ySIWidth_2> 32 </_PUI+ySIWidth_2>			<!-- VUI+ -->
-<_PUI+ySIOffset_2> -11.3 </_PUI+ySIOffset_2>
-<_PUI+ySIWidth_3> 32 </_PUI+ySIWidth_3>			<!-- VUI+ Revelations -->
-<_PUI+ySIOffset_3> -11.3 </_PUI+ySIOffset_3>
-<_PUI+ySIWidth_4> 24 </_PUI+ySIWidth_4>			<!-- VUIE -->
-<_PUI+ySIOffset_4> -5 </_PUI+ySIOffset_4>
-<_PUI+ySIWidth>
-	<copy src="me()" trait="_PUI+UIMod"/>
-	<copy src="me()" trait="_PUI+ySIWidth_"/>
-</_PUI+ySIWidth>
-<_PUI+ySIOffset>
-	<copy src="me()" trait="_PUI+UIMod" />
-	<copy src="me()" trait="_PUI+ySIOffset_" />
-</_PUI+ySIOffset>
-<_PUI+ySIFont> 2 </_PUI+ySIFont>
+<_PipTweaks+ySI_Width_0> 32 </_PipTweaks+ySI_Width_0>
+<_PipTweaks+ySI_Offset_0> -11.3 </_PipTweaks+ySI_Offset_0>
+<_PipTweaks+ySI_Width_1> 21 </_PipTweaks+ySI_Width_1>			<!-- DarNUI -->
+<_PipTweaks+ySI_Offset_1> 0 </_PipTweaks+ySI_Offset_1>
+<_PipTweaks+ySI_Width_2> 32 </_PipTweaks+ySI_Width_2>			<!-- VUI+ -->
+<_PipTweaks+ySI_Offset_2> -11.3 </_PipTweaks+ySI_Offset_2>
+<_PipTweaks+ySI_Width_3> 32 </_PipTweaks+ySI_Width_3>			<!-- VUI+ Revelations -->
+<_PipTweaks+ySI_Offset_3> -11.3 </_PipTweaks+ySI_Offset_3>
+<_PipTweaks+ySI_Width_4> 24 </_PipTweaks+ySI_Width_4>			<!-- VUIE -->
+<_PipTweaks+ySI_Offset_4> -5 </_PipTweaks+ySI_Offset_4>
+<_PipTweaks+ySI_Width>
+	<copy src="me()" trait="_PipTweaks+UIMod"/>
+	<copy src="me()" trait="_PipTweaks+ySI_Width_"/>
+</_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset>
+	<copy src="me()" trait="_PipTweaks+UIMod" />
+	<copy src="me()" trait="_PipTweaks+ySI_Offset_" />
+</_PipTweaks+ySI_Offset>
+<_PipTweaks+ySI_Font> 2 </_PipTweaks+ySI_Font>

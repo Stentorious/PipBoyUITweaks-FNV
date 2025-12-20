@@ -1,0 +1,91 @@
+<rect name="IM_Headline_PlayerDRInfo_Clone">
+	<visible>
+		<copy src="io()" trait="_PipTweaks+CND_Headline" />
+		<eq> 1 </eq>
+	</visible>
+	<include src="card_info.xml"/>
+	<x>
+		<copy src="sibling(IM_Headline_PlayerWGInfo)" trait="x" />
+		<add src="sibling(IM_Headline_PlayerWGInfo)" trait="width" />
+		<add> 9 </add>
+	</x>
+	<width> 130 </width>
+	<_Title> &-sInventoryDamageResistance; </_Title>
+	<_Value>
+		<copy src="sibling(IM_Headline_PlayerDRInfo)" trait="_Value" />
+		<max> 0.000001 </max>
+	</_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>
+
+<rect name="IM_Headline_PlayerDTInfo_Clone">
+	<visible>
+		<copy src="io()" trait="_PipTweaks+CND_Headline" />
+		<eq> 1 </eq>
+	</visible>
+	<include src="card_info.xml"/>
+	<x>
+		<copy src="sibling(IM_Headline_PlayerDRInfo_Clone)" trait="x" />
+		<add src="sibling(IM_Headline_PlayerDRInfo_Clone)" trait="width" />
+		<add> 9 </add>
+	</x>
+	<width> 130 </width>
+	<_Title> &-sInventoryDamageThreshold; </_Title>
+	<_Value>
+		<copy src="sibling(IM_Headline_PlayerDTInfo)" trait="_Value" />
+		<max> 0.000001 </max>
+	</_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>
+
+<rect name="IM_Headline_PlayerFODInfo">
+	<visible> <not src="io()" trait="_PipTweaks+CND_Headline" /> </visible>
+	<include src="card_info.xml"/>
+	<x> <copy src="sibling(IM_Headline_PlayerDRInfo_Clone)" trait="x" /> </x>
+	<width> 130 </width>
+	<_Title> &-sStatsFODAbbrev; </_Title>
+	<_Value>
+		<copy src="io()" trait="_PlrStat+FOD" />
+		<max> 0.000001 </max>
+	</_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>
+
+<rect name="IM_Headline_PlayerH2OInfo">
+	<visible> <not src="io()" trait="_PipTweaks+CND_Headline" /> </visible>
+	<include src="card_info.xml"/>
+	<x> <copy src="sibling(IM_Headline_PlayerDTInfo_Clone)" trait="x" /> </x>
+	<width> 130 </width>
+	<_Title> &-SStatsH20Abbrev; </_Title>
+	<_Value>
+		<copy src="io()" trait="_PlrStat+H2O" />
+		<max> 0.000001 </max>
+	</_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>
+
+<rect name="IM_Headline_PlayerDRInfoSplit">
+	<visible>
+		<copy src="io()" trait="_PipTweaks+CND_Headline" />
+		<eq> 2 </eq>
+	</visible>
+	<include src="card_info.xml"/>
+	<x> <copy src="sibling(IM_Headline_PlayerDRInfo_Clone)" trait="x" /> </x>
+	<width> 130 </width>
+	<_Title> &-sInventoryDamageResistance; </_Title>
+	<_Value> - [-] </_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>
+
+<rect name="IM_Headline_PlayerDTInfoSplit">
+	<visible>
+		<copy src="io()" trait="_PipTweaks+CND_Headline" />
+		<eq> 2 </eq>
+	</visible>
+	<include src="card_info.xml"/>
+	<x> <copy src="sibling(IM_Headline_PlayerDTInfo_Clone)" trait="x" /> </x>
+	<width> 130 </width>
+	<_Title> &-sInventoryDamageThreshold; </_Title>
+	<_Value> - [-] </_Value>
+	<_VUI+NoBlink> 1 </_VUI+NoBlink>
+</rect>

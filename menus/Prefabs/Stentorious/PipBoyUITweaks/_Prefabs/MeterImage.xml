@@ -1,0 +1,1 @@
+<visible> <not src="parent()" trait="_ColorMeter"/> </visible>

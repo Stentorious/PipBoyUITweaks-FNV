@@ -1,0 +1,14 @@
+ref rEquipper
+ref rEquipped
+
+int iMenuID
+
+begin Function {rEquipper, rEquipped}
+
+	if eval (iMenuID = GetActiveMenuMode) == 1008
+		CallAfterFrames 0 (CompileScript "PipBoyUITweaks\GetItemStats.gek") 1
+	elseif eval iMenuID == 1002 && GetType rEquipped == 24
+		CallAfterFrames 0 (CompileScript "PipBoyUITweaks\UpdateDTDR.gek") 1
+	endif
+
+end

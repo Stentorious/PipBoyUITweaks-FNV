@@ -9,9 +9,9 @@
 	</x>
 	<y>
 		<copy src="sibling(button_text)" trait="y" />
-		<add src="io()" trait="_PUI+ySIOffset" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
-	<width> <copy src="io()" trait="_PUI+ySIWidth" /> </width>
+	<width> <copy src="io()" trait="_PipTweaks+ySI_Width" /> </width>
 	<height> <copy src="me()" trait="width" /> </height>
 	<zoom> &scale; </zoom>
 	<systemcolor>

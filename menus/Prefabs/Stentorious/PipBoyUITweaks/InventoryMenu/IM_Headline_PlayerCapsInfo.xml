@@ -1,0 +1,10 @@
+<visible>
+	<copy src="IM_Tabline" trait="_CurrentTab"/>
+	<neq> 2 </neq>
+</visible>
+<x>
+	<copy src="sibling(IM_Headline_PlayerDTInfo_Clone)" trait="x" />
+	<add src="sibling(IM_Headline_PlayerDTInfo_Clone)" trait="width" />
+	<add> 9 </add>
+</x>
+<width> 185 </width>

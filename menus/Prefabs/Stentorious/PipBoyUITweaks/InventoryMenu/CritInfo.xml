@@ -3,6 +3,7 @@
 	<visible>
 		<not src="IM_HotKeyWheel" trait="visible" />
 		<and src="sibling(StrengthReqInfo)" trait="visible" />
+		<and src="io()" trait="_PipTweaks+CritInfo" />
 	</visible>
 	<x>
 		<copy> 0 </copy>

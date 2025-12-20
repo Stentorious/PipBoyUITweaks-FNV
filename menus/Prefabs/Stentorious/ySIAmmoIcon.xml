@@ -1,5 +1,15 @@
+<_ySIImage> <copy src="io()" trait="_PipTweaks+ySI_AmmoInfo" /> </_ySIImage>
+<_ySIOffset>
+	<copy src="child(ySIImage)" trait="width" />
+	<add> 8 </add>
+	<onlyif src="child(ySIImage)" trait="visible" />
+</_ySIOffset>
+
 <image name="ySIImage">
-	<visible> <copy src="parent()" trait="visible" /> </visible>
+	<visible>
+		<copy src="parent()" trait="visible" />
+		<and src="io()" trait="_PipTweaks+ySI_AmmoInfo"/>
+	</visible>
 	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
 	<x>
 		<copy src="sibling(CI_TitleText)" trait="x" />
@@ -8,7 +18,7 @@
 	</x>
 	<y>
 		<copy src="sibling(CI_TitleText)" trait="y"/>
-		<add src="io()" trait="_PUI+ySIOffset" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
 	<width> <copy src="me()" trait="height" /> </width>
 	<height>

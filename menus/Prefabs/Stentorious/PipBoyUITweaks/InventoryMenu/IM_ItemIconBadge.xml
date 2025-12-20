@@ -1,0 +1,4 @@
+<height>
+	<copy src="me()" trait="width" />
+	<onlyifnot src="io()" trait="_PipTweaks+SkillInfo" />
+</height>

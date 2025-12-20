@@ -1,0 +1,43 @@
+<_ySIImage> <copy src="io()" trait="_PipTweaks+ySI_CapsInfo" /> </_ySIImage>
+
+<image name="ySIImage">
+	<visible>
+		<copy src="parent()" trait="visible" />
+		<and src="parent()" trait="_ySIImage" />
+	</visible>
+	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
+	<x>
+		<copy src="sibling(CI_ValueText)" trait="x" />
+		<sub src="me()" trait="height" />
+		<sub> 8 </sub>
+	</x>
+	<y>
+		<copy src="sibling(CI_TitleText)" trait="y"/>
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
+		<sub>
+			<copy> 1.5 </copy>
+			<onlyif src="globals()" trait="_duiHUDOffset" />
+		</sub>
+	</y>
+	<width> <copy src="me()" trait="height" /> </width>
+	<height>
+		<copy src="sibling(CI_TitleText)" trait="height" />
+		<mul>
+			<copy> 1 </copy>
+			<sub>
+				<copy> 0.1 </copy>
+				<onlyif src="globals" trait="_VUIE"/>
+			</sub>
+		</mul>
+	</height>
+	<zoom> &scale; </zoom>
+	<systemcolor>
+		<copy> 0 </copy>
+		<add src="io()" trait="systemcolor" />
+		<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
+	</systemcolor>
+	<red> 255 </red>
+	<green> 255 </green>
+	<blue> 255 </blue>
+	<filename> interface\icons\Misc_BottleCap.dds </filename>
+</image>

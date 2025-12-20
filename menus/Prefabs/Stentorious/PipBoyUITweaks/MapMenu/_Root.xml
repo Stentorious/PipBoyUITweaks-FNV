@@ -1,3 +1,10 @@
+<!-- Config Settings -->
+<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
 <!-- ySI Button Icons -->
-<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
-<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>
+<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width" /> </_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset" /> </_PipTweaks+ySI_Offset>

@@ -8,7 +8,7 @@
 	</x>
 	<y>
 		<copy src="sibling(CI_TitleText)" trait="y"/>
-		<add src="io()" trait="_PUI+ySIOffset" />
+		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
 	<width> <copy src="me()" trait="height" /> </width>
 	<height>

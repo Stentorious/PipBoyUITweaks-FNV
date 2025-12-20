@@ -9,7 +9,7 @@ begin Function {}
 	else
 		Return
 	endif
-	if eval IsReference (rItem = GetSelectedItemRef) && (rItem = rItem.GBO) != Goo1.AuxVarGetRef "*PUI_InvRef"
+	if eval IsReference (rItem = GetSelectedItemRef) && (rItem = rItem.GBO) != Goo1.AuxVarGetRef "*PipTweaks_InvRef"
 		Call (CompileScript "PipBoyUITweaks\MouseOver.gek") iMenuMode
 	endif
 

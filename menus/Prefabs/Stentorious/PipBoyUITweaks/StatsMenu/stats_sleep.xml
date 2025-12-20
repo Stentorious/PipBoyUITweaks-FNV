@@ -1,5 +1,8 @@
-<alpha> <copy src="io()" trait="_PUI+SLPA" /> </alpha>
-<systemcolor> <copy src="io()" trait="_PUI+SLPC" /> </systemcolor>
-<red> <copy src="io()" trait="_PUI+SLPR" /> </red>
-<green> <copy src="io()" trait="_PUI+SLPG" /> </green>
+<alpha> <copy src="io()" trait="_PipTweaks+SLP_Alpha" /> </alpha>
+<systemcolor>
+	<copy> &pipboy; </copy>
+	<onlyifnot src="io()" trait="_PipTweaks+Color_SLP" />
+</systemcolor>
+<red> <copy src="io()" trait="_PipTweaks+SLP_Red" /> </red>
+<green> <copy src="io()" trait="_PipTweaks+SLP_Green" /> </green>
 <blue> 0 </blue>

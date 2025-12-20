@@ -1,12 +1,15 @@
 <rect name="IMM_ModCompare">
 	<include src="item_stats_display.xml" />
-	<visible> 1 </visible>
+	<visible> <copy src="io()" trait="_PipTweaks+WeapModUI"/> </visible>
 	<x> 0 </x>
 	<y> 0 </y>
 	<width> 0 </width>
 	<rect name="CritInfo">
 		<include src="card_info.xml" />
-		<visible> <copy src="sibling(StrengthReqInfo)" trait="visible" /> </visible>
+		<visible>
+			<copy src="sibling(StrengthReqInfo)" trait="visible" />
+			<and src="io()" trait="_PipTweaks+CritInfo" />
+		</visible>
 		<x> <copy src="sibling(DAMInfo)" trait="x" /> </x>
 		<y> <copy src="sibling(StrengthReqInfo)" trait="y" /> </y>
 		<width> <copy src="parent()" trait="user0" /> </width>

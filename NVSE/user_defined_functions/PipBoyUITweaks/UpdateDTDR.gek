@@ -1,0 +1,83 @@
+int	iDTHead
+int	iDTBody
+int	iDRHead
+int	iDRBody
+int	iDTCalc
+int	iDRCalc
+int	iDTBase
+int	iDRBase
+int iDTBonus
+int iDRBonus
+int iSize
+ref	rPiece
+array_var aBases
+array_var aPieces
+string_var sThreshold
+string_var sResist
+
+begin Function{}
+
+	; Headgear
+	aBases = ar_Construct "Array"
+	aPieces = PlayerRef.GetEquippedItemRefs 130563
+	iSize = ar_Size aPieces
+	while (iSize -= 1) > -1
+		rPiece = aPieces[iSize]
+		iDTHead += rPiece.GetArmorEffectiveDT
+		iDRHead += rPiece.GetArmorEffectiveDR
+		ar_Append aBases (rPiece.GBO)
+	loop
+	iDTBase = iDTHead
+	iDRBase = iDRHead
+
+	; Body
+	aPieces = PlayerRef.GetEquippedItemRefs 917980
+	iSize = ar_Size aPieces
+	while (iSize -= 1) > -1
+		rPiece = aPieces[iSize]
+		iDTCalc = rPiece.GetArmorEffectiveDT
+		iDRCalc = rPiece.GetArmorEffectiveDR
+		iDTBody += iDTCalc
+		iDRBody += iDRCalc
+		if eval (ar_Find (rPiece.GBO) aBases) < 0
+			iDTBase += iDTCalc
+			iDRBase += iDRCalc
+		endif
+	loop
+
+	iDTBonus = (Player.GetAV DamageThreshold) + (Flr (Player.GetPerkModifier 56 0 XMarker XMarker))
+	iDRBonus = (Player.GetAV DamageResist)
+
+	SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerDTInfo_Clone\_Value" "%g" iDTBonus
+	SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerDRInfo_Clone\_Value" "%g" iDRBonus
+
+	iDTBonus -= iDTBase
+	iDRBonus -= iDRBase
+	iDTBody += iDTBonus
+	iDRBody += iDRBonus
+	iDTHead += iDTBonus
+	iDRHead += iDRBonus
+
+	; Build headline string
+	sThreshold = "- [-]"
+	sResist = "- [-]"
+	if iDTBody >= 1
+		sThreshold[0] = $iDTBody
+	endif
+	if iDTHead >= 1
+		sThreshold[-2] = $iDTHead
+	endif
+	if iDRBody >= 1
+		sResist[0] = $iDRBody
+	endif
+	if iDRHead >= 1
+		sResist[-2] = $iDRHead
+	endif
+
+	SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerDTInfoSplit\_Value" (sThreshold)
+	SetUIStringAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerDRInfoSplit\_Value" (sResist)
+
+	aBases = aPieces = Ar_Null
+	sv_Destruct sThreshold sResist
+
+end

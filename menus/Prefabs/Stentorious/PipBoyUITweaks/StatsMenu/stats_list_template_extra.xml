@@ -1,5 +1,22 @@
-<systemcolor> 4 </systemcolor>
+<systemcolor>
+	<copy> &pipboy; </copy>
+	<sub>
+		<copy> 2 </copy>
+		<sub>
+			<copy> 1 </copy>
+			<onlyif src="me()" trait="_Modifier" />
+		</sub>
+		<onlyif src="io()" trait="_PipTweaks+Color_StatMod" />
+	</sub>
+</systemcolor>
 <red> 255 </red>
 <green> 255 </green>
 <blue> 255 </blue>
-<brightness> 255 </brightness>
+<brightness>
+	<copy> 255 </copy>
+	<sub>
+		<copy> 100 </copy>
+		<onlyifnot src="io()" trait="_PipTweaks+Color_StatMod" />
+	</sub>
+</brightness>
+<_Modifier> 0 </_Modifier>

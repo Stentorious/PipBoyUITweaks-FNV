@@ -1,61 +1,39 @@
 int	iMenuID
-int iColor
+
+int iComp
 int iTile
-string_var sUIPath
+string_var sTemp
 
 begin Function {iMenuID}
 
 	; Update Skill bonus color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 5
-		iTile = -1
-		while 13 > (iTile += 1)
-			sUIPath = GetUIString ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\user2")
-			if eval (Sv_Find "+" sUIPath != -1 || Player.GetAV (45 - iTile) > 100)
-				iColor = 3
-			else
-				iColor = 2
-			endif
-			SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\stats_list_template_extra\systemcolor") iColor
-		loop
-	endif
+	iTile = -1
+	while (iTile += 1) < 13
+		sTemp = GetUIString ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\user2")
+		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (45 - iTile) > 100)
+			iComp = 1
+		else
+			iComp = 0
+		endif
+		SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\stats_list_template_extra\_Modifier") iComp
+	loop
 
 	; Update SPECIAL bonus color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 6
-		iTile = -1
-		while 7 > (iTile += 1)
-			sUIPath = GetUIString ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\user2")
-			if eval (Sv_Find "+" sUIPath != -1 || Player.GetAV (11 - iTile) > 10)
-				iColor = 3
-			else
-				iColor = 2
-			endif
-			SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\stats_list_template_extra\systemcolor") iColor
-		loop
-	endif
-
-	; Update hit points color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 7
-		SetUIFloatAlt "StatsMenu\_PUI+HP" (Player.GetHealthPercentage)
-	endif
-
-	; Update hardcore needs color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 9
-		SetUIFloatAlt "StatsMenu\_PUI+RAD" (Player.GetAV RadiationRads)
-	endif
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 10
-		SetUIFloatAlt "StatsMenu\_PUI+H2O" (Player.GetAV Dehydration)
-	endif
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 11
-		SetUIFloatAlt "StatsMenu\_PUI+FOD" (Player.GetAV Hunger)
-	endif
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 12
-		SetUIFloatAlt "StatsMenu\_PUI+SLP" (Player.GetAV SleepDeprevation)
-	endif
+	iTile = -1
+	while (iTile += 1) < 7
+		sTemp = GetUIString ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\user2")
+		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (11 - iTile) > 10)
+			iComp = 1
+		else
+			iComp = 0
+		endif
+		SetUIFloatAlt ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\stats_list_template_extra\_Modifier") iComp
+	loop
 
 	; Reset alpha pulse
-	SetUIFloatGradual "InventoryMenu\_PUI+Pulse" 0
-	SetUIFloatGradual "StatsMenu\_PUI+Pulse" 0.8 0 1.5 2
+	SetUIFloatGradual "InventoryMenu\_PipTweaks+Pulse" -255
+	SetUIFloatGradual "StatsMenu\_PipTweaks+Pulse" -204 0 1.5 2
 
-	sv_destruct sUIPath
+	sv_destruct sTemp
 
 end

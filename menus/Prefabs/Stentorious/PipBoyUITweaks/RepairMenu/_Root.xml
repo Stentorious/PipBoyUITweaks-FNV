@@ -1,10 +1,16 @@
-<_PUI+Pulse> <copy src="sibling(InventoryMenu)" trait="_PUI+Pulse"/> </_PUI+Pulse>
+<!-- Config Settings -->
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+
+<_PipTweaks+Pulse> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+Pulse"/> </_PipTweaks+Pulse>
+
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
 <!-- Colorful Condition Meters -->
-<_PUI+ColorCND> <copy src="sibling(HUDMainMenu)" trait="_PUI+ColorCND"/> </_PUI+ColorCND>
-<_PUI+CND1> <copy src="sibling(InventoryMenu)" trait="_PUI+CND1" /> </_PUI+CND1>
-<_PUI+CND2> <copy src="sibling(InventoryMenu)" trait="_PUI+CND2" /> </_PUI+CND2>
+<_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/> </_PipTweaks+Color_CND>
+<_PipTweaks+CND_1> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_1" /> </_PipTweaks+CND_1>
+<_PipTweaks+CND_2> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_2" /> </_PipTweaks+CND_2>
 
 <!-- ySI Button Icons -->
-<_PUI+ySIWidth> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIWidth" /> </_PUI+ySIWidth>
-<_PUI+ySIOffset> <copy src="sibling(HUDMainMenu)" trait="_PUI+ySIOffset" /> </_PUI+ySIOffset>
+<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width" /> </_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset" /> </_PipTweaks+ySI_Offset>

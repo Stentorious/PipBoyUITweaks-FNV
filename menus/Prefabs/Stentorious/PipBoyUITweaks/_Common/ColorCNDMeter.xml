@@ -1,29 +1,26 @@
+<_ColorMeter> 1 </_ColorMeter>
+
 <image name="MeterImage_Clone">
 	<visible> <not src="sibling(MeterImage)" trait="visible" /> </visible>
 	<alpha>
-		<copy src="sibling(MeterImage)" trait="alpha" />
-		<mul>
-			<copy> 1 </copy>
-			<sub>
-				<copy src="io()" trait="_PUI+Pulse" />
-				<onlyif>
-					<copy src="parent()" trait="_Value" />
-					<lte src="io()" trait="_PUI+CND2" />
-					<and>
-						<copy src="io()" trait="_PUI+ColorCND" />
-						<eq> 2 </eq>
-					</and>
-					<or>
-						<copy src="parent()" trait="_Value" />
-						<lte> 0.25 </lte>
-						<and>
-							<copy src="io()" trait="_PUI+ColorCND" />
-							<eq> 1 </eq>
-						</and>
-					</or>
-				</onlyif>
-			</sub>
-		</mul>
+		<copy src="io()" trait="_PipTweaks+Pulse" />
+		<onlyif>
+			<copy src="parent()" trait="_Value" />
+			<lte src="io()" trait="_PipTweaks+CND_2" />
+			<and>
+				<copy src="io()" trait="_PipTweaks+Color_CND" />
+				<eq> 2 </eq>
+			</and>
+			<or>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
+			</or>
+		</onlyif>
+		<add> 255 </add>
 	</alpha>
 	<depth> 2 </depth>
 	<x> <copy src="sibling(MeterImage)" trait="x" /> </x>
@@ -35,17 +32,28 @@
 	<systemcolor>
 		<copy> 0 </copy>
 		<add>
-			<copy> 2 </copy>
-			<add>
-				<copy> 2 </copy>
-				<onlyif>
+			<copy src="io()" trait="_Menu+Systemcolor" />
+			<onlyif>
+				<not src="io()" trait="_PipTweaks+Color_CND" />
+				<or>
 					<copy src="parent()" trait="_Value" />
 					<gt> 0.25 </gt>
-				</onlyif>
-			</add>
+					<and>
+						<copy src="io()" trait="_PipTweaks+Color_CND" />
+						<eq> 1 </eq>
+					</and>
+				</or>
+			</onlyif>
+		</add>
+		<add>
+			<copy> 2 </copy>
 			<onlyif>
-				<copy src="io()" trait="_PUI+ColorCND" />
-				<eq> 1 </eq>
+				<copy src="parent()" trait="_Value" />
+				<lte> 0.25 </lte>
+				<and>
+					<copy src="io()" trait="_PipTweaks+Color_CND" />
+					<eq> 1 </eq>
+				</and>
 			</onlyif>
 		</add>
 	</systemcolor>
@@ -54,17 +62,17 @@
 		<sub src="parent()" trait="_Value" />
 		<div>
 			<copy> 1 </copy>
-			<sub src="io()" trait="_PUI+CND1" />
+			<sub src="io()" trait="_PipTweaks+CND_1" />
 		</div>
 		<mul> 255 </mul>
 		<min> 255 </min>
 	</red>
 	<green>
 		<copy src="parent()" trait="_Value" />
-		<sub src="io()" trait="_PUI+CND2" />
+		<sub src="io()" trait="_PipTweaks+CND_2" />
 		<div>
-			<copy src="io()" trait="_PUI+CND1" />
-			<sub src="io()" trait="_PUI+CND2" />
+			<copy src="io()" trait="_PipTweaks+CND_1" />
+			<sub src="io()" trait="_PipTweaks+CND_2" />
 		</div>
 		<mul> 255 </mul>
 		<max> 0 </max>

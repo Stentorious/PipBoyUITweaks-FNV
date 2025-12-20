@@ -1,5 +1,8 @@
-<alpha> <copy src="io()" trait="_PUI+RADA" /> </alpha>
-<systemcolor> <copy src="io()" trait="_PUI+RADC" /> </systemcolor>
-<red> <copy src="io()" trait="_PUI+RADR" /> </red>
-<green> <copy src="io()" trait="_PUI+RADG" /> </green>
+<alpha> <copy src="io()" trait="_PipTweaks+RAD_Alpha" /> </alpha>
+<systemcolor>
+	<copy> &pipboy; </copy>
+	<onlyifnot src="io()" trait="_PipTweaks+Color_RAD" />
+</systemcolor>
+<red> <copy src="io()" trait="_PipTweaks+RAD_Red" /> </red>
+<green> <copy src="io()" trait="_PipTweaks+RAD_Green" /> </green>
 <blue> 0 </blue>

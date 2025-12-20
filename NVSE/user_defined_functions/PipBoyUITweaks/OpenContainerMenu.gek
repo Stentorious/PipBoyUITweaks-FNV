@@ -3,103 +3,47 @@ float fTemp
 
 begin Function {iMenuID}
 
-	if eval GetUIFloatAlt "ContainerMenu\_PUI+Init"
+	if eval GetUIFloatAlt "ContainerMenu\_PipTweaks+Init"
 		return
 	endif
-	SetUIFloatAlt "ContainerMenu\_PUI+Init" 1
+	SetUIFloatAlt "ContainerMenu\_PipTweaks+Init" 1
 
-	Goo1.AuxVarErase "*PUI_InvRef"
-
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 15 == 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritDAMInfo\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\SkillInfo\visible" 0
-		return
-	endif
+	Goo1.AuxVarErase "*PipTweaks_InvRef"
 
 	; Cache equipped item stats and update color
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 0
-		Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
-	endif
-
-	; Enable critical chance ItemInfo component
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 13
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\CI_ValueText\wrapwidth" 150
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\StrengthReqInfo\_VUI+LabelRight" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\StrengthReqInfo\VUI+WeaponSkillBadge\y" -9999
-		fTemp = GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\height"
-		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\y" fTemp
-		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" fTemp
-		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\height" fTemp
-		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\y" (-fTemp)
-		if eval Goo1.AuxVarGetFlt "*_DarNifiedUINV.esp"
-			ModUIFloat "ContainerMenu\y" -15
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\y" -5
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" -10
-		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
-			ModUIFloat "ContainerMenu\y" -10
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_Background\height" fTemp
-		elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" 20
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\height" 20
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\y" -20
-			ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\x" (-((GetUIFloatAlt "HUDMainMenu\_PUI+ySIWidth") + 8))
-		endif
-	else
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritDAMInfo\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\SkillInfo\visible" 0
-	endif
+	Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
 
 	; Enable colorful CND
-	if GetUIFloatAlt "HUDMainMenu\_PUI+ColorCND" > 0
-		SetUIFloatGradual "ContainerMenu\_PUI+Pulse" 0.8 0 1.5 2
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ConditionInfo\ConditionMeter" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ColorCNDMeterHUD.xml"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ConditionInfo\ConditionMeter\MeterImage\visible" 0
-	endif
-
-	; Enable ySI icons (Container weight)
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_HeadlineRect\IM_Headline_PlayerWGInfo\ySIImage\visible" != -999
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ContainerMenu\CM_Items_CapsLabel_Clone.xml"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemsRect\CM_Items_CapsLabel\visible" 0
-		if eval GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ContainerRect\_VUI+ContainerWeight\visible" != -999
-			InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ContainerRect" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ContainerMenu\CM_Container_CapsLabel_Clone.xml"
-			SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ContainerRect\_VUI+ContainerWeight\visible" 0
-		endif
-	endif
-
-	; Enable ySI icons (WeightInfo)
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\WeightInfo\ySIImage\visible" != -999
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\WeightInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\WeightInfo\CI_TitleText\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\WeightInfo\ySIImage\x" (GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\WeightInfo\CI_TitleText\x")
-		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\WeightInfo\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
-	endif
-
-	; Enable ySI icons (ValueInfo)
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\ValueInfo\ySIImage\visible" != -999
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ValueInfo" "data\menus\prefabs\Stentorious\ySICapIcon.xml"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ValueInfo\CI_TitleText\visible" 0
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ValueInfo\ySIImage\x" (GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\ValueInfo\CI_TitleText\x")
-	endif
-
-	; Enable ySI icons (AmmoInfo)
-	if eval Goo1.AuxVarGetFlt "*PUI_INI" 14
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\AmmoInfo" "data\menus\prefabs\Stentorious\ySIAmmoIcon.xml"
-		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\AmmoInfo\CI_TitleText\x" ((GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\AmmoInfo\ySIImage\width") + 8)
-	endif
+	SetUIFloatGradual "ContainerMenu\_PipTweaks+Pulse" -204 0 1.5 2
 
 	; Enable ySI icons (Buttons)
-	if eval GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\ySIImage\visible" != -999
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
-		InjectUIXML "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton" "data\menus\prefabs\Stentorious\PipBoyUITweaks\ySIButtonIcon.xml"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton\_ySIButton" 1
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton\_ySIButton" 1
-		fTemp = GetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ButtonRect\IM_EquipButton\_horbuf"
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton\_horbuf" fTemp
-		SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton\_horbuf" fTemp
-		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
-		SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+	SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
+	SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+
+	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1
+		return
+	endif
+
+	SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\CI_ValueText\wrapwidth" 150
+	SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\StrengthReqInfo\_VUI+LabelRight" 0
+	SetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\StrengthReqInfo\VUI+WeaponSkillBadge\y" -9999
+	fTemp = GetUIFloatAlt "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\CritInfo\height"
+	ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\y" fTemp
+	ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" fTemp
+	ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\height" fTemp
+	ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\y" (-fTemp)
+	if eval Goo1.AuxVarGetFlt "*_DarNifiedUINV.esp"
+		ModUIFloat "ContainerMenu\y" -15
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\y" -5
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" -10
+	elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
+		ModUIFloat "ContainerMenu\y" -10
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_Background\height" fTemp
+	elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\y" 20
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\height" 20
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_BottomBracket\CleanBackground\y" -20
+		ModUIFloat "ContainerMenu\NOGLOW_BRANCH\CM_ItemData\x" (-((GetUIFloatAlt "HUDMainMenu\_PipTweaks+ySI_Width") + 8))
 	endif
 
 end

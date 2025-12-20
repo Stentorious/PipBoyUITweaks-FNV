@@ -2,6 +2,9 @@
 	<copy> 4 </copy>
 	<sub>
 		<copy> 2 </copy>
-		<onlyif src="stats_player_rightarm_crippled" trait="visible" />
+		<onlyif>
+			<copy src="stats_player_rightarm_crippled" trait="visible" />
+			<and src="io()" trait="_PipTweaks+Color_Limb" />
+		</onlyif>
 	</sub>
 </systemcolor>

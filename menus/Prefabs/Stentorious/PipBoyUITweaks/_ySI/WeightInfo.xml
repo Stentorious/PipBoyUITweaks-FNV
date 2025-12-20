@@ -24,8 +24,7 @@
 	</height>
 	<zoom> &scale; </zoom>
 	<systemcolor>
-		<copy> 0 </copy>
-		<add src="io()" trait="systemcolor" />
+		<copy src="io()" trait="systemcolor" />
 		<onlyifnot src="io()" trait="_ySIColorFulIconsFix" />
 	</systemcolor>
 	<red> 255 </red>

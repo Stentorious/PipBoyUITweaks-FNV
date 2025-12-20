@@ -1,6 +1,6 @@
 
 <visible>
-	<copy src="parent()" trait="width"/>
+	<copy src="parent()" trait="width" />
 	<sub src="sibling(CI_ValueText)" trait="width" />
 	<sub> 19 </sub>
 	<gt> <copy src="me()" trait="width" /> </gt>

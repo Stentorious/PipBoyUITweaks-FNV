@@ -3,8 +3,8 @@
 <text name="RSM_CapsLabel_Text">
 	<visible> <copy src="parent()" trait="_ySIImage" /> </visible>
 	<alpha> <copy src="sibling(RSM_CapsLabel)" trait="alpha" /> </alpha>
-	<x> <copy src="sibling(RSM_CapsLabel)" trait="x"/> </x>
-	<y> <copy src="sibling(RSM_CapsLabel)" trait="y"/> </y>
+	<x> <copy src="sibling(RSM_CapsLabel)" trait="x" /> </x>
+	<y> <copy src="sibling(RSM_CapsLabel)" trait="y" /> </y>
 	<font> <copy src="io()" trait="_PipTweaks+ySI_Font" /> </font>
 	<justify> &right; </justify>
 </text>
@@ -19,7 +19,7 @@
 		<sub> 10 </sub>
 	</x>
 	<y>
-		<copy src="sibling(RSM_CapsLabel_Text)" trait="y"/>
+		<copy src="sibling(RSM_CapsLabel_Text)" trait="y" />
 		<add src="io()" trait="_PipTweaks+ySI_Offset" />
 	</y>
 	<width> <copy src="me()" trait="height" /> </width>

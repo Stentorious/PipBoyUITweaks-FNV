@@ -1,5 +1,5 @@
 <visible>
-	<copy src="IM_Tabline" trait="_CurrentTab"/>
+	<copy src="IM_Tabline" trait="_CurrentTab" />
 	<neq> 2 </neq>
 </visible>
 <x>

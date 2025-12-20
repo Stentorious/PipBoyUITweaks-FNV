@@ -1,6 +1,6 @@
 <rect name="IMM_ModCompare">
 	<include src="item_stats_display.xml" />
-	<visible> <copy src="io()" trait="_PipTweaks+WeapModUI"/> </visible>
+	<visible> <copy src="io()" trait="_PipTweaks+WeapModUI" /> </visible>
 	<x> 0 </x>
 	<y> 0 </y>
 	<width> 0 </width>

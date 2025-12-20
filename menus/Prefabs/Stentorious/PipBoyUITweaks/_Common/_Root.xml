@@ -3,40 +3,40 @@
 
 <!-- Config Settings -->
 <_PipTweaks+SkillInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SkillInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SkillInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+SkillInfo>
 <_PipTweaks+CritInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+CritInfo>
 <_PipTweaks+Color_CND>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+Color_CND>
 <_PipTweaks+ySI_Button>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_Button>
 <_PipTweaks+ySI_WGInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WGInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WGInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_WGInfo>
 <_PipTweaks+ySI_CapsInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_CapsInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_CapsInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_CapsInfo>
 <_PipTweaks+ySI_WeightInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WeightInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_WeightInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_WeightInfo>
 <_PipTweaks+ySI_ValueInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_ValueInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_ValueInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_ValueInfo>
 <_PipTweaks+ySI_AmmoInfo>
-	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_AmmoInfo"/>
-	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_AmmoInfo" />
+	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+ySI_AmmoInfo>
 
 <!-- Scripting -->

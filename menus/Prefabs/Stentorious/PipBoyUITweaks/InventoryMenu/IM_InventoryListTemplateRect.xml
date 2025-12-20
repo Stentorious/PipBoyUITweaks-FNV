@@ -1,13 +1,13 @@
 <x>
-	<copy src="io()" trait="_PipTweaks+EqOffset"/>
+	<copy src="io()" trait="_PipTweaks+EqOffset" />
 	<onlyif>
-		<copy src="IM_Tabline" trait="_CurrentTab"/>
+		<copy src="IM_Tabline" trait="_CurrentTab" />
 		<eq> 2 </eq>
 		<or>
-			<copy src="IM_Tabline" trait="_CurrentTab"/>
+			<copy src="IM_Tabline" trait="_CurrentTab" />
 			<eq> 3 </eq>
 		</or>
-		<and src="io()" trait="_PipTweaks+ShiftItems"/>
+		<and src="io()" trait="_PipTweaks+ShiftItems" />
 	</onlyif>
-	<add src="sibling(lb_highlight_box)" trait="x"/>
+	<add src="sibling(lb_highlight_box)" trait="x" />
 </x>

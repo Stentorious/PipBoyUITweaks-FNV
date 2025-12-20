@@ -1,8 +1,8 @@
-<visible> <not src="io()" trait="_PipTweaks+WeapModUI"/> </visible>
+<visible> <not src="io()" trait="_PipTweaks+WeapModUI" /> </visible>
 <x>
-	<copy src="sibling(IMM_ItemIcon)" trait="width"/>
+	<copy src="sibling(IMM_ItemIcon)" trait="width" />
 	<div> 2 </div>
-	<add src="sibling(IMM_ItemIcon)" trait="x"/>
+	<add src="sibling(IMM_ItemIcon)" trait="x" />
 	<add> 15 </add>
 	<sub>
 		<copy> 40 </copy>
@@ -10,8 +10,8 @@
 	</sub>
 </x>
 <y>
-	<copy src="sibling(IMM_ItemIcon)" trait="y"/>
-	<add src="sibling(IMM_ItemIcon)" trait="height"/>
+	<copy src="sibling(IMM_ItemIcon)" trait="y" />
+	<add src="sibling(IMM_ItemIcon)" trait="height" />
 	<sub> 25 </sub>
 </y>
 <justify> &center; </justify>

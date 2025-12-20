@@ -95,8 +95,8 @@
 <_PipTweaks+ySI_Width_4> 24 </_PipTweaks+ySI_Width_4>			<!-- VUIE -->
 <_PipTweaks+ySI_Offset_4> -5 </_PipTweaks+ySI_Offset_4>
 <_PipTweaks+ySI_Width>
-	<copy src="me()" trait="_PipTweaks+UIMod"/>
-	<copy src="me()" trait="_PipTweaks+ySI_Width_"/>
+	<copy src="me()" trait="_PipTweaks+UIMod" />
+	<copy src="me()" trait="_PipTweaks+ySI_Width_" />
 </_PipTweaks+ySI_Width>
 <_PipTweaks+ySI_Offset>
 	<copy src="me()" trait="_PipTweaks+UIMod" />

@@ -2,52 +2,52 @@
 <_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
 <!-- Config Settings -->
-<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
-<_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP"/> </_PipTweaks+Color_HP>
-<_PipTweaks+Color_AP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_AP"/> </_PipTweaks+Color_AP>
-<_PipTweaks+Color_RAD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_RAD"/> </_PipTweaks+Color_RAD>
-<_PipTweaks+Color_H2O> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_H2O"/> </_PipTweaks+Color_H2O>
-<_PipTweaks+Color_FOD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_FOD"/> </_PipTweaks+Color_FOD>
-<_PipTweaks+Color_SLP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_SLP"/> </_PipTweaks+Color_SLP>
-<_PipTweaks+Color_StatMod> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_StatMod"/> </_PipTweaks+Color_StatMod>
-<_PipTweaks+Color_Limb> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_Limb"/> </_PipTweaks+Color_Limb>
-<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
-<_PipTweaks+ySI_Resist> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Resist"/> </_PipTweaks+ySI_Resist>
+<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon" /> </_PipTweaks+SearchIcon>
+<_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP" /> </_PipTweaks+Color_HP>
+<_PipTweaks+Color_AP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_AP" /> </_PipTweaks+Color_AP>
+<_PipTweaks+Color_RAD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_RAD" /> </_PipTweaks+Color_RAD>
+<_PipTweaks+Color_H2O> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_H2O" /> </_PipTweaks+Color_H2O>
+<_PipTweaks+Color_FOD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_FOD" /> </_PipTweaks+Color_FOD>
+<_PipTweaks+Color_SLP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_SLP" /> </_PipTweaks+Color_SLP>
+<_PipTweaks+Color_StatMod> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_StatMod" /> </_PipTweaks+Color_StatMod>
+<_PipTweaks+Color_Limb> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_Limb" /> </_PipTweaks+Color_Limb>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button" /> </_PipTweaks+ySI_Button>
+<_PipTweaks+ySI_Resist> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Resist" /> </_PipTweaks+ySI_Resist>
 
 <!-- Player Stats -->
-<_PlrStat+HealthPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+HealthPer"/> </_PlrStat+HealthPer>
-<_PlrStat+ActionPointPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+ActionPointPer"/> </_PlrStat+ActionPointPer>
-<_PlrStat+FOD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD"/> </_PlrStat+FOD>
-<_PlrStat+H2O> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O"/> </_PlrStat+H2O>
-<_PlrStat+SLP> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP"/> </_PlrStat+SLP>
-<_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD"/> </_PlrStat+RAD>
-<_PlrStat+H2O1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O1"/> </_PlrStat+H2O1>
-<_PlrStat+H2O2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O2"/> </_PlrStat+H2O2>
-<_PlrStat+H2O3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O3"/> </_PlrStat+H2O3>
-<_PlrStat+H2O4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O4"/> </_PlrStat+H2O4>
-<_PlrStat+H2O5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O5"/> </_PlrStat+H2O5>
-<_PlrStat+FOD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD1"/> </_PlrStat+FOD1>
-<_PlrStat+FOD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD2"/> </_PlrStat+FOD2>
-<_PlrStat+FOD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD3"/> </_PlrStat+FOD3>
-<_PlrStat+FOD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD4"/> </_PlrStat+FOD4>
-<_PlrStat+FOD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD5"/> </_PlrStat+FOD5>
-<_PlrStat+SLP1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP1"/> </_PlrStat+SLP1>
-<_PlrStat+SLP2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP2"/> </_PlrStat+SLP2>
-<_PlrStat+SLP3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP3"/> </_PlrStat+SLP3>
-<_PlrStat+SLP4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP4"/> </_PlrStat+SLP4>
-<_PlrStat+SLP5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP5"/> </_PlrStat+SLP5>
-<_PlrStat+RAD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD1"/> </_PlrStat+RAD1>
-<_PlrStat+RAD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD2"/> </_PlrStat+RAD2>
-<_PlrStat+RAD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD3"/> </_PlrStat+RAD3>
-<_PlrStat+RAD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD4"/> </_PlrStat+RAD4>
-<_PlrStat+RAD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD5"/> </_PlrStat+RAD5>
+<_PlrStat+HealthPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+HealthPer" /> </_PlrStat+HealthPer>
+<_PlrStat+ActionPointPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+ActionPointPer" /> </_PlrStat+ActionPointPer>
+<_PlrStat+FOD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD" /> </_PlrStat+FOD>
+<_PlrStat+H2O> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O" /> </_PlrStat+H2O>
+<_PlrStat+SLP> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP" /> </_PlrStat+SLP>
+<_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD" /> </_PlrStat+RAD>
+<_PlrStat+H2O1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O1" /> </_PlrStat+H2O1>
+<_PlrStat+H2O2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O2" /> </_PlrStat+H2O2>
+<_PlrStat+H2O3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O3" /> </_PlrStat+H2O3>
+<_PlrStat+H2O4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O4" /> </_PlrStat+H2O4>
+<_PlrStat+H2O5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+H2O5" /> </_PlrStat+H2O5>
+<_PlrStat+FOD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD1" /> </_PlrStat+FOD1>
+<_PlrStat+FOD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD2" /> </_PlrStat+FOD2>
+<_PlrStat+FOD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD3" /> </_PlrStat+FOD3>
+<_PlrStat+FOD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD4" /> </_PlrStat+FOD4>
+<_PlrStat+FOD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+FOD5" /> </_PlrStat+FOD5>
+<_PlrStat+SLP1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP1" /> </_PlrStat+SLP1>
+<_PlrStat+SLP2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP2" /> </_PlrStat+SLP2>
+<_PlrStat+SLP3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP3" /> </_PlrStat+SLP3>
+<_PlrStat+SLP4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP4" /> </_PlrStat+SLP4>
+<_PlrStat+SLP5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+SLP5" /> </_PlrStat+SLP5>
+<_PlrStat+RAD1> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD1" /> </_PlrStat+RAD1>
+<_PlrStat+RAD2> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD2" /> </_PlrStat+RAD2>
+<_PlrStat+RAD3> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD3" /> </_PlrStat+RAD3>
+<_PlrStat+RAD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD4" /> </_PlrStat+RAD4>
+<_PlrStat+RAD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD5" /> </_PlrStat+RAD5>
 
 <!-- Scripting -->
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
 
 <!-- ySI Button Icons -->
-<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width"/> </_PipTweaks+ySI_Width>
-<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset"/> </_PipTweaks+ySI_Offset>
+<_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width" /> </_PipTweaks+ySI_Width>
+<_PipTweaks+ySI_Offset> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Offset" /> </_PipTweaks+ySI_Offset>
 
 <!-- Colorful Crippled Limbs Meters -->
 <_PipTweaks+Limb_Alpha>

@@ -1,7 +1,7 @@
 <image name="ySIImage">
 	<visible>
 		<copy src="parent()" trait="visible" />
-		<and src="io()" trait="_PipTweaks+ySI_Resist"/>
+		<and src="io()" trait="_PipTweaks+ySI_Resist" />
 	</visible>
 	<alpha> <copy src="parent()" trait="alpha" /> </alpha>
 	<x>

@@ -1,4 +1,4 @@
-<visible> <not src="sibling(IM_Headline_PlayerCapsInfo)" trait="visible"/> </visible>
+<visible> <not src="sibling(IM_Headline_PlayerCapsInfo)" trait="visible" /> </visible>
 <x> <copy src="sibling(IM_Headline_PlayerCapsInfo)" trait="x" /> </x>
 <width> <copy src="sibling(IM_Headline_PlayerCapsInfo)" trait="width" /> </width>
 

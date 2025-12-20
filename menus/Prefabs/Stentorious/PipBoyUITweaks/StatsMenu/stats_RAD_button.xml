@@ -1,4 +1,4 @@
-<text name="button_text_PUI">
+<text name="button_text_color">
 	<visible> <not src="sibling(button_text)" trait="visible" /> </visible>
 	<alpha> <copy src="io()" trait="_PipTweaks+RAD_Alpha" /> </alpha>
 	<depth> 4 </depth>

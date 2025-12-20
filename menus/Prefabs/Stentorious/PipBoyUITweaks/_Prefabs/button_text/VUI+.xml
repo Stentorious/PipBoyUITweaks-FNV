@@ -19,7 +19,7 @@
 	<add>
 		<copy src="parent()" trait="width"/>
 		<sub>
-			<copy src="parent" trait="_horbuf"/>
+			<copy src="parent()" trait="_horbuf"/>
 			<add>
 				<copy src="io()" trait="_PipTweaks+ySI_Width"/>
 				<add> 8 </add>
@@ -36,7 +36,7 @@
 		</onlyif>
 	</add>
 	<add>
-		<copy src="me" trait="font" />
+		<copy src="me()" trait="font" />
 		<copy src="globals" trait="_VUI+FontX_"/>
 	</add>
 	<add>
@@ -49,18 +49,3 @@
 		</onlyif>
 	</add>
 </x>
-<!--
-<wrapwidth>
-	<copy src="parent()" trait="_fixedwidth"/>
-	<sub src="parent()" trait="_horbuf"/>
-	<sub>
-		<copy src="io()" trait="_PipTweaks+ySI_Width"/>
-		<add> 8 </add>
-		<onlyif src="io()" trait="_PipTweaks+ySI_Button"/>
-	</sub>
-	<onlyif>
-		<copy src="parent()" trait="_fixedwidth"/>
-		<gt> 0 </gt>
-	</onlyif>
-</wrapwidth>
-  -->

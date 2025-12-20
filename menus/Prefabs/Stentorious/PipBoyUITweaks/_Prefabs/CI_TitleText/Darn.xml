@@ -1,5 +1,5 @@
 <visible>
-	<not src="parent" trait="_ySIImage" />
-	<or src="parent" trait="_ySIOffset" />
+	<not src="parent()" trait="_ySIImage" />
+	<or src="parent()" trait="_ySIOffset" />
 </visible>
-<x> <copy src="parent" trait="_ySIOffset" /> </x>
+<x> <copy src="parent()" trait="_ySIOffset" /> </x>

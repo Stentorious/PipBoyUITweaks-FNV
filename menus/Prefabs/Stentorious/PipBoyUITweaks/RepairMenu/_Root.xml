@@ -1,13 +1,14 @@
-<!-- Config Settings -->
-<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
-
-<_PipTweaks+Pulse> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+Pulse"/> </_PipTweaks+Pulse>
-
 <!-- Menu Traits -->
 <_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
+<!-- Config Settings -->
+ <_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/> </_PipTweaks+Color_CND>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+
+<!-- Scripting -->
+<_PipTweaks+Pulse> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+Pulse"/> </_PipTweaks+Pulse>
+
 <!-- Colorful Condition Meters -->
-<_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/> </_PipTweaks+Color_CND>
 <_PipTweaks+CND_1> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_1" /> </_PipTweaks+CND_1>
 <_PipTweaks+CND_2> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_2" /> </_PipTweaks+CND_2>
 

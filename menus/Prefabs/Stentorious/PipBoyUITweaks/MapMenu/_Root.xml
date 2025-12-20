@@ -1,9 +1,9 @@
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
 <!-- Config Settings -->
 <_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
 <_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
-
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
 <!-- ySI Button Icons -->
 <_PipTweaks+ySI_Width> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Width" /> </_PipTweaks+ySI_Width>

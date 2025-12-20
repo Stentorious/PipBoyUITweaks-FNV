@@ -1,3 +1,4 @@
+<!-- Unused -->
 <image name="ySIImage">
 	<visible> <copy src="sibling(button_text)" trait="visible" /> </visible>
 	<alpha> <copy src="sibling(button_text)" trait="alpha" /> </alpha>

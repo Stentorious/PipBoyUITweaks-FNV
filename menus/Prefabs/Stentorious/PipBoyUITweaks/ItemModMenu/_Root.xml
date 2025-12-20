@@ -1,4 +1,7 @@
-<_PipTweaks+Pulse> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+Pulse"/> </_PipTweaks+Pulse>
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+
+<!-- Config Settings -->
 <_PipTweaks+CritInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo"/> </_PipTweaks+CritInfo>
 <_PipTweaks+WeapModUI> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+WeapModUI"/> </_PipTweaks+WeapModUI>
 <_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND"/> </_PipTweaks+Color_CND>
@@ -8,8 +11,8 @@
 <_PipTweaks+ySI_ValueInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_ValueInfo"/> </_PipTweaks+ySI_ValueInfo>
 <_PipTweaks+ySI_AmmoInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_AmmoInfo"/> </_PipTweaks+ySI_AmmoInfo>
 
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+<!-- Scripting -->
+<_PipTweaks+Pulse> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+Pulse"/> </_PipTweaks+Pulse>
 
 <!-- Colorful Condition Meters -->
 <_PipTweaks+CND_1> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_1" /> </_PipTweaks+CND_1>

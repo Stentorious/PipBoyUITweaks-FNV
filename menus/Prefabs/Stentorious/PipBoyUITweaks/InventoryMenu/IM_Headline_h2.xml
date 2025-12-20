@@ -1,6 +1,6 @@
 <_length>
-	<copy src="parent" trait="width" />
-	<sub src="me" trait="x" />
+	<copy src="parent()" trait="width" />
+	<sub src="me()" trait="x" />
 	<sub src="sibling(IM_Headline_PlayerWGInfo)" trait="width" />
 	<sub src="sibling(IM_Headline_PlayerDRInfo_Clone)" trait="width" />
 	<sub src="sibling(IM_Headline_PlayerDTInfo_Clone)" trait="width" />

@@ -1,3 +1,6 @@
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 1 </_Menu+Systemcolor>
+
 <!-- Config Settings -->
 <_PipTweaks+ExtMenuSupport> 0 </_PipTweaks+ExtMenuSupport>
 <_PipTweaks+HardcoreInfo> -1 </_PipTweaks+HardcoreInfo>
@@ -53,17 +56,11 @@
 <_PlrStat+RAD4> 0 </_PlrStat+RAD4>
 <_PlrStat+RAD5> 0 </_PlrStat+RAD5>
 
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 1 </_Menu+Systemcolor>
-
 <!-- Settings -->
 <_Settings+Hardcore> 0 </_Settings+Hardcore>
 
 <!-- Scripting -->
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
-
-<!-- Settings -->
-
 
 <!-- Installed UI Mod -->
 <_PipTweaks+UIMod>

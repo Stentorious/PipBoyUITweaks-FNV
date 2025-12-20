@@ -1,3 +1,6 @@
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 1 </_Menu+Systemcolor>
+
 <!-- Config Settings -->
 <_PipTweaks+SkillInfo>
 	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SkillInfo"/>
@@ -36,11 +39,9 @@
 	<and src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport"/>
 </_PipTweaks+ySI_AmmoInfo>
 
+<!-- Scripting -->
 <_PipTweaks+Init> 0 </_PipTweaks+Init>
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
-
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 1 </_Menu+Systemcolor>
 
 <!-- Colorful Condition Meters -->
 <_PipTweaks+CND_1> <copy src="sibling(InventoryMenu)" trait="_PipTweaks+CND_1" /> </_PipTweaks+CND_1>

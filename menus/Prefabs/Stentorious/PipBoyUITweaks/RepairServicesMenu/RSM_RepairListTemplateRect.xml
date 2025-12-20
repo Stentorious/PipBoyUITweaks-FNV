@@ -78,7 +78,6 @@
 	<blue> 0 </blue>
 
 	<image name="Meter">
-
 		<clips> 1 </clips>
 		<filename> <copy src="parent()" trait="filename" /> </filename>
 		<texatlas> <copy src="parent()" trait="texatlas" /> </texatlas>
@@ -93,7 +92,6 @@
 		<red> <copy src="parent()" trait="red" /></red>
 		<green> <copy src="parent()" trait="green" /></green>
 		<blue> 0 </blue>
-
 	</image>
 
 </rect>

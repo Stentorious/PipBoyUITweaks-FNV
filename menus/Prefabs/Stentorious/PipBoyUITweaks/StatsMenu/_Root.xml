@@ -1,9 +1,8 @@
-<!-- Config Settings -->
-<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
-<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
-<_PipTweaks+ySI_Resist> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Resist"/> </_PipTweaks+ySI_Resist>
+<!-- Menu Traits -->
+<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
 <!-- Config Settings -->
+<_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon"/> </_PipTweaks+SearchIcon>
 <_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP"/> </_PipTweaks+Color_HP>
 <_PipTweaks+Color_AP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_AP"/> </_PipTweaks+Color_AP>
 <_PipTweaks+Color_RAD> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_RAD"/> </_PipTweaks+Color_RAD>
@@ -12,9 +11,8 @@
 <_PipTweaks+Color_SLP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_SLP"/> </_PipTweaks+Color_SLP>
 <_PipTweaks+Color_StatMod> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_StatMod"/> </_PipTweaks+Color_StatMod>
 <_PipTweaks+Color_Limb> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_Limb"/> </_PipTweaks+Color_Limb>
-
-<!-- Menu Traits -->
-<_Menu+Systemcolor> 4 </_Menu+Systemcolor>
+<_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button"/> </_PipTweaks+ySI_Button>
+<_PipTweaks+ySI_Resist> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Resist"/> </_PipTweaks+ySI_Resist>
 
 <!-- Player Stats -->
 <_PlrStat+HealthPer> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+HealthPer"/> </_PlrStat+HealthPer>
@@ -44,6 +42,7 @@
 <_PlrStat+RAD4> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD4"/> </_PlrStat+RAD4>
 <_PlrStat+RAD5> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD5"/> </_PlrStat+RAD5>
 
+<!-- Scripting -->
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
 
 <!-- ySI Button Icons -->

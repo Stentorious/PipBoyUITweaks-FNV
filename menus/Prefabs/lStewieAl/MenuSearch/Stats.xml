@@ -5,11 +5,9 @@
 	<visible> 1 </visible>
 	<depth> 6 </depth>
 	<x>
-		<copy> 35 </copy>
-		<sub>
-			<copy> 5 </copy>
-			<onlyif src="globals()" trait="_duiHUDOffset" />
-		</sub>
+		<copy> -5 </copy>
+		<onlyif src="globals()" trait="_duiHUDOffset" />
+		<add> 35 </add>
 		<onlyif src="io()" trait="_PipTweaks+SearchIcon" />
 		<add src="me()" trait="_OffsetX" />
 	</x>

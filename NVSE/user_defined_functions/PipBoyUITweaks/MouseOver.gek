@@ -345,7 +345,12 @@ begin Function {iMenuID}
 					loop
 
 					if eval iType
-						fItemStat = (GetNthEffectTraitNumeric rItem iComp 0) * ((GetGS "fMagicMedicineSkillBase") + ((GetGS "fMagicMedicineSkillMult") * ((Player.GetAV Medicine) / 100)))
+						fItemStat = (GetNthEffectTraitNumeric rItem iComp 0)
+						if eval GetIngestibleFlag rItem 4
+							fItemStat *= ((GetGS "fMagicMedicineSkillBase") + ((GetGS "fMagicMedicineSkillMult") * ((Player.GetAV Medicine) / 100)))
+						elseif eval GetIngestibleFlag rItem 2
+							fItemStat *= ((GetGS "fMagicSurvivalSkillBase") + ((GetGS "fMagicSurvivalSkillMult") * ((Player.GetAV Survival) / 100)))
+						endif
 						sTemp = sv_Construct "%g%%" (GetMinOf 100 (Flr (((Player.GetPerkModifier 23 (GetMaxOf 0 ((((Player.GetSpellUsageNum rItem) + fItemStat) - (GetGS "fAddictionUsageMonitorThreshold")) / 100.0))) * 100) + 0.5)))
 					else
 						if eval (fItemStat = (Player.GetPerkModifier 23 (GetAddictionChance rItem))) > 0

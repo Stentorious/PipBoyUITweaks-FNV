@@ -20,25 +20,28 @@
 ; 15 = Expanded menu support
 
 ; Update player stats
-SetUIFloatAlt "HUDMainMenu\_Settings+Hardcore" (Player.IsHardcore)
-float fAVPercent = 1.0
-if eval (float fBaseValue = Player.GetBaseAV ActionPoints) > 0
-	fAVPercent = (Player.GetAV ActionPoints) / fBaseValue
-endif
-SetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" fAVPercent
-SetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" (Player.GetHealthPercentage)
 SetUIFloatAlt "HUDMainMenu\_PlrStat+Encumbrance" (IsPCOverencumbered)
-SetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" (Player.GetAV Hunger)
-SetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" (Player.GetAV Dehydration)
-SetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" (Player.GetAV SleepDeprevation)
-SetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" (Player.GetAV RadiationRads)
-
-; On game restart
 if eval Goo1.AuxVarGetFlt "*PipTweaks_Init"
+	float fAVPercent = 1.0
+	if eval (float fBaseValue = Player.GetPermanentActorValue ActionPoints) > 0
+		fAVPercent = (Player.GetAV ActionPoints) / fBaseValue
+	endif
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" fAVPercent
+	fAVPercent = 1.0
+	if eval (fBaseValue = Player.GetPermanentActorValue Health) > 0
+		fAVPercent = (Player.GetAV Health) / fBaseValue
+	endif
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" fAVPercent
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" (Player.GetAV Hunger)
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" (Player.GetAV Dehydration)
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" (Player.GetAV SleepDeprevation)
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" (Player.GetAV RadiationRads)
+	SetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" (Player.IsHardcore)
 	return
 endif
 Goo1.AuxVarSetFlt "*PipTweaks_Init" 1
 
+; On game restart
 ; Check for requirements
 if eval GetNVSEVersion < 6 || (GetNVSEVersion == 6 && GetNVSERevision < 4)
 	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall xNVSE 6.4.0+."
@@ -320,10 +323,13 @@ end) "first"::Player
 SetOnMenuOpenEventHandler ({int iMenuID} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OpenContainerMenu.gek") 1 iMenuID) 1 1008
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenBarterMenu.gek") 1 1053
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenRepairServicesMenu.gek") 1 1058
+SetOnMenuOpenEventHandler ({int iMenuID} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OpenRecipeMenu.gek") 1 iMenuID) 1 1077
 SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1008
 SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1008
 SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1053
 SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1053
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRecipe.gek") 1 1077
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRecipe.gek") 0 1077
 SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\MenuClick.gek") 1 "ContainerMenu#20"
 SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\MenuClick.gek") 1 "BarterMenu#23"
 SetGameMainLoopCallback (CompileScript "PipBoyUITweaks\MenuLoop.gek") 1 5 2
@@ -345,19 +351,55 @@ SetEventHandler "OnDrop" (CompileScript "PipBoyUITweaks\OnDrop.gek") "first"::Pl
 SetEventHandler "OnActorEquip" (CompileScript "PipBoyUITweaks\OnActorEquip.gek") "first"::Player
 
 ; Actor Value update handlers
-SetOnActorValueChangeEventHandler 1 (begin Function {int iAVCode, float fPrevValue, float fNewValue}
-	if eval (fPrevValue = Player.GetBaseAV ActionPoints) > 0
-		fNewValue = (Player.GetAV ActionPoints) / fPrevValue
-	else
-		fNewValue = 1.0
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" == -1
+	float fAVPercent = 1.0
+	if eval (float fBaseValue = Player.GetPermanentActorValue ActionPoints) > 0
+		fAVPercent = (Player.GetAV ActionPoints) / fBaseValue
 	endif
-	SetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" fNewValue
-end) 0 12	; ActionPoints
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" (Player.GetHealthPercentage)) 0 16	; Health
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" (Player.GetAV RadiationRads)) 0 54		; RadiationRads
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" (Player.GetAV Dehydration)) 0 73			; Dehydration
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" (Player.GetAV Hunger)) 0 74				; Hunger
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" (Player.GetAV SleepDeprevation)) 0 75		; SleepDeprevation
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" fAVPercent
+	SetOnActorValueChangeEventHandler 1 (begin Function {int iAVCode, float fPrevValue, float fNewValue}
+		if eval (fPrevValue = Player.GetPermanentActorValue ActionPoints) > 0
+			fNewValue = (Player.GetAV ActionPoints) / fPrevValue
+		else
+			fNewValue = 1.0
+		endif
+		SetUIFloatAlt "HUDMainMenu\_PlrStat+ActionPointPer" fNewValue
+	end) 0 12	; ActionPoints
+endif
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" == -1
+	float fAVPercent = 1.0
+	if eval (float fBaseValue = Player.GetPermanentActorValue Health) > 0
+		fAVPercent = (Player.GetAV Health) / fBaseValue
+	endif
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" fAVPercent
+	SetOnActorValueChangeEventHandler 1 (begin Function {int iAVCode, float fPrevValue, float fNewValue}
+		if eval (fPrevValue = Player.GetPermanentActorValue Health) > 0
+			fNewValue = (Player.GetAV Health) / fPrevValue
+		else
+			fNewValue = 1.0
+		endif
+		SetUIFloatAlt "HUDMainMenu\_PlrStat+HealthPer" fNewValue
+	end) 0 16
+endif
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" == -1
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" (Player.GetAV RadiationRads)
+	SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+RAD" (Player.GetAV RadiationRads)) 0 54		; RadiationRads
+endif
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" == -1
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" (Player.GetAV Dehydration)
+	SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+H2O" (Player.GetAV Dehydration)) 0 73			; Dehydration
+endif
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" == -1
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" (Player.GetAV Hunger)
+	SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+FOD" (Player.GetAV Hunger)) 0 74				; Hunger
+endif
+if eval GetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" == -1
+	SetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" (Player.GetAV SleepDeprevation)
+	SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => SetUIFloatAlt "HUDMainMenu\_PlrStat+SLP" (Player.GetAV SleepDeprevation)) 0 75		; SleepDeprevation
+endif
 
 ; Setting update handlers
-SetOnSettingsUpdateEventHandler 1 ({} => SetUIFloatAlt "HUDMainMenu\_Settings+Hardcore" (Player.IsHardcore)) 0
+if eval GetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" == -1
+	SetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" (Player.IsHardcore)
+	SetOnSettingsUpdateEventHandler 1 ({} => SetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" (Player.IsHardcore)) 0
+endif

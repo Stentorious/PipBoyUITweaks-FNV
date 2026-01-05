@@ -212,6 +212,24 @@ Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::BarterMenu::BM_Items_CapsLabel
 Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::BarterMenu::BM_Container_CapsLabel
 #..\ySI\ySI.xml
 
+; RecipeMenu
+Stentorious\PipBoyUITweaks\_Common\_Root.xml::RecipeMenu
+true
+Stentorious\PipBoyUITweaks\_Common\CritDAMInfo.xml::RecipeMenu::RM_ItemData
+true
+Stentorious\PipBoyUITweaks\_Common\CritInfo.xml::RecipeMenu::RM_ItemData
+true
+Stentorious\PipBoyUITweaks\_Common\SkillInfo.xml::RecipeMenu::RM_ItemData
+true
+Stentorious\PipBoyUITweaks\_Common\AddictionInfo.xml::RecipeMenu::RM_ItemData
+true
+Stentorious\PipBoyUITweaks\_Common\ValWGInfo.xml::RecipeMenu::RM_ItemData
+true
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RecipeMenu::RM_ButtonX
+#..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RecipeMenu::RM_ButtonB
+#..\ySI\ySI.xml
+
 ; RepairMenu
 Stentorious\PipBoyUITweaks\RepairMenu\_Root.xml::RepairMenu
 true

@@ -1,5 +1,21 @@
 <!-- Menu Traits -->
 <_Menu+Systemcolor> 1 </_Menu+Systemcolor>
+<_Menu+UIMod>
+	<copy> 3 </copy>
+	<onlyif>
+		<copy src="globals" trait="_VUI+Vegas" />		<!-- VUI+ -->
+		<or src="globals" trait="_VUI+Version" />
+	</onlyif>
+	<add>
+		<copy> -1 </copy>
+		<onlyif src="globals" trait="_VUI+" />			<!-- Revelations -->
+	</add>
+	<add>
+		<copy> 2 </copy>
+		<onlyif src="globals" trait="_VUIE" />			<!-- VUIE -->
+	</add>
+	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
+</_Menu+UIMod>
 
 <!-- Config Settings -->
 <_PipTweaks+ExtMenuSupport> 0 </_PipTweaks+ExtMenuSupport>
@@ -28,13 +44,13 @@
 <_PipTweaks+ySI_AmmoInfo> 0 </_PipTweaks+ySI_AmmoInfo>
 
 <!-- Player Stats -->
-<_PlrStat+HealthPer> 0 </_PlrStat+HealthPer>
-<_PlrStat+ActionPointPer> 0 </_PlrStat+ActionPointPer>
+<_PlrStat+HealthPer> -1 </_PlrStat+HealthPer>
+<_PlrStat+ActionPointPer> -1 </_PlrStat+ActionPointPer>
 <_PlrStat+Encumbrance> 0 </_PlrStat+Encumbrance>
-<_PlrStat+RAD> 0 </_PlrStat+RAD>
-<_PlrStat+H2O> 0 </_PlrStat+H2O>
-<_PlrStat+FOD> 0 </_PlrStat+FOD>
-<_PlrStat+SLP> 0 </_PlrStat+SLP>
+<_PlrStat+RAD> -1 </_PlrStat+RAD>
+<_PlrStat+H2O> -1 </_PlrStat+H2O>
+<_PlrStat+FOD> -1 </_PlrStat+FOD>
+<_PlrStat+SLP> -1 </_PlrStat+SLP>
 <_PlrStat+H2O1> 0 </_PlrStat+H2O1>
 <_PlrStat+H2O2> 0 </_PlrStat+H2O2>
 <_PlrStat+H2O3> 0 </_PlrStat+H2O3>
@@ -57,31 +73,10 @@
 <_PlrStat+RAD5> 0 </_PlrStat+RAD5>
 
 <!-- Settings -->
-<_Settings+Hardcore> 0 </_Settings+Hardcore>
+<_Setting+Hardcore> -1 </_Setting+Hardcore>
 
 <!-- Scripting -->
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
-
-<!-- Installed UI Mod -->
-<_PipTweaks+UIMod>
-	<copy> 0 </copy>									<!-- Vanilla -->
-	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
-	<add>
-		<copy> 3 </copy>
-		<onlyif>
-			<copy src="globals" trait="_VUI+Vegas" />	<!-- VUI+ -->
-			<or src="globals" trait="_VUI+Version" />
-		</onlyif>
-	</add>
-	<add>
-		<copy> -1 </copy>
-		<onlyif src="globals" trait="_VUI+" />			<!-- Revelations -->
-	</add>
-	<add>
-		<copy> 2 </copy>
-		<onlyif src="globals" trait="_VUIE" />			<!-- VUIE -->
-	</add>
-</_PipTweaks+UIMod>
 
 <!-- ySI Button Icons -->
 <_PipTweaks+ySI_Width_0> 32 </_PipTweaks+ySI_Width_0>
@@ -95,11 +90,11 @@
 <_PipTweaks+ySI_Width_4> 24 </_PipTweaks+ySI_Width_4>			<!-- VUIE -->
 <_PipTweaks+ySI_Offset_4> -5 </_PipTweaks+ySI_Offset_4>
 <_PipTweaks+ySI_Width>
-	<copy src="me()" trait="_PipTweaks+UIMod" />
+	<copy src="me()" trait="_Menu+UIMod" />
 	<copy src="me()" trait="_PipTweaks+ySI_Width_" />
 </_PipTweaks+ySI_Width>
 <_PipTweaks+ySI_Offset>
-	<copy src="me()" trait="_PipTweaks+UIMod" />
+	<copy src="me()" trait="_Menu+UIMod" />
 	<copy src="me()" trait="_PipTweaks+ySI_Offset_" />
 </_PipTweaks+ySI_Offset>
 <_PipTweaks+ySI_Font> 2 </_PipTweaks+ySI_Font>

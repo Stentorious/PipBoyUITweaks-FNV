@@ -1,0 +1,138 @@
+int	iMenuID
+
+int iType
+int iComp
+float fItemWg
+float fItemVal
+float fItemCrit
+float fItemStat
+float fItemPrj
+ref rItem
+array_var aTemp
+string_var sTilePath
+string_var sUIPath
+string_var sTemp
+
+begin Function {iMenuID}
+
+	; Check if selected inventory weapon/armor should have stat colors and/or extended stat comparisons
+	if eval IsBaseForm (rItem = GetRecipeMenuSelection) == 0
+		return
+	endif
+	aTemp = GetRecipeOutputForms rItem
+	if eval (ar_Size aTemp) < 1
+		return
+	endif
+	rItem = aTemp[0]
+
+	iType = GetActiveUIComponentID
+	if eval iMenuID == 1077 && iType == 15
+		sTilePath = "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\"
+	else
+		return
+	endif
+
+	fItemVal = #(GetUIString (sTilePath + "ValueInfo\CI_ValueText\string"))
+	fItemWg = #(GetUIString (sTilePath + "WeightInfo\CI_ValueText\string"))
+
+	; Value/Weight ratio
+	if eval fItemWg <= 0 || fItemVal <= 0
+		sTemp = "--"
+	else
+		fItemStat = fItemVal / fItemWg
+		if fItemStat < 1000
+			sTemp = sv_Construct "%.1f" fItemStat
+		else
+			sTemp = "1000+"
+		endif
+	endif
+	SetUIStringAlt (sTilePath + "ValWGInfo\_Value") (sTemp)
+
+	; Reset tiles
+	SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 0
+
+	; Extended menu support
+	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1
+		return
+	endif
+
+	if eval (iType = GetType rItem) == 40 || iType == 24
+
+		if eval iType == 40
+
+			; Display skill requirement
+			aTemp = Ar_Map 33::"big_guns", 34::"energy", 35::"explosives", 38::"melee", 41::"sm_arms", 45::"unarmed"
+			iComp = GetReqSkill rItem
+			fItemStat = GetWeaponSkill rItem
+			if Player.GetAV (fItemStat) < iComp
+				SetUIFloatAlt (sTilePath + "SkillInfo\CI_ValueText\brightness") 128
+			else
+				SetUIFloatAlt (sTilePath + "SkillInfo\CI_ValueText\brightness") 255
+			endif
+			SetUIStringAlt (sTilePath + "SkillInfo\Icon\filename") "Interface\Icons\TypeIcons\weap_skill_icon_%z.dds" (aTemp[fItemStat])
+			SetUIStringAlt (sTilePath + "SkillInfo\_value") "%g" iComp
+			aTemp = Ar_Null
+
+			; Display critical hit damage
+			fItemPrj += GetNumProj rItem
+			fItemStat = GetCalculatedWeaponDamage rItem
+			if fItemStat > 0
+				fItemStat += Player.GetPerkModifier 2 (GetCritDam rItem * Goo1.AuxVarGetFlt "*_Tweaks:bScaleCriticalDamage" 1) rItem Player
+				if fItemPrj > 1
+					sTemp = sv_Construct "%.1fx%g" (fItemStat / fItemPrj) fItemPrj
+				else
+					sTemp = sv_Construct "%.0f" fItemStat
+				endif
+			else
+				sTemp = "--"
+			endif
+			SetUIStringAlt (sTilePath + "CritDAMInfo\_value") (sTemp)
+
+			; Update weapon critical chance
+			if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+CritInfo" == 1
+				fItemCrit = Flr (Player.GetAV CritChance)
+				if eval GetIsAutomatic rItem && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
+					fItemCrit /= (GetFireRate rItem)
+				endif
+				fItemCrit *= GetCritPerc rItem
+				SetUIStringAlt (sTilePath + "CritInfo\_value") "%.2f%%" (GetMaxOf 0 (GetMinOf 100 (Player.GetPerkModifier 1 fItemCrit rItem Goo1)))
+			endif
+
+		endif
+
+		; Set AmmoInfo icon
+		if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ySI_AmmoInfo" == 1
+
+			; Set armor class icon if armor
+			if eval (iType = GetArmorClass rItem)
+				sUIPath = "interface\icons\Apparel_Armor"
+				if eval IsPA rItem
+					sUIPath += "D_Power.dds"
+					SetUIStringAlt (sTilePath + "AmmoInfo\_title") (GetStringSetting "sKBPower")
+				elseif iType == 1
+					sUIPath += "A_Light.dds"
+				elseif iType == 2
+					sUIPath += "B_Medium.dds"
+				else
+					sUIPath += "C_Heavy.dds"
+				endif
+				SetUIStringAlt (sTilePath + "AmmoInfo\ySIImage\filename") (sUIPath)
+
+			; Set ammo icon if weapon uses ammo
+			elseif eval IsFormValid (GetWeaponAmmo rItem)
+				rItem = GetWeaponAmmo rItem
+				if GetType rItem == 85
+					rItem = ListGetNthForm rItem 0
+				endif
+				RunScriptSnippet 0 "SetUIStringAlt %q%zAmmoInfo\ySIImage\filename%q (ySIGetTrait %qicon%q %q%i%q)" sTilePath rItem
+
+			; Set item icon as fallback
+			else
+				RunScriptSnippet 0 "SetUIStringAlt %q%zAmmoInfo\ySIImage\filename%q (ySIGetTrait %qicon%q %q%i%q)" sTilePath rItem
+			endif
+		endif
+	endif
+
+	sv_Destruct sTilePath sUIPath sTemp
+
+end

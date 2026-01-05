@@ -1,0 +1,44 @@
+int	iMenuID
+float fTemp
+
+begin Function {iMenuID}
+
+	if eval GetUIFloatAlt "RecipeMenu\_PipTweaks+Init"
+		return
+	endif
+	SetUIFloatAlt "RecipeMenu\_PipTweaks+Init" 1
+
+	; Enable colorful CND
+	SetUIFloatGradual "RecipeMenu\_PipTweaks+Pulse" -204 0 1.5 2
+
+	; Enable ySI icons (Buttons)
+	SetUIStringAlt "RecipeMenu\NOGLOW_BRANCH\RM_ButtonRect\RM_ButtonX\ySIImage\filename" "interface\icons\UI_Accept.dds"
+	SetUIStringAlt "RecipeMenu\NOGLOW_BRANCH\RM_ButtonRect\RM_ButtonB\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+
+	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1
+		return
+	endif
+
+	SetUIFloatAlt "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\CritInfo\CI_ValueText\wrapwidth" 150
+	SetUIFloatAlt "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\StrengthReqInfo\_VUI+LabelRight" 0
+	SetUIFloatAlt "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\StrengthReqInfo\VUI+WeaponSkillBadge\y" -9999
+	fTemp = GetUIFloatAlt "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\CritInfo\height"
+	ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\y" fTemp
+	ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\y" fTemp
+	ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\CleanBackground\height" fTemp
+	ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\CleanBackground\y" (-fTemp)
+	if eval Goo1.AuxVarGetFlt "*_DarNifiedUINV.esp"
+		ModUIFloat "RecipeMenu\y" -15
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\y" -5
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\y" -10
+	elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Extension"
+		ModUIFloat "RecipeMenu\y" -10
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_Background\height" fTemp
+	elseif eval Goo1.AuxVarGetFlt "*_Vanilla UI Plus.esp" == 0
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\y" 20
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\CleanBackground\height" 20
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_BottomBracket\CleanBackground\y" -20
+		ModUIFloat "RecipeMenu\NOGLOW_BRANCH\RM_ItemData\x" (-((GetUIFloatAlt "HUDMainMenu\_PipTweaks+ySI_Width") + 8))
+	endif
+
+end

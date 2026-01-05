@@ -8,7 +8,7 @@
 <_PipTweaks+SearchIcon> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SearchIcon" /> </_PipTweaks+SearchIcon>
 <_PipTweaks+HardcoreInfo>
 	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+HardcoreInfo" />
-	<and src="io()" trait="_Settings+Hardcore" />
+	<and src="io()" trait="_Setting+Hardcore" />
 </_PipTweaks+HardcoreInfo>
 <_PipTweaks+SeparateDRDT> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SeparateDRDT" /> </_PipTweaks+SeparateDRDT>
 <_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP" /> </_PipTweaks+Color_HP>
@@ -30,7 +30,7 @@
 <_PlrStat+RAD> <copy src="sibling(HUDMainMenu)" trait="_PlrStat+RAD" /> </_PlrStat+RAD>
 
 <!-- Settings -->
-<_Settings+Hardcore> <copy src="sibling(HUDMainMenu)" trait="_Settings+Hardcore" /> </_Settings+Hardcore>
+<_Setting+Hardcore> <copy src="sibling(HUDMainMenu)" trait="_Setting+Hardcore" /> </_Setting+Hardcore>
 
 <!-- Scripting -->
 <_PipTweaks+Pulse> 0 </_PipTweaks+Pulse>
@@ -58,7 +58,7 @@
 <_PipTweaks+EqOffset_3> -28 </_PipTweaks+EqOffset_3> <!-- VUI+ Revelations -->
 <_PipTweaks+EqOffset_4> -20 </_PipTweaks+EqOffset_4> <!-- VUIE -->
 <_PipTweaks+EqOffset>
-	<copy src="sibling(HUDMainmenu)" trait="_PipTweaks+UIMod" />
+	<copy src="sibling(HUDMainmenu)" trait="_Menu+UIMod" />
 	<copy src="me()" trait="_PipTweaks+EqOffset_" />
 </_PipTweaks+EqOffset>
 

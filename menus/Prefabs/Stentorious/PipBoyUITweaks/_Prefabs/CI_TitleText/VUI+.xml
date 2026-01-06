@@ -18,7 +18,7 @@
 	<onlyif src="parent()" trait="_VUI+LabelRight" />
 	<add>
 		<copy src="me()" trait="font" />
-		<copy src="globals" trait="_VUI+FontX_" />
+		<copy src="globals()" trait="_VUI+FontX_" />
 	</add>
 	<add> 5 </add>
 	<add src="parent()" trait="_ySIOffset" />

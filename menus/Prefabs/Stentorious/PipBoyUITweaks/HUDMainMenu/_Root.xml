@@ -3,16 +3,16 @@
 <_Menu+UIMod>
 	<copy> 3 </copy>
 	<onlyif>
-		<copy src="globals" trait="_VUI+Vegas" />		<!-- VUI+ -->
-		<or src="globals" trait="_VUI+Version" />
+		<copy src="globals()" trait="_VUI+Vegas" />		<!-- VUI+ -->
+		<or src="globals()" trait="_VUI+Version" />
 	</onlyif>
 	<add>
 		<copy> -1 </copy>
-		<onlyif src="globals" trait="_VUI+" />			<!-- Revelations -->
+		<onlyif src="globals()" trait="_VUI+" />			<!-- Revelations -->
 	</add>
 	<add>
 		<copy> 2 </copy>
-		<onlyif src="globals" trait="_VUIE" />			<!-- VUIE -->
+		<onlyif src="globals()" trait="_VUIE" />			<!-- VUIE -->
 	</add>
 	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
 </_Menu+UIMod>

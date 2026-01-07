@@ -31,7 +31,7 @@
 		</add>
 		<copy src="me()" trait="_Icon_" />
 	</_Icon>
-	<_Icon_0> interface/icons/Misc_Skull.dds </_Icon_0>
-	<_Icon_1> interface/icons/WeapA_Pistol.dds </_Icon_1>
-	<_Icon_2> interface/icons/Misc_Unknown.dds </_Icon_2>
+	<_Icon_0> interface\icons\Misc_Skull.dds </_Icon_0>
+	<_Icon_1> interface\icons\WeapA_Pistol.dds </_Icon_1>
+	<_Icon_2> interface\icons\Misc_Unknown.dds </_Icon_2>
 </image>

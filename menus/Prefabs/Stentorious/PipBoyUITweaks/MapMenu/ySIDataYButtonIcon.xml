@@ -40,6 +40,6 @@
 		<copy src="MM_Headline_ChallengeType" trait="visible" />
 		<copy src="me()" trait="_Icon_" />
 	</_Icon>
-	<_Icon_0> interface/icons/Misc_Special.dds </_Icon_0>
-	<_Icon_1> interface/icons/Misc_Note.dds </_Icon_1>
+	<_Icon_0> interface\icons\Misc_Special.dds </_Icon_0>
+	<_Icon_1> interface\icons\Misc_Note.dds </_Icon_1>
 </image>

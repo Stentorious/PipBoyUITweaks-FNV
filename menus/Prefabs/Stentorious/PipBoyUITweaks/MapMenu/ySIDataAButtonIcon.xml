@@ -40,9 +40,9 @@
 		<copy src="MM_Tabline" trait="_CurrentTab" />
 		<copy src="me()" trait="_Icon_" />
 	</_Icon>
-	<_Icon_1> interface/icons/Apparel_Other_PipBoy.dds </_Icon_1>
-	<_Icon_2> interface/icons/Misc_QuestItem.dds </_Icon_2>
-	<_Icon_3> interface/icons/Apparel_Headgear_Headphones.dds </_Icon_3>
-	<_Icon_4> interface/icons/Apparel_Headgear_Headphones.dds </_Icon_4>
-	<_Icon_5> interface/icons/Apparel_Headgear_Headphones.dds </_Icon_5>
+	<_Icon_1> interface\icons\Apparel_Other_PipBoy.dds </_Icon_1>
+	<_Icon_2> interface\icons\Misc_QuestItem.dds </_Icon_2>
+	<_Icon_3> interface\icons\Apparel_Headgear_Headphones.dds </_Icon_3>
+	<_Icon_4> interface\icons\Apparel_Headgear_Headphones.dds </_Icon_4>
+	<_Icon_5> interface\icons\Apparel_Headgear_Headphones.dds </_Icon_5>
 </image>

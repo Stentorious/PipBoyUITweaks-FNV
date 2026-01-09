@@ -8,7 +8,7 @@ begin Function {iMenuID}
 
 	; Update Skill bonus color
 	iTile = -1
-	while (iTile += 1) < 13
+	while (iTile += 1) < 14
 		sTemp = GetUIString ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\user2")
 		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (45 - iTile) > 100)
 			iComp = 1

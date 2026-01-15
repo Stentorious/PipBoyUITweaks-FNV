@@ -51,7 +51,7 @@ if GetPluginVersion "JohnnyGuitarNVSE" < 508
 	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest JohnnyGuitar NVSE plugin."
 	return
 endif
-if GetPluginVersion "ShowOffNVSE Plugin" < 145
+if GetPluginVersion "ShowOffNVSE Plugin" < 182
 	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall latest ShowOff NVSE plugin."
 	return
 endif

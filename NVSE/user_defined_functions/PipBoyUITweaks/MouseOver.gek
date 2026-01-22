@@ -331,10 +331,10 @@ begin Function {iMenuID}
 			; Addiction chance
 			if eval Goo1.AuxVarGetFlt "*PipTweaks_INI" 1
 
-				sTemp = "--"
 				rItem = rItem.GBO
 				if eval IsFormValid (GetAddictionEffect rItem) && Player.IsSpellTarget (GetAddictionEffect rItem) == 0
 
+					sTemp = "--"
 					iType = 0
 					iComp = GetNumEffects rItem
 					while (iComp -= 1) > -1
@@ -358,11 +358,12 @@ begin Function {iMenuID}
 						endif
 					endif
 
+					if eval (sTemp) != "--"
+						SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
+						SetUIStringAlt (sTilePath + "AddictionInfo\_value") "%z" sTemp
+					endif
+
 				endif
-
-				SetUIStringAlt (sTilePath + "AddictionInfo\_value") "%z" sTemp
-				SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
-
 			endif
 
 		endif

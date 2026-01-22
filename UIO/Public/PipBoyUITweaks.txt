@@ -310,6 +310,12 @@ Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\VendorRadio
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\VendorRadio\ButtonDarn.xml::MM_ButtonVend
 #Stentorious\VendorRadio\ButtonDarn.xml && #..\ySI\ySI.xml
 
+; Cleared Map Markers
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ClearedMapMarkers\Button.xml::MM_ButtonClear
+#Stentorious\ClearedMapMarkers\ButtonDarn.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ClearedMapMarkers\ButtonDarn.xml::MM_ButtonClear
+#Stentorious\ClearedMapMarkers\ButtonDarn.xml && #..\ySI\ySI.xml
+
 ; Pip-Boy Casino
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\PipBoyCasino\Button.xml::MM_ButtonCasino
 #Stentorious\PipBoyCasino\Button.xml && #..\ySI\ySI.xml

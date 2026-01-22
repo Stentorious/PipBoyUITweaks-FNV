@@ -211,6 +211,7 @@ if eval Goo1.AuxVarGetFlt "*_ySI-SortingIcons"
 	; Mod support
 	SetUIStringAlt "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonVend\ySIImage\filename" "interface\icons\Apparel_Headgear_Headphones.dds"
 	SetUIStringAlt "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonCasino\ySIImage\filename" "interface\icons\Misc_Card.dds"
+	SetUIStringAlt "MapMenu\GLOW_BRANCH\MM_MainRect\MM_ButtonRect\MM_ButtonClear\ySIImage\filename" "interface\icons\Misc_QuestItem.dds"
 
 	; Enable ySI icons (Resistance)
 	SetUIStringAlt "StatsMenu\GLOW_BRANCH\stats_status_container\stats_radiation_container\VUI+Resistances\VUI+EnergyResistLabel\ySIImage\filename" "interface\icons\Ammo_Energy.dds"

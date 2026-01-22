@@ -1,18 +1,22 @@
+<_ySIImage> 1 </_ySIImage>
 <width>
 	<copy src="io()" trait="_PipTweaks+ySI_Width" />
 	<add> 8 </add>
-	<onlyif src="io()" trait="_PipTweaks+ySI_Button" />
+	<onlyif>
+		<copy src="io()" trait="_PipTweaks+ySI_Button" />
+		<and src="me()" trait="_ySIImage" />
+	</onlyif>
 	<add src="child(button_text)" trait="width" />
 	<add src="me()" trait="_horbuf" />
 	<onlyifnot src="me()" trait="_fixedwidth" />
 	<add src="me()" trait="_fixedwidth" />
 </width>
-<_ySIButton> 1 </_ySIButton>
 
 <image name="ySIImage">
 	<visible>
 		<copy src="sibling(button_text)" trait="visible" />
-		<onlyif src="io()" trait="_PipTweaks+ySI_Button" />
+		<and src="io()" trait="_PipTweaks+ySI_Button" />
+		<and src="parent()" trait="_ySIImage" />
 	</visible>
 	<alpha> <copy src="sibling(button_text)" trait="alpha" /> </alpha>
 	<x>

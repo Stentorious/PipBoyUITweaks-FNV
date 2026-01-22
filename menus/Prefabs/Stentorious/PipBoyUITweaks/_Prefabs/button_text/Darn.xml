@@ -25,7 +25,7 @@
 				<add> 8 </add>
 				<onlyif>
 					<copy src="io()" trait="_PipTweaks+ySI_Button" />
-					<and src="parent()" trait="_ySIButton" />
+					<and src="parent()" trait="_ySIImage" />
 				</onlyif>
 			</add>
 			<div> 2 </div>
@@ -41,7 +41,7 @@
 		<div> 2 </div>
 		<onlyif>
 			<copy src="io()" trait="_PipTweaks+ySI_Button" />
-			<and src="parent()" trait="_ySIButton" />
+			<and src="parent()" trait="_ySIImage" />
 		</onlyif>
 	</add>
 </x>

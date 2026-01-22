@@ -1,6 +1,6 @@
 # Pip-Boy UI Tweaks
 <p align="left">
-    <img height="400px" src="https://staticdelivery.nexusmods.com/mods/130/images/85343/85343-1711146413-1189014449.png">
+	<img height="400px" src="https://staticdelivery.nexusmods.com/mods/130/images/85343/85343-1711146413-1189014449.png">
 </p>
 
 ## Overview
@@ -11,14 +11,17 @@
 - Extended Item Stats Comparison - Extend [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347) Stat Comparisons to WG, VAL, and STR
 - Search Icon - Adds a dynamic icon to [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347) Menu Search
 - Shift Unequippable - Removes the empty space in front of unequippable Pip-Boy items
+- Separate DTDR Info - Display separate head/body DT/DR headline info values *NEW*
+- Hardcore Info - Display H2O/FOD hardcore needs headline info values in the aid tab *NEW*
 
 ### Weapon Mod Menu
 - Weapon Stats UI - Adds new UI element to show weapon mod's affect on weapon stats
 - Accurate Mod Descriptions - Rebuilds weapon mod descriptions to accurately reflect their stat bonus
 
 ### Colorful Stat Info
-- Item - Weapon/Armor stats will be shaded based on lStewieAl's/Extended Item Stats Comparison
+- Item Stats - Weapon/Armor stats will be shaded based on stats comparison
 - Encumbrance - WG will be red while over-encumbered
+- Action Points - AP will be red when under 50%, blinking red when under 25%
 - Hit Points - HP will be red when at low health, blinking red when critical
 - Skills - Positive/Negative Skill effects will be shaded green/red
 - SPECIAL - Positive/Negative SPECIAL effects will be shaded green/red
@@ -35,27 +38,26 @@
 - Ammo Info Icon - Adds a dynamic icon to the Ammo Info card, showing ammo type and armor class
 - Resistance Icons - Adds icons to the Biological Resistances section of the stats menu
 
-### Texture Add-on
-- UI Prompt Icons - Adds addition button prompt icons to complement the ySI integration
-- MAPMO Style Icons - Replaces the ySI bottle caps icons with MAPMO style versions
-- Colorful Icons - Installs colorful versions of the icons included in the texture add-on
-
 ## Configuration
-Tweaks can be toggled via the included PipBoyUITweaks.ini
+Configurable via [MCM Extender](https://www.nexusmods.com/newvegas/mods/93642)
 
 ## Recommended
 - [Local Map Overhaul](https://www.nexusmods.com/newvegas/mods/88533)
-- [ySI - Colorful Icons Support](https://www.nexusmods.com/newvegas/mods/85075)
+- [ySI - Sorting Ycons](https://www.nexusmods.com/newvegas/mods/74358)
 - [ySI - Assorted Fixes](https://www.nexusmods.com/newvegas/mods/86715)
+- [ySI - Colorful Icons Support](https://www.nexusmods.com/newvegas/mods/85075)
 
 ## Requirements
-- [xNVSE](https://www.nexusmods.com/newvegas/mods/67883) (6.3.3+)
+- [xNVSE](https://www.nexusmods.com/newvegas/mods/67883)
 - [JIP LN NVSE](https://www.nexusmods.com/newvegas/mods/58277)
 - [JohnnyGuitar NVSE](https://www.nexusmods.com/newvegas/mods/66927) 5.06+
 - [ShowOff xNVSE](https://www.nexusmods.com/newvegas/mods/72541)
 - [User Interface Organizer](https://www.nexusmods.com/newvegas/mods/57174)
 - [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347)
-- [ySI - Sorting Ycons](https://www.nexusmods.com/newvegas/mods/74358) (For ySI Addon)
+- [MCM Extender](https://www.nexusmods.com/newvegas/mods/93642)
 
 ## Installation
-Install with a mod manager via the FOMOD installer.
+Installs like any other mod, manually or using a mod manager.
+
+## Support The Author
+[![Patreon Donation](https://i.imgur.com/TnQwVb6.png)](https://www.patreon.com/stentorious)

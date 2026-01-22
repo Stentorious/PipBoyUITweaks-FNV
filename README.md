@@ -50,7 +50,7 @@ Configurable via [MCM Extender](https://www.nexusmods.com/newvegas/mods/93642)
 ## Requirements
 - [xNVSE](https://www.nexusmods.com/newvegas/mods/67883)
 - [JIP LN NVSE](https://www.nexusmods.com/newvegas/mods/58277)
-- [JohnnyGuitar NVSE](https://www.nexusmods.com/newvegas/mods/66927) 5.06+
+- [JohnnyGuitar NVSE](https://www.nexusmods.com/newvegas/mods/66927)
 - [ShowOff xNVSE](https://www.nexusmods.com/newvegas/mods/72541)
 - [User Interface Organizer](https://www.nexusmods.com/newvegas/mods/57174)
 - [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347)

@@ -332,7 +332,7 @@ begin Function {iMenuID}
 			if eval Goo1.AuxVarGetFlt "*PipTweaks_INI" 1
 
 				rItem = rItem.GBO
-				if eval IsFormValid (GetAddictionEffect rItem) && Player.IsSpellTarget (GetAddictionEffect rItem) == 0
+				if eval IsFormValid (GetAddictionEffect rItem)
 
 					sTemp = "--"
 					iType = 0
@@ -359,8 +359,11 @@ begin Function {iMenuID}
 					endif
 
 					if eval (sTemp) != "--"
-						SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
+						if eval Player.IsSpellTarget (GetAddictionEffect rItem)
+							sTemp = "--"
+						endif
 						SetUIStringAlt (sTilePath + "AddictionInfo\_value") "%z" sTemp
+						SetUIFloatAlt (sTilePath + "AddictionInfo\visible") 1
 					endif
 
 				endif

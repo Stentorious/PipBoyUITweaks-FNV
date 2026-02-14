@@ -17,7 +17,7 @@ begin Function {iMenuID, iTileID, sTileName}
 	; Cache equipped item stats and update color
 	if eval (iType = rItem.GetType) == 24 || iType == 40
 		CallAfterFrames 0 (CompileScript "PipBoyUITweaks\GetItemStats.gek") 1
-		CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 iMenuID
+		CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 1 iMenuID
 	endif
 
 	; Update Inventory weight/hp color

@@ -20,7 +20,7 @@ begin Function {rDropper, rDropped}
 			SetUIFloatAlt "InventoryMenu\GLOW_BRANCH\IM_MainRect\IM_ItemInfoRect\DamageThresholdInfo\CI_ValueText\systemcolor" 4
 			Call (CompileScript "PipBoyUITweaks\GetItemStats.gek")
 			if eval GetController
-				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1002
+				CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 1 1002
 			endif
 		endif
 

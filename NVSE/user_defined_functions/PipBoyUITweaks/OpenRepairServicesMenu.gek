@@ -10,6 +10,6 @@ begin Function {iMenuID}
 	SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_RepairAllButton\ySIImage\filename" "interface\icons\Aid_WeaponRepairKit.dds"
 	SetUIStringAlt "RepairServicesMenu\NOGLOW_BRANCH\RSM_MainRect\RSM_ButtonRect\RSM_DoneButton\ySIImage\filename" "interface\icons\UI_Accept.dds"
 
-	Call (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 1058
+	Call (CompileScript "PipBoyUITweaks\MouseRepairServicesMenu.gek") 1058
 
 end

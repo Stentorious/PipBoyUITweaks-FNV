@@ -276,19 +276,19 @@ SetOnMenuClickEventHandler (begin function {int iMenuID, int iTileID, string_var
 	CallAfterFrames 0 (begin function {int iModMask}
 		if eval iModMask != (GetMenuTargetRef 1061).GetWeaponRefModFlags
 			Call (CompileScript "PipBoyUITweaks\GetModStats.gek")
-			Call (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 1061
+			Call (CompileScript "PipBoyUITweaks\MouseItemModMenu.gek") 1061
 		endif
 	end) 1 (GetMenuTargetRef 1061).GetWeaponRefModFlags
 end) 1 "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemModList\IMM_ItemModListTemplateRect"
 
 ; Update numeric repair
-SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 0 1035
-SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035) 1 "RepairMenu#14"
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 1 1058
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 0 1058
-SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 1 1058) 1 "RepairServicesMenu#17"
+SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\MouseRepairMenu.gek") 1 1035
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseRepairMenu.gek") 1 1035
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseRepairMenu.gek") 0 1035
+SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseRepairMenu.gek") 1 1035) 1 "RepairMenu#14"
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseRepairServicesMenu.gek") 1 1058
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseRepairServicesMenu.gek") 0 1058
+SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseRepairServicesMenu.gek") 1 1058) 1 "RepairServicesMenu#17"
 
 ; Enable colorful stats info (Crippled limbs)
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenMapMenu.gek") 1 1023
@@ -335,12 +335,12 @@ SetOnMenuOpenEventHandler ({int iMenuID} => CallAfterFrames 0 (CompileScript "Pi
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenBarterMenu.gek") 1 1053
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenRepairServicesMenu.gek") 1 1058
 SetOnMenuOpenEventHandler ({int iMenuID} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\OpenRecipeMenu.gek") 1 iMenuID) 1 1077
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1008
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1008
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1053
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1053
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRecipe.gek") 1 1077
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRecipe.gek") 0 1077
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 1 1008
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 0 1008
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 1 1053
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 0 1053
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseRecipeMenu.gek") 1 1077
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseRecipeMenu.gek") 0 1077
 SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\MenuClick.gek") 1 "ContainerMenu#20"
 SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\MenuClick.gek") 1 "BarterMenu#23"
 SetGameMainLoopCallback (CompileScript "PipBoyUITweaks\MenuLoop.gek") 1 5 2
@@ -351,10 +351,10 @@ CloseFileSO "Stentorious\PipBoyUITweaks.ini" 0
 ; Menu update event handlers
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenInventoryMenu.gek") 1 1002
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenStatsMenu.gek") 1 1003
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOver.gek") 1 1002
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOver.gek") 0 1002
-SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 1 1061
-SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\OnMouse1061.gek") 0 1061
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 1 1002
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseDefaultMenu.gek") 0 1002
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseItemModMenu.gek") 1 1061
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseItemModMenu.gek") 0 1061
 SetOnMenuClickEventHandler (CompileScript "PipBoyUITweaks\MenuClick.gek") 1 "InventoryMenu#29"
 
 ; Inventory update event handlers

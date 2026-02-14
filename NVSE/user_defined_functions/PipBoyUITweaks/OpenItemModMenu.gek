@@ -51,7 +51,7 @@ begin Function {iMenuID}
 			elseif iModType == 8
 				sModDesc = Sv_Construct "Increases rate of fire (+%.0f%%)." (fModStat * 100)
 			elseif iModType == 10
-				sModDesc = Sv_Construct "Increases condition (+%.0f%%)." ((fModStat / (rWeap.GetHealth)) *  100)
+				sModDesc = Sv_Construct "Increases condition (+%.0f%%)." ((fModStat / (rWeap.GetHealth)) * 100)
 			endif
 		endif
 		Goo1.AuxVarSetStr "*PipTweaks_WMDesc" (sModDesc) (iModSlot - 1)

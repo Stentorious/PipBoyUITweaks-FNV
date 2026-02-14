@@ -1,0 +1,29 @@
+int	iMenuID
+
+float fWeapCndBase
+float fWeapCndBroken
+float fWeapCndFixed
+ref rItem
+
+begin Function {iMenuID}
+
+	if eval IsReference (rItem = GetMenuTargetRef 1035) == 0
+		return
+	endif
+
+	if eval (iMenuID = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") == 0
+		return
+	endif
+
+	fWeapCndBroken = GetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\user0"
+	fWeapCndFixed = GetMaxOf fWeapCndBroken (GetUIFloatAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\user0")
+	if eval iMenuID == 1
+		fWeapCndBase = rItem.GetItemRefCurrentHealth 2
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter\Numeric_Value\string" "%.0f" (fWeapCndBroken * fWeapCndBase)
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter\Numeric_Value\string" "%.0f" (fWeapCndFixed * fWeapCndBase)
+	elseif eval iMenuID == 2
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_BrokenItemHealth\RM_BrokenItemHealthMeter\Numeric_Value\string" "%.0f%%" (fWeapCndBroken * 100)
+		SetUIStringAlt "RepairMenu\GLOW_BRANCH\RM_MainRect\RM_CompareRect\RM_FixedItemHealth\RM_FixedItemHealthMeter\Numeric_Value\string" "%.0f%%" (fWeapCndFixed * 100)
+	endif
+
+end

@@ -43,7 +43,7 @@ Goo1.AuxVarSetFlt "*PipTweaks_Init" 1
 
 ; On game restart
 ; Check for requirements
-if eval GetNVSEVersion < 6 || (GetNVSEVersion == 6 && GetNVSERevision < 4)
+if eval GetNVSEVersionFull < 6.40
 	MessageBoxEx "Pip-Boy UI Tweaks missing requirement!%rInstall xNVSE 6.4.0+."
 	return
 endif
@@ -118,6 +118,7 @@ SetUIFloatAlt "HUDMainMenu\_PipTweaks+SearchIcon" (eval GetINIFloat_Cached "Gene
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+WeapModUI" (eval GetINIFloat_Cached "WeaponModMenu:bWeaponStatUI" "Stentorious\PipBoyUITweaks.ini" 1)
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+HardcoreInfo" (eval GetINIFloat_Cached "InventoryMenu:bHardcoreInfo" "Stentorious\PipBoyUITweaks.ini" 1)
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+SeparateDRDT" (eval GetINIFloat_Cached "InventoryMenu:bSeparateDTDR" "Stentorious\PipBoyUITweaks.ini" 1)
+SetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND" (eval GetINIFloat_Cached "InventoryMenu:bNumericCondition" "Stentorious\PipBoyUITweaks.ini" 1)
 
 ; Color
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+Color_HP" (eval GetINIFloat_Cached "Color:bHitPoints" "Stentorious\PipBoyUITweaks.ini" 1)
@@ -279,6 +280,15 @@ SetOnMenuClickEventHandler (begin function {int iMenuID, int iTileID, string_var
 		endif
 	end) 1 (GetMenuTargetRef 1061).GetWeaponRefModFlags
 end) 1 "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ItemModList\IMM_ItemModListTemplateRect"
+
+; Update numeric repair
+SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 0 1035
+SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOverRepair.gek") 1 1035) 1 "RepairMenu#14"
+SetOnMouseoverChangeEventHandler (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 1 1058
+SetOnKBCTrlUIDeltaHandler 1 (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 0 1058
+SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => CallAfterFrames 0 (CompileScript "PipBoyUITweaks\MouseOverRepairServices.gek") 1 1058) 1 "RepairServicesMenu#17"
 
 ; Enable colorful stats info (Crippled limbs)
 SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenMapMenu.gek") 1 1023

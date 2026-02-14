@@ -3,6 +3,7 @@
 
 <!-- Config Settings -->
 <_PipTweaks+CritInfo> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo" /> </_PipTweaks+CritInfo>
+<_PipTweaks+NumericCND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+NumericCND" /> </_PipTweaks+NumericCND>
 <_PipTweaks+WeapModUI> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+WeapModUI" /> </_PipTweaks+WeapModUI>
 <_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" /> </_PipTweaks+Color_CND>
 <_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button" /> </_PipTweaks+ySI_Button>

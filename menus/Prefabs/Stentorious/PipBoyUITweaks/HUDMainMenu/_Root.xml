@@ -3,18 +3,18 @@
 <_Menu+UIMod>
 	<copy> 3 </copy>
 	<onlyif>
-		<copy src="globals()" trait="_VUI+Vegas" />		<!-- VUI+ -->
+		<copy src="globals()" trait="_VUI+Vegas" />
 		<or src="globals()" trait="_VUI+Version" />
 	</onlyif>
 	<add>
 		<copy> -1 </copy>
-		<onlyif src="globals()" trait="_VUI+" />			<!-- Revelations -->
+		<onlyif src="globals()" trait="_VUI+" />
 	</add>
 	<add>
 		<copy> 2 </copy>
-		<onlyif src="globals()" trait="_VUIE" />			<!-- VUIE -->
+		<onlyif src="globals()" trait="_VUIE" />
 	</add>
-	<add src="io()" trait="_DUIF3" />					<!-- DarNUI -->
+	<add src="io()" trait="_DUIF3" />
 </_Menu+UIMod>
 
 <!-- Config Settings -->
@@ -25,6 +25,7 @@
 <_PipTweaks+SkillInfo> 0 </_PipTweaks+SkillInfo>
 <_PipTweaks+CritInfo> 0 </_PipTweaks+CritInfo>
 <_PipTweaks+WeapModUI> 0 </_PipTweaks+WeapModUI>
+<_PipTweaks+NumericCND> 0 </_PipTweaks+NumericCND>
 <_PipTweaks+Color_HP> 0 </_PipTweaks+Color_HP>
 <_PipTweaks+Color_AP> 0 </_PipTweaks+Color_AP>
 <_PipTweaks+Color_WG> 0 </_PipTweaks+Color_WG>

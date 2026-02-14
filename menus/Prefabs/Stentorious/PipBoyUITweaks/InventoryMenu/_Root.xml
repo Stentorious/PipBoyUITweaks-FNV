@@ -11,6 +11,7 @@
 	<and src="io()" trait="_Setting+Hardcore" />
 </_PipTweaks+HardcoreInfo>
 <_PipTweaks+SeparateDRDT> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+SeparateDRDT" /> </_PipTweaks+SeparateDRDT>
+<_PipTweaks+NumericCND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+NumericCND" /> </_PipTweaks+NumericCND>
 <_PipTweaks+Color_HP> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_HP" /> </_PipTweaks+Color_HP>
 <_PipTweaks+Color_WG> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_WG" /> </_PipTweaks+Color_WG>
 <_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" /> </_PipTweaks+Color_CND>

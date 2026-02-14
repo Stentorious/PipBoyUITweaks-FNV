@@ -10,6 +10,10 @@
 	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+CritInfo" />
 	<onlyif src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
 </_PipTweaks+CritInfo>
+<_PipTweaks+NumericCND>
+	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+NumericCND" />
+	<onlyif src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />
+</_PipTweaks+NumericCND>
 <_PipTweaks+Color_CND>
 	<copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" />
 	<onlyif src="sibling(HUDMainMenu)" trait="_PipTweaks+ExtMenuSupport" />

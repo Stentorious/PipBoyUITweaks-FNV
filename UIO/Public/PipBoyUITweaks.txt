@@ -239,6 +239,18 @@ Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairMenu::RM_FixedItemHe
 true
 Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairMenu::RM_BrokenItemHealthMeter
 true
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::RepairMenu::RM_FixedItemHealthMeter
+!darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::RepairMenu::RM_FixedItemHealthMeter
+darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::RepairMenu::RM_FixedItemHealthMeter
+#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::RepairMenu::RM_BrokenItemHealthMeter
+!darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::RepairMenu::RM_BrokenItemHealthMeter
+darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::RepairMenu::RM_BrokenItemHealthMeter
+#VUIE\Quantity\text_box.xml
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RepairMenu::RM_RepairButton
 #..\ySI\ySI.xml
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RepairMenu::RM_CancelButton
@@ -255,6 +267,18 @@ Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairServicesMenu::RSM_Fi
 true
 Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::RepairServicesMenu::RSM_BrokenItemHealthMeter
 true
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::RepairServicesMenu::RSM_FixedItemHealthMeter
+!darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::RepairServicesMenu::RSM_FixedItemHealthMeter
+darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::RepairServicesMenu::RSM_FixedItemHealthMeter
+#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::RepairServicesMenu::RSM_BrokenItemHealthMeter
+!darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::RepairServicesMenu::RSM_BrokenItemHealthMeter
+darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::RepairServicesMenu::RSM_BrokenItemHealthMeter
+#VUIE\Quantity\text_box.xml
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RepairServicesMenu::RSM_RepairButton
 #..\ySI\ySI.xml
 Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::RepairServicesMenu::RSM_RepairAllButton
@@ -275,6 +299,12 @@ Stentorious\PipBoyUITweaks\_Prefabs\StrengthReqInfo.xml::@Prefabs\item_stats_dis
 true
 Stentorious\PipBoyUITweaks\_Common\ColorCNDMeter.xml::@Prefabs\item_stats_display.xml::ConditionMeter
 true
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::@Prefabs\item_stats_display.xml::ConditionMeter
+!darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::@Prefabs\item_stats_display.xml::ConditionMeter
+darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::@Prefabs\item_stats_display.xml::ConditionMeter
+#VUIE\Quantity\text_box.xml
 Stentorious\PipBoyUITweaks\_Prefabs\VUI+VW.xml::@Prefabs\VUI+\settings.xml
 vui+
 
@@ -335,3 +365,9 @@ Stentorious\PipBoyUITweaks\_ySI\AmmoInfo.xml::@Prefabs\Stentorious\ItemCards\Mai
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
 Stentorious\PipBoyUITweaks\_Common\ColorCNDMeterIC.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_Common\NumericCondition.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
+#Stentorious\ItemCards\Main.xml && !darn && !#VUIE\Quantity\text_box.xml
+Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
+#Stentorious\ItemCards\Main.xml && darn
+Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
+#Stentorious\ItemCards\Main.xml && #VUIE\Quantity\text_box.xml

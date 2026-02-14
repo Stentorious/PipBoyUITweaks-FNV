@@ -58,6 +58,15 @@ begin Function {iMenuID}
 
 	if eval (iType = GetType rItem) == 40 || iType == 24
 
+		; Condition display
+		if eval (iComp = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") > 0
+			if eval iComp == 1
+				SetUIStringAlt (sTilePath + "ConditionInfo\ConditionMeter\Numeric_Value\string") "%.0f" (GetHealth rItem)
+			elseif eval iComp == 2
+				SetUIStringAlt (sTilePath + "ConditionInfo\ConditionMeter\Numeric_Value\string") "100%%"
+			endif
+		endif
+
 		if eval iType == 40
 
 			; Display skill requirement

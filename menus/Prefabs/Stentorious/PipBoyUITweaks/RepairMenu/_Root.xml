@@ -2,7 +2,8 @@
 <_Menu+Systemcolor> 4 </_Menu+Systemcolor>
 
 <!-- Config Settings -->
- <_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" /> </_PipTweaks+Color_CND>
+<_PipTweaks+Color_CND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+Color_CND" /> </_PipTweaks+Color_CND>
+<_PipTweaks+NumericCND> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+NumericCND" /> </_PipTweaks+NumericCND>
 <_PipTweaks+ySI_Button> <copy src="sibling(HUDMainMenu)" trait="_PipTweaks+ySI_Button" /> </_PipTweaks+ySI_Button>
 
 <!-- Scripting -->

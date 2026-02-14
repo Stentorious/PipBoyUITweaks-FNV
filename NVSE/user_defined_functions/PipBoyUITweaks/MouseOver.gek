@@ -81,6 +81,15 @@ begin Function {iMenuID}
 		Goo1.AuxVarSetFlt "*PipTweaks_FLAG" 1
 		iColor = Goo1.AuxVarGetFlt "*PipTweaks_INI" 3
 
+		; Condition display
+		if eval (iComp = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") > 0
+			if eval iComp == 1
+				SetUIStringAlt (sTilePath + "ConditionInfo\ConditionMeter\Numeric_Value\string") "%.0f" (rItem.GetItemRefCurrentHealth 0)
+			elseif eval iComp == 2
+				SetUIStringAlt (sTilePath + "ConditionInfo\ConditionMeter\Numeric_Value\string") "%.0f%%" ((rItem.GetItemRefCurrentHealth 1) * 100)
+			endif
+		endif
+
 		if eval iType == 40
 
 			; Display skill requirement

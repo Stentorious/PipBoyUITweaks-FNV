@@ -70,6 +70,14 @@
 					"enable": 1,
 					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+ShiftItems", "configINI": "InventoryMenu:bShiftUnequippable", "default": 1 } ]
 				},
+				"18": {
+					"title": "$NumericCondition",
+					"mouse": "$NumericConditionMouse",
+					"type": 1,
+					"enable": 1,
+					"vars": [ { "uiTrait": "HUDMainMenu/_PipTweaks+NumericCND", "configINI": "InventoryMenu:bNumericCondition", "default": 0 } ],
+					"strings": [ "$Disabled", "$TrueValue", "$Percentage" ]
+				},
 				"1": {
 					"title": "$General",
 					"enable": 1,

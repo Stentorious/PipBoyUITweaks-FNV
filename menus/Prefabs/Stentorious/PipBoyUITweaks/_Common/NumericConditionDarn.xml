@@ -1,0 +1,27 @@
+<text name="Numeric_Value">
+	<visible> <copy src="io()" trait="_PipTweaks+NumericCND" /> </visible>
+	<alpha> <copy src="sibling(MeterImage_Clone)" trait="alpha" /> </alpha>
+	<x>
+		<copy src="sibling(MeterImage_Clone)" trait="x" />
+		<add> 2 </add>
+	</x>
+	<y> 0 </y>
+	<depth> 3 </depth>
+	<zoom> 70 </zoom>
+	<systemcolor> <copy src="sibling(MeterImage_Clone)" trait="systemcolor" /> </systemcolor>
+	<red>
+		<copy src="sibling(MeterImage_Clone)" trait="red" />
+		<mul> 0.15 </mul>
+	</red>
+	<green>
+		<copy src="sibling(MeterImage_Clone)" trait="green" />
+		<mul> 0.15 </mul>
+	</green>
+	<blue>
+		<copy src="sibling(MeterImage_Clone)" trait="blue" />
+		<mul> 0.15 </mul>
+	</blue>
+	<brightness> 38 </brightness>
+	<font> 2 </font>
+	<string></string>
+</text>

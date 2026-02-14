@@ -25,6 +25,14 @@ begin Function {}
 	fWeapCndC = rWeap.GetItemRefCurrentHealth 0
 	fWeapCndB = rWeap.GetItemRefCurrentHealth 2
 	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" (fWeapCndC / fWeapCndB)
+	; Condition display
+	if eval (iModType = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") > 0
+		if eval iModType == 1
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f" fWeapCndC
+		elseif eval iModType == 2
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f%%" ((fWeapCndC / fWeapCndB) * 100)
+		endif
+	endif
 	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapCndC 1
 	Goo1.AuxVarSetFlt "*PipTweaks_WMStats" fWeapCndB 2
 

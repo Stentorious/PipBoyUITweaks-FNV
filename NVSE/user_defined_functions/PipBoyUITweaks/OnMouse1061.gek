@@ -56,6 +56,15 @@ begin Function {iMenuID}
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.0f" fWeapDmg
 	endif
 
+	; Condition display
+	if eval (iModType = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") > 0
+		if eval iModType == 1
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f" fWeapCndC
+		elseif eval iModType == 2
+			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f%%" ((fWeapCndC / fWeapCndB) * 100)
+		endif
+	endif
+
 	; Get selected weapon mod, mod slot, weapon being modded
 	if eval IsFormValid (rMod = GetSelectedItemRef) == 0
 		return
@@ -67,7 +76,6 @@ begin Function {iMenuID}
 		sv_Destruct sUIPath
 		return
 	endif
-
 
 	iModSlot = 1
 	if rWeap.GetWeaponItemMod 2 == rMod
@@ -145,6 +153,14 @@ begin Function {iMenuID}
 		loop
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f+" (((rWeap.GetValue) * (fGSCndValB + (GetGS fItemConditionValueMult) * (10 ^ fGSCndValE) * (1 - fGSCndValB) * (fWeapCalc ^ fGSCndValE))) + fModVal)
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\_value" fWeapCalc
+		; Condition display
+		if eval (iModType = GetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND") > 0
+			if eval iModType == 1
+				SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f" (GetMinOf (fWeapCndC + fModStat) fWeapCndB)
+			elseif eval iModType == 2
+				SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ConditionInfo\ConditionMeter\Numeric_Value\string" "%.0f%%" (fWeapCalc * 100)
+			endif
+		endif
 		if (fWeapCndC / fWeapCndB) < 0.75
 			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
 			fWeapCalc = (fWeapDmg / (0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75)))) * (0.5 + (GetMinOf 0.5 ((0.5 * fWeapCalc) / 0.75)))

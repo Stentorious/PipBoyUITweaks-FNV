@@ -371,3 +371,7 @@ Stentorious\PipBoyUITweaks\_Common\NumericConditionDarn.xml::@Prefabs\Stentoriou
 #Stentorious\ItemCards\Main.xml && darn
 Stentorious\PipBoyUITweaks\_Common\NumericConditionVUIE.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
 #Stentorious\ItemCards\Main.xml && #VUIE\Quantity\text_box.xml
+
+; UI Improvements (Wombat)
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\UII\PerkBrowser.xml::PerkBrowser
+#UII\PerkBrowser.xml && #..\ySI\ySI.xml

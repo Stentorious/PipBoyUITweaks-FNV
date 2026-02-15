@@ -10,7 +10,7 @@ begin Function {iMenuID}
 	iTile = -1
 	while (iTile += 1) < 14
 		sTemp = GetUIString ("StatsMenu\GLOW_BRANCH\stats_skills_container\*:" + $iTile + "\user2")
-		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (45 - iTile) > 100)
+		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (45 - iTile) > Player.GetPermAV (45 - iTile))
 			iComp = 1
 		else
 			iComp = 0
@@ -22,7 +22,7 @@ begin Function {iMenuID}
 	iTile = -1
 	while (iTile += 1) < 7
 		sTemp = GetUIString ("StatsMenu\GLOW_BRANCH\stats_special_container\*:" + $iTile + "\user2")
-		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (11 - iTile) > 10)
+		if eval (Sv_Find "+" sTemp != -1 || Player.GetAV (11 - iTile) > Player.GetPermAV (11 - iTile))
 			iComp = 1
 		else
 			iComp = 0

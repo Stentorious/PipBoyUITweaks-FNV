@@ -2,6 +2,8 @@ int	iMenuID
 int iModSlot
 int iModType
 int iModMask
+int iSystemcolor
+int iSystemcolorAlt
 float fModStat
 float fModVal
 float fWeapVal
@@ -95,14 +97,23 @@ begin Function {iMenuID}
 		return
 	endif
 
-	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" 3
+	; Color stat comparisons
+	if eval Goo1.AuxVarGetFlt "*PipTweaks_INI" 3
+		iSystemcolor = 3
+		iSystemcolorAlt = 2
+	else
+		iSystemcolor = 4
+		iSystemcolorAlt = 4
+	endif
+
+	SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\CI_ValueText\systemcolor" iSystemcolor
 	SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ValueInfo\_value" "%.0f+" (fWeapVal + (GetValue rMod))
 	iModType = rWeap.GetWeaponItemModEffect iModSlot
 	fModStat = rWeap.GetWeaponItemModValue1 iModSlot
 
 	; Increase Weapon Damage
 	if iModType == 1
-		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" iSystemcolor
 		fWeapCalc = fWeapDmg + 0.05 + ((0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75))) * (fModStat / fWeapPrj) * (Goo1.AuxVarGetFlt "*PipTweaks_WMStats" 5))
 		if fWeapPrj > 1
 			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" fWeapCalc fWeapPrj
@@ -113,6 +124,7 @@ begin Function {iMenuID}
 	; Increase Clip Capacity
 	elseif iModType == 2
 		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\visible" 1
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\CI_ValueText\systemcolor" iSystemcolor
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\ModInfoOne\_value" "%g+" fModStat
 
 	; Decrease Weight
@@ -129,7 +141,7 @@ begin Function {iMenuID}
 			fWeapWg /= 2
 		endif
 
-		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" 3
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\CI_ValueText\systemcolor" iSystemcolor
 		if fWeapWg > 0
 			SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\WeightInfo\_value" "%.2f+" fWeapWg
 		else
@@ -138,7 +150,7 @@ begin Function {iMenuID}
 
 	; Increase Rate of Fire
 	elseif eval iModType == 8 && GetUIFloatAlt "HUDMainMenu\_PipTweaks+CritInfo" == 1 && rWeap.GetIsAutomatic && Goo1.AuxVarGetFlt "*_Tweaks:bCritChanceIgnoresFireRate" == 0
-		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" 2
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\CI_ValueText\systemcolor" iSystemcolorAlt
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\CritInfo\_value" "%.2f%%-" (fWeapCrit / (1 + fModStat))
 
 	; Increase Max. Condition
@@ -162,7 +174,7 @@ begin Function {iMenuID}
 			endif
 		endif
 		if (fWeapCndC / fWeapCndB) < 0.75
-			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+			SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" iSystemcolor
 			fWeapCalc = (fWeapDmg / (0.5 + (GetMinOf 0.5 ((0.5 * (fWeapCndC / fWeapCndB)) / 0.75)))) * (0.5 + (GetMinOf 0.5 ((0.5 * fWeapCalc) / 0.75)))
 			if fWeapPrj > 1
 				SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" fWeapCalc fWeapPrj
@@ -174,7 +186,7 @@ begin Function {iMenuID}
 	; Split Beam
 	elseif iModType == 12
 		fWeapCalc = fWeapPrj + fModStat
-		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" 3
+		SetUIFloatAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\CI_ValueText\systemcolor" iSystemcolor
 		SetUIStringAlt "ItemModMenu\GLOW_BRANCH\IMM_MainRect\IMM_ModCompare\DAMInfo\_value" "%.1fx%g+" ((fWeapDmg / fWeapCalc) * 1.3) fWeapCalc
 	endif
 

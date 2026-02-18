@@ -118,7 +118,7 @@ SetUIFloatAlt "HUDMainMenu\_PipTweaks+SearchIcon" (eval GetINIFloat_Cached "Gene
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+WeapModUI" (eval GetINIFloat_Cached "WeaponModMenu:bWeaponStatUI" "Stentorious\PipBoyUITweaks.ini" 1)
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+HardcoreInfo" (eval GetINIFloat_Cached "InventoryMenu:bHardcoreInfo" "Stentorious\PipBoyUITweaks.ini" 1)
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+SeparateDRDT" (eval GetINIFloat_Cached "InventoryMenu:bSeparateDTDR" "Stentorious\PipBoyUITweaks.ini" 1)
-SetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND" (eval GetINIFloat_Cached "InventoryMenu:bNumericCondition" "Stentorious\PipBoyUITweaks.ini" 1)
+SetUIFloatAlt "HUDMainMenu\_PipTweaks+NumericCND" (GetINIFloat_Cached "InventoryMenu:bNumericCondition" "Stentorious\PipBoyUITweaks.ini" 0)
 
 ; Color
 SetUIFloatAlt "HUDMainMenu\_PipTweaks+Color_HP" (eval GetINIFloat_Cached "Color:bHitPoints" "Stentorious\PipBoyUITweaks.ini" 1)

@@ -19,6 +19,7 @@ begin Function {iMenuID}
 	; Enable ySI icons (Buttons)
 	SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonX\ySIImage\filename" "interface\icons\Misc_BottleCap.dds"
 	SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_ButtonB\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+	SetUIStringAlt "BarterMenu\NOGLOW_BRANCH\BM_ButtonRect\BM_InspectButton\ySIImage\filename" "interface\icons\Aid_GenericDevice.dds"
 
 	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1
 		return

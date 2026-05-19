@@ -19,6 +19,7 @@ begin Function {iMenuID}
 	; Enable ySI icons (Buttons)
 	SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_TakeAllButton\ySIImage\filename" "interface\icons\Apparel_Other_Backpack.dds"
 	SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_ExitButton\ySIImage\filename" "interface\icons\UI_Cancel.dds"
+	SetUIStringAlt "ContainerMenu\NOGLOW_BRANCH\CM_ButtonRect\CM_InspectButton\ySIImage\filename" "interface\icons\Aid_GenericDevice.dds"
 
 	if eval GetUIFloatAlt "HUDMainMenu\_PipTweaks+ExtMenuSupport" != 1
 		return

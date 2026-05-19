@@ -356,6 +356,20 @@ Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\PipBoyCasin
 Stentorious\PipBoyUITweaks\_ySI\CapsInfo.xml::@Prefabs\Stentorious\PipBoyModVendor\CapsInfo.xml::IMM_PlayerCapsInfo
 #Stentorious\PipBoyModVendor\CapsInfo.xml && #..\ySI\ySI.xml
 
+; Item Inspect Menu
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\InventoryMenu\Button.xml::IM_InspectButton
+#Stentorious\ItemInspectMenu\InventoryMenu\Button.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\InventoryMenu\ButtonDarn.xml::IM_InspectButton
+#Stentorious\ItemInspectMenu\InventoryMenu\ButtonDarn.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\ContainerMenu\Button.xml::CM_InspectButton
+#Stentorious\ItemInspectMenu\ContainerMenu\Button.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\ContainerMenu\ButtonDarn.xml::CM_InspectButton
+#Stentorious\ItemInspectMenu\ContainerMenu\ButtonDarn.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\BarterMenu\Button.xml::BM_InspectButton
+#Stentorious\ItemInspectMenu\BarterMenu\Button.xml && #..\ySI\ySI.xml
+Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspectMenu\BarterMenu\ButtonDarn.xml::BM_InspectButton
+#Stentorious\ItemInspectMenu\BarterMenu\ButtonDarn.xml && #..\ySI\ySI.xml
+
 ; Item Cards
 Stentorious\PipBoyUITweaks\_ySI\WeightInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::WG
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml

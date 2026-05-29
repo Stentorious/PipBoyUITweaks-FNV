@@ -19,7 +19,7 @@ begin Function{}
 
 	; Headgear
 	aBases = ar_Construct "Array"
-	aPieces = PlayerRef.GetEquippedItemRefs 130563
+	aPieces = PlayerRef.GetEquippedItemRefs 1048571
 	iSize = ar_Size aPieces
 	while (iSize -= 1) > -1
 		rPiece = aPieces[iSize]
@@ -31,7 +31,7 @@ begin Function{}
 	iDRBase = iDRHead
 
 	; Body
-	aPieces = PlayerRef.GetEquippedItemRefs 917980
+	aPieces = PlayerRef.GetEquippedItemRefs 4
 	iSize = ar_Size aPieces
 	while (iSize -= 1) > -1
 		rPiece = aPieces[iSize]

@@ -1,0 +1,14 @@
+int	iMenuID
+float fTemp
+
+begin Function {iMenuID}
+
+	if eval GetUIFloatAlt "TutorialMenu\_PipTweaks+Init"
+		return
+	endif
+	SetUIFloatAlt "TutorialMenu\_PipTweaks+Init" 1
+
+	; Enable colorful CND
+	SetUIFloatGradual "TutorialMenu\_PipTweaks+Pulse" -204 0 1.5 2
+
+end

@@ -290,6 +290,10 @@ Stentorious\PipBoyUITweaks\RepairServicesMenu\RSM_CapsLabel_Clone.xml::RepairSer
 Stentorious\PipBoyUITweaks\_ySI\HideLabel.xml::RepairServicesMenu::RSM_CapsLabel
 #..\ySI\ySI.xml
 
+; TutorialMenu
+Stentorious\PipBoyUITweaks\_Common\_Root.xml::TutorialMenu
+true
+
 ; Prefabs
 Stentorious\PipBoyUITweaks\_Prefabs\ValueText.xml::@Prefabs\card_info.xml::CI_ValueText
 true

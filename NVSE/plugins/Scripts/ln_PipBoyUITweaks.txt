@@ -415,3 +415,8 @@ if eval GetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" == -1
 	SetOnSettingsUpdateEventHandler 1 ({} => SetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" (Player.IsHardcore)) 0
 endif
 SetUIFloatAlt "HUDMainMenu\_Setting+Hardcore" (Player.IsHardcore)
+
+; Item Inspect Menu support
+if eval Goo1.AuxVarType "*ItemInspectMenu_INI" > 0
+	SetOnMenuOpenEventHandler (CompileScript "PipBoyUITweaks\OpenTutorialMenu.gek") 1 1059
+endif

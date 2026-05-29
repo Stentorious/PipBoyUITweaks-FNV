@@ -1,8 +1,8 @@
 <rect name="AddictionInfo">
 	<include src="card_info.xml" />
 	<visible> 0 </visible>
-	<x> <copy src="sibling(DamInfo)" trait="x" /> </x>
-	<y> <copy src="sibling(DamInfo)" trait="y" /> </y>
+	<x> <copy src="sibling(DAMInfo)" trait="x" /> </x>
+	<y> <copy src="sibling(DAMInfo)" trait="y" /> </y>
 	<width> <copy src="parent()" trait="user0" /> </width>
 	<height> <copy src="parent()" trait="user1" /> </height>
 	<font> <copy src="parent()" trait="font" /> </font>

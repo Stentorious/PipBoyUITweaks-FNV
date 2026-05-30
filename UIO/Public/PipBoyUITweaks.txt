@@ -375,11 +375,11 @@ Stentorious\PipBoyUITweaks\_ySI\ButtonIcon.xml::@Prefabs\Stentorious\ItemInspect
 #Stentorious\ItemInspectMenu\BarterMenu\ButtonDarn.xml && #..\ySI\ySI.xml
 
 ; Item Cards
-Stentorious\PipBoyUITweaks\_ySI\WeightInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::WG
+Stentorious\PipBoyUITweaks\_ySI\WeightInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::WeightInfo
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
-Stentorious\PipBoyUITweaks\_ySI\ValueInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::VAL
+Stentorious\PipBoyUITweaks\_ySI\ValueInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ValueInfo
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
-Stentorious\PipBoyUITweaks\_ySI\AmmoInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::AMMO
+Stentorious\PipBoyUITweaks\_ySI\AmmoInfo.xml::@Prefabs\Stentorious\ItemCards\Main.xml::AmmoInfo
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
 Stentorious\PipBoyUITweaks\_Common\ColorCNDMeterIC.xml::@Prefabs\Stentorious\ItemCards\Main.xml::ConditionMeter
 #Stentorious\ItemCards\Main.xml && #..\ySI\ySI.xml
